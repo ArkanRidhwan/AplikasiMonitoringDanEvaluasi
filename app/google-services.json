@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "53509483533",
+    "firebase_url": "https://aplikasimonitoringdanevaluasi-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "aplikasimonitoringdanevaluasi",
+    "storage_bucket": "aplikasimonitoringdanevaluasi.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:53509483533:android:306ec6e81a150c4877b944",
+        "android_client_info": {
+          "package_name": "com.example.aplikasimonitoringdanevaluasi"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "53509483533-bdbkajiq1q8lgn5tl5t71bvp0l7ellf7.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.aplikasimonitoringdanevaluasi",
+            "certificate_hash": "ffd6dd3851b40b65eb7ae58c4033115205aa396f"
+          }
+        },
+        {
+          "client_id": "53509483533-s4onar5luceu1hjf3572ppkc5j5e7egf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCOg82Y6HMvffCR-htKvUSiKeTTxJPxoM8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "53509483533-s4onar5luceu1hjf3572ppkc5j5e7egf.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_nav"
+    app:startDestination="@id/splashScreenFragment">
+
+    <fragment
+        android:id="@+id/splashScreenFragment"
+        android:name="com.example.aplikasimonitoringdanevaluasi.ui.main.SplashFragment"
+        android:label="fragment_splash_screen"
+        tools:layout="@layout/fragment_splash" >
+        <action
+            android:id="@+id/action_splashScreenFragment_to_welcomeFragment"
+            app:destination="@id/welcomeFragment" />
+        <action
+            android:id="@+id/action_splashScreenFragment_to_homeCompanyFragment"
+            app:destination="@id/homeCompanyFragment" />
+        <action
+            android:id="@+id/action_splashScreenFragment_to_homeAdminFragment"
+            app:destination="@id/homeAdminFragment" />
+        <action
+            android:id="@+id/action_splashScreenFragment_to_homeStudentFragment"
+            app:destination="@id/homeStudentFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/welcomeFragment"
+        android:name="com.example.aplikasimonitoringdanevaluasi.ui.main.welcome.WelcomeFragment"
+        android:label="fragment_welcome"
+        tools:layout="@layout/fragment_welcome" >
+        <action
+            android:id="@+id/action_welcomeFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.example.aplikasimonitoringdanevaluasi.ui.main.login.LoginFragment"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_login" >
+        <action
+            android:id="@+id/action_loginFragment_to_registerCompanyFragment"
+            app:destination="@id/registerCompanyFragment" />
+        <action
+            android:id="@+id/action_loginFragment_to_registerStudentFragment"
+            app:destination="@id/registerStudentFragment" />
+        <action
+            android:id="@+id/action_loginFragment_to_homeCompanyFragment"
+            app:destination="@id/homeCompanyFragment" />
+        <action
+            android:id="@+id/action_loginFragment_to_homeAdminFragment"
+            app:destination="@id/homeAdminFragment" />
+        <action
+            android:id="@+id/action_loginFragment_to_homeStudentFragment"
+            app:destination="@id/homeStudentFragment" />
+        <argument
+            android:name="role"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_loginFragment_to_registerCompanyByEmailPassword"
+            app:destination="@id/registerCompanyByEmailPassword" />
+        <action
+            android:id="@+id/action_loginFragment_to_registerStudentByEmailPassword"
+            app:destination="@id/registerStudentByEmailPassword" />
+    </fragment>
+    <fragment
+        android:id="@+id/registerCompanyFragment"
+        android:name="com.example.aplikasimonitoringdanevaluasi.ui.main.register.RegisterCompanyFragment"
+        android:label="fragment_register_company"
+        tools:layout="@layout/fragment_register_company" >
+        <argument
+            android:name="role"
+            app:argType="string" />
+        <argument
+            android:name="email"
+            app:argType="string"
+            app:nullable="true" />
+        <action
+            android:id="@+id/action_registerCompanyFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+        <action
+            android:id="@+id/action_registerCompanyFragment_to_homeCompanyFragment"
+            app:destination="@id/homeCompanyFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/registerStudentFragment"
+        android:name="com.example.aplikasimonitoringdanevaluasi.ui.main.register.RegisterStudentFragment"
+        android:label="fragment_register_student"
+        tools:layout="@layout/fragment_register_student" >
+        <action
+            android:id="@+id/action_registerStudentFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+        <argument
+            android:name="role"
+            app:argType="string" />
+        <argument
+            android:name="email"
+            app:argType="string"
+            app:nullable="true" />
+        <action
+            android:id="@+id/action_registerStudentFragment_to_homeStudentFragment"
+            app:destination="@id/homeStudentFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/homeAdminFragment"
+        android:name="com.example.aplikasimonitoringdanevaluasi.ui.admin.home.HomeAdminFragment"
+        android:label="fragment_home_admin"
+        tools:layout="@layout/fragment_home_admin" >
+        <action
+            android:id="@+id/action_homeAdminFragment_to_profileAdminFragment"
+            app:destination="@id/profileAdminFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/homeCompanyFragment"
+        android:name="com.example.aplikasimonitoringdanevaluasi.ui.company.home.HomeCompanyFragment"
+        android:label="fragment_home_company"
+        tools:layout="@layout/fragment_home_company" >
+        <action
+            android:id="@+id/action_homeCompanyFragment_to_welcomeFragment"
+            app:destination="@id/welcomeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/homeStudentFragment"
+        android:name="com.example.aplikasimonitoringdanevaluasi.ui.student.home.HomeStudentFragment"
+        android:label="fragment_home_student"
+        tools:layout="@layout/fragment_home_student" />
+    <fragment
+        android:id="@+id/profileAdminFragment"
+        android:name="com.example.aplikasimonitoringdanevaluasi.ui.admin.profile.ProfileAdminFragment"
+        android:label="fragment_profile_admin"
+        tools:layout="@layout/fragment_profile_admin" />
+    <fragment
+        android:id="@+id/profileStudentFragment"
+        android:name="com.example.aplikasimonitoringdanevaluasi.ui.student.profile.ProfileStudentFragment"
+        android:label="fragment_profile_student"
+        tools:layout="@layout/fragment_profile_student" >
+        <action
+            android:id="@+id/action_profileStudentFragment_to_welcomeFragment"
+            app:destination="@id/welcomeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/registerCompanyByEmailPassword"
+        android:name="com.example.aplikasimonitoringdanevaluasi.ui.main.register.RegisterCompanyByEmailPasswordFragment"
+        android:label="fragment_register_company_by_email_password"
+        tools:layout="@layout/fragment_register_company_by_email_password" >
+        <argument
+            android:name="role"
+            app:argType="string" />
+        <argument
+            android:name="email"
+            app:argType="string"
+            app:nullable="true" />
+        <action
+            android:id="@+id/action_registerCompanyByEmailPassword_to_homeCompanyFragment"
+            app:destination="@id/homeCompanyFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/registerStudentByEmailPassword"
+        android:name="com.example.aplikasimonitoringdanevaluasi.ui.main.register.RegisterStudentByEmailPasswordFragment"
+        android:label="fragment_register_student_by_email_password"
+        tools:layout="@layout/fragment_register_student_by_email_password" >
+        <argument
+            android:name="role"
+            app:argType="string" />
+        <argument
+            android:name="email"
+            app:argType="string"
+            app:nullable="true" />
+        <action
+            android:id="@+id/action_registerStudentByEmailPassword_to_homeStudentFragment"
+            app:destination="@id/homeStudentFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/profileCompanyFragment"
+        android:name="com.example.aplikasimonitoringdanevaluasi.ui.company.profile.ProfileCompanyFragment"
+        android:label="fragment_profile_company"
+        tools:layout="@layout/fragment_profile_company" >
+        <action
+            android:id="@+id/action_profileCompanyFragment_to_welcomeFragment"
+            app:destination="@id/welcomeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/studentRequestCompanyFragment"
+        android:name="com.example.aplikasimonitoringdanevaluasi.ui.company.studentRequest.StudentRequestCompanyFragment"
+        android:label="fragment_student_request_company"
+        tools:layout="@layout/fragment_student_request_company" >
+        <action
+            android:id="@+id/action_studentRequestCompanyFragment_to_welcomeFragment"
+            app:destination="@id/welcomeFragment" />
+    </fragment>
+</navigation>

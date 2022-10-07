@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.main.MainActivity">
+
+    <fragment
+        android:id="@+id/fragmentContainerView"
+        android:name="androidx.navigation.fragment.NavHostFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:defaultNavHost="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:navGraph="@navigation/main_nav" />
+
+    <com.ismaeldivita.chipnavigation.ChipNavigationBar
+        android:id="@+id/btm_navCompany"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:background="@color/gray_bottomnav"
+        android:backgroundTint="@color/gray_bottomnav"
+        android:visibility="gone"
+        app:cnb_menuResource="@menu/btm_nav_company"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <com.ismaeldivita.chipnavigation.ChipNavigationBar
+        android:id="@+id/btm_navAdmin"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:background="@color/gray_bottomnav"
+        android:backgroundTint="@color/gray_bottomnav"
+        android:visibility="gone"
+        app:cnb_menuResource="@menu/btm_nav_admin"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <com.ismaeldivita.chipnavigation.ChipNavigationBar
+        android:id="@+id/btm_navStudent"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:background="@color/gray_bottomnav"
+        android:backgroundTint="@color/gray_bottomnav"
+        android:visibility="gone"
+        app:cnb_menuResource="@menu/btm_nav_student"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

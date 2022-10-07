@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.main.register.RegisterCompanyFragment"
+    android:background="@color/white">
+
+    <View
+        android:id="@+id/viewBG"
+        android:layout_width="match_parent"
+        android:layout_height="545dp"
+        android:background="@drawable/bg_welcomeloginregister"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView"
+        android:layout_width="match_parent"
+        android:layout_height="510dp"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/gray_ILC">
+
+            <TextView
+                android:id="@+id/tv_subTittleRegisterCompany"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/proza_libre"
+                android:text="Sign Up "
+                android:textColor="@color/black"
+                android:textSize="28sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <EditText
+                android:id="@+id/et_companyName"
+                android:layout_width="350dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="18dp"
+                android:ems="10"
+                android:fontFamily="@font/open_sans"
+                android:hint="Masukkan nama perusahaan"
+                android:inputType="textPersonName"
+                android:textColor="@color/black"
+                android:textColorHint="@color/gray_hintText"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_subTittleRegisterCompany" />
+
+            <EditText
+                android:id="@+id/et_companyNPWP"
+                android:layout_width="350dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:ems="10"
+                android:fontFamily="@font/open_sans"
+                android:hint="Masukkan NPWP perusahaan"
+                android:inputType="textPersonName"
+                android:textColor="@color/black"
+                android:textColorHint="@color/gray_hintText"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="@+id/et_companyName"
+                app:layout_constraintStart_toStartOf="@+id/et_companyName"
+                app:layout_constraintTop_toBottomOf="@+id/et_companyName" />
+
+            <EditText
+                android:id="@+id/et_companyPhoneNumber"
+                android:layout_width="350dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:ems="10"
+                android:fontFamily="@font/open_sans"
+                android:hint="Masukkan nomor telepon perusahaan"
+                android:inputType="phone"
+                android:textColor="@color/black"
+                android:textColorHint="@color/gray_hintText"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="@+id/et_companyNPWP"
+                app:layout_constraintStart_toStartOf="@+id/et_companyNPWP"
+                app:layout_constraintTop_toBottomOf="@+id/et_companyNPWP" />
+
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_register"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="32dp"
+                android:background="@drawable/bg_btn"
+                android:fontFamily="@font/roboto"
+                android:text="Sign Up"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="@+id/et_companyPhoneNumber"
+                app:layout_constraintStart_toStartOf="@+id/et_companyPhoneNumber"
+                app:layout_constraintTop_toBottomOf="@+id/et_companyPhoneNumber" />
+
+            <TextView
+                android:id="@+id/tv_sudahPunyaAkunRegisterCompany"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="70dp"
+                android:layout_marginBottom="24dp"
+                android:fontFamily="@font/proza_libre"
+                android:text="Sudah punya akun?"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/et_companyName" />
+
+            <TextView
+                android:id="@+id/tv_studentSignInNow"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:fontFamily="@font/proza_libre"
+                android:text="Sign in"
+                android:textColor="@color/blue_Register"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_sudahPunyaAkunRegisterCompany"
+                app:layout_constraintStart_toEndOf="@+id/tv_sudahPunyaAkunRegisterCompany"
+                app:layout_constraintTop_toTopOf="@+id/tv_sudahPunyaAkunRegisterCompany" />
+
+            <com.airbnb.lottie.LottieAnimationView
+                android:id="@+id/progressBarCompanyRegister"
+                android:layout_width="350dp"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                app:layout_constraintBottom_toTopOf="@+id/tv_sudahPunyaAkunRegisterCompany"
+                app:layout_constraintEnd_toEndOf="@+id/et_companyName"
+                app:layout_constraintStart_toStartOf="@+id/et_companyName"
+                app:layout_constraintTop_toBottomOf="@+id/et_companyName"
+                app:lottie_autoPlay="true"
+                app:lottie_loop="true"
+                app:lottie_rawRes="@raw/lottie_loading" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

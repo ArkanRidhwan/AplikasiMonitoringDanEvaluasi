@@ -1,0 +1,19 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/HomeStudent"
+        android:icon="@drawable/ic_home"
+        android:title="Home"
+        app:cnb_iconColor="@color/red_ILC"
+        app:cnb_textColor="@color/red_ILC"
+        app:cnb_backgroundColor="@color/red_bottomnav"/>
+
+    <item
+        android:id="@+id/ProfileStudent"
+        android:icon="@drawable/ic_profile"
+        android:title="Profile"
+        app:cnb_iconColor="@color/red_ILC"
+        app:cnb_textColor="@color/red_ILC"
+        app:cnb_backgroundColor="@color/red_bottomnav"/>
+</menu>

@@ -61,14 +61,44 @@ class LoginFragment : Fragment() {
                     progressBarLogin.visible()
                     progressBarLogin.playAnimation()
                     when (args.role) {
+                        getString(R.string.admin) -> {
+                            loginViewModel.loginAdminByEmailPassword(email, password)
+                                .observe(viewLifecycleOwner) {
+                                    if (it != null) {
+                                        loginFirebase()
+                                        getInstance(requireContext()).putString(Constant.ID, it.id)
+                                        getInstance(requireContext()).putString(
+                                            Constant.NAME,
+                                            it.name
+                                        )
+                                        getInstance(requireContext()).putString(
+                                            Constant.ROLE,
+                                            getString(R.string.admin)
+                                        )
+                                    } else {
+                                        requireContext().showToast("Email atau password salah")
+                                        progressBarLogin.gone()
+                                        btnLogin.visible()
+                                        ivGoogleLogin.visible()
+                                        tvOr.visible()
+                                    }
+                                }
+                        }
+
                         getString(R.string.company) -> {
                             loginViewModel.loginCompanyByEmailPassword(email, password)
                                 .observe(viewLifecycleOwner) {
                                     if (it != null) {
                                         loginFirebase()
                                         getInstance(requireContext()).putString(Constant.ID, it.id)
-                                        getInstance(requireContext()).putString(Constant.NAME, it.name)
-                                        getInstance(requireContext()).putString(Constant.ROLE, getString(R.string.company))
+                                        getInstance(requireContext()).putString(
+                                            Constant.NAME,
+                                            it.name
+                                        )
+                                        getInstance(requireContext()).putString(
+                                            Constant.ROLE,
+                                            getString(R.string.company)
+                                        )
                                     } else {
                                         requireContext().showToast("Email atau password salah")
                                         progressBarLogin.gone()
@@ -84,8 +114,14 @@ class LoginFragment : Fragment() {
                                     if (it != null) {
                                         loginFirebase()
                                         getInstance(requireContext()).putString(Constant.ID, it.id)
-                                        getInstance(requireContext()).putString(Constant.NAME, it.name)
-                                        getInstance(requireContext()).putString(Constant.ROLE, getString(R.string.student))
+                                        getInstance(requireContext()).putString(
+                                            Constant.NAME,
+                                            it.name
+                                        )
+                                        getInstance(requireContext()).putString(
+                                            Constant.ROLE,
+                                            getString(R.string.student)
+                                        )
                                     } else {
                                         requireContext().showToast("Email atau password salah")
                                         btnLogin.visible()
@@ -129,17 +165,16 @@ class LoginFragment : Fragment() {
                     findNavController().navigate(action)
                 }
                 else -> {
-                    tvRegisterLogin.gone()
+                    tvRegisterLogin.setOnClickListener {
+                        val action =
+                            LoginFragmentDirections.actionLoginFragmentToRegisterAdminByEmailPasswordFragment(
+                                args.role,
+                                null
+                            )
+                        findNavController().navigate(action)
+                    }
                     tvOr.gone()
-                    tvBelumPunyaAkunLogin.gone()
                     ivGoogleLogin.gone()
-                }
-            }
-
-            tvRegisterLogin.setOnClickListener{
-                when (args.role){
-                    getString(R.string.company) -> findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToRegisterCompanyByEmailPassword(args.role, null))
-                    getString(R.string.student) -> findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToRegisterStudentByEmailPassword(args.role, null))
                 }
             }
         }

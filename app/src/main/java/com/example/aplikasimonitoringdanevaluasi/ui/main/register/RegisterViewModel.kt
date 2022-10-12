@@ -3,6 +3,7 @@ package com.example.aplikasimonitoringdanevaluasi.ui.main.register
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.example.aplikasimonitoringdanevaluasi.model.Admin
 import com.example.aplikasimonitoringdanevaluasi.model.Company
 import com.example.aplikasimonitoringdanevaluasi.model.Student
 import com.example.aplikasimonitoringdanevaluasi.utils.Constant
@@ -18,6 +19,26 @@ class RegisterViewModel() : ViewModel() {
     private val database = Firebase.database
     private val collCompany = database.getReference(Constant.COLL_COMPANY)
     private val collStudent = database.getReference(Constant.COLL_STUDENT)
+    private val collAdmin = database.getReference(Constant.COLL_ADMIN)
+
+    fun saveAdmin(data: Admin): LiveData<Boolean> {
+        val adminId = UUID.randomUUID().toString()
+        val status = MutableLiveData<Boolean>()
+        val admin = Admin.saveRegistrationAdmin(
+            id = adminId,
+            name = data.name,
+            email = data.email,
+            password = data.password
+        )
+        collAdmin.child(adminId).setValue(admin)
+            .addOnCompleteListener {
+                status.value = true
+            }
+            .addOnFailureListener {
+                status.value = false
+            }
+        return status
+    }
 
     fun saveCompany(data: Company): LiveData<Boolean> {
         val companyId = UUID.randomUUID().toString()
@@ -61,6 +82,29 @@ class RegisterViewModel() : ViewModel() {
                 status.value = false
             }
         return status
+    }
+
+    fun getAdmin(email: String): LiveData<Admin?> {
+        val dataAdmin = MutableLiveData<Admin?>()
+        var company: Admin? = null
+        collCompany.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                if (snapshot.exists()) {
+                    for (i in snapshot.children) {
+                        val valueAdmin = i.getValue(Admin::class.java)
+                        if (valueAdmin?.email == email) {
+                            company = valueAdmin
+                        }
+                    }
+                    dataAdmin.value = company
+                }
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                dataAdmin.value = null
+            }
+        })
+        return dataAdmin
     }
 
     fun getCompany(phoneNumber: String): LiveData<Company?> {

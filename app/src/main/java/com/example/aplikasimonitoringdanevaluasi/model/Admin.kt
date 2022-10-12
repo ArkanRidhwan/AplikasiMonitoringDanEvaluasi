@@ -7,7 +7,7 @@ data class Admin(
     val name: String = ""
 ){
     companion object {
-        fun saveAdmin(id: String, email: String, password: String, name: String) : Admin {
+        fun saveRegistrationAdmin(id: String, email: String, password: String, name: String) : Admin {
             return Admin(id, email, password, name)
         }
     }

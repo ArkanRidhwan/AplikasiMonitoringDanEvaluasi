@@ -6,4 +6,6 @@
     <string name="company">Company</string>
     <string name="admin">Admin</string>
     <string name="student">Student</string>
+
+    <string name="verification">2000</string>
 </resources>

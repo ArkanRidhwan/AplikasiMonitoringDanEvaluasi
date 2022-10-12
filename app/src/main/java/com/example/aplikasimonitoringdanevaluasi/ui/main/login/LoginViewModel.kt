@@ -35,7 +35,6 @@ class LoginViewModel() : ViewModel() {
                     }
                 }
             }
-
             override fun onCancelled(error: DatabaseError) {
                 admin = null
             }

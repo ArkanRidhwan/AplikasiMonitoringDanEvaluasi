@@ -34,7 +34,7 @@
         android:id="@+id/et_email"
         android:layout_width="350dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="18dp"
         android:ems="10"
         android:fontFamily="@font/open_sans"
         android:hint="Masukkan email"
@@ -44,13 +44,13 @@
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="@+id/et_password"
         app:layout_constraintStart_toStartOf="@+id/et_password"
-        app:layout_constraintTop_toBottomOf="@+id/et_password" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_signIn" />
 
     <EditText
         android:id="@+id/et_password"
         android:layout_width="350dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="18dp"
+        android:layout_marginTop="16dp"
         android:ems="10"
         android:fontFamily="@font/open_sans"
         android:hint="Masukkan password"
@@ -59,8 +59,9 @@
         android:textColorHint="@color/gray_hintText"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="@+id/view2"
+        app:layout_constraintHorizontal_bias="0.491"
         app:layout_constraintStart_toStartOf="@+id/view2"
-        app:layout_constraintTop_toBottomOf="@+id/tv_signIn" />
+        app:layout_constraintTop_toBottomOf="@+id/et_email" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_login"
@@ -75,7 +76,7 @@
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="@+id/et_email"
         app:layout_constraintStart_toStartOf="@+id/et_email"
-        app:layout_constraintTop_toBottomOf="@+id/et_email" />
+        app:layout_constraintTop_toBottomOf="@+id/et_password" />
 
     <TextView
         android:id="@+id/tv_or"
@@ -135,9 +136,12 @@
         android:layout_width="350dp"
         android:layout_height="wrap_content"
         android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@+id/tv_belumPunyaAkunLogin"
+        app:layout_constraintEnd_toEndOf="@+id/et_password"
+        app:layout_constraintStart_toStartOf="@+id/et_password"
+        app:layout_constraintTop_toBottomOf="@+id/et_password"
         app:lottie_autoPlay="true"
         app:lottie_loop="true"
-        app:lottie_rawRes="@raw/lottie_loading"
-        tools:layout_editor_absoluteY="221dp" />
+        app:lottie_rawRes="@raw/lottie_loading" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

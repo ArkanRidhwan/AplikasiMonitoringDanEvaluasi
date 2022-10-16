@@ -86,7 +86,7 @@ class RegisterStudentByEmailPasswordFragment : Fragment() {
                                         Constant.ROLE, getString(R.string.student)
                                     )
                                     findNavController().navigate(
-                                        RegisterStudentByEmailPasswordFragmentDirections.actionRegisterStudentByEmailPasswordToHomeStudentFragment()
+                                        RegisterStudentByEmailPasswordFragmentDirections.actionRegisterStudentByEmailPasswordToHomeStudentFragment(getString(R.string.student))
                                     )
                                 }
                         } else {

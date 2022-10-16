@@ -23,8 +23,6 @@ class HomeCompanyFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.textView.setOnClickListener {
-            findNavController().navigate(HomeCompanyFragmentDirections.actionHomeCompanyFragmentToWelcomeFragment())
-        }
+
     }
 }

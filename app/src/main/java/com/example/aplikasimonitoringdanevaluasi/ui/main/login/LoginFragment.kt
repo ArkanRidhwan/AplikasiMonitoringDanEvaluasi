@@ -150,7 +150,7 @@ class LoginFragment : Fragment() {
             when (args.role) {
                 getString(R.string.student) -> tvRegisterLogin.setOnClickListener {
                     val action =
-                        LoginFragmentDirections.actionLoginFragmentToRegisterStudentFragment(
+                        LoginFragmentDirections.actionLoginFragmentToRegisterStudentByEmailPassword(
                             args.role,
                             null
                         )
@@ -158,7 +158,7 @@ class LoginFragment : Fragment() {
                 }
                 getString(R.string.company) -> tvRegisterLogin.setOnClickListener {
                     val action =
-                        LoginFragmentDirections.actionLoginFragmentToRegisterCompanyFragment(
+                        LoginFragmentDirections.actionLoginFragmentToRegisterCompanyByEmailPassword(
                             args.role,
                             null
                         )
@@ -184,8 +184,8 @@ class LoginFragment : Fragment() {
         requireContext().showToast("Login berhasil")
         when (args.role) {
             getString(R.string.company) -> findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToHomeCompanyFragment())
-            getString(R.string.student) -> findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToHomeStudentFragment())
-            else -> findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToHomeAdminFragment())
+            getString(R.string.student) -> findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToHomeStudentFragment(getString(R.string.student)))
+            else -> findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToHomeAdminFragment(getString(R.string.admin)))
         }
     }
 
@@ -251,7 +251,7 @@ class LoginFragment : Fragment() {
                 getString(R.string.student) -> {
                     loginViewModel.loginStudentByGoogleAuth(email).observe(viewLifecycleOwner) {
                         if (it != null) {
-                            findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToHomeStudentFragment())
+                            findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToHomeStudentFragment(getString(R.string.student)))
                         } else {
                             val action =
                                 LoginFragmentDirections.actionLoginFragmentToRegisterStudentFragment(

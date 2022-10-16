@@ -111,6 +111,12 @@
         <action
             android:id="@+id/action_homeAdminFragment_to_profileAdminFragment"
             app:destination="@id/profileAdminFragment" />
+        <argument
+            android:name="role"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_homeAdminFragment_to_listContactChatFragment"
+            app:destination="@id/listContactChatFragment" />
     </fragment>
     <fragment
         android:id="@+id/homeCompanyFragment"
@@ -125,7 +131,14 @@
         android:id="@+id/homeStudentFragment"
         android:name="com.example.aplikasimonitoringdanevaluasi.ui.student.home.HomeStudentFragment"
         android:label="fragment_home_student"
-        tools:layout="@layout/fragment_home_student" />
+        tools:layout="@layout/fragment_home_student" >
+        <argument
+            android:name="role"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_homeStudentFragment_to_listContactChatFragment"
+            app:destination="@id/listContactChatFragment" />
+    </fragment>
     <fragment
         android:id="@+id/profileAdminFragment"
         android:name="com.example.aplikasimonitoringdanevaluasi.ui.admin.profile.ProfileAdminFragment"
@@ -205,5 +218,29 @@
             android:name="email"
             app:argType="string"
             app:nullable="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/chatFragment"
+        android:name="com.example.aplikasimonitoringdanevaluasi.ui.main.chat.ChatFragment"
+        android:label="fragment_chat"
+        tools:layout="@layout/fragment_chat" >
+        <argument
+            android:name="receiverId"
+            app:argType="string" />
+        <argument
+            android:name="receiverName"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/listContactChatFragment"
+        android:name="com.example.aplikasimonitoringdanevaluasi.ui.main.chat.ListContactChatFragment"
+        android:label="fragment_list_contact_chat"
+        tools:layout="@layout/fragment_list_contact_chat" >
+        <action
+            android:id="@+id/action_listContactChatFragment_to_chatFragment"
+            app:destination="@id/chatFragment" />
+        <argument
+            android:name="role"
+            app:argType="string" />
     </fragment>
 </navigation>

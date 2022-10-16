@@ -36,13 +36,13 @@ class SplashFragment : Fragment() {
             if (userId.isNotEmpty()) {
                 when (role) {
                     getString(R.string.student) -> {
-                        findNavController().navigate(SplashFragmentDirections.actionSplashScreenFragmentToHomeStudentFragment())
+                        findNavController().navigate(SplashFragmentDirections.actionSplashScreenFragmentToHomeStudentFragment(getString(R.string.student)))
                     }
                     getString(R.string.company) -> {
                         findNavController().navigate(SplashFragmentDirections.actionSplashScreenFragmentToHomeCompanyFragment())
                     }
                     else -> {
-                        findNavController().navigate(SplashFragmentDirections.actionSplashScreenFragmentToHomeAdminFragment())
+                        findNavController().navigate(SplashFragmentDirections.actionSplashScreenFragmentToHomeAdminFragment(getString(R.string.admin)))
                     }
                 }
             } else {

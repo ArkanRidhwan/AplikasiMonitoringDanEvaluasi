@@ -5,13 +5,19 @@
       <map>
         <entry key="..\:/Arkan/Github/AplikasiMonitoringDanEvaluasi/app/src/main/res/drawable-v24/bg_btn.xml" value="0.1165" />
         <entry key="..\:/Arkan/Github/AplikasiMonitoringDanEvaluasi/app/src/main/res/drawable-v24/bg_profile.xml" value="0.134" />
+        <entry key="..\:/Arkan/Github/AplikasiMonitoringDanEvaluasi/app/src/main/res/drawable/bg_lower_chat.xml" value="0.131" />
+        <entry key="..\:/Arkan/Github/AplikasiMonitoringDanEvaluasi/app/src/main/res/drawable/bg_upper_chat.xml" value="0.131" />
         <entry key="..\:/Arkan/Github/AplikasiMonitoringDanEvaluasi/app/src/main/res/drawable/bg_welcomeloginregister.xml" value="0.1165" />
         <entry key="..\:/Arkan/Github/AplikasiMonitoringDanEvaluasi/app/src/main/res/drawable/ic_sign_in_with_google.xml" value="0.1165" />
+        <entry key="..\:/Arkan/Github/AplikasiMonitoringDanEvaluasi/app/src/main/res/drawable/shape_round_image_profile.xml" value="0.131" />
         <entry key="..\:/Arkan/Github/AplikasiMonitoringDanEvaluasi/app/src/main/res/font/.xml" value="0.21574074074074073" />
         <entry key="..\:/Arkan/Github/AplikasiMonitoringDanEvaluasi/app/src/main/res/layout/activity_main.xml" value="0.2" />
+        <entry key="..\:/Arkan/Github/AplikasiMonitoringDanEvaluasi/app/src/main/res/layout/fragment_chat.xml" value="0.264" />
         <entry key="..\:/Arkan/Github/AplikasiMonitoringDanEvaluasi/app/src/main/res/layout/fragment_home_admin.xml" value="0.2" />
         <entry key="..\:/Arkan/Github/AplikasiMonitoringDanEvaluasi/app/src/main/res/layout/fragment_home_company.xml" value="0.2" />
-        <entry key="..\:/Arkan/Github/AplikasiMonitoringDanEvaluasi/app/src/main/res/layout/fragment_home_student.xml" value="0.25" />
+        <entry key="..\:/Arkan/Github/AplikasiMonitoringDanEvaluasi/app/src/main/res/layout/fragment_home_student.xml" value="0.176" />
+        <entry key="..\:/Arkan/Github/AplikasiMonitoringDanEvaluasi/app/src/main/res/layout/fragment_list_chat_siswa.xml" value="0.25" />
+        <entry key="..\:/Arkan/Github/AplikasiMonitoringDanEvaluasi/app/src/main/res/layout/fragment_list_chat_student.xml" value="0.2" />
         <entry key="..\:/Arkan/Github/AplikasiMonitoringDanEvaluasi/app/src/main/res/layout/fragment_login.xml" value="0.264" />
         <entry key="..\:/Arkan/Github/AplikasiMonitoringDanEvaluasi/app/src/main/res/layout/fragment_profile_admin.xml" value="0.25" />
         <entry key="..\:/Arkan/Github/AplikasiMonitoringDanEvaluasi/app/src/main/res/layout/fragment_profile_company.xml" value="0.2" />
@@ -26,6 +32,8 @@
         <entry key="..\:/Arkan/Github/AplikasiMonitoringDanEvaluasi/app/src/main/res/layout/fragment_splash_screen.xml" value="0.2" />
         <entry key="..\:/Arkan/Github/AplikasiMonitoringDanEvaluasi/app/src/main/res/layout/fragment_student_request_company.xml" value="0.25" />
         <entry key="..\:/Arkan/Github/AplikasiMonitoringDanEvaluasi/app/src/main/res/layout/fragment_welcome.xml" value="0.2" />
+        <entry key="..\:/Arkan/Github/AplikasiMonitoringDanEvaluasi/app/src/main/res/layout/layout_list_chat.xml" value="0.4" />
+        <entry key="..\:/Arkan/Github/AplikasiMonitoringDanEvaluasi/app/src/main/res/layout/layout_list_chat_student.xml" value="0.264" />
         <entry key="..\:/Arkan/Github/AplikasiMonitoringDanEvaluasi/app/src/main/res/menu/btm_nav_admin.xml" value="0.25" />
         <entry key="..\:/Arkan/Github/AplikasiMonitoringDanEvaluasi/app/src/main/res/menu/btm_nav_company.xml" value="0.15503875968992248" />
         <entry key="..\:/Arkan/Github/AplikasiMonitoringDanEvaluasi/app/src/main/res/menu/btm_nav_student.xml" value="0.25" />

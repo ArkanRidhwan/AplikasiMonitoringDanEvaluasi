@@ -4,13 +4,23 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.company.home.HomeCompanyFragment"
-    android:background="@color/white">
+    android:background="@color/white"
+    tools:context=".ui.company.home.HomeCompanyFragment">
 
-
-    <TextView
-        android:id="@+id/textView"
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_user"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Ini Home" />
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="80dp"
+        android:backgroundTint="@color/gray_ILC"
+        android:clickable="true"
+        android:src="@drawable/ic_chat"
+        app:borderWidth="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.976"
+        app:tint="@color/red_ILC" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

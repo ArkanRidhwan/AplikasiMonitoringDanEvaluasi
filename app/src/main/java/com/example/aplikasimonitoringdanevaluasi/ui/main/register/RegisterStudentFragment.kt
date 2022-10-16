@@ -76,7 +76,7 @@ class RegisterStudentFragment : Fragment() {
                                     Constant.ROLE,
                                     getString(R.string.student)
                                 )
-                                findNavController().navigate(RegisterStudentFragmentDirections.actionRegisterStudentFragmentToHomeStudentFragment())
+                                findNavController().navigate(RegisterStudentFragmentDirections.actionRegisterStudentFragmentToHomeStudentFragment(getString(R.string.student)))
                             }
                         } else {
                             btnRegister.visible()

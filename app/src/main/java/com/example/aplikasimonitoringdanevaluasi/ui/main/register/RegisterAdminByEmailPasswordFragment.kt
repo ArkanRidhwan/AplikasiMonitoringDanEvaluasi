@@ -77,7 +77,7 @@ class RegisterAdminByEmailPasswordFragment : Fragment() {
                                             getString(R.string.admin)
                                         )
                                         findNavController().navigate(
-                                            RegisterAdminByEmailPasswordFragmentDirections.actionRegisterAdminByEmailPasswordFragmentToHomeAdminFragment()
+                                            RegisterAdminByEmailPasswordFragmentDirections.actionRegisterAdminByEmailPasswordFragmentToHomeAdminFragment(getString(R.string.admin))
                                         )
                                     }
                             } else {

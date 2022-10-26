@@ -4,7 +4,7 @@ import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.aplikasimonitoringdanevaluasi.databinding.LayoutListChatStudentBinding
+import com.example.aplikasimonitoringdanevaluasi.databinding.LayoutListContactChatBinding
 import com.example.aplikasimonitoringdanevaluasi.model.Student
 
 class ListStudentAdapter : RecyclerView.Adapter<ListStudentAdapter.ViewHolder>() {
@@ -20,7 +20,7 @@ class ListStudentAdapter : RecyclerView.Adapter<ListStudentAdapter.ViewHolder>()
         notifyDataSetChanged()
     }
 
-    inner class ViewHolder(private val binding: LayoutListChatStudentBinding) :
+    inner class ViewHolder(private val binding: LayoutListContactChatBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(data: Student) {
             binding.apply {
@@ -36,7 +36,7 @@ class ListStudentAdapter : RecyclerView.Adapter<ListStudentAdapter.ViewHolder>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val binding =
-            LayoutListChatStudentBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+            LayoutListContactChatBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return ViewHolder(binding)
     }
 

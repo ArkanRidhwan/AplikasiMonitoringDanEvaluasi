@@ -32,9 +32,10 @@ class RegisterCompanyByEmailPasswordFragment : Fragment() {
             btnRegister.setOnClickListener {
                 val email = etCompanyEmail.text.toString()
                 val password = etCompanyPassword.text.toString()
-                val name = etCompanyName.text.toString()
-                val phoneNumber = etCompanyPhoneNumber.text.toString()
-                val npwp = etCompanyNPWP.text.toString()
+                val companyName = etCompanyName.text.toString()
+                val companyAddress = etCompanyAddress.text.toString()
+                val contactName = etCompanyContactName.text.toString()
+                val contactPhoneNumber = etCompanyContactPhoneNumber.text.toString()
 
                 if (email.isEmpty()) {
                     etCompanyEmail.error("Email Tidak boleh kosong")
@@ -42,33 +43,38 @@ class RegisterCompanyByEmailPasswordFragment : Fragment() {
                 } else if (password.isEmpty()) {
                     etCompanyPassword.error("Password tidak boleh kosong")
                     etCompanyPassword.requestFocus()
-                } else if (name.isEmpty()) {
-                    etCompanyName.error("Nama tidak boleh kosong")
+                } else if (companyName.isEmpty()) {
+                    etCompanyName.error("Nama perusahaan tidak boleh kosong")
                     etCompanyName.requestFocus()
-                } else if (npwp.isEmpty()) {
-                    etCompanyPhoneNumber.error("NPWP tidak boleh kosong")
-                    etCompanyPhoneNumber.requestFocus()
-                } else if (phoneNumber.isEmpty()) {
-                    etCompanyNPWP.error("Nomor telepon tidak boleh kosong")
-                    etCompanyNPWP.requestFocus()
+                } else if (companyAddress.isEmpty()) {
+                    etCompanyAddress.error("Alamat perusahaan tidak boleh kosong")
+                    etCompanyAddress.requestFocus()
+                } else if (contactName.isEmpty()) {
+                    etCompanyContactName.error("Nama PIC tidak boleh kosong")
+                    etCompanyContactName.requestFocus()
+                } else if (contactPhoneNumber.isEmpty()) {
+                    etCompanyContactPhoneNumber.error("Nomor telepon  PIC tidak boleh kosong")
+                    etCompanyContactPhoneNumber.requestFocus()
                 } else {
                     btnRegister.gone()
                     progressBarCompanyRegister.visible()
                     progressBarCompanyRegister.playAnimation()
                     val company = Company(
-                        name = name,
-                        npwp = npwp,
-                        email = email,
+                        contactEmail = email,
                         password = password,
-                        phoneNumber = phoneNumber
+                        companyName = companyName,
+                        companyAddress = companyAddress,
+                        contactName = contactName,
+                        contactPhoneNumber = contactPhoneNumber
                     )
+
                     registerViewModel.companyEmailRegistrationValidation(email)
                         .observe(viewLifecycleOwner) {
-                            if ( it == true ) {
+                            if (it == true) {
                                 registerViewModel.saveCompany(company)
                                     .observe(viewLifecycleOwner) { it ->
                                         if (it == true) {
-                                            registerViewModel.getCompany(phoneNumber)
+                                            registerViewModel.getCompany(contactPhoneNumber)
                                                 .observe(viewLifecycleOwner) {
                                                     getInstance(requireContext()).putString(
                                                         Constant.ID,
@@ -76,7 +82,7 @@ class RegisterCompanyByEmailPasswordFragment : Fragment() {
                                                     )
                                                     getInstance(requireContext()).putString(
                                                         Constant.NAME,
-                                                        it?.name
+                                                        it?.contactName
                                                     )
                                                     getInstance(requireContext()).putString(
                                                         Constant.ROLE,
@@ -93,9 +99,9 @@ class RegisterCompanyByEmailPasswordFragment : Fragment() {
                                         }
                                     }
                             } else {
-                                requireContext().showToast("Email yang anda masukkan sudah terdaftar")
                                 btnRegister.visible()
                                 progressBarCompanyRegister.gone()
+                                requireContext().showToast("Email yang anda masukkan sudah terdaftar")
                             }
                         }
                 }

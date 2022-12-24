@@ -31,10 +31,10 @@ class ProfileCompanyFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        /*binding.button2.setOnClickListener {
+        binding.button3.setOnClickListener {
             auth = Firebase.auth
             logout()
-        }*/
+        }
     }
 
     private fun logout() {

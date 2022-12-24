@@ -93,7 +93,7 @@ class LoginFragment : Fragment() {
                                         getInstance(requireContext()).putString(Constant.ID, it.id)
                                         getInstance(requireContext()).putString(
                                             Constant.NAME,
-                                            it.name
+                                            it.contactName
                                         )
                                         getInstance(requireContext()).putString(
                                             Constant.ROLE,

@@ -10,7 +10,8 @@ import com.example.aplikasimonitoringdanevaluasi.ui.admin.home.HomeAdminFragment
 import com.example.aplikasimonitoringdanevaluasi.ui.admin.profile.ProfileAdminFragment
 import com.example.aplikasimonitoringdanevaluasi.ui.company.home.HomeCompanyFragment
 import com.example.aplikasimonitoringdanevaluasi.ui.company.profile.ProfileCompanyFragment
-import com.example.aplikasimonitoringdanevaluasi.ui.company.studentRequest.StudentRequestFragment
+import com.example.aplikasimonitoringdanevaluasi.ui.company.request.RequestFragment
+import com.example.aplikasimonitoringdanevaluasi.ui.company.request.StudentRequestFragment
 import com.example.aplikasimonitoringdanevaluasi.ui.student.home.HomeStudentFragment
 import com.example.aplikasimonitoringdanevaluasi.ui.student.profile.ProfileStudentFragment
 
@@ -109,7 +110,7 @@ class MainActivity : AppCompatActivity() {
                 }
                 R.id.StudentRequestCompany -> {
                     supportFragmentManager.beginTransaction()
-                        .replace(R.id.fragmentContainerView, StudentRequestFragment()).commit()
+                        .replace(R.id.fragmentContainerView, RequestFragment()).commit()
                 }
             }
         }

@@ -34,6 +34,7 @@ class RegisterAdminByEmailPasswordFragment : Fragment() {
                 val email = etAdminEmail.text.toString()
                 val password = etAdminPassword.text.toString()
                 val name = etAdminName.text.toString()
+                val phoneNumber = etAdminPhoneNumber.text.toString()
                 val verification = etAdminVerification.text.toString()
 
                 if (email.isEmpty()) {
@@ -45,6 +46,9 @@ class RegisterAdminByEmailPasswordFragment : Fragment() {
                 } else if (name.isEmpty()) {
                     etAdminName.error("Nama tidak boleh kosong")
                     etAdminName.requestFocus()
+                } else if (phoneNumber.isEmpty()) {
+                    etAdminPhoneNumber.error("Nomor telepon tidak boleh kosong")
+                    etAdminPhoneNumber.requestFocus()
                 } else if (verification.isEmpty()) {
                     etAdminVerification.error("Nomor verifikasi tidak boleh kosong")
                     etAdminVerification.requestFocus()
@@ -55,11 +59,50 @@ class RegisterAdminByEmailPasswordFragment : Fragment() {
                     progressBarAdminRegister.visible()
                     progressBarAdminRegister.playAnimation()
                     val admin = Admin(
-                        name = name,
                         email = email,
-                        password = password
+                        password = password,
+                        name = name,
+                        phoneNumber = phoneNumber,
                     )
-                    registerViewModel.saveAdmin(admin)
+
+                    registerViewModel.adminEmailRegistrationValidation(email)
+                        .observe(viewLifecycleOwner) {
+                            if (it == true) {
+                                registerViewModel.saveAdmin(admin)
+                                    .observe(viewLifecycleOwner) { it ->
+                                        if (it == true) {
+                                            registerViewModel.getAdmin(phoneNumber)
+                                                .observe(viewLifecycleOwner) {
+                                                    getInstance(requireContext()).putString(
+                                                        Constant.ID,
+                                                        it?.id
+                                                    )
+                                                    getInstance(requireContext()).putString(
+                                                        Constant.NAME,
+                                                        it?.name
+                                                    )
+                                                    getInstance(requireContext()).putString(
+                                                        Constant.ROLE, getString(R.string.admin)
+                                                    )
+                                                    findNavController().navigate(
+                                                        RegisterAdminByEmailPasswordFragmentDirections.actionRegisterAdminByEmailPasswordFragmentToHomeAdminFragment(
+                                                            getString(R.string.admin)
+                                                        )
+                                                    )
+                                                }
+                                        } else {
+                                            btnRegister.visible()
+                                            progressBarAdminRegister.gone()
+                                            requireContext().showToast("Regitrasi gagal")
+                                        }
+                                    }
+                            } else {
+                                requireContext().showToast("Email yang anda masukkan sudah terdaftar")
+                                btnRegister.visible()
+                                progressBarAdminRegister.gone()
+                            }
+                        }
+                    /*registerViewModel.saveAdmin(admin)
                         .observe(viewLifecycleOwner) {
                             if (it == true) {
                                 registerViewModel.getAdmin(email)
@@ -85,7 +128,7 @@ class RegisterAdminByEmailPasswordFragment : Fragment() {
                                 progressBarAdminRegister.gone()
                                 requireContext().showToast("Registrasi gagal")
                             }
-                        }
+                        }*/
                 }
             }
         }

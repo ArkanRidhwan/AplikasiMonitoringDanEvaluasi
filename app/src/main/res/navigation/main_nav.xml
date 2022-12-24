@@ -235,8 +235,13 @@
             app:argType="string" />
     </fragment>
     <fragment
-        android:id="@+id/studentRequestFragment"
-        android:name="com.example.aplikasimonitoringdanevaluasi.ui.company.studentRequest.StudentRequestFragment"
-        android:label="fragment_student_request"
-        tools:layout="@layout/fragment_student_request" />
+        android:id="@+id/detailStudentCompanyFragment"
+        android:name="com.example.aplikasimonitoringdanevaluasi.ui.company.home.DetailStudentCompanyFragment"
+        android:label="fragment_detail_student_company"
+        tools:layout="@layout/fragment_detail_student_company" />
+    <fragment
+        android:id="@+id/addReportStudentFragment"
+        android:name="com.example.aplikasimonitoringdanevaluasi.ui.company.home.AddReportStudentFragment"
+        android:label="fragment_add_report_student"
+        tools:layout="@layout/fragment_add_report_student" />
 </navigation>

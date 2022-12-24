@@ -45,13 +45,13 @@
         app:layout_constraintTop_toBottomOf="@+id/tv_subTittleRegisterCompany" />
 
     <EditText
-        android:id="@+id/et_companyNPWP"
+        android:id="@+id/et_companyAddress"
         android:layout_width="350dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:ems="10"
         android:fontFamily="@font/open_sans"
-        android:hint="Masukkan NPWP perusahaan"
+        android:hint="Masukkan alamat perusahaan"
         android:inputType="textPersonName"
         android:textColor="@color/black"
         android:textColorHint="@color/gray_hintText"
@@ -61,34 +61,51 @@
         app:layout_constraintTop_toBottomOf="@+id/et_companyName" />
 
     <EditText
+        android:id="@+id/et_companyContactName"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:ems="10"
+        android:fontFamily="@font/open_sans"
+        android:hint="Masukkan nama PIC"
+        android:inputType="phone"
+        android:textColor="@color/black"
+        android:textColorHint="@color/gray_hintText"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="@+id/et_companyAddress"
+        app:layout_constraintStart_toStartOf="@+id/et_companyAddress"
+        app:layout_constraintTop_toBottomOf="@+id/et_companyAddress" />
+
+
+    <EditText
         android:id="@+id/et_companyPhoneNumber"
         android:layout_width="350dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:ems="10"
         android:fontFamily="@font/open_sans"
-        android:hint="Masukkan nomor telepon perusahaan"
+        android:hint="Masukkan nomor telepon PIC"
         android:inputType="phone"
         android:textColor="@color/black"
         android:textColorHint="@color/gray_hintText"
         android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="@+id/et_companyNPWP"
-        app:layout_constraintStart_toStartOf="@+id/et_companyNPWP"
-        app:layout_constraintTop_toBottomOf="@+id/et_companyNPWP" />
-
+        app:layout_constraintEnd_toEndOf="@+id/et_companyContactName"
+        app:layout_constraintStart_toStartOf="@+id/et_companyContactName"
+        app:layout_constraintTop_toBottomOf="@+id/et_companyContactName" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_register"
         android:layout_width="0dp"
         android:layout_height="50dp"
-        android:layout_marginTop="32dp"
         android:background="@drawable/bg_btn"
         android:fontFamily="@font/roboto"
         android:text="Sign Up"
         android:textColor="@color/white"
         android:textSize="16sp"
         android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/tv_sudahPunyaAkunRegisterCompany"
         app:layout_constraintEnd_toEndOf="@+id/et_companyPhoneNumber"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/et_companyPhoneNumber"
         app:layout_constraintTop_toBottomOf="@+id/et_companyPhoneNumber" />
 

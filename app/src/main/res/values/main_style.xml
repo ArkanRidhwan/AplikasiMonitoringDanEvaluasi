@@ -23,4 +23,10 @@
         <item name="cornerSize">25dp</item>
         <item name="color">@color/white</item>
     </style>
+
+    <style name="profilePicture">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">60dp</item>
+        <item name="color">@color/white</item>
+    </style>
 </resources>

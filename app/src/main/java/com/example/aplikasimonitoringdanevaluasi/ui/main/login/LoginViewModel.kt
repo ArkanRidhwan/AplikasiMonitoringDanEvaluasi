@@ -51,7 +51,7 @@ class LoginViewModel() : ViewModel() {
                 if (snapshot.exists()) {
                     for (i in snapshot.children) {
                         val valueCompany = i.getValue(Company::class.java)
-                        if (valueCompany?.email == email && valueCompany.password == password) {
+                        if (valueCompany?.contactEmail == email && valueCompany.password == password) {
                             company = valueCompany
                         }
                     }
@@ -99,7 +99,7 @@ class LoginViewModel() : ViewModel() {
                 if (snapshot.exists()) {
                     for (i in snapshot.children) {
                         val valueCompany = i.getValue(Company::class.java)
-                        if (valueCompany?.email == email) {
+                        if (valueCompany?.contactEmail == email) {
                             company = valueCompany
                         }
                     }

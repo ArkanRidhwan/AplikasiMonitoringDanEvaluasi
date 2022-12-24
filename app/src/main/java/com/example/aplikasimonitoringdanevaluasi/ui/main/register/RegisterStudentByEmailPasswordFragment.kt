@@ -73,34 +73,43 @@ class RegisterStudentByEmailPasswordFragment : Fragment() {
                         phoneNumber = phoneNumber
                     )
 
-                    /*registerViewModel.studentEmailRegistrationValidation(email)
+                    registerViewModel.studentEmailRegistrationValidation(email)
                         .observe(viewLifecycleOwner) {
-                            if (email != it?.email ) {*/
-                    registerViewModel.saveStudent(student).observe(viewLifecycleOwner) { it ->
-                        if (it == true) {
-                            registerViewModel.getStudent(phoneNumber)
-                                .observe(viewLifecycleOwner) {
-                                    getInstance(requireContext()).putString(Constant.ID, it?.id)
-                                    getInstance(requireContext()).putString(Constant.NAME, it?.name)
-                                    getInstance(requireContext()).putString(
-                                        Constant.ROLE, getString(R.string.student)
-                                    )
-                                    findNavController().navigate(
-                                        RegisterStudentByEmailPasswordFragmentDirections.actionRegisterStudentByEmailPasswordToHomeStudentFragment(getString(R.string.student))
-                                    )
-                                }
-                        } else {
-                            btnRegister.visible()
-                            progressBarStudentRegister.gone()
-                            requireContext().showToast("Regitrasi gagal")
+                            if (it == true) {
+                                registerViewModel.saveStudent(student)
+                                    .observe(viewLifecycleOwner) { it ->
+                                        if (it == true) {
+                                            registerViewModel.getStudent(phoneNumber)
+                                                .observe(viewLifecycleOwner) {
+                                                    getInstance(requireContext()).putString(
+                                                        Constant.ID,
+                                                        it?.id
+                                                    )
+                                                    getInstance(requireContext()).putString(
+                                                        Constant.NAME,
+                                                        it?.name
+                                                    )
+                                                    getInstance(requireContext()).putString(
+                                                        Constant.ROLE, getString(R.string.student)
+                                                    )
+                                                    findNavController().navigate(
+                                                        RegisterStudentByEmailPasswordFragmentDirections.actionRegisterStudentByEmailPasswordToHomeStudentFragment(
+                                                            getString(R.string.student)
+                                                        )
+                                                    )
+                                                }
+                                        } else {
+                                            btnRegister.visible()
+                                            progressBarStudentRegister.gone()
+                                            requireContext().showToast("Regitrasi gagal")
+                                        }
+                                    }
+                            } else {
+                                requireContext().showToast("Email yang anda masukkan sudah terdaftar")
+                                btnRegister.visible()
+                                progressBarStudentRegister.gone()
+                            }
                         }
-                    }
-                    /*} else {
-                        requireContext().showToast("Email yang anda masukkan sudah terdaftar")
-                        btnRegister.visible()
-                        progressBarStudentRegister.gone()
-                    }
-                }*/
                 }
             }
         }

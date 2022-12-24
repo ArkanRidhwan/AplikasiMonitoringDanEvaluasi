@@ -2,22 +2,25 @@ package com.example.aplikasimonitoringdanevaluasi.model
 
 data class Company(
     val id: String = "",
-    val name: String = "",
-    val npwp: String = "",
-    val phoneNumber: String = "",
-    val email: String = "",
-    val password: String = ""
+    val contactEmail: String = "",
+    val password: String = "",
+    val companyName: String = "",
+    val companyAddress: String = "",
+    val contactName: String = "",
+    val contactPhoneNumber: String = "",
+    val image: String = "",
 ) {
     companion object {
         fun saveRegistrationCompany(
             id: String,
-            name: String,
-            npwp: String,
-            phoneNumber: String,
-            email: String,
-            password: String
+            contactEmail: String,
+            password: String,
+            companyName: String,
+            companyAddress: String,
+            contactName: String,
+            contactPhoneNumber: String,
         ): Company {
-            return Company(id, name, npwp, phoneNumber, email, password)
+            return Company(id, contactEmail, password, companyName, companyAddress, contactName, contactPhoneNumber)
         }
     }
 }

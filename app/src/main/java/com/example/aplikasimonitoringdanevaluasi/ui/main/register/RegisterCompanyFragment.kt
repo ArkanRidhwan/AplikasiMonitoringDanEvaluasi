@@ -33,17 +33,21 @@ class RegisterCompanyFragment : Fragment() {
         binding.apply {
             auth = FirebaseAuth.getInstance()
             btnRegister.setOnClickListener {
-                val name = etCompanyName.text.toString()
-                val npwp = etCompanyNPWP.text.toString()
+                val companyName = etCompanyName.text.toString()
+                val companyAddress = etCompanyAddress.text.toString()
+                val contactName = etCompanyContactName.text.toString()
                 val phoneNumber = etCompanyPhoneNumber.text.toString()
                 val email = auth.currentUser?.email
 
-                if (name.isEmpty()) {
-                    etCompanyName.error("Nama tidak boleh kosong")
+                if (companyName.isEmpty()) {
+                    etCompanyName.error("Nama perusahaan tidak boleh kosong")
                     etCompanyName.requestFocus()
-                } else if (npwp.isEmpty()) {
-                    etCompanyNPWP.error("NPWP tidak boleh kosong")
-                    etCompanyNPWP.requestFocus()
+                } else if (companyAddress.isEmpty()) {
+                    etCompanyAddress.error("Alamat tidak boleh kosong")
+                    etCompanyAddress.requestFocus()
+                } else if (contactName.isEmpty()) {
+                    etCompanyContactName.error("Nama penanggung jawab telepon tidak boleh kosong")
+                    etCompanyContactName.requestFocus()
                 } else if (phoneNumber.isEmpty()) {
                     etCompanyPhoneNumber.error("Nomor telepon tidak boleh kosong")
                     etCompanyPhoneNumber.requestFocus()
@@ -52,18 +56,25 @@ class RegisterCompanyFragment : Fragment() {
                     progressBarCompanyRegister.visible()
                     progressBarCompanyRegister.playAnimation()
                     val company = Company(
-                        email = email.toString(),
-                        name = name,
-                        npwp = npwp,
-                        phoneNumber = phoneNumber
+                        contactEmail = email.toString(),
+                        companyName = companyName,
+                        companyAddress = companyAddress,
+                        contactName = contactName,
+                        contactPhoneNumber = phoneNumber
                     )
 
                     registerViewModel.saveCompany(company).observe(viewLifecycleOwner) { it ->
                         if (it == true) {
                             registerViewModel.getCompany(phoneNumber).observe(viewLifecycleOwner) {
                                 getInstance(requireContext()).putString(Constant.ID, it?.id)
-                                getInstance(requireContext()).putString(Constant.NAME, it?.name)
-                                getInstance(requireContext()).putString(Constant.ROLE, getString(R.string.company))
+                                getInstance(requireContext()).putString(
+                                    Constant.NAME,
+                                    it?.contactName
+                                )
+                                getInstance(requireContext()).putString(
+                                    Constant.ROLE,
+                                    getString(R.string.company)
+                                )
                                 findNavController().navigate(RegisterCompanyFragmentDirections.actionRegisterCompanyFragmentToHomeCompanyFragment())
                             }
                         } else {

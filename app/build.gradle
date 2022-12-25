@@ -105,5 +105,5 @@ dependencies {
     implementation 'com.airbnb.android:lottie:3.7.0'
 
     //ExoPlayer
-    implementation 'com.google.android.exoplayer:exoplayer:2.18.2'
+    implementation 'com.google.android.exoplayer:exoplayer:2.17.1'
 }

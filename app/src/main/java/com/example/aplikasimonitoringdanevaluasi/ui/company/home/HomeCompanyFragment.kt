@@ -6,7 +6,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import com.example.aplikasimonitoringdanevaluasi.R
 import com.example.aplikasimonitoringdanevaluasi.databinding.FragmentHomeCompanyBinding
+import com.example.aplikasimonitoringdanevaluasi.ui.admin.home.HomeAdminFragmentDirections
 
 
 class HomeCompanyFragment : Fragment() {
@@ -23,6 +25,8 @@ class HomeCompanyFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        binding.apply {
 
+        }
     }
 }

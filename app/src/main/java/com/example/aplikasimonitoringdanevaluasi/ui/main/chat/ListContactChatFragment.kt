@@ -19,8 +19,7 @@ class ListContactChatFragment : Fragment() {
     private val listStudentViewModel: ListStudentViewModel by viewModels()
     private val listAdminViewModel: ListAdminViewModel by viewModels()
     private lateinit var binding: FragmentListContactChatBinding
-    private lateinit var listStudentAdapter:
-            ListStudentAdapter
+    private lateinit var listStudentAdapter: ListStudentAdapter
     private lateinit var listAdminAdapter: ListAdminAdapter
     private val args: ListContactChatFragmentArgs by navArgs()
 

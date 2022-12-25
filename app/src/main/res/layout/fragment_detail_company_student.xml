@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.company.home.DetailStudentCompanyFragment">
+    tools:context=".ui.student.home.DetailCompanyStudentFragment">
 
     <View
         android:id="@+id/iv_bar"
@@ -20,10 +20,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/proza_libre"
-        android:textColor="@color/white"
-        android:textStyle="bold"
-        android:textSize="20sp"
         android:text="TextView"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/iv_bar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -63,13 +63,13 @@
                 app:shapeAppearance="@style/profilePicture" />
 
             <TextView
-                android:id="@+id/tv_studentNameTittle"
+                android:id="@+id/tv_companytNameTittle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="24dp"
                 android:layout_marginTop="32dp"
                 android:fontFamily="@font/open_sans"
-                android:text="Nama"
+                android:text="Nama Perusahaan"
                 android:textColor="@color/gray_hintText"
                 android:textSize="15sp"
                 android:textStyle="bold"
@@ -77,111 +77,111 @@
                 app:layout_constraintTop_toBottomOf="@+id/iv_profilePicture" />
 
             <TextView
-                android:id="@+id/tv_studentName"
+                android:id="@+id/tv_companyName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/open_sans"
                 android:text="Nama"
                 android:textColor="@color/black"
                 android:textSize="22sp"
-                app:layout_constraintStart_toStartOf="@+id/tv_studentNameTittle"
-                app:layout_constraintTop_toBottomOf="@+id/tv_studentNameTittle" />
+                app:layout_constraintStart_toStartOf="@+id/tv_companytNameTittle"
+                app:layout_constraintTop_toBottomOf="@+id/tv_companytNameTittle" />
 
             <TextView
-                android:id="@+id/tv_studentNameEmailTittle"
+                android:id="@+id/tv_companyAddresslTittle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:fontFamily="@font/open_sans"
-                android:text="Email"
+                android:text="Alamat Perusahaan"
                 android:textColor="@color/gray_hintText"
                 android:textSize="15sp"
                 android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="@+id/tv_studentName"
-                app:layout_constraintTop_toBottomOf="@+id/tv_studentName" />
+                app:layout_constraintStart_toStartOf="@+id/tv_companyName"
+                app:layout_constraintTop_toBottomOf="@+id/tv_companyName" />
 
             <TextView
-                android:id="@+id/tv_studentNameEmail"
+                android:id="@+id/tv_companyAddress"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/open_sans"
-                android:text="Email"
+                android:text="Alamat"
                 android:textColor="@color/black"
                 android:textSize="22sp"
-                app:layout_constraintStart_toStartOf="@+id/tv_studentNameEmailTittle"
-                app:layout_constraintTop_toBottomOf="@+id/tv_studentNameEmailTittle" />
+                app:layout_constraintStart_toStartOf="@+id/tv_companyAddresslTittle"
+                app:layout_constraintTop_toBottomOf="@+id/tv_companyAddresslTittle" />
 
             <TextView
-                android:id="@+id/tv_studentPhoneNumberTittle"
+                android:id="@+id/tv_companyContactNameTittle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:fontFamily="@font/open_sans"
-                android:text="No Telepon"
+                android:text="Nama PIC"
                 android:textColor="@color/gray_hintText"
                 android:textSize="15sp"
                 android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="@+id/tv_studentNameEmail"
-                app:layout_constraintTop_toBottomOf="@+id/tv_studentNameEmail" />
+                app:layout_constraintStart_toStartOf="@+id/tv_companyAddress"
+                app:layout_constraintTop_toBottomOf="@+id/tv_companyAddress" />
 
             <TextView
-                android:id="@+id/tv_studentPhoneNumber"
+                android:id="@+id/tv_companyContactName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/open_sans"
-                android:text="No Telepon"
+                android:text="Nama PIC"
                 android:textColor="@color/black"
                 android:textSize="22sp"
-                app:layout_constraintStart_toStartOf="@+id/tv_studentPhoneNumberTittle"
-                app:layout_constraintTop_toBottomOf="@+id/tv_studentPhoneNumberTittle" />
+                app:layout_constraintStart_toStartOf="@+id/tv_companyContactNameTittle"
+                app:layout_constraintTop_toBottomOf="@+id/tv_companyContactNameTittle" />
 
             <TextView
-                android:id="@+id/tv_studentClassNameTittle"
+                android:id="@+id/tv_companyContactPhoneNumberTittle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:fontFamily="@font/open_sans"
-                android:text="Kelas"
+                android:text="No Telepon PIC"
                 android:textColor="@color/gray_hintText"
                 android:textSize="15sp"
                 android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="@+id/tv_studentPhoneNumber"
-                app:layout_constraintTop_toBottomOf="@+id/tv_studentPhoneNumber" />
+                app:layout_constraintStart_toStartOf="@+id/tv_companyContactName"
+                app:layout_constraintTop_toBottomOf="@+id/tv_companyContactName" />
 
             <TextView
-                android:id="@+id/tv_studentClassName"
+                android:id="@+id/tv_companyContactPhoneNumber"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/open_sans"
-                android:text="Kelas"
+                android:text="No Telepon PIC"
                 android:textColor="@color/black"
                 android:textSize="22sp"
-                app:layout_constraintStart_toStartOf="@+id/tv_studentClassNameTittle"
-                app:layout_constraintTop_toBottomOf="@+id/tv_studentClassNameTittle" />
+                app:layout_constraintStart_toStartOf="@+id/tv_companyContactPhoneNumberTittle"
+                app:layout_constraintTop_toBottomOf="@+id/tv_companyContactPhoneNumberTittle" />
 
             <TextView
-                android:id="@+id/tv_studentJobTittle"
+                android:id="@+id/tv_companyContactEmailTittle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:fontFamily="@font/open_sans"
-                android:text="Pekerjaan"
+                android:text="Email PIC"
                 android:textColor="@color/gray_hintText"
                 android:textSize="15sp"
                 android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="@+id/tv_studentClassName"
-                app:layout_constraintTop_toBottomOf="@+id/tv_studentClassName" />
+                app:layout_constraintStart_toStartOf="@+id/tv_companyContactPhoneNumber"
+                app:layout_constraintTop_toBottomOf="@+id/tv_companyContactPhoneNumber" />
 
             <TextView
-                android:id="@+id/tv_studentJob"
+                android:id="@+id/tv_companyContactEmail"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/open_sans"
-                android:text="Pekerjaan"
+                android:text="Email PIC"
                 android:textColor="@color/black"
                 android:textSize="22sp"
-                app:layout_constraintStart_toStartOf="@+id/tv_studentJobTittle"
-                app:layout_constraintTop_toBottomOf="@+id/tv_studentJobTittle" />
+                app:layout_constraintStart_toStartOf="@+id/tv_companyContactEmailTittle"
+                app:layout_constraintTop_toBottomOf="@+id/tv_companyContactEmailTittle" />
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btn_login"
@@ -191,14 +191,14 @@
                 android:layout_marginBottom="40dp"
                 android:background="@drawable/bg_btn"
                 android:fontFamily="@font/roboto"
-                android:text="Tambah Laporan"
+                android:text="Lamar Perusahaan"
                 android:textColor="@color/white"
                 android:textSize="16sp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tv_studentJob" />
+                app:layout_constraintTop_toBottomOf="@+id/tv_companyContactEmail" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 

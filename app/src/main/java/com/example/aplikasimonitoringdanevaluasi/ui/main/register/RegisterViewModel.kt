@@ -14,7 +14,7 @@ import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 import java.util.*
 
-class RegisterViewModel() : ViewModel() {
+class RegisterViewModel : ViewModel() {
 
     private val database = Firebase.database
     private val collCompany = database.getReference(Constant.COLL_COMPANY)
@@ -22,17 +22,16 @@ class RegisterViewModel() : ViewModel() {
     private val collAdmin = database.getReference(Constant.COLL_ADMIN)
 
     fun saveAdmin(data: Admin): LiveData<Boolean> {
-        val adminId = UUID.randomUUID().toString()
         val status = MutableLiveData<Boolean>()
         val admin = Admin.saveRegistrationAdmin(
-            id = adminId,
+            id = data.id,
             email = data.email,
             password = data.password,
             name = data.name,
             phoneNumber = data.phoneNumber,
 
-        )
-        collAdmin.child(adminId).setValue(admin)
+            )
+        collAdmin.child(data.id).setValue(admin)
             .addOnCompleteListener {
                 status.value = true
             }
@@ -88,29 +87,6 @@ class RegisterViewModel() : ViewModel() {
         return status
     }
 
-    fun getAdmin(email: String): LiveData<Admin?> {
-        val dataAdmin = MutableLiveData<Admin?>()
-        var company: Admin? = null
-        collCompany.addValueEventListener(object : ValueEventListener {
-            override fun onDataChange(snapshot: DataSnapshot) {
-                if (snapshot.exists()) {
-                    for (i in snapshot.children) {
-                        val valueAdmin = i.getValue(Admin::class.java)
-                        if (valueAdmin?.email == email) {
-                            company = valueAdmin
-                        }
-                    }
-                    dataAdmin.value = company
-                }
-            }
-
-            override fun onCancelled(error: DatabaseError) {
-                dataAdmin.value = null
-            }
-        })
-        return dataAdmin
-    }
-
     fun getCompany(phoneNumber: String): LiveData<Company?> {
         val dataCompany = MutableLiveData<Company?>()
         var company: Company? = null
@@ -157,30 +133,31 @@ class RegisterViewModel() : ViewModel() {
         return dataStudent
     }
 
-    fun adminEmailRegistrationValidation(email: String): LiveData<Boolean> {
-        val status = MutableLiveData<Boolean>()
+    fun getAdminByEmail(email: String): LiveData<Admin?> {
+        val dataAdmin = MutableLiveData<Admin?>()
+        var admin: Admin? = null
         collAdmin.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 if (snapshot.exists()) {
                     for (i in snapshot.children) {
                         val valueAdmin = i.getValue(Admin::class.java)
-                        if (valueAdmin?.email == null || valueAdmin.email != email) {
-                            status.value = true
+                        admin = if (valueAdmin?.email == email) {
+                            valueAdmin
                         } else {
-                            status.value = false
+                            null
                         }
                     }
+                    dataAdmin.value = admin
                 } else {
-                    status.value = false
+                    dataAdmin.value = null
                 }
             }
 
             override fun onCancelled(error: DatabaseError) {
-                status.value = false
+                dataAdmin.value = null
             }
-
         })
-        return status
+        return dataAdmin
     }
 
     fun companyEmailRegistrationValidation(email: String): LiveData<Boolean> {

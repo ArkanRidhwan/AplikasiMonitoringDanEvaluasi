@@ -244,4 +244,38 @@
         android:name="com.example.aplikasimonitoringdanevaluasi.ui.company.home.AddReportStudentFragment"
         android:label="fragment_add_report_student"
         tools:layout="@layout/fragment_add_report_student" />
+    <fragment
+        android:id="@+id/detailCompanyStudentFragment"
+        android:name="com.example.aplikasimonitoringdanevaluasi.ui.student.home.DetailCompanyStudentFragment"
+        android:label="fragment_detail_company_student"
+        tools:layout="@layout/fragment_detail_company_student" />
+    <fragment
+        android:id="@+id/courseStudentFragment"
+        android:name="com.example.aplikasimonitoringdanevaluasi.ui.student.course.CourseStudentFragment"
+        android:label="fragment_course_student"
+        tools:layout="@layout/fragment_course_student" />
+    <fragment
+        android:id="@+id/courseAdminFragment"
+        android:name="com.example.aplikasimonitoringdanevaluasi.ui.admin.course.CourseAdminFragment"
+        android:label="fragment_course_admin"
+        tools:layout="@layout/fragment_course_admin" />
+    <fragment
+        android:id="@+id/requestFragment"
+        android:name="com.example.aplikasimonitoringdanevaluasi.ui.company.request.RequestFragment"
+        android:label="fragment_request"
+        tools:layout="@layout/fragment_request" />
+    <fragment
+        android:id="@+id/listCompanyFragment"
+        android:name="com.example.aplikasimonitoringdanevaluasi.ui.student.home.ListCompanyFragment"
+        android:label="fragment_list_company"
+        tools:layout="@layout/fragment_list_company" >
+        <action
+            android:id="@+id/action_listCompanyFragment_to_detailCompanyStudentFragment"
+            app:destination="@id/detailCompanyStudentFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/listLogbookFragment"
+        android:name="com.example.aplikasimonitoringdanevaluasi.ui.main.logbook.ListLogbookFragment"
+        android:label="fragment_list_logbook"
+        tools:layout="@layout/fragment_list_logbook" />
 </navigation>

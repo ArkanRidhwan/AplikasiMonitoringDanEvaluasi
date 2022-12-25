@@ -6,6 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.aplikasimonitoringdanevaluasi.databinding.FragmentWatchVideoBinding
+import com.google.android.exoplayer2.ExoPlayer
+import com.google.android.exoplayer2.MediaItem
 
 
 class WatchVideoFragment : Fragment() {
@@ -20,5 +22,16 @@ class WatchVideoFragment : Fragment() {
         return binding.root
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        binding.apply {
+            val player = ExoPlayer.Builder(requireActivity()).build()
+            videoView.player = player
 
+            /*val mediaItem = let { MediaItem.fromUri() }
+            if (mediaItem != null) {
+                player.setMediaItem(mediaItem)
+            }*/
+            player.prepare()
+        }
+    }
 }

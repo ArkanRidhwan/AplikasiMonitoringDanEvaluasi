@@ -6,12 +6,13 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import com.example.aplikasimonitoringdanevaluasi.R
 import com.example.aplikasimonitoringdanevaluasi.databinding.ActivityMainBinding
+import com.example.aplikasimonitoringdanevaluasi.ui.admin.course.CourseAdminFragment
 import com.example.aplikasimonitoringdanevaluasi.ui.admin.home.HomeAdminFragment
 import com.example.aplikasimonitoringdanevaluasi.ui.admin.profile.ProfileAdminFragment
 import com.example.aplikasimonitoringdanevaluasi.ui.company.home.HomeCompanyFragment
 import com.example.aplikasimonitoringdanevaluasi.ui.company.profile.ProfileCompanyFragment
 import com.example.aplikasimonitoringdanevaluasi.ui.company.request.RequestFragment
-import com.example.aplikasimonitoringdanevaluasi.ui.company.request.StudentRequestFragment
+import com.example.aplikasimonitoringdanevaluasi.ui.student.course.CourseStudentFragment
 import com.example.aplikasimonitoringdanevaluasi.ui.student.home.HomeStudentFragment
 import com.example.aplikasimonitoringdanevaluasi.ui.student.profile.ProfileStudentFragment
 
@@ -28,21 +29,21 @@ class MainActivity : AppCompatActivity() {
             val navController = findNavController(R.id.fragmentContainerView)
             navController.addOnDestinationChangedListener { _, destination, _ ->
                 when (destination.id) {
-                    R.id.homeAdminFragment, R.id.profileAdminFragment -> {
+                    R.id.homeAdminFragment, R.id.courseAdminFragment, R.id.profileAdminFragment -> {
                         btmNavAdmin.visibility = View.VISIBLE
                         btmNavAdmin.setItemSelected(R.id.HomeAdmin, true)
                         supportFragmentManager.beginTransaction()
                             .replace(R.id.fragmentContainerView, HomeAdminFragment()).commit()
                         bottomMenu()
                     }
-                    R.id.homeCompanyFragment, R.id.profileCompanyFragment -> {
+                    R.id.homeCompanyFragment, R.id.requestFragment, R.id.profileCompanyFragment -> {
                         btmNavCompany.visibility = View.VISIBLE
                         btmNavCompany.setItemSelected(R.id.HomeCompany, true)
                         supportFragmentManager.beginTransaction()
                             .replace(R.id.fragmentContainerView, HomeCompanyFragment()).commit()
                         bottomMenu()
                     }
-                    R.id.homeStudentFragment, R.id.profileStudentFragment -> {
+                    R.id.homeStudentFragment,R.id.courseStudentFragment, R.id.profileStudentFragment -> {
                         btmNavStudent.visibility = View.VISIBLE
                         btmNavStudent.setItemSelected(R.id.HomeStudent, true)
                         supportFragmentManager.beginTransaction()
@@ -92,33 +93,41 @@ class MainActivity : AppCompatActivity() {
                     supportFragmentManager.beginTransaction()
                         .replace(R.id.fragmentContainerView, HomeAdminFragment()).commit()
                 }
+                R.id.CourseAdmin -> {
+                    supportFragmentManager.beginTransaction()
+                        .replace(R.id.fragmentContainerView, CourseAdminFragment()).commit()
+                }
                 R.id.ProfileAdmin -> {
                     supportFragmentManager.beginTransaction()
                         .replace(R.id.fragmentContainerView, ProfileAdminFragment()).commit()
                 }
             }
         }
-        binding.btmNavCompany.setOnItemSelectedListener{
-            when(it){
+        binding.btmNavCompany.setOnItemSelectedListener {
+            when (it) {
                 R.id.HomeCompany -> {
                     supportFragmentManager.beginTransaction()
                         .replace(R.id.fragmentContainerView, HomeCompanyFragment()).commit()
-                }
-                R.id.ProfileCompany -> {
-                    supportFragmentManager.beginTransaction()
-                        .replace(R.id.fragmentContainerView, ProfileCompanyFragment()).commit()
                 }
                 R.id.StudentRequestCompany -> {
                     supportFragmentManager.beginTransaction()
                         .replace(R.id.fragmentContainerView, RequestFragment()).commit()
                 }
+                R.id.ProfileCompany -> {
+                    supportFragmentManager.beginTransaction()
+                        .replace(R.id.fragmentContainerView, ProfileCompanyFragment()).commit()
+                }
             }
         }
         binding.btmNavStudent.setOnItemSelectedListener {
-            when(it){
+            when (it) {
                 R.id.HomeStudent -> {
                     supportFragmentManager.beginTransaction()
                         .replace(R.id.fragmentContainerView, HomeStudentFragment()).commit()
+                }
+                R.id.CourseStudent -> {
+                    supportFragmentManager.beginTransaction()
+                        .replace(R.id.fragmentContainerView, CourseStudentFragment()).commit()
                 }
                 R.id.ProfileStudent -> {
                     supportFragmentManager.beginTransaction()

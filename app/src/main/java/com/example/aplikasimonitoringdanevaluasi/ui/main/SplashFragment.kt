@@ -39,7 +39,7 @@ class SplashFragment : Fragment() {
                         findNavController().navigate(SplashFragmentDirections.actionSplashScreenFragmentToHomeStudentFragment(getString(R.string.student)))
                     }
                     getString(R.string.company) -> {
-                        findNavController().navigate(SplashFragmentDirections.actionSplashScreenFragmentToHomeCompanyFragment())
+                        findNavController().navigate(SplashFragmentDirections.actionSplashScreenFragmentToHomeCompanyFragment(getString(R.string.company)))
                     }
                     else -> {
                         findNavController().navigate(SplashFragmentDirections.actionSplashScreenFragmentToHomeAdminFragment(getString(R.string.admin)))

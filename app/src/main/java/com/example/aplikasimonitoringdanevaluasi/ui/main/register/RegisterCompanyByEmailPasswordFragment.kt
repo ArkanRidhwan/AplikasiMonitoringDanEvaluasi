@@ -68,9 +68,46 @@ class RegisterCompanyByEmailPasswordFragment : Fragment() {
                         contactPhoneNumber = contactPhoneNumber
                     )
 
-                    registerViewModel.companyEmailRegistrationValidation(email)
+                    registerViewModel.getCompanyByEmail(email)
+                        .observe(viewLifecycleOwner) { dataCompany ->
+                            if (dataCompany != null) {
+                                requireContext().showToast("Email yang anda masukkan sudah terdaftar")
+                                progressBarCompanyRegister.gone()
+                                btnRegister.visible()
+                            } else {
+                                registerViewModel.saveCompany(company)
+                                    .observe(viewLifecycleOwner) { data ->
+                                        if (data == true) {
+                                            getInstance(requireContext()).apply {
+                                                putString(Constant.ID, company.id)
+                                                putString(Constant.NAME, company.companyName)
+                                                putString(
+                                                    Constant.ROLE,
+                                                    getString(R.string.company)
+                                                )
+                                            }
+                                            findNavController().navigate(
+                                                RegisterCompanyByEmailPasswordFragmentDirections.actionRegisterCompanyByEmailPasswordToHomeCompanyFragment(
+                                                    getString(R.string.company)
+                                                )
+                                            )
+                                            requireContext().showToast("Regitrasi berhasil")
+                                        } else {
+                                            btnRegister.visible()
+                                            progressBarCompanyRegister.gone()
+                                            requireContext().showToast("Regitrasi gagal")
+                                        }
+                                    }
+                            }
+                        }
+
+                    /*registerViewModel.getCompanyByEmail(email)
                         .observe(viewLifecycleOwner) {
-                            if (it == true) {
+                            if (it != null) {
+                                btnRegister.visible()
+                                progressBarCompanyRegister.gone()
+                                requireContext().showToast("Email yang anda masukkan sudah terdaftar")
+                                        } else {
                                 registerViewModel.saveCompany(company)
                                     .observe(viewLifecycleOwner) { it ->
                                         if (it == true) {
@@ -92,7 +129,6 @@ class RegisterCompanyByEmailPasswordFragment : Fragment() {
                                                         RegisterCompanyByEmailPasswordFragmentDirections.actionRegisterCompanyByEmailPasswordToHomeCompanyFragment()
                                                     )
                                                 }
-                                        } else {
                                             btnRegister.visible()
                                             progressBarCompanyRegister.gone()
                                             requireContext().showToast("Registrasi gagal")
@@ -103,7 +139,7 @@ class RegisterCompanyByEmailPasswordFragment : Fragment() {
                                 progressBarCompanyRegister.gone()
                                 requireContext().showToast("Email yang anda masukkan sudah terdaftar")
                             }
-                        }
+                        }*/
                 }
             }
         }

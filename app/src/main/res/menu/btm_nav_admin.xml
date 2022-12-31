@@ -10,6 +10,14 @@
         app:cnb_backgroundColor="@color/red_bottomnav"/>
 
     <item
+        android:id="@+id/CourseAdmin"
+        android:icon="@drawable/ic_course"
+        android:title="Course"
+        app:cnb_iconColor="@color/red_primary"
+        app:cnb_textColor="@color/red_primary"
+        app:cnb_backgroundColor="@color/red_bottomnav"/>
+
+    <item
         android:id="@+id/ProfileAdmin"
         android:icon="@drawable/ic_profile"
         android:title="Profile"

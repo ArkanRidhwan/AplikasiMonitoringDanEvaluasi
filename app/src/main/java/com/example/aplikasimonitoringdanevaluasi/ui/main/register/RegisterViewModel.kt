@@ -160,7 +160,61 @@ class RegisterViewModel : ViewModel() {
         return dataAdmin
     }
 
-    fun companyEmailRegistrationValidation(email: String): LiveData<Boolean> {
+    fun getCompanyByEmail(email: String): LiveData<Company?> {
+        val dataCompany = MutableLiveData<Company?>()
+        var company: Company? = null
+        collCompany.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                if (snapshot.exists()) {
+                    for (i in snapshot.children) {
+                        val valueCompany = i.getValue(Company::class.java)
+                        company = if (valueCompany?.contactEmail == email) {
+                            valueCompany
+                        } else {
+                            null
+                        }
+                    }
+                    dataCompany.value = company
+                } else {
+                    dataCompany.value = null
+                }
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                dataCompany.value = null
+            }
+        })
+        return dataCompany
+    }
+
+    fun getStudentByEmail(email: String): LiveData<Student?> {
+        val dataStudent = MutableLiveData<Student?>()
+        var student: Student? = null
+        collStudent.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                if (snapshot.exists()) {
+                    for (i in snapshot.children) {
+                        val valueStudent = i.getValue(Student::class.java)
+                        student = if (valueStudent?.email == email) {
+                            valueStudent
+                        } else {
+                            null
+                        }
+                    }
+                    dataStudent.value = student
+                } else {
+                    dataStudent.value = null
+                }
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                dataStudent.value = null
+            }
+        })
+        return dataStudent
+    }
+
+    /*fun companyEmailRegistrationValidation(email: String): LiveData<Boolean> {
         val status = MutableLiveData<Boolean>()
         collCompany.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
@@ -210,5 +264,5 @@ class RegisterViewModel : ViewModel() {
 
         })
         return status
-    }
+    }*/
 }

@@ -183,9 +183,9 @@ class LoginFragment : Fragment() {
     private fun loginFirebase() {
         requireContext().showToast("Login berhasil")
         when (args.role) {
-            getString(R.string.company) -> findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToHomeCompanyFragment())
+            getString(R.string.company) -> findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToHomeCompanyFragment(getString(R.string.company)))
             getString(R.string.student) -> findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToHomeStudentFragment(getString(R.string.student)))
-            else -> findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToHomeAdminFragment(getString(R.string.admin)))
+            getString(R.string.admin) -> findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToHomeAdminFragment(getString(R.string.admin)))
         }
     }
 
@@ -235,7 +235,7 @@ class LoginFragment : Fragment() {
                 getString(R.string.company) -> {
                     loginViewModel.loginCompanyByGoogleAuth(email).observe(viewLifecycleOwner) {
                         if (it != null) {
-                            findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToHomeCompanyFragment())
+                            findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToHomeCompanyFragment(getString(R.string.company)))
                         } else {
                             val action =
                                 LoginFragmentDirections.actionLoginFragmentToRegisterCompanyFragment(

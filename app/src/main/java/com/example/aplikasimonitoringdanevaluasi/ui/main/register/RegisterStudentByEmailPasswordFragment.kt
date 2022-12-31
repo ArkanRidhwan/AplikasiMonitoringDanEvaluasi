@@ -30,13 +30,13 @@ class RegisterStudentByEmailPasswordFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         binding.apply {
             btnRegister.setOnClickListener {
-                val email = etStudentEmail.toString()
-                val password = etStudentPassword.toString()
+                val email = etStudentEmail.text.toString()
+                val password = etStudentPassword.text.toString()
                 val name = etStudentName.text.toString()
                 val job = etStudentJob.text.toString()
-                val companyName = etStudentCompanyName.toString()
-                val className = etStudentClassName.toString()
-                val phoneNumber = etStudentPhoneNumber.toString()
+                val companyName = etStudentCompanyName.text.toString()
+                val className = etStudentClassName.text.toString()
+                val phoneNumber = etStudentPhoneNumber.text.toString()
 
                 if (email.isEmpty()) {
                     etStudentEmail.error("Email tidak boleh kosong")
@@ -73,41 +73,36 @@ class RegisterStudentByEmailPasswordFragment : Fragment() {
                         phoneNumber = phoneNumber
                     )
 
-                    registerViewModel.studentEmailRegistrationValidation(email)
-                        .observe(viewLifecycleOwner) {
-                            if (it == true) {
+                    registerViewModel.getStudentByEmail(email)
+                        .observe(viewLifecycleOwner) { dataStudent ->
+                            if (dataStudent != null) {
+                                requireContext().showToast("Email yang anda masukkan sudah terdaftar")
+                                progressBarStudentRegister.gone()
+                                btnRegister.visible()
+                            } else {
                                 registerViewModel.saveStudent(student)
-                                    .observe(viewLifecycleOwner) { it ->
-                                        if (it == true) {
-                                            registerViewModel.getStudent(phoneNumber)
-                                                .observe(viewLifecycleOwner) {
-                                                    getInstance(requireContext()).putString(
-                                                        Constant.ID,
-                                                        it?.id
-                                                    )
-                                                    getInstance(requireContext()).putString(
-                                                        Constant.NAME,
-                                                        it?.name
-                                                    )
-                                                    getInstance(requireContext()).putString(
-                                                        Constant.ROLE, getString(R.string.student)
-                                                    )
-                                                    findNavController().navigate(
-                                                        RegisterStudentByEmailPasswordFragmentDirections.actionRegisterStudentByEmailPasswordToHomeStudentFragment(
-                                                            getString(R.string.student)
-                                                        )
-                                                    )
-                                                }
+                                    .observe(viewLifecycleOwner) { data ->
+                                        if (data == true) {
+                                            getInstance(requireContext()).apply {
+                                                putString(Constant.ID, student.id)
+                                                putString(Constant.NAME, student.name)
+                                                putString(
+                                                    Constant.ROLE,
+                                                    getString(R.string.student)
+                                                )
+                                            }
+                                            findNavController().navigate(
+                                                RegisterStudentByEmailPasswordFragmentDirections.actionRegisterStudentByEmailPasswordToHomeStudentFragment(
+                                                    getString(R.string.student)
+                                                )
+                                            )
+                                            requireContext().showToast("Regitrasi berhasil")
                                         } else {
                                             btnRegister.visible()
                                             progressBarStudentRegister.gone()
                                             requireContext().showToast("Regitrasi gagal")
                                         }
                                     }
-                            } else {
-                                requireContext().showToast("Email yang anda masukkan sudah terdaftar")
-                                btnRegister.visible()
-                                progressBarStudentRegister.gone()
                             }
                         }
                 }

@@ -75,7 +75,7 @@ class RegisterCompanyFragment : Fragment() {
                                     Constant.ROLE,
                                     getString(R.string.company)
                                 )
-                                findNavController().navigate(RegisterCompanyFragmentDirections.actionRegisterCompanyFragmentToHomeCompanyFragment())
+                                findNavController().navigate(RegisterCompanyFragmentDirections.actionRegisterCompanyFragmentToHomeCompanyFragment(getString(R.string.company)))
                             }
                         } else {
                             btnRegister.visible()

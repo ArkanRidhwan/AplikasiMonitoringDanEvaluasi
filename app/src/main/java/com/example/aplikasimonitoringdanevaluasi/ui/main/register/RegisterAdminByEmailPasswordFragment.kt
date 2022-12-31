@@ -1,8 +1,6 @@
 package com.example.aplikasimonitoringdanevaluasi.ui.main.register
 
 import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,7 +11,7 @@ import com.example.aplikasimonitoringdanevaluasi.R
 import com.example.aplikasimonitoringdanevaluasi.databinding.FragmentRegisterAdminByEmailPasswordBinding
 import com.example.aplikasimonitoringdanevaluasi.model.Admin
 import com.example.aplikasimonitoringdanevaluasi.utils.*
-import java.util.UUID
+import java.util.*
 
 
 class RegisterAdminByEmailPasswordFragment : Fragment() {
@@ -33,11 +31,6 @@ class RegisterAdminByEmailPasswordFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.apply {
-            etAdminEmail.setText("1@gmail.com")
-            etAdminPassword.setText("123")
-            etAdminName.setText("nama")
-            etAdminPhoneNumber.setText("123")
-            etAdminVerification.setText("2000")
             btnRegister.setOnClickListener {
                 val email = etAdminEmail.text.toString()
                 val password = etAdminPassword.text.toString()

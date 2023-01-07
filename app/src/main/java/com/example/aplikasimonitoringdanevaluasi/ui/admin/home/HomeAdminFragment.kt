@@ -32,6 +32,10 @@ class HomeAdminFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         homeAdminAdapter = HomeAdminAdapter()
+        homeAdminAdapter.onItemClick = {
+            val action = HomeAdminFragmentDirections.actionHomeAdminFragmentToDetailStudentAdminFragment(it)
+            findNavController().navigate(action)
+        }
 
         binding.apply {
             fabChatAdmin.setOnClickListener {

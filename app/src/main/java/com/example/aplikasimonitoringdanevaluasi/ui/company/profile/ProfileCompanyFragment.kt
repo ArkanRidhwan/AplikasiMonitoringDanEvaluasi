@@ -2,15 +2,15 @@ package com.example.aplikasimonitoringdanevaluasi.ui.company.profile
 
 import android.content.Intent
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
-import com.example.aplikasimonitoringdanevaluasi.R
 import com.example.aplikasimonitoringdanevaluasi.databinding.FragmentProfileCompanyBinding
-import com.example.aplikasimonitoringdanevaluasi.databinding.FragmentRegisterStudentBinding
 import com.example.aplikasimonitoringdanevaluasi.ui.main.MainActivity
+import com.example.aplikasimonitoringdanevaluasi.utils.Constant
 import com.example.aplikasimonitoringdanevaluasi.utils.getInstance
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
@@ -20,6 +20,7 @@ class ProfileCompanyFragment : Fragment() {
 
     private lateinit var binding: FragmentProfileCompanyBinding
     private lateinit var auth: FirebaseAuth
+    private val companyProfileViewModel: ProfileCompanyViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -31,9 +32,24 @@ class ProfileCompanyFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.button3.setOnClickListener {
-            auth = Firebase.auth
-            logout()
+        val userId = getInstance(requireContext()).getString(Constant.ID)
+        binding.apply {
+            companyProfileViewModel.companyProfile(userId).observe(viewLifecycleOwner) {
+                tvCompanyName.text = it?.companyName
+                tvCompanyAddress.text = it?.companyAddress
+                tvContactName.text = it?.contactName
+                tvContactEmail.text = it?.contactEmail
+                tvContactPhoneNumber.text = it?.contactPhoneNumber
+            }
+            ivLogout.setOnClickListener {
+                auth = Firebase.auth
+                logout()
+            }
+            btnEditProfile.setOnClickListener {
+                val action =
+                    ProfileCompanyFragmentDirections.actionProfileCompanyFragmentToEditProfileCompanyFragment()
+                findNavController().navigate(action)
+            }
         }
     }
 

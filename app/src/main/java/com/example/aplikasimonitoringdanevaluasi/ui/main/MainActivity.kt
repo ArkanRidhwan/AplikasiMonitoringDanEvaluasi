@@ -43,7 +43,7 @@ class MainActivity : AppCompatActivity() {
                             .replace(R.id.fragmentContainerView, HomeCompanyFragment()).commit()
                         bottomMenu()
                     }
-                    R.id.homeStudentFragment,R.id.courseStudentFragment, R.id.profileStudentFragment -> {
+                    R.id.homeStudentFragment, R.id.courseStudentFragment, R.id.profileStudentFragment -> {
                         btmNavStudent.visibility = View.VISIBLE
                         btmNavStudent.setItemSelected(R.id.HomeStudent, true)
                         supportFragmentManager.beginTransaction()

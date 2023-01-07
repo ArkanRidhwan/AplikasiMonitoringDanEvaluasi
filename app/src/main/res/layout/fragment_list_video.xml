@@ -4,9 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/gray_primary"
     tools:context=".ui.main.video.ListVideoFragment">
 
-    <View
+    <!--<View
         android:id="@+id/iv_bar"
         android:layout_width="wrap_content"
         android:layout_height="60dp"
@@ -38,24 +39,24 @@
         app:layout_constraintBottom_toBottomOf="@+id/tv_Bartittle"
         app:layout_constraintEnd_toStartOf="@+id/tv_Bartittle"
         app:layout_constraintTop_toTopOf="@+id/tv_Bartittle"
-        app:tint="@color/white" />
+        app:tint="@color/white" />-->
 
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="wrap_content"
-        android:layout_height="0dp"
+        android:layout_height="match_parent"
         android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/iv_bar"
-        tools:listitem="@layout/layout_list_video" >
+        app:layout_constraintTop_toTopOf="parent"
+        tools:listitem="@layout/layout_list_video">
 
     </androidx.recyclerview.widget.RecyclerView>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fab_chatAdmin"
+        android:id="@+id/fab_addVideo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"

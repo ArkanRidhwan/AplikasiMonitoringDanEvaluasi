@@ -16,7 +16,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:backgroundTint="@color/red_primary"/>
+        android:backgroundTint="@color/gray_primary2"/>
 
 
     <com.google.android.material.imageview.ShapeableImageView
@@ -35,7 +35,7 @@
         android:id="@+id/iv_chatBackButton"
         android:layout_width="35dp"
         android:layout_height="40dp"
-        android:layout_marginStart="20dp"
+        android:layout_marginStart="16dp"
         android:src="@drawable/ic_back_button"
         app:layout_constraintBottom_toBottomOf="@+id/upperViewChat"
         app:layout_constraintStart_toStartOf="@+id/upperViewChat"

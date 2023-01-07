@@ -5,7 +5,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.example.aplikasimonitoringdanevaluasi.R
 import com.example.aplikasimonitoringdanevaluasi.databinding.FragmentListModuleBinding
+import com.example.aplikasimonitoringdanevaluasi.utils.Constant
+import com.example.aplikasimonitoringdanevaluasi.utils.getInstance
+import com.example.aplikasimonitoringdanevaluasi.utils.gone
 
 
 class ListModuleFragment : Fragment() {
@@ -20,5 +24,12 @@ class ListModuleFragment : Fragment() {
         return binding.root
     }
 
-
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        val role = getInstance(requireContext()).getString(Constant.ROLE)
+        binding.apply {
+            if (role == getString(R.string.student)) {
+                fabAddModule.gone()
+            }
+        }
+    }
 }

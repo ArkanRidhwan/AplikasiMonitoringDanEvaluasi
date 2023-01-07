@@ -9,10 +9,10 @@
     <color name="white">#FFFFFFFF</color>
     <color name="red_primary">#EB0324</color>
     <color name="gray_primary">#E8E4E3</color>
-    <color name="gray_primary2">#222831</color>
+    <color name="gray_primary2">#394149</color>
     <color name="gray_bottomnav">#F2F2F2</color>
     <color name="red_bottomnav">#1AEB0324</color>
-    <color name="yellow_primary">#C18134</color>
+    <color name="gold_primary">#C18134</color>
     <color name="blue_Register">#0088FF</color>
     <color name="gray_hintText">#5C5F65</color>
     <color name="red_Chat">#F19BA7</color>

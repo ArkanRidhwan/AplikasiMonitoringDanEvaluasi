@@ -10,8 +10,8 @@ class RequestPagerAdapter(activity: AppCompatActivity): FragmentStateAdapter(act
     override fun createFragment(position: Int): Fragment {
         var fragment: Fragment? = null
         when (position) {
-            0 -> fragment = StudentLogbookRequestFragment()
-            1 -> fragment = StudentRequestFragment()
+            0 -> fragment = StudentRequestFragment()
+            1 -> fragment = StudentLogbookRequestFragment()
         }
         return fragment as Fragment
     }

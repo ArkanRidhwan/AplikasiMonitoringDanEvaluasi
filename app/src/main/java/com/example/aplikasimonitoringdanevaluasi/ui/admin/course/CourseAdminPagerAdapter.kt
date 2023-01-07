@@ -6,7 +6,7 @@ import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.example.aplikasimonitoringdanevaluasi.ui.main.module.ListModuleFragment
 import com.example.aplikasimonitoringdanevaluasi.ui.main.video.ListVideoFragment
 
-class CooursePagerAdminAdapter(activity: AppCompatActivity) : FragmentStateAdapter(activity) {
+class CourseAdminPagerAdapter(activity: AppCompatActivity) : FragmentStateAdapter(activity) {
     override fun getItemCount() = 2
 
     override fun createFragment(position: Int): Fragment {

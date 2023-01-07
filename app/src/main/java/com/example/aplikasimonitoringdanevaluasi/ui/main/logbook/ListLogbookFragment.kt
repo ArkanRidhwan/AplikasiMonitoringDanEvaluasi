@@ -5,10 +5,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.navigation.fragment.navArgs
 import com.example.aplikasimonitoringdanevaluasi.R
 import com.example.aplikasimonitoringdanevaluasi.databinding.FragmentListLogbookBinding
-import com.example.aplikasimonitoringdanevaluasi.ui.main.chat.ListContactChatFragmentArgs
+import com.example.aplikasimonitoringdanevaluasi.utils.Constant
+import com.example.aplikasimonitoringdanevaluasi.utils.getInstance
+import com.example.aplikasimonitoringdanevaluasi.utils.gone
 
 
 class ListLogbookFragment : Fragment() {
@@ -24,8 +25,13 @@ class ListLogbookFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        val role = getInstance(requireContext()).getString(Constant.ROLE)
         binding.apply {
-
+            if (role == getString(R.string.student)) {
+                ivBack.gone()
+                tvBartittle.gone()
+                ivBar.gone()
+            }
         }
     }
 }

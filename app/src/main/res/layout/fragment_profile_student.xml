@@ -5,16 +5,278 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.student.profile.ProfileStudentFragment"
-    android:background="@color/white">
+    android:background="@color/gray_primary">
 
 
-    <Button
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Button"
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <View
+                android:id="@+id/viewBG1"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:background="@drawable/img_background_profile"
+                app:layout_constraintBottom_toBottomOf="@+id/viewBG2"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/iv_logout"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:src="@drawable/ic_logout"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <View
+                android:id="@+id/viewBG2"
+                android:layout_width="0dp"
+                android:layout_height="100dp"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="120dp"
+                android:layout_marginEnd="24dp"
+                android:background="@drawable/bg_profile"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/iv_logout" />
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/iv_profile"
+                android:layout_width="140dp"
+                android:layout_height="140dp"
+                android:layout_marginTop="50dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/spongebob"
+                app:layout_constraintEnd_toEndOf="@+id/viewBG2"
+                app:layout_constraintHorizontal_bias="0.497"
+                app:layout_constraintStart_toStartOf="@+id/viewBG2"
+                app:layout_constraintTop_toBottomOf="@+id/iv_logout"
+                app:shapeAppearance="@style/roundProfile"
+                app:strokeColor="@color/white"
+                app:strokeWidth="3dp" />
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardView3"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="20dp"
+                android:outlineSpotShadowColor="@color/white"
+                android:outlineAmbientShadowColor="@color/white"
+                app:layout_constraintEnd_toEndOf="@+id/viewBG2"
+                app:layout_constraintStart_toStartOf="@+id/viewBG2"
+                app:layout_constraintTop_toBottomOf="@+id/iv_profile">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:id="@+id/tv_studentName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:fontFamily="@font/open_sans"
+                        android:text="Nama"
+                        android:textColor="@color/black"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/tv_emailStudentTittle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="32dp"
+                        android:fontFamily="@font/open_sans"
+                        android:text="Email"
+                        android:textColor="@color/gray_hintText"
+                        android:textSize="12sp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/tv_studentName" />
+
+                    <TextView
+                        android:id="@+id/tv_emailStudent"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp"
+                        android:layout_marginEnd="16dp"
+                        android:fontFamily="@font/open_sans"
+                        android:text="TextView"
+                        android:textColor="@color/black"
+                        android:textSize="16sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="@+id/tv_emailStudentTittle"
+                        app:layout_constraintTop_toBottomOf="@+id/tv_emailStudentTittle" />
+
+                    <TextView
+                        android:id="@+id/tv_studentCompanyNameTittle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:fontFamily="@font/open_sans"
+                        android:text="Nama Perusahaan"
+                        android:textColor="@color/gray_hintText"
+                        android:textSize="12sp"
+                        app:layout_constraintStart_toStartOf="@+id/tv_emailStudent"
+                        app:layout_constraintTop_toBottomOf="@+id/tv_emailStudent" />
+
+                    <TextView
+                        android:id="@+id/tv_studentCompanyName"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp"
+                        android:layout_marginEnd="16dp"
+                        android:fontFamily="@font/open_sans"
+                        android:text="TextView"
+                        android:textColor="@color/black"
+                        android:textSize="16sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="@+id/tv_studentCompanyNameTittle"
+                        app:layout_constraintTop_toBottomOf="@+id/tv_studentCompanyNameTittle" />
+
+                    <TextView
+                        android:id="@+id/tv_studentJobTittle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:fontFamily="@font/open_sans"
+                        android:text="Pekerjaan Magang"
+                        android:textColor="@color/gray_hintText"
+                        android:textSize="12sp"
+                        app:layout_constraintStart_toStartOf="@+id/tv_studentCompanyName"
+                        app:layout_constraintTop_toBottomOf="@+id/tv_studentCompanyName" />
+
+                    <TextView
+                        android:id="@+id/tv_studentJob"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp"
+                        android:layout_marginEnd="16dp"
+                        android:fontFamily="@font/open_sans"
+                        android:text="TextView"
+                        android:textColor="@color/black"
+                        android:textSize="16sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="@+id/tv_studentJobTittle"
+                        app:layout_constraintTop_toBottomOf="@+id/tv_studentJobTittle" />
+
+                    <TextView
+                        android:id="@+id/tv_studentPhoneNumberTittle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:fontFamily="@font/open_sans"
+                        android:text="Nomor Telepon"
+                        android:textColor="@color/gray_hintText"
+                        android:textSize="12sp"
+                        app:layout_constraintStart_toStartOf="@+id/tv_studentJob"
+                        app:layout_constraintTop_toBottomOf="@+id/tv_studentJob" />
+
+                    <TextView
+                        android:id="@+id/tv_studentPhoneNumber"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp"
+                        android:layout_marginEnd="16dp"
+                        android:fontFamily="@font/open_sans"
+                        android:text="TextView"
+                        android:textColor="@color/black"
+                        android:textSize="16sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="@+id/tv_studentPhoneNumberTittle"
+                        app:layout_constraintTop_toBottomOf="@+id/tv_studentPhoneNumberTittle" />
+
+                    <TextView
+                        android:id="@+id/tv_studentClassNameTittle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:fontFamily="@font/open_sans"
+                        android:text="Batch Kelas ILC"
+                        android:textColor="@color/gray_hintText"
+                        android:textSize="12sp"
+                        app:layout_constraintStart_toStartOf="@+id/tv_studentPhoneNumberTittle"
+                        app:layout_constraintTop_toBottomOf="@+id/tv_studentPhoneNumber" />
+
+                    <TextView
+                        android:id="@+id/tv_studentClassName"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp"
+                        android:layout_marginEnd="16dp"
+                        android:fontFamily="@font/open_sans"
+                        android:text="TextView"
+                        android:textColor="@color/black"
+                        android:textSize="16sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="@+id/tv_studentClassNameTittle"
+                        app:layout_constraintTop_toBottomOf="@+id/tv_studentClassNameTittle" />
+
+                    <TextView
+                        android:id="@+id/tv_studentMajorTittle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:fontFamily="@font/open_sans"
+                        android:text="Jurusan Sekolah"
+                        android:textColor="@color/gray_hintText"
+                        android:textSize="12sp"
+                        app:layout_constraintStart_toStartOf="@+id/tv_studentClassName"
+                        app:layout_constraintTop_toBottomOf="@+id/tv_studentClassName" />
+
+                    <TextView
+                        android:id="@+id/tv_studentMajor"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp"
+                        android:layout_marginEnd="16dp"
+                        android:layout_marginBottom="50dp"
+                        android:fontFamily="@font/open_sans"
+                        android:text="TextView"
+                        android:textColor="@color/black"
+                        android:textSize="16sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="@+id/tv_studentMajorTittle"
+                        app:layout_constraintTop_toBottomOf="@+id/tv_studentMajorTittle" />
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_editProfile"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="32dp"
+                android:layout_marginBottom="90dp"
+                android:background="@drawable/bg_btn_profile"
+                android:text="Edit Profile"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/viewBG2"
+                app:layout_constraintStart_toStartOf="@+id/viewBG2"
+                app:layout_constraintTop_toBottomOf="@+id/cardView3" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

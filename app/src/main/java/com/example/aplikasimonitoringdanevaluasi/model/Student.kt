@@ -1,5 +1,9 @@
 package com.example.aplikasimonitoringdanevaluasi.model
 
+import android.os.Parcelable
+import kotlinx.android.parcel.Parcelize
+
+@Parcelize
 data class Student(
     val id: String = "",
     val email: String = "",
@@ -11,7 +15,7 @@ data class Student(
     val phoneNumber: String = "",
     val studentMajor: String = "",
     val image: String = "",
-) {
+) : Parcelable {
     companion object {
         fun saveRegistrationStudent(
             id: String,
@@ -24,7 +28,17 @@ data class Student(
             phoneNumber: String,
             studentMajor: String,
         ): Student {
-            return Student(id, email, password, name, companyName, job, className, phoneNumber, studentMajor)
+            return Student(
+                id,
+                email,
+                password,
+                name,
+                companyName,
+                job,
+                className,
+                phoneNumber,
+                studentMajor
+            )
         }
     }
 }

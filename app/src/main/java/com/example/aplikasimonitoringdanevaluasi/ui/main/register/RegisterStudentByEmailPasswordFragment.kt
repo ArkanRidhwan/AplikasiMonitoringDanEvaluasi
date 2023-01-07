@@ -37,6 +37,7 @@ class RegisterStudentByEmailPasswordFragment : Fragment() {
                 val companyName = etStudentCompanyName.text.toString()
                 val className = etStudentClassName.text.toString()
                 val phoneNumber = etStudentPhoneNumber.text.toString()
+                val major = etStudentSchoolMajor.text.toString()
 
                 if (email.isEmpty()) {
                     etStudentEmail.error("Email tidak boleh kosong")
@@ -59,6 +60,9 @@ class RegisterStudentByEmailPasswordFragment : Fragment() {
                 } else if (phoneNumber.isEmpty()) {
                     etStudentPhoneNumber.error("Nomor telepon tidak boleh kosong")
                     etStudentPhoneNumber.requestFocus()
+                } else if (major.isEmpty()) {
+                    etStudentSchoolMajor.error("Jurusan tidak boleh kosong")
+                    etStudentSchoolMajor.requestFocus()
                 } else {
                     btnRegister.gone()
                     progressBarStudentRegister.visible()
@@ -70,7 +74,8 @@ class RegisterStudentByEmailPasswordFragment : Fragment() {
                         job = job,
                         companyName = companyName,
                         className = className,
-                        phoneNumber = phoneNumber
+                        phoneNumber = phoneNumber,
+                        studentMajor = major
                     )
 
                     registerViewModel.getStudentByEmail(email)

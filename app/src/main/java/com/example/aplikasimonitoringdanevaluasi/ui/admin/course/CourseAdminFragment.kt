@@ -8,8 +8,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.example.aplikasimonitoringdanevaluasi.R
 import com.example.aplikasimonitoringdanevaluasi.databinding.FragmentCourseAdminBinding
-import com.example.aplikasimonitoringdanevaluasi.ui.company.request.RequestFragment
-import com.example.aplikasimonitoringdanevaluasi.ui.company.request.RequestPagerAdapter
 import com.google.android.material.tabs.TabLayoutMediator
 
 
@@ -33,7 +31,7 @@ class CourseAdminFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        val sectionsPagerAdapter = CooursePagerAdminAdapter(requireActivity() as AppCompatActivity)
+        val sectionsPagerAdapter = CourseAdminPagerAdapter(requireActivity() as AppCompatActivity)
         binding.viewPager.adapter = sectionsPagerAdapter
         TabLayoutMediator(binding.tabLayout, binding.viewPager) { tab, position ->
             tab.text = resources.getString(TAB_TITLES[position])

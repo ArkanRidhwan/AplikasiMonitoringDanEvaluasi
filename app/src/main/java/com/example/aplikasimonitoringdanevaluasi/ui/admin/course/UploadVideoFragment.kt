@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import com.example.aplikasimonitoringdanevaluasi.databinding.FragmentUploadVideoBinding
 
 
@@ -22,5 +23,13 @@ class UploadVideoFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        binding.apply {
+            ivBack.setOnClickListener {
+                requireActivity().onBackPressed()
+                /*val action =
+                    UploadVideoFragmentDirections.actionUploadVideoFragmentToCourseAdminFragment()
+                findNavController().navigate(action)*/
+            }
+        }
     }
 }

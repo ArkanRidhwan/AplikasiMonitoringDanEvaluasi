@@ -114,6 +114,15 @@
         <action
             android:id="@+id/action_homeAdminFragment_to_listContactChatFragment"
             app:destination="@id/listContactChatFragment" />
+        <action
+            android:id="@+id/action_homeAdminFragment_to_detailStudentAdminFragment"
+            app:destination="@id/detailStudentAdminFragment" />
+        <action
+            android:id="@+id/action_homeAdminFragment_to_uploadVideoFragment"
+            app:destination="@id/uploadVideoFragment" />
+        <action
+            android:id="@+id/action_homeAdminFragment_to_editProfileAdminFragment"
+            app:destination="@id/editProfileAdminFragment" />
     </fragment>
     <fragment
         android:id="@+id/homeCompanyFragment"
@@ -200,6 +209,9 @@
         <action
             android:id="@+id/action_profileCompanyFragment_to_welcomeFragment"
             app:destination="@id/welcomeFragment" />
+        <action
+            android:id="@+id/action_profileCompanyFragment_to_editProfileCompanyFragment"
+            app:destination="@id/editProfileCompanyFragment" />
     </fragment>
     <fragment
         android:id="@+id/registerAdminByEmailPasswordFragment"
@@ -247,11 +259,6 @@
         android:label="fragment_detail_student_company"
         tools:layout="@layout/fragment_detail_student_company" />
     <fragment
-        android:id="@+id/addReportStudentFragment"
-        android:name="com.example.aplikasimonitoringdanevaluasi.ui.company.home.AddReportStudentFragment"
-        android:label="fragment_add_report_student"
-        tools:layout="@layout/fragment_add_report_student" />
-    <fragment
         android:id="@+id/detailCompanyStudentFragment"
         android:name="com.example.aplikasimonitoringdanevaluasi.ui.student.home.DetailCompanyStudentFragment"
         android:label="fragment_detail_company_student"
@@ -289,4 +296,32 @@
         android:name="com.example.aplikasimonitoringdanevaluasi.ui.main.logbook.ListLogbookFragment"
         android:label="fragment_list_logbook"
         tools:layout="@layout/fragment_list_logbook" />
+    <fragment
+        android:id="@+id/detailStudentAdminFragment"
+        android:name="com.example.aplikasimonitoringdanevaluasi.ui.admin.home.DetailStudentAdminFragment"
+        android:label="fragment_detail_student_admin"
+        tools:layout="@layout/fragment_detail_student_admin" >
+        <argument
+            android:name="student"
+            app:argType="com.example.aplikasimonitoringdanevaluasi.model.Student" />
+    </fragment>
+    <fragment
+        android:id="@+id/editProfileCompanyFragment"
+        android:name="com.example.aplikasimonitoringdanevaluasi.ui.company.profile.EditProfileCompanyFragment"
+        android:label="fragment_edit_profile_company"
+        tools:layout="@layout/fragment_edit_profile_company" />
+    <fragment
+        android:id="@+id/uploadVideoFragment"
+        android:name="com.example.aplikasimonitoringdanevaluasi.ui.admin.course.UploadVideoFragment"
+        android:label="fragment_upload_video"
+        tools:layout="@layout/fragment_upload_video" >
+        <action
+            android:id="@+id/action_uploadVideoFragment_to_courseAdminFragment"
+            app:destination="@id/courseAdminFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/editProfileAdminFragment"
+        android:name="com.example.aplikasimonitoringdanevaluasi.ui.admin.profile.EditProfileAdminFragment"
+        android:label="fragment_edit_profile_admin"
+        tools:layout="@layout/fragment_edit_profile_admin" />
 </navigation>

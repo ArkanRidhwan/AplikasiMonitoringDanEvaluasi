@@ -31,10 +31,11 @@ class LoginViewModel() : ViewModel() {
                         if (valueAdmin?.email == email && valueAdmin.password == password) {
                             admin = valueAdmin
                         }
-                        dataAdmin.value = admin
                     }
+                    dataAdmin.value = admin
                 }
             }
+
             override fun onCancelled(error: DatabaseError) {
                 admin = null
             }
@@ -75,7 +76,7 @@ class LoginViewModel() : ViewModel() {
                 if (snapshot.exists()) {
                     for (i in snapshot.children) {
                         val valueStudent = i.getValue(Student::class.java)
-                        if(valueStudent?.email == email && valueStudent.password == password) {
+                        if (valueStudent?.email == email && valueStudent.password == password) {
                             student = valueStudent
                         }
                     }

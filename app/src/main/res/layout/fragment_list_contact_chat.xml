@@ -10,8 +10,8 @@
     <View
         android:id="@+id/tittle"
         android:layout_width="match_parent"
-        android:layout_height="70dp"
-        android:background="@drawable/bg_upper_chat"
+        android:layout_height="60dp"
+        android:background="@color/gray_primary2"
         android:outlineSpotShadowColor="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -23,27 +23,30 @@
         android:layout_height="wrap_content"
         android:fontFamily="@font/proza_libre"
         android:text="Select contact"
-        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:textColor="@color/white"
         android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="@+id/iv_back"
+        app:layout_constraintBottom_toBottomOf="@+id/tittle"
         app:layout_constraintEnd_toEndOf="@+id/tittle"
         app:layout_constraintStart_toStartOf="@+id/tittle"
-        app:layout_constraintTop_toTopOf="@+id/iv_back" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/iv_back"
         android:layout_width="35dp"
         android:layout_height="40dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginStart="16dp"
         android:src="@drawable/ic_back_button"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_tittle"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="@+id/tv_tittle"
+        app:tint="@color/white" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_chatListStudent"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:layout_marginTop="16dp"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

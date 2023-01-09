@@ -1,10 +1,12 @@
 package com.example.aplikasimonitoringdanevaluasi.ui.admin.profile
 
 import android.app.Activity
+import android.content.ContentValues.TAG
 import android.graphics.ImageDecoder
 import android.os.Build
 import android.os.Bundle
 import android.provider.MediaStore
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,11 +15,12 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.net.toFile
 import androidx.fragment.app.Fragment
 import com.example.aplikasimonitoringdanevaluasi.databinding.FragmentEditProfileAdminBinding
-import com.example.aplikasimonitoringdanevaluasi.utils.encodeImage
-import com.example.aplikasimonitoringdanevaluasi.utils.loadCircleImageFromUri
-import com.example.aplikasimonitoringdanevaluasi.utils.showToast
-import com.example.aplikasimonitoringdanevaluasi.utils.visible
+import com.example.aplikasimonitoringdanevaluasi.ui.storage.StorageActivity
+import com.example.aplikasimonitoringdanevaluasi.utils.*
 import com.github.dhaval2404.imagepicker.ImagePicker
+import com.google.firebase.storage.ktx.component1
+import com.google.firebase.storage.ktx.component2
+import com.google.firebase.storage.ktx.storage
 import java.io.File
 
 
@@ -40,6 +43,9 @@ class EditProfileAdminFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.apply {
+            ivBack.setOnClickListener {
+                requireActivity().onBackPressed()
+            }
 
             val startForImageResult =
                 registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result: ActivityResult ->
@@ -58,17 +64,20 @@ class EditProfileAdminFragment : Fragment() {
                                 )
                             }
                             encodedImage = bitmap.encodeImage()
-                            binding.btnSaveProfile.visible()
-                            binding.ivProfile.apply {
+                            ivProfile.apply {
                                 visible()
                                 loadCircleImageFromUri(imageUri)
                             }
+                            progressBarImage.gone()
+                            ivProfileLoading.gone()
                         }
                         ImagePicker.RESULT_ERROR -> {
                             context?.showToast(ImagePicker.getError(data))
                         }
                         else -> {
                             context?.showToast("Dibatalkan")
+                            progressBarImage.gone()
+                            ivProfileLoading.gone()
                         }
                     }
                 }
@@ -81,8 +90,36 @@ class EditProfileAdminFragment : Fragment() {
                     .createIntent {
                         startForImageResult.launch(it)
                     }
+                ivProfileLoading.visible()
+                progressBarImage.visible()
             }
 
+            btnSaveProfile.setOnClickListener {
+                progressBar.visible()
+                tvProgress.visible()
+                btnSaveProfile.gone()
+                ivProfile.uploadImage(file)
+                    .addOnFailureListener {
+                        progressBar.gone()
+                        tvProgress.gone()
+                        requireContext().showToast("Upload Image Failed!")
+                        btnSaveProfile.visible()
+                    }
+                    .addOnSuccessListener { task ->
+                        progressBar.gone()
+                        tvProgress.gone()
+                        requireContext().showToast("Upload Image Success!")
+                        task.storage.downloadUrl.addOnSuccessListener { url ->
+                            Log.d(TAG, "downloadUri: $url")
+                        }
+                        btnSaveProfile.visible()
+                    }
+                    .addOnProgressListener { (bytesTransferred, totalByteCount) ->
+                        val progress = (100.0 * bytesTransferred) / totalByteCount
+                        tvProgress.text = "${progress.toInt()} %"
+                        btnSaveProfile.visible()
+                    }
+            }
         }
     }
 

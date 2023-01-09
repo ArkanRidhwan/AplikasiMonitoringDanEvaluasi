@@ -123,6 +123,9 @@
         <action
             android:id="@+id/action_homeAdminFragment_to_editProfileAdminFragment"
             app:destination="@id/editProfileAdminFragment" />
+        <action
+            android:id="@+id/action_homeAdminFragment_to_watchVideoFragment"
+            app:destination="@id/watchVideoFragment" />
     </fragment>
     <fragment
         android:id="@+id/homeCompanyFragment"
@@ -324,4 +327,9 @@
         android:name="com.example.aplikasimonitoringdanevaluasi.ui.admin.profile.EditProfileAdminFragment"
         android:label="fragment_edit_profile_admin"
         tools:layout="@layout/fragment_edit_profile_admin" />
+    <fragment
+        android:id="@+id/watchVideoFragment"
+        android:name="com.example.aplikasimonitoringdanevaluasi.ui.main.video.WatchVideoFragment"
+        android:label="fragment_watch_video"
+        tools:layout="@layout/fragment_watch_video" />
 </navigation>

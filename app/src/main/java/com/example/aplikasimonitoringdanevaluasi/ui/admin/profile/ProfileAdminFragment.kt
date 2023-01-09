@@ -47,7 +47,7 @@ class ProfileAdminFragment : Fragment() {
             }
             btnEditProfile.setOnClickListener {
                 val action =
-                    HomeAdminFragmentDirections.actionHomeAdminFragmentToEditProfileAdminFragment()
+                    HomeAdminFragmentDirections.actionHomeAdminFragmentToWatchVideoFragment()
                 findNavController().navigate(action)
             }
         }

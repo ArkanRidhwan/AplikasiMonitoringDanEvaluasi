@@ -27,10 +27,8 @@ class WatchVideoFragment : Fragment() {
             val player = ExoPlayer.Builder(requireActivity()).build()
             videoView.player = player
 
-            /*val mediaItem = let { MediaItem.fromUri() }
-            if (mediaItem != null) {
-                player.setMediaItem(mediaItem)
-            }*/
+            val mediaItem = let { MediaItem.fromUri("//www.youtube.com/watch?v=xEeFrLSkMm8")}
+            player.setMediaItem(mediaItem)
             player.prepare()
         }
     }

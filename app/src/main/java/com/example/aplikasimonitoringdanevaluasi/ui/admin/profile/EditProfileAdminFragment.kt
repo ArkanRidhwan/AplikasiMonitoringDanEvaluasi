@@ -115,6 +115,6 @@ class EditProfileAdminFragment : Fragment() {
     }
 
     companion object {
-        private const val TAG = "StorageActivity"
+        private const val TAG = "EditProfileAdminFragment"
     }
 }

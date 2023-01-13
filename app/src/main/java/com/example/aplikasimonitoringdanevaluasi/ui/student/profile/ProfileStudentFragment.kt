@@ -7,8 +7,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.example.aplikasimonitoringdanevaluasi.databinding.FragmentProfileStudentBinding
-import com.example.aplikasimonitoringdanevaluasi.ui.company.profile.ProfileCompanyViewModel
 import com.example.aplikasimonitoringdanevaluasi.ui.main.MainActivity
 import com.example.aplikasimonitoringdanevaluasi.utils.Constant
 import com.example.aplikasimonitoringdanevaluasi.utils.getInstance
@@ -47,6 +47,11 @@ class ProfileStudentFragment : Fragment() {
             }
             binding.ivLogout.setOnClickListener {
                 logout()
+            }
+            btnEditProfile.setOnClickListener {
+                val action =
+                    ProfileStudentFragmentDirections.actionProfileStudentFragmentToEditProfileStudentFragment()
+                findNavController().navigate(action)
             }
         }
     }

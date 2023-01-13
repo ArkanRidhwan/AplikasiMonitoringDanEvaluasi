@@ -57,7 +57,7 @@
                 android:layout_height="40dp"
                 android:layout_marginTop="32dp"
                 android:layout_marginBottom="32dp"
-                android:background="@drawable/bg_btn_module"
+                android:background="@drawable/bg_btn_soft_rectangle"
                 android:fontFamily="@font/roboto"
                 android:text="unggah"
                 android:textColor="@color/white"

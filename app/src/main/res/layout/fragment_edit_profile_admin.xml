@@ -50,6 +50,7 @@
                 android:layout_width="140dp"
                 android:layout_height="140dp"
                 android:layout_marginTop="90dp"
+                android:padding="1.5dp"
                 android:scaleType="fitXY"
                 android:src="@drawable/spongebob"
                 app:layout_constraintEnd_toEndOf="@+id/viewBG2"
@@ -58,8 +59,7 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:shapeAppearance="@style/roundProfile"
                 app:strokeColor="@color/white"
-                app:strokeWidth="3dp"
-                android:padding="1.5dp"/>
+                app:strokeWidth="3dp" />
 
             <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/iv_profileLoading"
@@ -67,6 +67,7 @@
                 android:layout_height="140dp"
                 android:layout_marginTop="90dp"
                 android:background="@color/black"
+                android:padding="1.5dp"
                 android:scaleType="fitXY"
                 android:visibility="gone"
                 app:layout_constraintEnd_toEndOf="@+id/viewBG2"
@@ -75,8 +76,7 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:shapeAppearance="@style/roundProfile"
                 app:strokeColor="@color/white"
-                app:strokeWidth="3dp"
-                android:padding="1.5dp" />
+                app:strokeWidth="3dp" />
 
             <com.airbnb.lottie.LottieAnimationView
                 android:id="@+id/progressBarImage"
@@ -110,7 +110,7 @@
                         android:id="@+id/tv_studentAdminTittle"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="12dp"
+                        android:layout_marginStart="16dp"
                         android:layout_marginTop="32dp"
                         android:fontFamily="@font/open_sans"
                         android:text="Nama"

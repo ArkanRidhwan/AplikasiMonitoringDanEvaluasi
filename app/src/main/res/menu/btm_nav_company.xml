@@ -12,7 +12,7 @@
     <item
         android:id="@+id/requestFragment"
         android:icon="@drawable/ic_student_approval"
-        android:title="Student Request"
+        android:title="Approval"
         app:cnb_iconColor="@color/red_primary"
         app:cnb_textColor="@color/red_primary"
         app:cnb_backgroundColor="@color/red_bottomnav"/>

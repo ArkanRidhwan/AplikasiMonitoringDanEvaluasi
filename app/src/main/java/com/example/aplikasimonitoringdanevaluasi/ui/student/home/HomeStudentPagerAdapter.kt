@@ -6,7 +6,7 @@ import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.example.aplikasimonitoringdanevaluasi.ui.main.logbook.ListLogbookFragment
 
 class HomeStudentPagerAdapter(activity: AppCompatActivity) : FragmentStateAdapter(activity) {
-    override fun getItemCount(): Int = 2
+    override fun getItemCount() = 2
 
     override fun createFragment(position: Int): Fragment {
         var fragment: Fragment? = null

@@ -115,23 +115,11 @@
             android:id="@+id/action_homeAdminFragment_to_listContactChatFragment"
             app:destination="@id/listContactChatFragment" />
         <action
-            android:id="@+id/action_homeAdminFragment_to_detailStudentAdminFragment"
-            app:destination="@id/detailStudentAdminFragment" />
-        <action
             android:id="@+id/action_homeAdminFragment_to_uploadVideoFragment"
             app:destination="@id/uploadVideoFragment" />
         <action
-            android:id="@+id/action_homeAdminFragment_to_editProfileAdminFragment"
-            app:destination="@id/editProfileAdminFragment" />
-        <action
-            android:id="@+id/action_homeAdminFragment_to_watchVideoFragment"
-            app:destination="@id/watchVideoFragment" />
-        <action
-            android:id="@+id/action_homeAdminFragment_to_uploadVideoFragment2"
-            app:destination="@id/uploadVideoFragment" />
-        <action
-            android:id="@+id/action_homeAdminFragment_to_uploadModuleFragment"
-            app:destination="@id/uploadModuleFragment" />
+            android:id="@+id/action_homeAdminFragment_to_detailStudentAdminFragment"
+            app:destination="@id/detailStudentAdminFragment" />
     </fragment>
     <fragment
         android:id="@+id/homeCompanyFragment"
@@ -180,6 +168,9 @@
         <action
             android:id="@+id/action_profileStudentFragment_to_welcomeFragment"
             app:destination="@id/welcomeFragment" />
+        <action
+            android:id="@+id/action_profileStudentFragment_to_editProfileStudentFragment"
+            app:destination="@id/editProfileStudentFragment" />
     </fragment>
     <fragment
         android:id="@+id/registerCompanyByEmailPassword"
@@ -349,4 +340,14 @@
         android:name="com.example.aplikasimonitoringdanevaluasi.ui.admin.course.UploadModuleFragment"
         android:label="fragment_upload_module"
         tools:layout="@layout/fragment_upload_module" />
+    <fragment
+        android:id="@+id/downloadModuleFragment"
+        android:name="com.example.aplikasimonitoringdanevaluasi.ui.main.module.DownloadModuleFragment"
+        android:label="fragment_download_module"
+        tools:layout="@layout/fragment_download_module" />
+    <fragment
+        android:id="@+id/editProfileStudentFragment"
+        android:name="com.example.aplikasimonitoringdanevaluasi.ui.student.profile.EditProfileStudentFragment"
+        android:label="fragment_edit_profile_student"
+        tools:layout="@layout/fragment_edit_profile_student" />
 </navigation>

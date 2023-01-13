@@ -196,6 +196,7 @@ app:layout_constraintTop_toBottomOf="@+id/cardView3" />-->
         android:layout_width="140dp"
         android:layout_height="140dp"
         android:layout_marginTop="50dp"
+        android:padding="1.5dp"
         android:scaleType="fitXY"
         android:src="@drawable/spongebob"
         app:layout_constraintEnd_toEndOf="@+id/viewBG2"

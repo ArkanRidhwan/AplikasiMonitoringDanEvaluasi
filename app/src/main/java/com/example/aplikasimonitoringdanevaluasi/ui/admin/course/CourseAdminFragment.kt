@@ -31,10 +31,13 @@ class CourseAdminFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        val sectionsPagerAdapter = CourseAdminPagerAdapter(requireActivity() as AppCompatActivity)
-        binding.viewPager.adapter = sectionsPagerAdapter
-        TabLayoutMediator(binding.tabLayout, binding.viewPager) { tab, position ->
-            tab.text = resources.getString(TAB_TITLES[position])
-        }.attach()
+        binding.apply {
+            val sectionsPagerAdapter =
+                CourseAdminPagerAdapter(requireActivity() as AppCompatActivity)
+            viewPager.adapter = sectionsPagerAdapter
+            TabLayoutMediator(tabLayout, viewPager) { tab, position ->
+                tab.text = resources.getString(TAB_TITLES[position])
+            }.attach()
+        }
     }
 }

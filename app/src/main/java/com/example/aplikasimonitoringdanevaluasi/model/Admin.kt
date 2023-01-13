@@ -18,5 +18,14 @@ data class Admin(
         ): Admin {
             return Admin(id, email, password, name, phoneNumber)
         }
+
+        fun editAdmin(
+            email: String,
+            password: String,
+            name: String,
+            phoneNumber: String
+        ): Admin {
+            return Admin(email, password, name, phoneNumber)
+        }
     }
 }

@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
+import androidx.navigation.ui.setupWithNavController
 import com.example.aplikasimonitoringdanevaluasi.R
 import com.example.aplikasimonitoringdanevaluasi.databinding.ActivityMainBinding
 import com.example.aplikasimonitoringdanevaluasi.ui.admin.course.CourseAdminFragment
@@ -26,7 +27,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.apply {
-            val navController = findNavController(R.id.fragmentContainerView)
+            /*val navController = findNavController(R.id.fragmentContainerView)
             navController.addOnDestinationChangedListener { _, destination, _ ->
                 when (destination.id) {
                     R.id.homeAdminFragment, R.id.courseAdminFragment, R.id.profileAdminFragment -> {
@@ -56,37 +57,37 @@ class MainActivity : AppCompatActivity() {
                         binding.btmNavStudent.visibility = View.GONE
                     }
                 }
-            }
+            }*/
 
         }
-        /*val navController = findNavController(R.id.fragmentContainerView)
+        val navController = findNavController(R.id.fragmentContainerView)
         binding.apply {
-            btmNavCompany.setupWithNavController(navController)
-            btmNavStudent.setupWithNavController(navController)
-            btmNavAdmin.setupWithNavController(navController)
+            bottomNavAdminAndroidCom.setupWithNavController(navController)
+            bottomNavCompanyAndroidCom.setupWithNavController(navController)
+            bottomNavStudentAndroidCom.setupWithNavController(navController)
 
             navController.addOnDestinationChangedListener { _, destination, _ ->
                 when (destination.id) {
-                    R.id.homeAdminFragment, R.id.profileAdminFragment -> {
-                        btmNavAdmin.visibility = View.VISIBLE
+                    R.id.homeAdminFragment, R.id.courseAdminFragment, R.id.profileAdminFragment -> {
+                        bottomNavAdminAndroidCom.visibility = View.VISIBLE
                     }
-                    R.id.homeCompanyFragment, R.id.profileCompanyFragment -> {
-                        btmNavCompany.visibility = View.VISIBLE
+                    R.id.homeCompanyFragment, R.id.requestFragment, R.id.profileCompanyFragment -> {
+                        bottomNavCompanyAndroidCom.visibility = View.VISIBLE
                     }
-                    R.id.homeStudentFragment, R.id.profileStudentFragment -> {
-                        btmNavStudent.visibility = View.VISIBLE
+                    R.id.homeStudentFragment, R.id.courseStudentFragment, R.id.profileStudentFragment -> {
+                        bottomNavStudentAndroidCom.visibility = View.VISIBLE
                     }
                     else -> {
-                        binding.btmNavCompany.visibility = View.GONE
-                        binding.btmNavAdmin.visibility = View.GONE
-                        binding.btmNavStudent.visibility = View.GONE
+                        binding.bottomNavAdminAndroidCom.visibility = View.GONE
+                        binding.bottomNavCompanyAndroidCom.visibility = View.GONE
+                        binding.bottomNavStudentAndroidCom.visibility = View.GONE
                     }
                 }
             }
-        }*/
+        }
     }
 
-    private fun bottomMenu() {
+    /*private fun bottomMenu() {
         binding.btmNavAdmin.setOnItemSelectedListener {
             when (it) {
                 R.id.HomeAdmin -> {
@@ -135,5 +136,5 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         }
-    }
+    }*/
 }

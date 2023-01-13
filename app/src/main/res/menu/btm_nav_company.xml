@@ -2,7 +2,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:id="@+id/HomeCompany"
+        android:id="@+id/homeCompanyFragment"
         android:icon="@drawable/ic_home"
         android:title="Home"
         app:cnb_iconColor="@color/red_primary"
@@ -10,7 +10,7 @@
         app:cnb_backgroundColor="@color/red_bottomnav"/>
 
     <item
-        android:id="@+id/StudentRequestCompany"
+        android:id="@+id/requestFragment"
         android:icon="@drawable/ic_student_approval"
         android:title="Student Request"
         app:cnb_iconColor="@color/red_primary"
@@ -18,7 +18,7 @@
         app:cnb_backgroundColor="@color/red_bottomnav"/>
 
     <item
-        android:id="@+id/ProfileCompany"
+        android:id="@+id/profileCompanyFragment"
         android:icon="@drawable/ic_profile"
         android:title="Profile"
         app:cnb_iconColor="@color/red_primary"

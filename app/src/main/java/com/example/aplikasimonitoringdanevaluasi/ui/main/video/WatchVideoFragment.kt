@@ -28,7 +28,9 @@ class WatchVideoFragment : Fragment() {
             videoView.player = player
 
             val mediaItem = let { MediaItem.fromUri("//www.youtube.com/watch?v=xEeFrLSkMm8")}
-            player.setMediaItem(mediaItem)
+            if (mediaItem != null) {
+                player.setMediaItem(mediaItem)
+            }
             player.prepare()
         }
     }

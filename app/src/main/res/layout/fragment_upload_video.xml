@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/gray_primary"
+    android:background="@color/white"
+    android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen"
     tools:context=".ui.admin.course.UploadVideoFragment">
 
     <View
@@ -23,7 +24,7 @@
         android:fontFamily="@font/proza_libre"
         android:text="Unggah Video"
         android:textColor="@color/white"
-        android:textSize="20sp"
+        android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/iv_bar"
         app:layout_constraintEnd_toEndOf="parent"
@@ -41,9 +42,73 @@
         app:layout_constraintTop_toTopOf="@+id/tv_Bartittle"
         app:tint="@color/white" />
 
-    <ScrollView
+    <com.google.android.exoplayer2.ui.PlayerView
+        android:id="@+id/vid_preview"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:layout_marginBottom="1dp"
+        android:background="@android:color/background_dark"
+        android:visibility="visible"
+        app:controller_layout_id="@layout/layout_custom_controller"
+        app:layout_constraintBottom_toTopOf="@+id/constraintLayout2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/iv_bar"
+        app:player_layout_id="@layout/exo_player_view"
+        app:use_controller="true" />
+
+    <ProgressBar
+        android:id="@+id/progressBarVideo"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@+id/vid_preview"
+        app:layout_constraintEnd_toEndOf="@+id/vid_preview"
+        app:layout_constraintStart_toStartOf="@+id/vid_preview"
+        app:layout_constraintTop_toTopOf="@+id/vid_preview" />
+
+    <ImageView
+        android:id="@+id/iv_chooseVideo"
+        android:layout_width="140dp"
+        android:layout_height="150dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/ic_uploadvideo"
+        app:layout_constraintBottom_toBottomOf="@+id/vid_preview"
+        app:layout_constraintEnd_toEndOf="@+id/vid_preview"
+        app:layout_constraintStart_toStartOf="@+id/vid_preview"
+        app:layout_constraintTop_toTopOf="@+id/vid_preview"
+        app:tint="@color/gray_hintText" />
+
+    <TextView
+        android:id="@+id/tv_chooseVideo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="32dp"
+        android:fontFamily="@font/open_sans"
+        android:text="Ketuk gambar untuk memilih video"
+        android:textColor="@color/gray_hintText"
+        android:textSize="14sp"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="@+id/vid_preview"
+        app:layout_constraintEnd_toEndOf="@+id/iv_chooseVideo"
+        app:layout_constraintStart_toStartOf="@+id/iv_chooseVideo"
+        app:layout_constraintTop_toBottomOf="@+id/iv_chooseVideo" />
+
+    <!--<ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="32dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_chooseVideo">-->
+
+    <ScrollView
+        android:id="@+id/constraintLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="230dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/iv_bar">
 
@@ -52,16 +117,11 @@
             android:layout_height="wrap_content">
 
             <androidx.cardview.widget.CardView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="30dp"
-                android:layout_marginTop="32dp"
-                android:layout_marginEnd="30dp"
-                android:layout_marginBottom="32dp"
-                app:cardCornerRadius="20dp"
+                android:id="@+id/cv_uploadVideo"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:cardCornerRadius="0dp"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
@@ -124,52 +184,69 @@
                         app:layout_constraintStart_toStartOf="@+id/tv_uploadVideoContent"
                         app:layout_constraintTop_toBottomOf="@+id/tv_uploadVideoContent" />
 
-                    <ImageView
-                        android:id="@+id/iv_chooseVideo"
-                        android:layout_width="140dp"
-                        android:layout_height="150dp"
-                        android:layout_marginTop="42dp"
-                        android:scaleType="fitXY"
-                        android:src="@drawable/ic_uploadvideo"
-                        app:layout_constraintEnd_toEndOf="@+id/et_uploadVideoContent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/et_uploadVideoContent" />
-
-                    <TextView
-                        android:id="@+id/tv_chooseVideo"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="4dp"
-                        android:fontFamily="@font/open_sans"
-                        android:text="Pilih video"
-                        android:textColor="@color/black"
-                        android:textSize="20sp"
-                        android:textStyle="bold"
-                        app:layout_constraintEnd_toEndOf="@+id/iv_chooseVideo"
-                        app:layout_constraintStart_toStartOf="@+id/iv_chooseVideo"
-                        app:layout_constraintTop_toBottomOf="@+id/iv_chooseVideo" />
-
                     <androidx.appcompat.widget.AppCompatButton
                         android:id="@+id/btn_uploadVideo"
-                        android:layout_width="0dp"
+                        android:layout_width="180dp"
                         android:layout_height="40dp"
-                        android:layout_marginTop="42dp"
-                        android:layout_marginBottom="42dp"
-                        android:background="@drawable/bg_btn"
+                        android:layout_marginTop="32dp"
+                        android:layout_marginBottom="32dp"
+                        android:background="@drawable/bg_upload_video"
                         android:fontFamily="@font/roboto"
-                        android:text="unggah"
+                        android:text="Unggah"
+                        android:textAllCaps="false"
                         android:textColor="@color/white"
-                        android:textSize="16sp"
+                        android:textSize="14sp"
                         android:textStyle="bold"
+                        android:visibility="gone"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="@+id/et_uploadVideoContent"
-                        app:layout_constraintHorizontal_bias="1.0"
-                        app:layout_constraintStart_toStartOf="@+id/et_uploadVideoContent"
-                        app:layout_constraintTop_toBottomOf="@+id/tv_chooseVideo" />
+                        app:layout_constraintTop_toBottomOf="@+id/et_uploadVideoContent" />
 
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/btn_change_content"
+                        android:layout_width="180dp"
+                        android:layout_height="40dp"
+                        android:layout_marginTop="32dp"
+                        android:layout_marginBottom="32dp"
+                        android:background="@drawable/bg_btn_change_video"
+                        android:fontFamily="@font/roboto"
+                        android:text="Ubah video"
+                        android:textAllCaps="false"
+                        android:textColor="@color/gray_primary2"
+                        android:textSize="14sp"
+                        android:textStyle="bold"
+                        android:visibility="gone"
+                        app:layout_constraintStart_toStartOf="@+id/et_uploadVideoContent"
+                        app:layout_constraintTop_toBottomOf="@+id/et_uploadVideoContent" />
+
+                    <com.airbnb.lottie.LottieAnimationView
+                        android:id="@+id/progressBarUpload"
+                        android:layout_width="250dp"
+                        android:layout_height="250dp"
+                        android:visibility="gone"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:lottie_autoPlay="true"
+                        app:lottie_loop="true"
+                        app:lottie_rawRes="@raw/lottie_upload_content" />
+
+                    <TextView
+                        android:id="@+id/tv_progress"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="0"
+                        android:textColor="@color/red_primary"
+                        android:textSize="14sp"
+                        android:visibility="gone"
+                        app:layout_constraintEnd_toEndOf="@+id/progressBarUpload"
+                        app:layout_constraintStart_toStartOf="@+id/progressBarUpload"
+                        app:layout_constraintTop_toBottomOf="@+id/progressBarUpload" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.cardview.widget.CardView>
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
+    <!--</ScrollView>-->
 </androidx.constraintlayout.widget.ConstraintLayout>

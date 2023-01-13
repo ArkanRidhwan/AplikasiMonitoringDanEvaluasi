@@ -1,7 +1,6 @@
 package com.example.aplikasimonitoringdanevaluasi.ui.admin.profile
 
 import android.app.Activity
-import android.content.ContentValues.TAG
 import android.graphics.ImageDecoder
 import android.os.Build
 import android.os.Bundle
@@ -15,19 +14,16 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.net.toFile
 import androidx.fragment.app.Fragment
 import com.example.aplikasimonitoringdanevaluasi.databinding.FragmentEditProfileAdminBinding
-import com.example.aplikasimonitoringdanevaluasi.ui.storage.StorageActivity
 import com.example.aplikasimonitoringdanevaluasi.utils.*
 import com.github.dhaval2404.imagepicker.ImagePicker
 import com.google.firebase.storage.ktx.component1
 import com.google.firebase.storage.ktx.component2
-import com.google.firebase.storage.ktx.storage
 import java.io.File
 
 
 class EditProfileAdminFragment : Fragment() {
 
     var encodedImage: String? = ""
-    var type: String? = ""
 
     private lateinit var binding: FragmentEditProfileAdminBinding
     private lateinit var file: File
@@ -83,7 +79,6 @@ class EditProfileAdminFragment : Fragment() {
                 }
 
             tvChengePicture.setOnClickListener {
-                type = "Image"
                 ImagePicker.with(this@EditProfileAdminFragment)
                     .crop()
                     .compress(1024)
@@ -97,13 +92,11 @@ class EditProfileAdminFragment : Fragment() {
             btnSaveProfile.setOnClickListener {
                 progressBar.visible()
                 tvProgress.visible()
-                btnSaveProfile.gone()
                 ivProfile.uploadImage(file)
                     .addOnFailureListener {
                         progressBar.gone()
                         tvProgress.gone()
                         requireContext().showToast("Upload Image Failed!")
-                        btnSaveProfile.visible()
                     }
                     .addOnSuccessListener { task ->
                         progressBar.gone()
@@ -112,15 +105,16 @@ class EditProfileAdminFragment : Fragment() {
                         task.storage.downloadUrl.addOnSuccessListener { url ->
                             Log.d(TAG, "downloadUri: $url")
                         }
-                        btnSaveProfile.visible()
                     }
                     .addOnProgressListener { (bytesTransferred, totalByteCount) ->
                         val progress = (100.0 * bytesTransferred) / totalByteCount
                         tvProgress.text = "${progress.toInt()} %"
-                        btnSaveProfile.visible()
                     }
             }
         }
     }
 
+    companion object {
+        private const val TAG = "StorageActivity"
+    }
 }

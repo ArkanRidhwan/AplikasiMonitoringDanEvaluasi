@@ -9,6 +9,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.LinearLayout
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
@@ -34,6 +35,7 @@ class UploadVideoFragment : Fragment() {
 
     var videoUri: Uri? = null
     var isFullScreen = false
+    var isLockScreen = false
 
     private lateinit var binding: FragmentUploadVideoBinding
     private lateinit var file: File
@@ -48,6 +50,7 @@ class UploadVideoFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
+        //Make FullScreen
         val btn_fullscreen = view.findViewById<ImageView>(R.id.btn_fullscreen)
         btn_fullscreen.setOnClickListener {
             if (!isFullScreen) {
@@ -78,6 +81,18 @@ class UploadVideoFragment : Fragment() {
             isFullScreen = !isFullScreen
         }
 
+        //Make LockScreen
+        val btn_lockscreen = view.findViewById<ImageView>(R.id.exo_lock)
+        btn_lockscreen.setOnClickListener {
+            if(!isLockScreen){
+                btn_lockscreen.setImageDrawable(ContextCompat.getDrawable(requireActivity().applicationContext, R.drawable.ic_lock_close))
+            } else {
+                btn_lockscreen.setImageDrawable(ContextCompat.getDrawable(requireActivity().applicationContext, R.drawable.ic_lock_open))
+            }
+            isLockScreen = !isLockScreen
+            lockScreen(isLockScreen)
+        }
+
         binding.apply {
             ivBack.setOnClickListener {
                 requireActivity().onBackPressed()
@@ -97,6 +112,7 @@ class UploadVideoFragment : Fragment() {
                         btnUploadVideo.visible()
                         btnChangeContent.visible()
 
+                        //Exoplayer
                         val simpleExoPlayer = SimpleExoPlayer.Builder(requireContext())
                             .setSeekBackIncrementMs(10000)
                             .setSeekForwardIncrementMs(10000)
@@ -189,6 +205,18 @@ class UploadVideoFragment : Fragment() {
                         }
                 }
             }
+        }
+    }
+
+    private fun lockScreen(lockScreen: Boolean) {
+        val sec_mid = view?.findViewById<LinearLayout>(R.id.sec_controlVid1)
+        val sec_bottom = view?.findViewById<LinearLayout>(R.id.sec_controlVid2)
+        if(lockScreen){
+            sec_mid?.gone()
+            sec_bottom?.gone()
+        } else {
+            sec_mid?.visible()
+            sec_bottom?.visible()
         }
     }
 

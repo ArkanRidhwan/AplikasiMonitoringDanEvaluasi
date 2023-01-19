@@ -11,6 +11,7 @@ import com.example.aplikasimonitoringdanevaluasi.R
 import com.example.aplikasimonitoringdanevaluasi.databinding.FragmentRegisterStudentByEmailPasswordBinding
 import com.example.aplikasimonitoringdanevaluasi.model.Student
 import com.example.aplikasimonitoringdanevaluasi.utils.*
+import java.util.*
 
 class RegisterStudentByEmailPasswordFragment : Fragment() {
 
@@ -68,6 +69,7 @@ class RegisterStudentByEmailPasswordFragment : Fragment() {
                     progressBarStudentRegister.visible()
                     progressBarStudentRegister.playAnimation()
                     val student = Student(
+                        id = UUID.randomUUID().toString(),
                         email = email,
                         password = password,
                         name = name,

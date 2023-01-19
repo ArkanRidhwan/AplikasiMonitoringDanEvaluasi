@@ -8,10 +8,14 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
+import com.example.aplikasimonitoringdanevaluasi.R
 import com.example.aplikasimonitoringdanevaluasi.databinding.FragmentProfileStudentBinding
 import com.example.aplikasimonitoringdanevaluasi.ui.main.MainActivity
 import com.example.aplikasimonitoringdanevaluasi.utils.Constant
 import com.example.aplikasimonitoringdanevaluasi.utils.getInstance
+import com.example.aplikasimonitoringdanevaluasi.utils.loadCircleImageFromUrl
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
@@ -44,6 +48,13 @@ class ProfileStudentFragment : Fragment() {
                 tvStudentPhoneNumber.text = it?.phoneNumber
                 tvStudentClassName.text = it?.className
                 tvStudentMajor.text = it?.studentMajor
+                Glide.with(this@ProfileStudentFragment)
+                    .load(ivProfile.loadCircleImageFromUrl(it?.image.toString()))
+                    .apply(
+                        RequestOptions.placeholderOf(R.drawable.ic_image_loading)
+                            .error(R.drawable.ic_image_error)
+                    )
+                    .into(ivProfile)
             }
             binding.ivLogout.setOnClickListener {
                 logout()

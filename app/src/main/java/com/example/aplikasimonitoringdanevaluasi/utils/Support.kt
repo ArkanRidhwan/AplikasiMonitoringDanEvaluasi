@@ -1,5 +1,6 @@
 package com.example.aplikasimonitoringdanevaluasi.utils
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.drawable.BitmapDrawable
@@ -13,8 +14,11 @@ import com.bumptech.glide.Glide
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.UploadTask
 import com.google.firebase.storage.ktx.storage
+import retrofit2.http.Url
 import java.io.ByteArrayOutputStream
 import java.io.File
+import java.text.SimpleDateFormat
+import java.util.*
 
 private lateinit var preferenceManager: PreferenceManager
 
@@ -44,6 +48,19 @@ fun EditText.error(text: String) {
 fun ImageView.loadCircleImageFromUri(uri: Uri?) {
     Glide.with(context)
         .load(uri)
+        .into(this)
+}
+
+@SuppressLint("SimpleDateFormat")
+fun getDateNow(): String {
+    val sdf = SimpleDateFormat("dd/mm/yyyy")
+    val currentDate = sdf.format(Date())
+    return currentDate
+}
+
+fun ImageView.loadCircleImageFromUrl(url: String) {
+    Glide.with(context)
+        .load(url)
         .into(this)
 }
 

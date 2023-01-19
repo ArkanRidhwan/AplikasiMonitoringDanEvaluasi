@@ -23,6 +23,7 @@ data class Company(
             companyAddress: String,
             contactName: String,
             contactPhoneNumber: String,
+            image: String
         ): Company {
             return Company(
                 id,
@@ -31,7 +32,8 @@ data class Company(
                 companyName,
                 companyAddress,
                 contactName,
-                contactPhoneNumber
+                contactPhoneNumber,
+                image
             )
         }
     }

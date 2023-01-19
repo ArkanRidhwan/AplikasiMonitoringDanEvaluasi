@@ -67,10 +67,7 @@ class LoginFragment : Fragment() {
                                     if (it != null) {
                                         loginFirebase()
                                         getInstance(requireContext()).putString(Constant.ID, it.id)
-                                        getInstance(requireContext()).putString(
-                                            Constant.NAME,
-                                            it.name
-                                        )
+                                        getInstance(requireContext()).putString(Constant.NAME, it.name)
                                         getInstance(requireContext()).putString(
                                             Constant.ROLE,
                                             getString(R.string.admin)

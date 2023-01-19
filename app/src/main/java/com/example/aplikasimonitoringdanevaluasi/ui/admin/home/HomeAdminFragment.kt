@@ -7,11 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
-import androidx.navigation.fragment.navArgs
-import com.example.aplikasimonitoringdanevaluasi.R
 import com.example.aplikasimonitoringdanevaluasi.databinding.FragmentHomeAdminBinding
-import com.example.aplikasimonitoringdanevaluasi.ui.student.home.ListCompanyAdapter
-import com.example.aplikasimonitoringdanevaluasi.ui.student.home.ListCompanyViewModel
 import com.example.aplikasimonitoringdanevaluasi.utils.gone
 import com.example.aplikasimonitoringdanevaluasi.utils.visible
 
@@ -19,7 +15,7 @@ import com.example.aplikasimonitoringdanevaluasi.utils.visible
 class HomeAdminFragment : Fragment() {
 
     private lateinit var binding: FragmentHomeAdminBinding
-    private  val homeAdminViewModel: HomeAdminViewModel by viewModels()
+    private val homeAdminViewModel: HomeAdminViewModel by viewModels()
     private lateinit var homeAdminAdapter: HomeAdminAdapter
 
     override fun onCreateView(
@@ -33,7 +29,8 @@ class HomeAdminFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         homeAdminAdapter = HomeAdminAdapter()
         homeAdminAdapter.onItemClick = {
-            val action = HomeAdminFragmentDirections.actionHomeAdminFragmentToDetailStudentAdminFragment(it)
+            val action =
+                HomeAdminFragmentDirections.actionHomeAdminFragmentToDetailStudentAdminFragment(it)
             findNavController().navigate(action)
         }
 
@@ -41,9 +38,7 @@ class HomeAdminFragment : Fragment() {
             fabChatAdmin.setOnClickListener {
                 findNavController().navigate(
                     HomeAdminFragmentDirections.actionHomeAdminFragmentToListContactChatFragment(
-                        getString(
-                            R.string.admin
-                        )
+                        /* getString(R.string.admin)*/
                     )
                 )
             }

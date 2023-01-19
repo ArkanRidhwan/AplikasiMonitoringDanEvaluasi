@@ -1,4 +1,25 @@
 package com.example.aplikasimonitoringdanevaluasi.model
 
-class Module {
+import android.os.Parcelable
+import kotlinx.android.parcel.Parcelize
+
+@Parcelize
+data class Module(
+    val id: String = "",
+    val tittle: String= "",
+    val description: String = "",
+    val date: String = "",
+    val link: String = ""
+): Parcelable {
+    companion object {
+        fun saveModule(
+            id: String,
+            tittle: String,
+            description: String,
+            date: String,
+            link: String
+        ): Module {
+            return Module(id, tittle, description, date, link)
+        }
+    }
 }

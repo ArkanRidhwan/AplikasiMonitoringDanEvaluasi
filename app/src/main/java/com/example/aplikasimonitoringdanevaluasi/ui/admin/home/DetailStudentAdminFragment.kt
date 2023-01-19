@@ -5,8 +5,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.aplikasimonitoringdanevaluasi.databinding.FragmentDetailStudentAdminBinding
+import com.example.aplikasimonitoringdanevaluasi.model.Student
+import com.example.aplikasimonitoringdanevaluasi.ui.main.chat.ListContactChatFragmentDirections
+import com.example.aplikasimonitoringdanevaluasi.utils.Constant
+import com.example.aplikasimonitoringdanevaluasi.utils.getInstance
 
 
 class DetailStudentAdminFragment : Fragment() {
@@ -31,6 +36,13 @@ class DetailStudentAdminFragment : Fragment() {
             tvStudentCompanyName.text = args.student.companyName
             tvStudentJob.text = args.student.job
             tvStudentSchoolMajor.text = args.student.studentMajor
+            getInstance(requireContext()).putString(Constant.LOGBOOK_STUDENT_ID, args.student.id)
+
+            btnLogbook.setOnClickListener {
+                val action =
+                    DetailStudentAdminFragmentDirections.actionDetailStudentAdminFragmentToListLogbookFragment()
+                findNavController().navigate(action)
+            }
         }
     }
 }

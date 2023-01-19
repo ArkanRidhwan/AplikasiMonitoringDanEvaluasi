@@ -13,15 +13,17 @@ class EditProfileAdminViewModel : ViewModel() {
     private val database = Firebase.database
     private val collAdmin = database.getReference(Constant.COLL_ADMIN)
 
-    fun saveAdmin(data: Admin, userId: String): LiveData<Boolean> {
+    fun updateAdmin(data: Admin, userId: String): LiveData<Boolean> {
         val status = MutableLiveData<Boolean>()
-        val admin = Admin.editAdmin(
+        val admin = Admin.saveRegistrationAdmin(
+            id = userId,
             email = data.email,
             password = data.password,
             name = data.name,
             phoneNumber = data.phoneNumber,
-            )
-        collAdmin.child(data.id).setValue(admin)
+            image = data.image
+        )
+        collAdmin.child(userId).setValue(admin)
             .addOnCompleteListener {
                 status.value = true
             }
@@ -31,3 +33,4 @@ class EditProfileAdminViewModel : ViewModel() {
         return status
     }
 }
+

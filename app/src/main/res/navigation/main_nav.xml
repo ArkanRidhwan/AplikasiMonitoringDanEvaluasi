@@ -126,9 +126,6 @@
         android:name="com.example.aplikasimonitoringdanevaluasi.ui.company.home.HomeCompanyFragment"
         android:label="fragment_home_company"
         tools:layout="@layout/fragment_home_company" >
-        <action
-            android:id="@+id/action_homeCompanyFragment_to_welcomeFragment"
-            app:destination="@id/welcomeFragment" />
         <argument
             android:name="role"
             app:argType="string" />
@@ -147,6 +144,12 @@
         <action
             android:id="@+id/action_homeStudentFragment_to_detailCompanyStudentFragment"
             app:destination="@id/detailCompanyStudentFragment" />
+        <action
+            android:id="@+id/action_homeStudentFragment_to_addLogbookFragment"
+            app:destination="@id/addLogbookFragment" />
+        <action
+            android:id="@+id/action_homeStudentFragment_to_detailLogbookFragment"
+            app:destination="@id/detailLogbookFragment" />
     </fragment>
     <fragment
         android:id="@+id/profileAdminFragment"
@@ -252,9 +255,6 @@
         <action
             android:id="@+id/action_listContactChatFragment_to_chatFragment"
             app:destination="@id/chatFragment" />
-        <argument
-            android:name="role"
-            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/detailStudentCompanyFragment"
@@ -274,7 +274,14 @@
         android:id="@+id/courseStudentFragment"
         android:name="com.example.aplikasimonitoringdanevaluasi.ui.student.course.CourseStudentFragment"
         android:label="fragment_course_student"
-        tools:layout="@layout/fragment_course_student" />
+        tools:layout="@layout/fragment_course_student" >
+        <action
+            android:id="@+id/action_courseStudentFragment_to_watchVideoFragment"
+            app:destination="@id/watchVideoFragment" />
+        <action
+            android:id="@+id/action_courseStudentFragment_to_downloadModuleFragment"
+            app:destination="@id/downloadModuleFragment" />
+    </fragment>
     <fragment
         android:id="@+id/courseAdminFragment"
         android:name="com.example.aplikasimonitoringdanevaluasi.ui.admin.course.CourseAdminFragment"
@@ -286,6 +293,12 @@
         <action
             android:id="@+id/action_courseAdminFragment_to_uploadModuleFragment"
             app:destination="@id/uploadModuleFragment" />
+        <action
+            android:id="@+id/action_courseAdminFragment_to_watchVideoFragment"
+            app:destination="@id/watchVideoFragment" />
+        <action
+            android:id="@+id/action_courseAdminFragment_to_downloadModuleFragment"
+            app:destination="@id/downloadModuleFragment" />
     </fragment>
     <fragment
         android:id="@+id/requestFragment"
@@ -302,11 +315,6 @@
             app:destination="@id/detailCompanyStudentFragment" />
     </fragment>
     <fragment
-        android:id="@+id/listLogbookFragment"
-        android:name="com.example.aplikasimonitoringdanevaluasi.ui.main.logbook.ListLogbookFragment"
-        android:label="fragment_list_logbook"
-        tools:layout="@layout/fragment_list_logbook" />
-    <fragment
         android:id="@+id/detailStudentAdminFragment"
         android:name="com.example.aplikasimonitoringdanevaluasi.ui.admin.home.DetailStudentAdminFragment"
         android:label="fragment_detail_student_admin"
@@ -314,6 +322,12 @@
         <argument
             android:name="student"
             app:argType="com.example.aplikasimonitoringdanevaluasi.model.Student" />
+        <action
+            android:id="@+id/action_detailStudentAdminFragment_to_listLogbookFragment"
+            app:destination="@id/listLogbookFragment" />
+        <action
+            android:id="@+id/action_detailStudentAdminFragment_to_listLogbookFragment2"
+            app:destination="@id/listLogbookFragment" />
     </fragment>
     <fragment
         android:id="@+id/editProfileCompanyFragment"
@@ -334,7 +348,11 @@
         android:id="@+id/watchVideoFragment"
         android:name="com.example.aplikasimonitoringdanevaluasi.ui.main.video.WatchVideoFragment"
         android:label="fragment_watch_video"
-        tools:layout="@layout/fragment_watch_video" />
+        tools:layout="@layout/fragment_watch_video" >
+        <argument
+            android:name="video"
+            app:argType="com.example.aplikasimonitoringdanevaluasi.model.Video" />
+    </fragment>
     <fragment
         android:id="@+id/uploadModuleFragment"
         android:name="com.example.aplikasimonitoringdanevaluasi.ui.admin.course.UploadModuleFragment"
@@ -344,10 +362,37 @@
         android:id="@+id/downloadModuleFragment"
         android:name="com.example.aplikasimonitoringdanevaluasi.ui.main.module.DownloadModuleFragment"
         android:label="fragment_download_module"
-        tools:layout="@layout/fragment_download_module" />
+        tools:layout="@layout/fragment_download_module" >
+        <argument
+            android:name="module"
+            app:argType="com.example.aplikasimonitoringdanevaluasi.model.Module" />
+    </fragment>
     <fragment
         android:id="@+id/editProfileStudentFragment"
         android:name="com.example.aplikasimonitoringdanevaluasi.ui.student.profile.EditProfileStudentFragment"
         android:label="fragment_edit_profile_student"
         tools:layout="@layout/fragment_edit_profile_student" />
+    <fragment
+        android:id="@+id/addLogbookFragment"
+        android:name="com.example.aplikasimonitoringdanevaluasi.ui.student.home.AddLogbookFragment"
+        android:label="fragment_add_logbook"
+        tools:layout="@layout/fragment_add_logbook" />
+    <fragment
+        android:id="@+id/detailLogbookFragment"
+        android:name="com.example.aplikasimonitoringdanevaluasi.ui.main.logbook.DetailLogbookFragment"
+        android:label="fragment_detail_logbook"
+        tools:layout="@layout/fragment_detail_logbook" >
+        <argument
+            android:name="logbook"
+            app:argType="com.example.aplikasimonitoringdanevaluasi.model.Logbook" />
+    </fragment>
+    <fragment
+        android:id="@+id/listLogbookFragment"
+        android:name="com.example.aplikasimonitoringdanevaluasi.ui.main.logbook.ListLogbookFragment"
+        android:label="fragment_list_logbook"
+        tools:layout="@layout/fragment_list_logbook" >
+        <action
+            android:id="@+id/action_listLogbookFragment_to_detailLogbookFragment"
+            app:destination="@id/detailLogbookFragment" />
+    </fragment>
 </navigation>

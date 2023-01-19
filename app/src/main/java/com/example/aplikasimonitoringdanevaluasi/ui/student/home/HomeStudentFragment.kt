@@ -39,13 +39,13 @@ class HomeStudentFragment : Fragment() {
                 tab.text = resources.getString(TAB_TITLES[position])
             }.attach()
 
-            fabChat.setOnClickListener {
+            /*fabChat.setOnClickListener {
                 findNavController().navigate(
                     HomeStudentFragmentDirections.actionHomeStudentFragmentToListContactChatFragment(
-                        getString(R.string.student)
+                        *//*getString(R.string.student)*//*
                     )
                 )
-            }
+            }*/
         }
     }
 

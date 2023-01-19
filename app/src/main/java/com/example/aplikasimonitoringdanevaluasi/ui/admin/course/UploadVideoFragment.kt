@@ -15,12 +15,14 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import com.example.aplikasimonitoringdanevaluasi.R
 import com.example.aplikasimonitoringdanevaluasi.databinding.FragmentUploadVideoBinding
 import com.example.aplikasimonitoringdanevaluasi.databinding.LayoutCustomControllerBinding
-import com.example.aplikasimonitoringdanevaluasi.utils.gone
-import com.example.aplikasimonitoringdanevaluasi.utils.showToast
-import com.example.aplikasimonitoringdanevaluasi.utils.visible
+import com.example.aplikasimonitoringdanevaluasi.model.Admin
+import com.example.aplikasimonitoringdanevaluasi.model.Video
+import com.example.aplikasimonitoringdanevaluasi.ui.main.register.RegisterViewModel
+import com.example.aplikasimonitoringdanevaluasi.utils.*
 import com.google.android.exoplayer2.MediaItem
 import com.google.android.exoplayer2.Player
 import com.google.android.exoplayer2.SimpleExoPlayer
@@ -29,6 +31,7 @@ import com.google.firebase.storage.ktx.component1
 import com.google.firebase.storage.ktx.component2
 import com.google.firebase.storage.ktx.storage
 import java.io.File
+import java.util.*
 
 
 class UploadVideoFragment : Fragment() {
@@ -36,9 +39,11 @@ class UploadVideoFragment : Fragment() {
     var videoUri: Uri? = null
     var isFullScreen = false
     var isLockScreen = false
+    var urlDownload: String? = ""
 
     private lateinit var binding: FragmentUploadVideoBinding
     private lateinit var file: File
+    private val uploadVideoViewModel: UploadVideoViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -161,6 +166,9 @@ class UploadVideoFragment : Fragment() {
             }
 
             btnUploadVideo.setOnClickListener {
+                val tittle = etUploadVideoTittle.text.toString()
+                val description = etUploadVideoContent.text.toString()
+
                 progressBarUpload.visible()
                 tvProgress.visible()
                 btnUploadVideo.gone()
@@ -197,6 +205,24 @@ class UploadVideoFragment : Fragment() {
 
                             task.storage.downloadUrl.addOnSuccessListener { url ->
                                 Log.d(TAG, "downloadUri: $url")
+                                urlDownload = url.toString()
+                                var id = UUID.randomUUID().toString()
+                                val video = Video(
+                                    id = id,
+                                    tittle = tittle,
+                                    description = description,
+                                    date = getDateNow(),
+                                    link = urlDownload.toString(),
+                                )
+                                uploadVideoViewModel.saveVideo(video)
+                                    .observe(viewLifecycleOwner) { data ->
+                                        if (data == true) {
+                                            requireActivity().onBackPressed()
+                                            requireContext().showToast("Menyimpan video berhasil")
+                                        } else {
+                                            requireContext().showToast("Menyimpan video gagal")
+                                        }
+                                    }
                             }
                         }
                         .addOnProgressListener { (bytesTransferred, totalByteCount) ->

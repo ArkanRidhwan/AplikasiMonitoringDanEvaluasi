@@ -6,17 +6,16 @@ import android.os.Build
 import android.os.Bundle
 import android.provider.MediaStore
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.net.toFile
-import com.example.aplikasimonitoringdanevaluasi.R
-import com.example.aplikasimonitoringdanevaluasi.databinding.FragmentEditProfileAdminBinding
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import com.example.aplikasimonitoringdanevaluasi.databinding.FragmentEditProfileStudentBinding
-import com.example.aplikasimonitoringdanevaluasi.ui.admin.profile.EditProfileAdminFragment
+import com.example.aplikasimonitoringdanevaluasi.model.Student
 import com.example.aplikasimonitoringdanevaluasi.utils.*
 import com.github.dhaval2404.imagepicker.ImagePicker
 import com.google.firebase.storage.ktx.component1
@@ -26,9 +25,11 @@ import java.io.File
 class EditProfileStudentFragment : Fragment() {
 
     var encodedImage: String? = ""
+    var urlDownload: String? = ""
 
     private lateinit var binding: FragmentEditProfileStudentBinding
     private lateinit var file: File
+    private val editProfileStudentViewModel: EditProfileStudentViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -91,6 +92,17 @@ class EditProfileStudentFragment : Fragment() {
             }
 
             btnSaveProfile.setOnClickListener {
+                val email = etEmailStudent.text.toString()
+                val password = etStudentPassword.text.toString()
+                val name = etStudentName.text.toString()
+                val companyName = etStudentCompanyName.text.toString()
+                val job = etStudentJob.text.toString()
+                val className = etStudentClassName.text.toString()
+                val phoneNumber = etStudentPhoneNumber.text.toString()
+                val studentMajor = etStudentMajor.text.toString()
+                val userId = getInstance(requireContext()).getString(Constant.ID)
+
+
                 progressBar.visible()
                 tvProgress.visible()
                 ivProfile.uploadImage(file)
@@ -105,6 +117,28 @@ class EditProfileStudentFragment : Fragment() {
                         requireContext().showToast("Upload Image Success!")
                         task.storage.downloadUrl.addOnSuccessListener { url ->
                             Log.d(TAG, "downloadUri: $url")
+                            urlDownload = url.toString()
+                            val admin = Student(
+                                id = userId,
+                                email = email,
+                                password = password,
+                                name = name,
+                                companyName = companyName,
+                                job = job,
+                                className = className,
+                                phoneNumber = phoneNumber,
+                                studentMajor = studentMajor,
+                                image = urlDownload.toString()
+                            )
+                            editProfileStudentViewModel.updateStudent(admin, userId)
+                                .observe(viewLifecycleOwner) { data ->
+                                    if (data == true) {
+                                        requireActivity().onBackPressed()
+                                        requireContext().showToast("Update berhasil")
+                                    } else {
+                                        requireContext().showToast("Update gagal")
+                                    }
+                                }
                         }
                     }
                     .addOnProgressListener { (bytesTransferred, totalByteCount) ->
@@ -116,6 +150,6 @@ class EditProfileStudentFragment : Fragment() {
     }
 
     companion object {
-        private const val TAG = "EditProfileAdminFragment"
+        private const val TAG = "EditProfileStudentFragment"
     }
 }

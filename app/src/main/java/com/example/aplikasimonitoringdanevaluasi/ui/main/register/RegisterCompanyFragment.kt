@@ -12,6 +12,7 @@ import com.example.aplikasimonitoringdanevaluasi.databinding.FragmentRegisterCom
 import com.example.aplikasimonitoringdanevaluasi.model.Company
 import com.example.aplikasimonitoringdanevaluasi.utils.*
 import com.google.firebase.auth.FirebaseAuth
+import java.util.*
 
 
 class RegisterCompanyFragment : Fragment() {
@@ -56,6 +57,7 @@ class RegisterCompanyFragment : Fragment() {
                     progressBarCompanyRegister.visible()
                     progressBarCompanyRegister.playAnimation()
                     val company = Company(
+                        id = UUID.randomUUID().toString(),
                         contactEmail = email.toString(),
                         companyName = companyName,
                         companyAddress = companyAddress,

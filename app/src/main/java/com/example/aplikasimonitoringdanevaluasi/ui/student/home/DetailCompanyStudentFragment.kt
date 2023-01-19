@@ -4,21 +4,20 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
-import com.bumptech.glide.Glide
-import com.bumptech.glide.request.RequestOptions
-import com.example.aplikasimonitoringdanevaluasi.R
 import com.example.aplikasimonitoringdanevaluasi.databinding.FragmentDetailCompanyStudentBinding
-import com.example.aplikasimonitoringdanevaluasi.model.Company
-import com.example.aplikasimonitoringdanevaluasi.ui.main.chat.ChatFragmentArgs
+import com.example.aplikasimonitoringdanevaluasi.model.Student
+import com.example.aplikasimonitoringdanevaluasi.utils.getInstance
+import com.example.aplikasimonitoringdanevaluasi.utils.showToast
 
 
 class DetailCompanyStudentFragment : Fragment() {
 
     private lateinit var binding: FragmentDetailCompanyStudentBinding
     private val args: DetailCompanyStudentFragmentArgs by navArgs()
+    private val detailCompanyStudentViewModel: DetailCompanyStudentViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -38,13 +37,26 @@ class DetailCompanyStudentFragment : Fragment() {
                         .error(R.drawable.ic_image_error)
                 )
                 .into(ivProfilePicture)*/
+            val userId = args.company.id
+            val companyName = args.company.companyName
             tvCompanyName.text = args.company.companyName
             tvCompanyAddress.text = args.company.companyAddress
             tvCompanyContactName.text = args.company.contactName
             tvCompanyContactPhoneNumber.text = args.company.contactPhoneNumber
             tvCompanyContactEmail.text = args.company.contactEmail
-            btnLogin.setOnClickListener {
-                Toast.makeText(requireActivity(), "Mantap", Toast.LENGTH_SHORT).show()
+            val admin = Student(
+                id = userId,
+                name = companyName
+            )
+            btnApplyCompany.setOnClickListener {
+                detailCompanyStudentViewModel.getCompanyApproval(admin, userId).observe(viewLifecycleOwner){
+                    if (it == true) {
+                        requireActivity().onBackPressed()
+                        requireContext().showToast("Lamaran berhasil terkirim")
+                    } else {
+                        requireContext().showToast("Lamaran gagal terkirim")
+                    }
+                }
             }
         }
     }

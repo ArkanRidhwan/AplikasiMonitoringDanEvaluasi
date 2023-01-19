@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.navArgs
 import com.example.aplikasimonitoringdanevaluasi.databinding.FragmentWatchVideoBinding
 import com.example.aplikasimonitoringdanevaluasi.utils.gone
 import com.example.aplikasimonitoringdanevaluasi.utils.visible
@@ -18,6 +19,7 @@ import com.google.android.exoplayer2.SimpleExoPlayer
 class WatchVideoFragment : Fragment() {
 
     private lateinit var binding: FragmentWatchVideoBinding
+    private val args: WatchVideoFragmentArgs by navArgs()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -29,8 +31,9 @@ class WatchVideoFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         binding.apply {
-            /*val player = ExoPlayer.Builder(requireActivity()).build()
-            videoView.player = player*/
+            tvVideoTittle.text = args.video.tittle
+            tvVideoContent.text = args.video.description
+            tvVideoDate.text = args.video.date
 
             val simpleExoPlayer = SimpleExoPlayer.Builder(requireContext())
                 .setSeekBackIncrementMs(10000)
@@ -51,7 +54,7 @@ class WatchVideoFragment : Fragment() {
                 }
             })
             //val videoSource = Uri.parse(videoUri.toString())
-            val mediaItem = MediaItem.fromUri("https://www.youtube.com/watch?v=ciYgd5Hj2-0")
+            val mediaItem = MediaItem.fromUri(args.video.link)
             simpleExoPlayer.setMediaItem(mediaItem)
             simpleExoPlayer.prepare()
             simpleExoPlayer.play()

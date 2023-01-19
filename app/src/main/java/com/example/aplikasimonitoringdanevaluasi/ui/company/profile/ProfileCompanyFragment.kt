@@ -8,10 +8,14 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
+import com.example.aplikasimonitoringdanevaluasi.R
 import com.example.aplikasimonitoringdanevaluasi.databinding.FragmentProfileCompanyBinding
 import com.example.aplikasimonitoringdanevaluasi.ui.main.MainActivity
 import com.example.aplikasimonitoringdanevaluasi.utils.Constant
 import com.example.aplikasimonitoringdanevaluasi.utils.getInstance
+import com.example.aplikasimonitoringdanevaluasi.utils.loadCircleImageFromUrl
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
@@ -33,6 +37,7 @@ class ProfileCompanyFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val userId = getInstance(requireContext()).getString(Constant.ID)
+        auth = Firebase.auth
         binding.apply {
             companyProfileViewModel.companyProfile(userId).observe(viewLifecycleOwner) {
                 tvCompanyName.text = it?.companyName
@@ -40,6 +45,13 @@ class ProfileCompanyFragment : Fragment() {
                 tvContactName.text = it?.contactName
                 tvContactEmail.text = it?.contactEmail
                 tvContactPhoneNumber.text = it?.contactPhoneNumber
+                Glide.with(this@ProfileCompanyFragment)
+                    .load(ivCompanyProfile.loadCircleImageFromUrl(it?.image.toString()))
+                    .apply(
+                        RequestOptions.placeholderOf(R.drawable.ic_image_loading)
+                            .error(R.drawable.ic_image_error)
+                    )
+                    .into(ivCompanyProfile)
             }
             ivLogout.setOnClickListener {
                 auth = Firebase.auth

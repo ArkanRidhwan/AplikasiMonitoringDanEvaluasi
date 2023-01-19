@@ -11,6 +11,7 @@ import com.example.aplikasimonitoringdanevaluasi.R
 import com.example.aplikasimonitoringdanevaluasi.databinding.FragmentRegisterCompanyByEmailPasswordBinding
 import com.example.aplikasimonitoringdanevaluasi.model.Company
 import com.example.aplikasimonitoringdanevaluasi.utils.*
+import java.util.*
 
 class RegisterCompanyByEmailPasswordFragment : Fragment() {
 
@@ -60,6 +61,7 @@ class RegisterCompanyByEmailPasswordFragment : Fragment() {
                     progressBarCompanyRegister.visible()
                     progressBarCompanyRegister.playAnimation()
                     val company = Company(
+                        id = UUID.randomUUID().toString(),
                         contactEmail = email,
                         password = password,
                         companyName = companyName,
@@ -81,10 +83,7 @@ class RegisterCompanyByEmailPasswordFragment : Fragment() {
                                             getInstance(requireContext()).apply {
                                                 putString(Constant.ID, company.id)
                                                 putString(Constant.NAME, company.companyName)
-                                                putString(
-                                                    Constant.ROLE,
-                                                    getString(R.string.company)
-                                                )
+                                                putString(Constant.ROLE, getString(R.string.company))
                                             }
                                             findNavController().navigate(
                                                 RegisterCompanyByEmailPasswordFragmentDirections.actionRegisterCompanyByEmailPasswordToHomeCompanyFragment(

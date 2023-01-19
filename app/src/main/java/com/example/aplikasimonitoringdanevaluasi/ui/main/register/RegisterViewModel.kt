@@ -12,7 +12,6 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
-import java.util.*
 
 class RegisterViewModel : ViewModel() {
 
@@ -29,8 +28,8 @@ class RegisterViewModel : ViewModel() {
             password = data.password,
             name = data.name,
             phoneNumber = data.phoneNumber,
-
-            )
+            image = ""
+        )
         collAdmin.child(data.id).setValue(admin)
             .addOnCompleteListener {
                 status.value = true
@@ -42,18 +41,18 @@ class RegisterViewModel : ViewModel() {
     }
 
     fun saveCompany(data: Company): LiveData<Boolean> {
-        val companyId = UUID.randomUUID().toString()
         val status = MutableLiveData<Boolean>()
         val company = Company.saveRegistrationCompany(
-            id = companyId,
+            id = data.id,
             contactEmail = data.contactEmail,
             password = data.password,
             companyName = data.companyName,
             companyAddress = data.companyAddress,
             contactName = data.contactName,
             contactPhoneNumber = data.contactPhoneNumber,
+            image = ""
         )
-        collCompany.child(companyId).setValue(company)
+        collCompany.child(data.id).setValue(company)
             .addOnCompleteListener {
                 status.value = true
             }
@@ -64,10 +63,9 @@ class RegisterViewModel : ViewModel() {
     }
 
     fun saveStudent(data: Student): LiveData<Boolean> {
-        val studentId = UUID.randomUUID().toString()
         val status = MutableLiveData<Boolean>()
         val student = Student.saveRegistrationStudent(
-            id = studentId,
+            id = data.id,
             email = data.email,
             password = data.password,
             name = data.name,
@@ -75,9 +73,10 @@ class RegisterViewModel : ViewModel() {
             job = data.job,
             className = data.className,
             phoneNumber = data.phoneNumber,
-            studentMajor = data.studentMajor
+            studentMajor = data.studentMajor,
+            image = ""
         )
-        collStudent.child(studentId).setValue(student)
+        collStudent.child(data.id).setValue(student)
             .addOnCompleteListener {
                 status.value = true
             }

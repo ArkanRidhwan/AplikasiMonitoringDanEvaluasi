@@ -11,8 +11,12 @@ import androidx.activity.result.ActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import com.example.aplikasimonitoringdanevaluasi.databinding.FragmentUploadModuleBinding
+import com.example.aplikasimonitoringdanevaluasi.model.Module
+import com.example.aplikasimonitoringdanevaluasi.model.Video
 import com.example.aplikasimonitoringdanevaluasi.ui.storage.StorageActivity
+import com.example.aplikasimonitoringdanevaluasi.utils.getDateNow
 import com.example.aplikasimonitoringdanevaluasi.utils.gone
 import com.example.aplikasimonitoringdanevaluasi.utils.showToast
 import com.example.aplikasimonitoringdanevaluasi.utils.visible
@@ -22,14 +26,17 @@ import com.google.firebase.storage.ktx.component2
 import com.google.firebase.storage.ktx.storage
 import org.koin.core.component.getScopeName
 import java.io.File
+import java.util.*
 
 
 class UploadModuleFragment : Fragment() {
 
     var documentUri: Uri? = null
+    var urlDownload: String? = ""
 
     private lateinit var file: File
     private lateinit var binding: FragmentUploadModuleBinding
+    private val uploadModuleViewModel: UploadModuleViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -72,6 +79,9 @@ class UploadModuleFragment : Fragment() {
             }
 
             btnUploadModule.setOnClickListener {
+                val tittle = etUploadModuleTittle.text.toString()
+                val description = etUploadModuleContent.text.toString()
+
                 progressBar.visible()
                 tvProgress.visible()
                 val storageRef = Firebase.storage.reference
@@ -90,6 +100,24 @@ class UploadModuleFragment : Fragment() {
 
                             task.storage.downloadUrl.addOnSuccessListener { url ->
                                 Log.d(TAG, "Document: $url")
+                                urlDownload = url.toString()
+                                var id = UUID.randomUUID().toString()
+                                val module = Module(
+                                    id = id,
+                                    tittle = tittle,
+                                    description = description,
+                                    date = getDateNow(),
+                                    link = urlDownload.toString(),
+                                )
+                                uploadModuleViewModel.saveModule(module)
+                                    .observe(viewLifecycleOwner) { data ->
+                                        if (data == true) {
+                                            requireActivity().onBackPressed()
+                                            requireContext().showToast("Menyimpan modul berhasil")
+                                        } else {
+                                            requireContext().showToast("Menyimpan modul gagal")
+                                        }
+                                    }
                             }
                         }
                         .addOnProgressListener { (bytesTransferred, totalByteCount) ->

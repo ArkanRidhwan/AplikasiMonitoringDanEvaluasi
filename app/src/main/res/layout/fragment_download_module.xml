@@ -107,7 +107,7 @@
                         app:layout_constraintTop_toBottomOf="@+id/tv_moduleDate" />
 
                     <ImageView
-                        android:id="@+id/imageView4"
+                        android:id="@+id/iv_imageDownload"
                         android:layout_width="80dp"
                         android:layout_height="100dp"
                         android:scaleType="fitXY"
@@ -131,9 +131,9 @@
                         android:textSize="20sp"
                         android:textStyle="bold"
                         app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="@+id/imageView4"
-                        app:layout_constraintStart_toStartOf="@+id/imageView4"
-                        app:layout_constraintTop_toBottomOf="@+id/imageView4" />
+                        app:layout_constraintEnd_toEndOf="@+id/iv_imageDownload"
+                        app:layout_constraintStart_toStartOf="@+id/iv_imageDownload"
+                        app:layout_constraintTop_toBottomOf="@+id/iv_imageDownload" />
 
 
                 </androidx.constraintlayout.widget.ConstraintLayout>

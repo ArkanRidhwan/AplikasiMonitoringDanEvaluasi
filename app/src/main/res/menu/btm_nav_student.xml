@@ -10,6 +10,14 @@
         app:cnb_backgroundColor="@color/red_bottomnav"/>
 
     <item
+        android:id="@+id/listContactChatFragment"
+        android:icon="@drawable/ic_chat"
+        android:title="Consultation"
+        app:cnb_iconColor="@color/red_primary"
+        app:cnb_textColor="@color/red_primary"
+        app:cnb_backgroundColor="@color/red_bottomnav"/>
+
+    <item
         android:id="@+id/courseStudentFragment"
         android:icon="@drawable/ic_course"
         android:title="Course"

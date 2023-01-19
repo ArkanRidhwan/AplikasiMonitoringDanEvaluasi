@@ -74,7 +74,7 @@ class MainActivity : AppCompatActivity() {
                     R.id.homeCompanyFragment, R.id.requestFragment, R.id.profileCompanyFragment -> {
                         bottomNavCompanyAndroidCom.visibility = View.VISIBLE
                     }
-                    R.id.homeStudentFragment, R.id.courseStudentFragment, R.id.profileStudentFragment -> {
+                    R.id.homeStudentFragment, R.id.listContactChatFragment, R.id.courseStudentFragment, R.id.profileStudentFragment -> {
                         bottomNavStudentAndroidCom.visibility = View.VISIBLE
                     }
                     else -> {

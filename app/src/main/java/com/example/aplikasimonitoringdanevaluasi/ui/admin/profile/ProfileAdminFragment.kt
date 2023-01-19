@@ -8,11 +8,15 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
+import com.example.aplikasimonitoringdanevaluasi.R
 import com.example.aplikasimonitoringdanevaluasi.databinding.FragmentProfileAdminBinding
 import com.example.aplikasimonitoringdanevaluasi.ui.admin.home.HomeAdminFragmentDirections
 import com.example.aplikasimonitoringdanevaluasi.ui.main.MainActivity
 import com.example.aplikasimonitoringdanevaluasi.utils.Constant
 import com.example.aplikasimonitoringdanevaluasi.utils.getInstance
+import com.example.aplikasimonitoringdanevaluasi.utils.loadCircleImageFromUrl
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
@@ -41,6 +45,13 @@ class ProfileAdminFragment : Fragment() {
                 tvAdminName.text = it?.name
                 tvAdminEmail.text = it?.email
                 tvAdminPhoneNumber.text = it?.phoneNumber
+                Glide.with(this@ProfileAdminFragment)
+                    .load(ivAdminProfile.loadCircleImageFromUrl(it?.image.toString()))
+                    .apply(
+                        RequestOptions.placeholderOf(R.drawable.ic_image_loading)
+                            .error(R.drawable.ic_image_error)
+                    )
+                    .into(ivAdminProfile)
             }
             ivLogout.setOnClickListener {
                 logout()

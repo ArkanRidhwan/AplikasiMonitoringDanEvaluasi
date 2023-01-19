@@ -9,4 +9,9 @@ object Constant {
     const val COLL_STUDENT = "student"
     const val COLL_COMPANY= "company"
     const val COLL_CHAT= "chat"
+    const val COLL_VIDEO= "video"
+    const val COLL_MODULE= "module"
+    const val COLL_LOGBOOK= "logbook"
+
+    const val LOGBOOK_STUDENT_ID = "name"
 }

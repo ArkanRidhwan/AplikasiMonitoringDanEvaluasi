@@ -36,7 +36,6 @@ class ProfileStudentViewModel : ViewModel() {
             override fun onCancelled(error: DatabaseError) {
                 student = null
             }
-
         })
         return dataStudent
     }

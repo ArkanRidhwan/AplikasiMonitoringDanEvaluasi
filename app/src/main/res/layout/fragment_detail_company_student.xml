@@ -72,7 +72,7 @@
         android:fontFamily="@font/open_sans"
         android:text="Nama perusahaan"
         android:textColor="@color/gray_hintText"
-        android:textSize="13sp"
+        android:textSize="12sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/iv_profilePicture" />
 
@@ -84,7 +84,7 @@
         android:fontFamily="@font/open_sans"
         android:text="Nama"
         android:textColor="@color/black"
-        android:textSize="20sp"
+        android:textSize="18sp"
         app:layout_constraintStart_toStartOf="@+id/tv_companytNameTittle"
         app:layout_constraintTop_toBottomOf="@+id/tv_companytNameTittle" />
 
@@ -96,7 +96,7 @@
         android:fontFamily="@font/open_sans"
         android:text="Alamat perusahaan"
         android:textColor="@color/gray_hintText"
-        android:textSize="13sp"
+        android:textSize="12sp"
         app:layout_constraintStart_toStartOf="@+id/tv_companyName"
         app:layout_constraintTop_toBottomOf="@+id/tv_companyName" />
 
@@ -108,7 +108,7 @@
         android:fontFamily="@font/open_sans"
         android:text="Alamat"
         android:textColor="@color/black"
-        android:textSize="20sp"
+        android:textSize="18sp"
         app:layout_constraintStart_toStartOf="@+id/tv_companyAddresslTittle"
         app:layout_constraintTop_toBottomOf="@+id/tv_companyAddresslTittle" />
 
@@ -120,7 +120,7 @@
         android:fontFamily="@font/open_sans"
         android:text="Nama PIC"
         android:textColor="@color/gray_hintText"
-        android:textSize="13sp"
+        android:textSize="12sp"
         app:layout_constraintStart_toStartOf="@+id/tv_companyAddress"
         app:layout_constraintTop_toBottomOf="@+id/tv_companyAddress" />
 
@@ -132,7 +132,7 @@
         android:fontFamily="@font/open_sans"
         android:text="Nama PIC"
         android:textColor="@color/black"
-        android:textSize="20sp"
+        android:textSize="18sp"
         app:layout_constraintStart_toStartOf="@+id/tv_companyContactNameTittle"
         app:layout_constraintTop_toBottomOf="@+id/tv_companyContactNameTittle" />
 
@@ -144,7 +144,7 @@
         android:fontFamily="@font/open_sans"
         android:text="No telepon PIC"
         android:textColor="@color/gray_hintText"
-        android:textSize="13sp"
+        android:textSize="12sp"
         app:layout_constraintStart_toStartOf="@+id/tv_companyContactName"
         app:layout_constraintTop_toBottomOf="@+id/tv_companyContactName" />
 
@@ -156,7 +156,7 @@
         android:fontFamily="@font/open_sans"
         android:text="No Telepon PIC"
         android:textColor="@color/black"
-        android:textSize="20sp"
+        android:textSize="18sp"
         app:layout_constraintStart_toStartOf="@+id/tv_companyContactPhoneNumberTittle"
         app:layout_constraintTop_toBottomOf="@+id/tv_companyContactPhoneNumberTittle" />
 
@@ -168,7 +168,7 @@
         android:fontFamily="@font/open_sans"
         android:text="Email PIC"
         android:textColor="@color/gray_hintText"
-        android:textSize="13sp"
+        android:textSize="12sp"
         app:layout_constraintStart_toStartOf="@+id/tv_companyContactPhoneNumber"
         app:layout_constraintTop_toBottomOf="@+id/tv_companyContactPhoneNumber" />
 
@@ -180,12 +180,12 @@
         android:fontFamily="@font/open_sans"
         android:text="Email PIC"
         android:textColor="@color/black"
-        android:textSize="20sp"
+        android:textSize="18sp"
         app:layout_constraintStart_toStartOf="@+id/tv_companyContactEmailTittle"
         app:layout_constraintTop_toBottomOf="@+id/tv_companyContactEmailTittle" />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btn_login"
+        android:id="@+id/btn_applyCompany"
         android:layout_width="0dp"
         android:layout_height="50dp"
         android:layout_marginStart="22dp"

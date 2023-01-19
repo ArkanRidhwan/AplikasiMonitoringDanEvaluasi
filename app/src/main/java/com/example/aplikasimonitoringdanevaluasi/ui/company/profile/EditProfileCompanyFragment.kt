@@ -13,8 +13,9 @@ import androidx.activity.result.ActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.net.toFile
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import com.example.aplikasimonitoringdanevaluasi.databinding.FragmentEditProfileCompanyBinding
-import com.example.aplikasimonitoringdanevaluasi.ui.admin.profile.EditProfileAdminFragment
+import com.example.aplikasimonitoringdanevaluasi.model.Company
 import com.example.aplikasimonitoringdanevaluasi.utils.*
 import com.github.dhaval2404.imagepicker.ImagePicker
 import com.google.firebase.storage.ktx.component1
@@ -25,9 +26,11 @@ import java.io.File
 class EditProfileCompanyFragment : Fragment() {
 
     var encodedImage: String? = ""
+    var urlDownload: String? = ""
 
     private lateinit var binding: FragmentEditProfileCompanyBinding
     private lateinit var file: File
+    private val editProfileCompanyViewModel: EditProfileCompanyViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -92,6 +95,14 @@ class EditProfileCompanyFragment : Fragment() {
             }
 
             btnSaveProfile.setOnClickListener {
+                val email = etCompanyPICEmail.text.toString()
+                val password = etCompanyPassword.text.toString()
+                val companyName = etCompanyName.text.toString()
+                val companyAddress = etCompanyAddress.text.toString()
+                val contactName = etCompanyPICName.text.toString()
+                val contactPhoneNumber = etCompanyPICPhoneNumber.text.toString()
+                val userId = getInstance(requireContext()).getString(Constant.ID)
+
                 progressBar.visible()
                 tvProgress.visible()
                 ivProfile.uploadImage(file)
@@ -106,6 +117,26 @@ class EditProfileCompanyFragment : Fragment() {
                         requireContext().showToast("Upload Image Success!")
                         task.storage.downloadUrl.addOnSuccessListener { url ->
                             Log.d(TAG, "downloadUri: $url")
+                            urlDownload = url.toString()
+                            val admin = Company(
+                                id = userId,
+                                contactEmail = email,
+                                password = password,
+                                companyName = companyName,
+                                companyAddress = companyAddress,
+                                contactName = contactName,
+                                contactPhoneNumber = contactPhoneNumber,
+                                image = urlDownload.toString()
+                            )
+                            editProfileCompanyViewModel.updateCompany(admin, userId)
+                                .observe(viewLifecycleOwner) { data ->
+                                    if (data == true) {
+                                        requireActivity().onBackPressed()
+                                        requireContext().showToast("Update berhasil")
+                                    } else {
+                                        requireContext().showToast("Update gagal")
+                                    }
+                                }
                         }
                     }
                     .addOnProgressListener { (bytesTransferred, totalByteCount) ->
@@ -117,6 +148,6 @@ class EditProfileCompanyFragment : Fragment() {
     }
 
     companion object {
-        private const val TAG = "EditProfileAdminFragment"
+        private const val TAG = "EditProfileCompanyFragment"
     }
 }

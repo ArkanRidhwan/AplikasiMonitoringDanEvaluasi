@@ -13,7 +13,6 @@ import androidx.activity.result.ActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.net.toFile
-import com.example.aplikasimonitoringdanevaluasi.R
 import com.example.aplikasimonitoringdanevaluasi.databinding.ActivityStorageBinding
 import com.example.aplikasimonitoringdanevaluasi.utils.*
 import com.github.dhaval2404.imagepicker.ImagePicker

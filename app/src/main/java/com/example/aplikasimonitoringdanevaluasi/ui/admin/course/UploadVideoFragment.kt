@@ -1,5 +1,6 @@
 package com.example.aplikasimonitoringdanevaluasi.ui.admin.course
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.content.pm.ActivityInfo
 import android.net.Uri
@@ -18,11 +19,11 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.example.aplikasimonitoringdanevaluasi.R
 import com.example.aplikasimonitoringdanevaluasi.databinding.FragmentUploadVideoBinding
-import com.example.aplikasimonitoringdanevaluasi.databinding.LayoutCustomControllerBinding
-import com.example.aplikasimonitoringdanevaluasi.model.Admin
 import com.example.aplikasimonitoringdanevaluasi.model.Video
-import com.example.aplikasimonitoringdanevaluasi.ui.main.register.RegisterViewModel
-import com.example.aplikasimonitoringdanevaluasi.utils.*
+import com.example.aplikasimonitoringdanevaluasi.utils.getDateNow
+import com.example.aplikasimonitoringdanevaluasi.utils.gone
+import com.example.aplikasimonitoringdanevaluasi.utils.showToast
+import com.example.aplikasimonitoringdanevaluasi.utils.visible
 import com.google.android.exoplayer2.MediaItem
 import com.google.android.exoplayer2.Player
 import com.google.android.exoplayer2.SimpleExoPlayer
@@ -36,10 +37,10 @@ import java.util.*
 
 class UploadVideoFragment : Fragment() {
 
-    var videoUri: Uri? = null
-    var isFullScreen = false
-    var isLockScreen = false
-    var urlDownload: String? = ""
+    private var videoUri: Uri? = null
+    private var isFullScreen = false
+    private var isLockScreen = false
+    private var urlDownload: String? = ""
 
     private lateinit var binding: FragmentUploadVideoBinding
     private lateinit var file: File
@@ -53,52 +54,68 @@ class UploadVideoFragment : Fragment() {
         return binding.root
     }
 
+    @SuppressLint("SetTextI18n")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-
-        //Make FullScreen
-        val btn_fullscreen = view.findViewById<ImageView>(R.id.btn_fullscreen)
-        btn_fullscreen.setOnClickListener {
-            if (!isFullScreen) {
-                btn_fullscreen.setImageDrawable(
-                    ContextCompat.getDrawable(
-                        requireContext(),
-                        R.drawable.ic_fullscreen_exit
-                    )
-                )
-                requireActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE)
-                binding.ivBar.gone()
-                binding.tvBartittle.gone()
-                binding.ivBack.gone()
-                binding.constraintLayout2.gone()
-            } else {
-                btn_fullscreen.setImageDrawable(
-                    ContextCompat.getDrawable(
-                        requireContext(),
-                        R.drawable.ic_fullscreen_enter
-                    )
-                )
-                requireActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT)
-                binding.ivBar.visible()
-                binding.tvBartittle.visible()
-                binding.ivBack.visible()
-                binding.constraintLayout2.visible()
-            }
-            isFullScreen = !isFullScreen
-        }
-
-        //Make LockScreen
-        val btn_lockscreen = view.findViewById<ImageView>(R.id.exo_lock)
-        btn_lockscreen.setOnClickListener {
-            if(!isLockScreen){
-                btn_lockscreen.setImageDrawable(ContextCompat.getDrawable(requireActivity().applicationContext, R.drawable.ic_lock_close))
-            } else {
-                btn_lockscreen.setImageDrawable(ContextCompat.getDrawable(requireActivity().applicationContext, R.drawable.ic_lock_open))
-            }
-            isLockScreen = !isLockScreen
-            lockScreen(isLockScreen)
-        }
-
         binding.apply {
+
+            //Make FullScreen
+            val btnFullscreen = view.findViewById<ImageView>(R.id.btn_fullscreen)
+            btnFullscreen.setOnClickListener {
+                if (!isFullScreen) {
+                    btnFullscreen.setImageDrawable(
+                        ContextCompat.getDrawable(
+                            requireContext(),
+                            R.drawable.ic_fullscreen_exit
+                        )
+                    )
+                    requireActivity().requestedOrientation =
+                        ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE
+                    ivBar.gone()
+                    tvBartittle.gone()
+                    ivBack.gone()
+                    scrollViewLayout.gone()
+                    vidPreview.layoutParams.height = ViewGroup.LayoutParams.MATCH_PARENT
+                } else {
+                    btnFullscreen.setImageDrawable(
+                        ContextCompat.getDrawable(
+                            requireContext(),
+                            R.drawable.ic_fullscreen_enter
+                        )
+                    )
+                    requireActivity().requestedOrientation =
+                        ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
+                    ivBar.visible()
+                    tvBartittle.visible()
+                    ivBack.visible()
+                    scrollViewLayout.visible()
+                    scrollViewLayout.visible()
+                    vidPreview.layoutParams.height = 650
+                }
+                isFullScreen = !isFullScreen
+            }
+
+            //Make LockScreen
+            val btnLockscreen = view.findViewById<ImageView>(R.id.exo_lock)
+            btnLockscreen.setOnClickListener {
+                if (!isLockScreen) {
+                    btnLockscreen.setImageDrawable(
+                        ContextCompat.getDrawable(
+                            requireActivity().applicationContext,
+                            R.drawable.ic_lock_close
+                        )
+                    )
+                } else {
+                    btnLockscreen.setImageDrawable(
+                        ContextCompat.getDrawable(
+                            requireActivity().applicationContext,
+                            R.drawable.ic_lock_open
+                        )
+                    )
+                }
+                isLockScreen = !isLockScreen
+                lockScreen(isLockScreen)
+            }
+
             ivBack.setOnClickListener {
                 requireActivity().onBackPressed()
                 /*val action =
@@ -206,7 +223,7 @@ class UploadVideoFragment : Fragment() {
                             task.storage.downloadUrl.addOnSuccessListener { url ->
                                 Log.d(TAG, "downloadUri: $url")
                                 urlDownload = url.toString()
-                                var id = UUID.randomUUID().toString()
+                                val id = UUID.randomUUID().toString()
                                 val video = Video(
                                     id = id,
                                     tittle = tittle,
@@ -235,14 +252,14 @@ class UploadVideoFragment : Fragment() {
     }
 
     private fun lockScreen(lockScreen: Boolean) {
-        val sec_mid = view?.findViewById<LinearLayout>(R.id.sec_controlVid1)
-        val sec_bottom = view?.findViewById<LinearLayout>(R.id.sec_controlVid2)
-        if(lockScreen){
-            sec_mid?.gone()
-            sec_bottom?.gone()
+        val secMid = view?.findViewById<LinearLayout>(R.id.sec_controlVid1)
+        val secBottom = view?.findViewById<LinearLayout>(R.id.sec_controlVid2)
+        if (lockScreen) {
+            secMid?.gone()
+            secBottom?.gone()
         } else {
-            sec_mid?.visible()
-            sec_bottom?.visible()
+            secMid?.visible()
+            secBottom?.visible()
         }
     }
 

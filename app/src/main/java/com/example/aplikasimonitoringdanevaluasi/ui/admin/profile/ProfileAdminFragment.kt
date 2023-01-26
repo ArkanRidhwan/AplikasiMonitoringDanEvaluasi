@@ -12,7 +12,7 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.example.aplikasimonitoringdanevaluasi.R
 import com.example.aplikasimonitoringdanevaluasi.databinding.FragmentProfileAdminBinding
-import com.example.aplikasimonitoringdanevaluasi.ui.admin.home.HomeAdminFragmentDirections
+import com.example.aplikasimonitoringdanevaluasi.model.Admin
 import com.example.aplikasimonitoringdanevaluasi.ui.main.MainActivity
 import com.example.aplikasimonitoringdanevaluasi.utils.Constant
 import com.example.aplikasimonitoringdanevaluasi.utils.getInstance
@@ -56,10 +56,9 @@ class ProfileAdminFragment : Fragment() {
             ivLogout.setOnClickListener {
                 logout()
             }
+
             btnEditProfile.setOnClickListener {
-                /*val action =
-                    HomeAdminFragmentDirections.actionHomeAdminFragmentToWatchVideoFragment()
-                findNavController().navigate(action)*/
+                //val admin = Admin()
                 val action =
                     ProfileAdminFragmentDirections.actionProfileAdminFragmentToEditProfileAdminFragment()
                 findNavController().navigate(action)

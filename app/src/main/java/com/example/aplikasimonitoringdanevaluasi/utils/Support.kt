@@ -53,7 +53,7 @@ fun ImageView.loadCircleImageFromUri(uri: Uri?) {
 
 @SuppressLint("SimpleDateFormat")
 fun getDateNow(): String {
-    val sdf = SimpleDateFormat("dd/mm/yyyy")
+    val sdf = SimpleDateFormat("EEE, d MMM yyyy")
     val currentDate = sdf.format(Date())
     return currentDate
 }
@@ -71,9 +71,9 @@ fun Bitmap.encodeImage(): String {
     return Base64.encodeToString(b, Base64.DEFAULT)
 }
 
-fun ImageView.uploadImage(file: File): UploadTask {
+fun ImageView.uploadImage(file: File?): UploadTask {
     val storageRef = Firebase.storage.reference
-    val imagesRef = storageRef.child("images/${file.name}")
+    val imagesRef = storageRef.child("images/${file?.name}")
 
     val bitmapImage = (drawable as BitmapDrawable).bitmap
     val baos = ByteArrayOutputStream()

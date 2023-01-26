@@ -10,9 +10,7 @@ import androidx.navigation.fragment.findNavController
 import com.example.aplikasimonitoringdanevaluasi.R
 import com.example.aplikasimonitoringdanevaluasi.databinding.FragmentListModuleBinding
 import com.example.aplikasimonitoringdanevaluasi.ui.admin.course.CourseAdminFragmentDirections
-import com.example.aplikasimonitoringdanevaluasi.ui.admin.home.HomeAdminFragmentDirections
-import com.example.aplikasimonitoringdanevaluasi.ui.main.video.ListVideoAdapter
-import com.example.aplikasimonitoringdanevaluasi.ui.main.video.ListVideoViewModel
+import com.example.aplikasimonitoringdanevaluasi.ui.student.course.CourseStudentFragmentDirections
 import com.example.aplikasimonitoringdanevaluasi.utils.Constant
 import com.example.aplikasimonitoringdanevaluasi.utils.getInstance
 import com.example.aplikasimonitoringdanevaluasi.utils.gone
@@ -48,7 +46,7 @@ class ListModuleFragment : Fragment() {
             }
 
             listModuleAdapter = ListModuleAdapter()
-            recyclerView2.adapter = listModuleAdapter
+            recyclerView.adapter = listModuleAdapter
             listModuleViewModel.getAllModule().observe(viewLifecycleOwner) {
                 if (it?.isNotEmpty() == true) {
                     listModuleAdapter.setListData(it)
@@ -57,9 +55,22 @@ class ListModuleFragment : Fragment() {
                 }
             }
             listModuleAdapter.onItemClick = {
-                val action =
-                    CourseAdminFragmentDirections.actionCourseAdminFragmentToDownloadModuleFragment(it)
-                findNavController().navigate(action)
+                when (role) {
+                    getString(R.string.admin) -> {
+                        val action =
+                            CourseAdminFragmentDirections.actionCourseAdminFragmentToDownloadModuleFragment(
+                                it
+                            )
+                        findNavController().navigate(action)
+                    }
+                    getString(R.string.student) -> {
+                        val action =
+                            CourseStudentFragmentDirections.actionCourseStudentFragmentToDownloadModuleFragment(
+                                it
+                            )
+                        findNavController().navigate(action)
+                    }
+                }
             }
         }
     }

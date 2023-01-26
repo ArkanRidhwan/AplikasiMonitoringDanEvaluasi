@@ -56,7 +56,7 @@
         <entry key="..\:/Arkan/Github/AplikasiMonitoringDanEvaluasi/app/src/main/res/layout/fragment_list_chat_student.xml" value="0.2" />
         <entry key="..\:/Arkan/Github/AplikasiMonitoringDanEvaluasi/app/src/main/res/layout/fragment_list_company.xml" value="0.2" />
         <entry key="..\:/Arkan/Github/AplikasiMonitoringDanEvaluasi/app/src/main/res/layout/fragment_list_contact_chat.xml" value="0.2" />
-        <entry key="..\:/Arkan/Github/AplikasiMonitoringDanEvaluasi/app/src/main/res/layout/fragment_list_logbook.xml" value="0.2" />
+        <entry key="..\:/Arkan/Github/AplikasiMonitoringDanEvaluasi/app/src/main/res/layout/fragment_list_logbook.xml" value="0.25" />
         <entry key="..\:/Arkan/Github/AplikasiMonitoringDanEvaluasi/app/src/main/res/layout/fragment_list_logbook_admin.xml" value="0.2" />
         <entry key="..\:/Arkan/Github/AplikasiMonitoringDanEvaluasi/app/src/main/res/layout/fragment_list_module.xml" value="0.2" />
         <entry key="..\:/Arkan/Github/AplikasiMonitoringDanEvaluasi/app/src/main/res/layout/fragment_list_module_admin.xml" value="0.264" />
@@ -90,14 +90,14 @@
         <entry key="..\:/Arkan/Github/AplikasiMonitoringDanEvaluasi/app/src/main/res/layout/layout_list_chat.xml" value="0.264" />
         <entry key="..\:/Arkan/Github/AplikasiMonitoringDanEvaluasi/app/src/main/res/layout/layout_list_chat_student.xml" value="0.264" />
         <entry key="..\:/Arkan/Github/AplikasiMonitoringDanEvaluasi/app/src/main/res/layout/layout_list_company.xml" value="0.264" />
-        <entry key="..\:/Arkan/Github/AplikasiMonitoringDanEvaluasi/app/src/main/res/layout/layout_list_contact_chat.xml" value="0.264" />
-        <entry key="..\:/Arkan/Github/AplikasiMonitoringDanEvaluasi/app/src/main/res/layout/layout_list_logbook.xml" value="0.536" />
+        <entry key="..\:/Arkan/Github/AplikasiMonitoringDanEvaluasi/app/src/main/res/layout/layout_list_contact_chat.xml" value="0.4" />
+        <entry key="..\:/Arkan/Github/AplikasiMonitoringDanEvaluasi/app/src/main/res/layout/layout_list_logbook.xml" value="0.2" />
         <entry key="..\:/Arkan/Github/AplikasiMonitoringDanEvaluasi/app/src/main/res/layout/layout_list_logbook_request.xml" value="0.2" />
         <entry key="..\:/Arkan/Github/AplikasiMonitoringDanEvaluasi/app/src/main/res/layout/layout_list_module.xml" value="0.2" />
         <entry key="..\:/Arkan/Github/AplikasiMonitoringDanEvaluasi/app/src/main/res/layout/layout_list_report.xml" value="0.2" />
         <entry key="..\:/Arkan/Github/AplikasiMonitoringDanEvaluasi/app/src/main/res/layout/layout_list_student.xml" value="0.25" />
         <entry key="..\:/Arkan/Github/AplikasiMonitoringDanEvaluasi/app/src/main/res/layout/layout_list_student_admin.xml" value="0.24895833333333334" />
-        <entry key="..\:/Arkan/Github/AplikasiMonitoringDanEvaluasi/app/src/main/res/layout/layout_list_student_company.xml" value="0.25" />
+        <entry key="..\:/Arkan/Github/AplikasiMonitoringDanEvaluasi/app/src/main/res/layout/layout_list_student_company.xml" value="0.6" />
         <entry key="..\:/Arkan/Github/AplikasiMonitoringDanEvaluasi/app/src/main/res/layout/layout_list_student_request.xml" value="0.264" />
         <entry key="..\:/Arkan/Github/AplikasiMonitoringDanEvaluasi/app/src/main/res/layout/layout_list_video.xml" value="0.2" />
         <entry key="..\:/Arkan/Github/AplikasiMonitoringDanEvaluasi/app/src/main/res/menu/btm_nav_admin.xml" value="0.25" />
@@ -107,7 +107,7 @@
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_15_PREVIEW" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">

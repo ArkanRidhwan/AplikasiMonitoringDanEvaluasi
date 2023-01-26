@@ -395,4 +395,38 @@
             android:id="@+id/action_listLogbookFragment_to_detailLogbookFragment"
             app:destination="@id/detailLogbookFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/listVideoFragment"
+        android:name="com.example.aplikasimonitoringdanevaluasi.ui.main.video.ListVideoFragment"
+        android:label="fragment_list_video"
+        tools:layout="@layout/fragment_list_video" />
+    <fragment
+        android:id="@+id/listModuleFragment"
+        android:name="com.example.aplikasimonitoringdanevaluasi.ui.main.module.ListModuleFragment"
+        android:label="fragment_list_module"
+        tools:layout="@layout/fragment_list_module" />
+    <fragment
+        android:id="@+id/studentLogbookRequestFragment"
+        android:name="com.example.aplikasimonitoringdanevaluasi.ui.company.request.StudentLogbookRequestFragment"
+        android:label="StudentLogbookRequestFragment" />
+    <fragment
+        android:id="@+id/addReportStudentFragment"
+        android:name="com.example.aplikasimonitoringdanevaluasi.ui.company.home.AddReportStudentFragment"
+        android:label="fragment_add_report_student"
+        tools:layout="@layout/fragment_add_report_student" />
+    <fragment
+        android:id="@+id/listReportAdminFragment"
+        android:name="com.example.aplikasimonitoringdanevaluasi.ui.admin.home.ListReportAdminFragment"
+        android:label="fragment_list_report_admin"
+        tools:layout="@layout/fragment_list_report_admin" />
+    <fragment
+        android:id="@+id/detailReportFragment"
+        android:name="com.example.aplikasimonitoringdanevaluasi.ui.admin.home.DetailReportFragment"
+        android:label="fragment_detail_report"
+        tools:layout="@layout/fragment_detail_report" />
+    <fragment
+        android:id="@+id/studentRequestFragment"
+        android:name="com.example.aplikasimonitoringdanevaluasi.ui.company.request.StudentRequestFragment"
+        android:label="fragment_student_logbook_request"
+        tools:layout="@layout/fragment_student_logbook_request" />
 </navigation>

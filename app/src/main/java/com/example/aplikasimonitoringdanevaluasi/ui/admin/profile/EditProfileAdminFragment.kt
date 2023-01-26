@@ -29,7 +29,7 @@ class EditProfileAdminFragment : Fragment() {
     var urlDownload: String? = ""
 
     private lateinit var binding: FragmentEditProfileAdminBinding
-    private lateinit var file: File
+    private var file: File? = null
     private val editProfileAdminViewModel: EditProfileAdminViewModel by viewModels()
 
     override fun onCreateView(
@@ -43,8 +43,16 @@ class EditProfileAdminFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.apply {
+            val userId = getInstance(requireContext()).getString(Constant.ID)
             ivBack.setOnClickListener {
                 requireActivity().onBackPressed()
+            }
+
+            editProfileAdminViewModel.getAdminById(userId).observe(viewLifecycleOwner) {
+                etAdminEmail.hint = it?.email
+                etAdminName.hint = it?.name
+                etAdminPassword.hint = it?.password
+                etAdminPhoneNumber.hint = it?.phoneNumber
             }
 
             val startForImageResult =
@@ -54,7 +62,7 @@ class EditProfileAdminFragment : Fragment() {
                     when (resultCode) {
                         Activity.RESULT_OK -> {
                             val imageUri = data?.data
-                            file = imageUri?.toFile() as File
+                            val file = imageUri?.toFile() as File
                             val bitmap = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
                                 ImageDecoder.decodeBitmap(ImageDecoder.createSource(file))
                             } else {
@@ -94,63 +102,65 @@ class EditProfileAdminFragment : Fragment() {
             }
 
             btnSaveProfile.setOnClickListener {
+
                 val email = etAdminEmail.text.toString()
                 val password = etAdminPassword.text.toString()
                 val name = etAdminName.text.toString()
                 val phoneNumber = etAdminPhoneNumber.text.toString()
-                val userId = getInstance(requireContext()).getString(Constant.ID)
 
-               /* if (email.isEmpty()) {
-                    etAdminEmail.error("Email Tidak boleh kosong")
-                    etAdminEmail.requestFocus()
-                } else if (password.isEmpty()) {
-                    etAdminPassword.error("Password tidak boleh kosong")
-                    etAdminPassword.requestFocus()
-                } else if (name.isEmpty()) {
-                    etAdminName.error("Nama tidak boleh kosong")
-                    etAdminName.requestFocus()
-                } else if (phoneNumber.isEmpty()) {
-                    etAdminPhoneNumber.error("Nomor telepon tidak boleh kosong")
-                    etAdminPhoneNumber.requestFocus()
-                } else {*/
-                    progressBar.visible()
-                    tvProgress.visible()
-                    ivProfile.uploadImage(file)
-                        .addOnFailureListener {
-                            progressBar.gone()
-                            tvProgress.gone()
-                            requireContext().showToast("Upload Image Failed!")
-                        }
-                        .addOnSuccessListener { task ->
-                            progressBar.gone()
-                            tvProgress.gone()
-                            requireContext().showToast("Upload Image Success!")
-                            task.storage.downloadUrl.addOnSuccessListener { url ->
-                                Log.d(TAG, "downloadUri: $url")
-                                urlDownload = url.toString()
-                                val admin = Admin(
-                                    id = userId,
-                                    email = email,
-                                    password = password,
-                                    name = name,
-                                    phoneNumber = phoneNumber,
-                                    image = urlDownload.toString()
-                                )
-                                editProfileAdminViewModel.updateAdmin(admin, userId)
-                                    .observe(viewLifecycleOwner) { data ->
-                                        if (data == true) {
-                                            requireActivity().onBackPressed()
-                                            requireContext().showToast("Update berhasil")
-                                        } else {
-                                            requireContext().showToast("Update gagal")
+                progressBar.visible()
+                tvProgress.visible()
+                ivProfile.uploadImage(file)
+                    .addOnFailureListener {
+                        progressBar.gone()
+                        tvProgress.gone()
+                    }
+                    .addOnSuccessListener { task ->
+                        progressBar.gone()
+                        tvProgress.gone()
+                        task.storage.downloadUrl.addOnSuccessListener { url ->
+                            Log.d(TAG, "downloadUri: $url")
+                            urlDownload = url.toString()
+                            editProfileAdminViewModel.getAdminById(userId)
+                                .observe(viewLifecycleOwner) {
+                                    val admin = Admin(
+                                        id = userId,
+                                        email = it?.email ?: "Error",
+                                        password = password,
+                                        name = name,
+                                        phoneNumber = phoneNumber,
+                                        image = urlDownload.toString()
+                                    )
+                                    /*if (email.isEmpty()) {
+
+                                    } else if (password.isEmpty()) {
+
+                                    } else if (name.isEmpty()) {
+
+                                    } else if (phoneNumber.isEmpty()) {
+
+                                    } else if (ivProfile.isEmpty()) {
+
+                                    } else {
+
+                                    }*/
+                                    editProfileAdminViewModel.updateAdminById(admin, userId)
+                                        .observe(viewLifecycleOwner) { data ->
+                                            if (data == true) {
+                                                requireActivity().onBackPressed()
+                                                requireContext().showToast("Update berhasil")
+                                            } else {
+                                                requireContext().showToast("Update gagal")
+                                            }
                                         }
-                                    }
-                            }
+                                }
                         }
-                        .addOnProgressListener { (bytesTransferred, totalByteCount) ->
-                            val progress = (100.0 * bytesTransferred) / totalByteCount
-                            tvProgress.text = "${progress.toInt()} %"
-                        }
+
+                    }
+                    .addOnProgressListener { (bytesTransferred, totalByteCount) ->
+                        val progress = (100.0 * bytesTransferred) / totalByteCount
+                        tvProgress.text = "${progress.toInt()} %"
+                    }
                 //}
             }
         }

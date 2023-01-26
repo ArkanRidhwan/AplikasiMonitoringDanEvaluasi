@@ -1,12 +1,18 @@
 package com.example.aplikasimonitoringdanevaluasi.ui.main.video
 
+import android.content.pm.ActivityInfo
 import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
+import android.widget.LinearLayout
+import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.navArgs
+import com.example.aplikasimonitoringdanevaluasi.R
 import com.example.aplikasimonitoringdanevaluasi.databinding.FragmentWatchVideoBinding
 import com.example.aplikasimonitoringdanevaluasi.utils.gone
 import com.example.aplikasimonitoringdanevaluasi.utils.visible
@@ -20,6 +26,8 @@ class WatchVideoFragment : Fragment() {
 
     private lateinit var binding: FragmentWatchVideoBinding
     private val args: WatchVideoFragmentArgs by navArgs()
+    var isFullScreen = false
+    var isLockScreen = false
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -53,11 +61,83 @@ class WatchVideoFragment : Fragment() {
                     }
                 }
             })
-            //val videoSource = Uri.parse(videoUri.toString())
             val mediaItem = MediaItem.fromUri(args.video.link)
             simpleExoPlayer.setMediaItem(mediaItem)
             simpleExoPlayer.prepare()
             simpleExoPlayer.play()
+
+            //Make FullScreen
+            val btn_fullscreen = view.findViewById<ImageView>(R.id.btn_fullscreen)
+            btn_fullscreen.setOnClickListener {
+                if (!isFullScreen) {
+                    btn_fullscreen.setImageDrawable(
+                        ContextCompat.getDrawable(
+                            requireContext(),
+                            R.drawable.ic_fullscreen_exit
+                        )
+                    )
+                    requireActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE)
+                    ivBar.gone()
+                    tvBartittle.gone()
+                    ivBack.gone()
+                    scrollViewLayout.gone()
+                    videoView.layoutParams.height = ViewGroup.LayoutParams.MATCH_PARENT
+                } else {
+                    btn_fullscreen.setImageDrawable(
+                        ContextCompat.getDrawable(
+                            requireContext(),
+                            R.drawable.ic_fullscreen_enter
+                        )
+                    )
+                    requireActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT)
+                    ivBar.visible()
+                    tvBartittle.visible()
+                    ivBack.visible()
+                    scrollViewLayout.visible()
+                    videoView.layoutParams.height = 650
+                }
+                isFullScreen = !isFullScreen
+            }
+
+            //Make LockScreen
+            val btn_lockscreen = view.findViewById<ImageView>(R.id.exo_lock)
+            btn_lockscreen.setOnClickListener {
+                if (!isLockScreen) {
+                    btn_lockscreen.setImageDrawable(
+                        ContextCompat.getDrawable(
+                            requireActivity().applicationContext,
+                            R.drawable.ic_lock_close
+                        )
+                    )
+                } else {
+                    btn_lockscreen.setImageDrawable(
+                        ContextCompat.getDrawable(
+                            requireActivity().applicationContext,
+                            R.drawable.ic_lock_open
+                        )
+                    )
+                }
+                isLockScreen = !isLockScreen
+                lockScreen(isLockScreen)
+            }
         }
+    }
+
+    private fun lockScreen(lockScreen: Boolean) {
+        val sec_mid = view?.findViewById<LinearLayout>(R.id.sec_controlVid1)
+        val sec_bottom = view?.findViewById<LinearLayout>(R.id.sec_controlVid2)
+        if (lockScreen) {
+            sec_mid?.gone()
+            sec_bottom?.gone()
+        } else {
+            sec_mid?.visible()
+            sec_bottom?.visible()
+        }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        binding.videoView.player?.stop()
+        requireActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT)
     }
 }

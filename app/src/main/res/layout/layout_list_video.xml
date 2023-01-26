@@ -20,7 +20,7 @@
             android:fontFamily="@font/open_sans"
             android:text="Tittle"
             android:textColor="@color/black"
-            android:textSize="22sp"
+            android:textSize="16sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

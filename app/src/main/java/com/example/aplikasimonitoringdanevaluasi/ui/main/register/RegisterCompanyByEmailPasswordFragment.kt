@@ -62,7 +62,7 @@ class RegisterCompanyByEmailPasswordFragment : Fragment() {
                     progressBarCompanyRegister.playAnimation()
                     val company = Company(
                         id = UUID.randomUUID().toString(),
-                        contactEmail = email,
+                        email = email,
                         password = password,
                         companyName = companyName,
                         companyAddress = companyAddress,

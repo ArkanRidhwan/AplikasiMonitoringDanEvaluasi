@@ -14,6 +14,7 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.net.toFile
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import com.example.aplikasimonitoringdanevaluasi.R
 import com.example.aplikasimonitoringdanevaluasi.databinding.FragmentEditProfileStudentBinding
 import com.example.aplikasimonitoringdanevaluasi.model.Student
 import com.example.aplikasimonitoringdanevaluasi.utils.*
@@ -41,8 +42,27 @@ class EditProfileStudentFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         binding.apply {
+            val userId = getInstance(requireContext()).getString(Constant.ID)
             ivBack.setOnClickListener {
                 requireActivity().onBackPressed()
+            }
+
+            editProfileStudentViewModel.getStudentById(userId).observe(viewLifecycleOwner) {
+                etStudentName.hint = it?.name
+                etEmailStudent.hint = it?.email
+                etStudentPassword.hint = it?.password
+                etStudentCompanyName.hint = it?.companyName
+                etStudentJob.hint = it?.job
+                etStudentPhoneNumber.hint = it?.phoneNumber
+                etStudentClassName.hint = it?.className
+                etStudentMajor.hint = it?.studentMajor
+                if(it?.image?.isEmpty() == true){
+                    ivProfile.setImageResource(R.drawable.img_no_image)
+                } else {
+                    if (it != null) {
+                        ivProfile.loadCircleImageFromUrl(it.image)
+                    }
+                }
             }
 
             val startForImageResult =
@@ -130,7 +150,7 @@ class EditProfileStudentFragment : Fragment() {
                                 studentMajor = studentMajor,
                                 image = urlDownload.toString()
                             )
-                            editProfileStudentViewModel.updateStudent(admin, userId)
+                            editProfileStudentViewModel.updateStudentById(admin, userId)
                                 .observe(viewLifecycleOwner) { data ->
                                     if (data == true) {
                                         requireActivity().onBackPressed()

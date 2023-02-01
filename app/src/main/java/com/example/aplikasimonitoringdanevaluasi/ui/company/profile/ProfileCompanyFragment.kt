@@ -43,15 +43,15 @@ class ProfileCompanyFragment : Fragment() {
                 tvCompanyName.text = it?.companyName
                 tvCompanyAddress.text = it?.companyAddress
                 tvContactName.text = it?.contactName
-                tvContactEmail.text = it?.contactEmail
+                tvContactEmail.text = it?.email
                 tvContactPhoneNumber.text = it?.contactPhoneNumber
-                Glide.with(this@ProfileCompanyFragment)
-                    .load(ivCompanyProfile.loadCircleImageFromUrl(it?.image.toString()))
-                    .apply(
-                        RequestOptions.placeholderOf(R.drawable.ic_image_loading)
-                            .error(R.drawable.ic_image_error)
-                    )
-                    .into(ivCompanyProfile)
+                if(it?.image?.isEmpty() == true){
+                    ivCompanyProfile.setImageResource(R.drawable.img_no_image)
+                } else {
+                    if (it != null) {
+                        ivCompanyProfile.loadCircleImageFromUrl(it.image)
+                    }
+                }
             }
             ivLogout.setOnClickListener {
                 auth = Firebase.auth

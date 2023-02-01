@@ -3,28 +3,40 @@ package com.example.aplikasimonitoringdanevaluasi.ui.company.request
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.RecyclerView
+import com.example.aplikasimonitoringdanevaluasi.R
 import com.example.aplikasimonitoringdanevaluasi.databinding.LayoutListStudentRequestBinding
-import com.example.aplikasimonitoringdanevaluasi.model.Admin
+import com.example.aplikasimonitoringdanevaluasi.model.RequestStudent
+import com.example.aplikasimonitoringdanevaluasi.utils.loadCircleImageFromUrl
 
 class StudentRequestAdapter : RecyclerView.Adapter<StudentRequestAdapter.ViewHolder>() {
 
-    private val data = ArrayList<Admin>()
+    private val data = ArrayList<RequestStudent>()
+    var onItemClick: ((RequestStudent) -> Unit)? = null
 
     @SuppressLint("NotifyDataSetChanged")
-    fun setListData(listData: List<Admin>?) {
+    fun setListData(listData: List<RequestStudent>?) {
         if (listData == null) return
         data.clear()
         data.addAll(listData)
         notifyDataSetChanged()
     }
 
-    class ViewHolder(private val binding: LayoutListStudentRequestBinding) :
+    inner class ViewHolder(private val binding: LayoutListStudentRequestBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(data: Admin) {
+        fun bind(data: RequestStudent) {
             binding.apply {
-                tvStudentName.text = data.name
-                tvStudentEmail.text = data.email
+                tvStudentName.text = data.studentName
+                tvStudentEmail.text = data.studentEmail
+                if (data.image.isEmpty()) {
+                    ivProfileStudent.setImageResource(R.drawable.img_no_image)
+                } else {
+                    ivProfileStudent.loadCircleImageFromUrl(data.image)
+                }
+                itemView.setOnClickListener {
+                    onItemClick?.invoke(data)
+                }
             }
         }
     }

@@ -15,8 +15,6 @@ data class Student(
     val phoneNumber: String = "",
     val studentMajor: String = "",
     val image: String = "",
-    val companyApproval: String = "",
-    val ApprovalStatus: Boolean = false
 ) : Parcelable {
     companion object {
         fun saveRegistrationStudent(
@@ -42,18 +40,6 @@ data class Student(
                 phoneNumber,
                 studentMajor,
                 image
-            )
-        }
-
-        fun getCompanyApproval(
-            id: String,
-            companyApproval: String,
-            ApprovalStatus: String
-        ): Student {
-            return Student(
-                id,
-                companyApproval,
-                ApprovalStatus
             )
         }
     }

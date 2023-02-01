@@ -7,6 +7,7 @@ import kotlinx.android.parcel.Parcelize
 data class Logbook(
     val id: String = "",
     val logbookUserId: String = "",
+    val companyId: String = "",
     val name: String = "",
     val content: String = "",
     val date: String = "",
@@ -16,12 +17,13 @@ data class Logbook(
         fun saveLogbook(
             id: String,
             logbookUserId: String,
+            companyId: String,
             name: String,
             content: String,
             date: String,
             status: Boolean
         ): Logbook {
-            return Logbook(id, logbookUserId, name, content, date, status)
+            return Logbook(id, logbookUserId, companyId, name, content, date, status)
         }
     }
 }

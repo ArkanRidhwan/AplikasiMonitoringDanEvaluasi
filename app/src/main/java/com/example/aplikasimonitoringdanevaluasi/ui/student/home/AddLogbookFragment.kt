@@ -42,7 +42,8 @@ class AddLogbookFragment : Fragment() {
                     logbookUserId = logbookUserId,
                     name = name,
                     content = content,
-                    date = getDateNow()
+                    date = getDateNow(),
+                    status = false
                 )
                 uploadLogbookViewModel.saveLogbook(logbook)
                     .observe(viewLifecycleOwner) { data ->

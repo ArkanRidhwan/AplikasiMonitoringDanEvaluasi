@@ -35,7 +35,7 @@
             android:textColor="@color/black"
             android:textSize="16sp"
             android:textStyle="bold"
-            app:layout_constraintEnd_toStartOf="@+id/imageView2"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/iv_profileLogbook"
             app:layout_constraintTop_toTopOf="@+id/iv_profileLogbook" />
 
@@ -51,7 +51,7 @@
             app:layout_constraintBottom_toBottomOf="@+id/iv_profileLogbook"
             app:layout_constraintStart_toStartOf="@+id/tv_studentName" />
 
-        <ImageView
+        <!--<ImageView
             android:id="@+id/imageView2"
             android:layout_width="45dp"
             android:layout_height="45dp"
@@ -69,6 +69,6 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_reject" />
+            app:srcCompat="@drawable/ic_reject" />-->
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>

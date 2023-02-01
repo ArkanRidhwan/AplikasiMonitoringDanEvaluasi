@@ -14,6 +14,9 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.net.toFile
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
+import com.example.aplikasimonitoringdanevaluasi.R
 import com.example.aplikasimonitoringdanevaluasi.databinding.FragmentEditProfileAdminBinding
 import com.example.aplikasimonitoringdanevaluasi.model.Admin
 import com.example.aplikasimonitoringdanevaluasi.utils.*
@@ -49,11 +52,19 @@ class EditProfileAdminFragment : Fragment() {
             }
 
             editProfileAdminViewModel.getAdminById(userId).observe(viewLifecycleOwner) {
-                etAdminEmail.hint = it?.email
-                etAdminName.hint = it?.name
-                etAdminPassword.hint = it?.password
-                etAdminPhoneNumber.hint = it?.phoneNumber
+                etAdminEmail.setText(it?.email)
+                etAdminName.setText(it?.name)
+                etAdminPassword.setText(it?.password)
+                etAdminPhoneNumber.setText(it?.phoneNumber)
+                if(it?.image?.isEmpty() == true){
+                    ivProfile.setImageResource(R.drawable.img_no_image)
+                } else {
+                    if (it != null) {
+                        ivProfile.loadCircleImageFromUrl(it.image)
+                    }
+                }
             }
+
 
             val startForImageResult =
                 registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result: ActivityResult ->
@@ -125,7 +136,8 @@ class EditProfileAdminFragment : Fragment() {
                                 .observe(viewLifecycleOwner) {
                                     val admin = Admin(
                                         id = userId,
-                                        email = it?.email ?: "Error",
+                                        //email = it?.email ?: "Error",
+                                        email = email,
                                         password = password,
                                         name = name,
                                         phoneNumber = phoneNumber,

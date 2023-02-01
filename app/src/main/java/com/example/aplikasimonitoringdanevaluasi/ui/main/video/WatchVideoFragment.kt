@@ -14,17 +14,26 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.navArgs
 import com.example.aplikasimonitoringdanevaluasi.R
 import com.example.aplikasimonitoringdanevaluasi.databinding.FragmentWatchVideoBinding
+import com.example.aplikasimonitoringdanevaluasi.utils.Constant
 import com.example.aplikasimonitoringdanevaluasi.utils.gone
+import com.example.aplikasimonitoringdanevaluasi.utils.showToast
 import com.example.aplikasimonitoringdanevaluasi.utils.visible
 import com.google.android.exoplayer2.ExoPlayer
 import com.google.android.exoplayer2.MediaItem
 import com.google.android.exoplayer2.Player
 import com.google.android.exoplayer2.SimpleExoPlayer
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.ValueEventListener
+import com.google.firebase.database.ktx.database
+import com.google.firebase.ktx.Firebase
 
 
 class WatchVideoFragment : Fragment() {
 
     private lateinit var binding: FragmentWatchVideoBinding
+    private val database = Firebase.database
+    private val collVideo = database.getReference(Constant.COLL_VIDEO)
     private val args: WatchVideoFragmentArgs by navArgs()
     var isFullScreen = false
     var isLockScreen = false
@@ -119,6 +128,23 @@ class WatchVideoFragment : Fragment() {
                 }
                 isLockScreen = !isLockScreen
                 lockScreen(isLockScreen)
+            }
+
+            btnDelete.setOnClickListener {
+                //Loading nanti
+                collVideo.child(args.video.id).addListenerForSingleValueEvent(object : ValueEventListener {
+                    override fun onDataChange(snapshot: DataSnapshot) {
+                        for (i in snapshot.children) {
+                            i.ref.removeValue()
+                        }
+                        requireActivity().showToast("Berhasil")
+                        requireActivity().onBackPressed()
+                    }
+
+                    override fun onCancelled(error: DatabaseError) {
+                        requireActivity().showToast("Gagal")
+                    }
+                })
             }
         }
     }

@@ -6,7 +6,7 @@ import kotlinx.android.parcel.Parcelize
 @Parcelize
 data class Company(
     val id: String = "",
-    val contactEmail: String = "",
+    val email: String = "",
     val password: String = "",
     val companyName: String = "",
     val companyAddress: String = "",

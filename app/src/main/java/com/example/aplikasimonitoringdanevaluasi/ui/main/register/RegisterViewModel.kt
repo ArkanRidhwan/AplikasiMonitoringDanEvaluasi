@@ -44,7 +44,7 @@ class RegisterViewModel : ViewModel() {
         val status = MutableLiveData<Boolean>()
         val company = Company.saveRegistrationCompany(
             id = data.id,
-            contactEmail = data.contactEmail,
+            contactEmail = data.email,
             password = data.password,
             companyName = data.companyName,
             companyAddress = data.companyAddress,
@@ -167,7 +167,7 @@ class RegisterViewModel : ViewModel() {
                 if (snapshot.exists()) {
                     for (i in snapshot.children) {
                         val valueCompany = i.getValue(Company::class.java)
-                        company = if (valueCompany?.contactEmail == email) {
+                        company = if (valueCompany?.email == email) {
                             valueCompany
                         } else {
                             null

@@ -1,39 +1,39 @@
-package com.example.aplikasimonitoringdanevaluasi.ui.company.request
+package com.example.aplikasimonitoringdanevaluasi.ui.company.home
 
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.aplikasimonitoringdanevaluasi.databinding.LayoutListLogbookRequestBinding
-import com.example.aplikasimonitoringdanevaluasi.model.Logbook
+import com.example.aplikasimonitoringdanevaluasi.databinding.LayoutListStudentCompanyBinding
+import com.example.aplikasimonitoringdanevaluasi.databinding.LayoutListStudentRequestBinding
+import com.example.aplikasimonitoringdanevaluasi.model.RequestStudent
 
-class StudentLogbookRequestAdapter :
-    RecyclerView.Adapter<StudentLogbookRequestAdapter.ViewHolder>() {
+class HomeCompanyAdapter : RecyclerView.Adapter<HomeCompanyAdapter.ViewHolder>() {
 
-    private val data = ArrayList<Logbook>()
-    var onItemClick: ((Logbook) -> Unit)? = null
+    private val data = ArrayList<RequestStudent>()
+    var onItemClick: ((RequestStudent) -> Unit)? = null
 
     @SuppressLint("NotifyDataSetChanged")
-    fun setListData(listData: List<Logbook>?) {
+    fun setListData(listData: List<RequestStudent>?) {
         if (listData == null) return
         data.clear()
         data.addAll(listData)
         notifyDataSetChanged()
     }
 
-    class ViewHolder(private val binding: LayoutListLogbookRequestBinding) :
+    class ViewHolder(private val binding: LayoutListStudentCompanyBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(data: Logbook) {
+        fun bind(data: RequestStudent) {
             binding.apply {
-                tvStudentName.text = data.name
-                tvStudentLogbookDate.text = data.date
+                tvStudentName.text = data.studentName
+                tvStudentEmail.text = data.studentEmail
             }
         }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val binding =
-            LayoutListLogbookRequestBinding.inflate(
+            LayoutListStudentCompanyBinding.inflate(
                 LayoutInflater.from(parent.context),
                 parent,
                 false

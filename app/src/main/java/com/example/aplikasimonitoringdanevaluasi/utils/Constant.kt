@@ -12,6 +12,8 @@ object Constant {
     const val COLL_VIDEO= "video"
     const val COLL_MODULE= "module"
     const val COLL_LOGBOOK= "logbook"
+    const val COLL_REQUESTSTUDENT= "requestStudent"
+    const val COLL_REQUESTLOGBOOK= "requestLogbook"
 
     const val LOGBOOK_STUDENT_ID = "name"
 }

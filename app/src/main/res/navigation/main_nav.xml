@@ -304,7 +304,11 @@
         android:id="@+id/requestFragment"
         android:name="com.example.aplikasimonitoringdanevaluasi.ui.company.request.RequestFragment"
         android:label="fragment_request"
-        tools:layout="@layout/fragment_request" />
+        tools:layout="@layout/fragment_request" >
+        <action
+            android:id="@+id/action_requestFragment_to_detailRequestStudentFragment"
+            app:destination="@id/detailRequestStudentFragment" />
+    </fragment>
     <fragment
         android:id="@+id/listCompanyFragment"
         android:name="com.example.aplikasimonitoringdanevaluasi.ui.student.home.ListCompanyFragment"
@@ -406,10 +410,6 @@
         android:label="fragment_list_module"
         tools:layout="@layout/fragment_list_module" />
     <fragment
-        android:id="@+id/studentLogbookRequestFragment"
-        android:name="com.example.aplikasimonitoringdanevaluasi.ui.company.request.StudentLogbookRequestFragment"
-        android:label="StudentLogbookRequestFragment" />
-    <fragment
         android:id="@+id/addReportStudentFragment"
         android:name="com.example.aplikasimonitoringdanevaluasi.ui.company.home.AddReportStudentFragment"
         android:label="fragment_add_report_student"
@@ -425,8 +425,22 @@
         android:label="fragment_detail_report"
         tools:layout="@layout/fragment_detail_report" />
     <fragment
-        android:id="@+id/studentRequestFragment"
-        android:name="com.example.aplikasimonitoringdanevaluasi.ui.company.request.StudentRequestFragment"
+        android:id="@+id/studentLogbookRequestFragment"
+        android:name="com.example.aplikasimonitoringdanevaluasi.ui.company.request.StudentLogbookRequestFragment"
         android:label="fragment_student_logbook_request"
         tools:layout="@layout/fragment_student_logbook_request" />
+    <fragment
+        android:id="@+id/studentRequestFragment"
+        android:name="com.example.aplikasimonitoringdanevaluasi.ui.company.request.StudentRequestFragment"
+        android:label="fragment_student_request"
+        tools:layout="@layout/fragment_student_request" />
+    <fragment
+        android:id="@+id/detailRequestStudentFragment"
+        android:name="com.example.aplikasimonitoringdanevaluasi.ui.company.request.DetailRequestStudentFragment"
+        android:label="fragment_detail_request_student"
+        tools:layout="@layout/fragment_detail_request_student" >
+        <argument
+            android:name="RequestStudent"
+            app:argType="com.example.aplikasimonitoringdanevaluasi.model.RequestStudent" />
+    </fragment>
 </navigation>

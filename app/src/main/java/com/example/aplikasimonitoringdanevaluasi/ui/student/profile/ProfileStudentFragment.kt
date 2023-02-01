@@ -48,13 +48,13 @@ class ProfileStudentFragment : Fragment() {
                 tvStudentPhoneNumber.text = it?.phoneNumber
                 tvStudentClassName.text = it?.className
                 tvStudentMajor.text = it?.studentMajor
-                Glide.with(this@ProfileStudentFragment)
-                    .load(ivProfile.loadCircleImageFromUrl(it?.image.toString()))
-                    .apply(
-                        RequestOptions.placeholderOf(R.drawable.ic_image_loading)
-                            .error(R.drawable.ic_image_error)
-                    )
-                    .into(ivProfile)
+                if(it?.image?.isEmpty() == true){
+                    ivProfile.setImageResource(R.drawable.img_no_image)
+                } else {
+                    if (it != null) {
+                        ivProfile.loadCircleImageFromUrl(it.image)
+                    }
+                }
             }
             binding.ivLogout.setOnClickListener {
                 logout()

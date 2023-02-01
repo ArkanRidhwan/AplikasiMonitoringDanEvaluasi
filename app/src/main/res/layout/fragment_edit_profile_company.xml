@@ -233,41 +233,16 @@
                         app:layout_constraintTop_toBottomOf="@+id/tv_companyPICNameTittle" />
 
                     <TextView
-                        android:id="@+id/tv_companyPICEmailTittle"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="16dp"
-                        android:fontFamily="@font/open_sans"
-                        android:text="Email PIC"
-                        android:textColor="@color/gray_hintText"
-                        android:textSize="12sp"
-                        app:layout_constraintStart_toStartOf="@+id/et_companyPICName"
-                        app:layout_constraintTop_toBottomOf="@+id/et_companyPICName" />
-
-                    <EditText
-                        android:id="@+id/et_companyPICEmail"
-                        android:layout_width="0dp"
-                        android:layout_height="40dp"
-                        android:layout_marginTop="2dp"
-                        android:layout_marginEnd="16dp"
-                        android:fontFamily="@font/open_sans"
-                        android:textColor="@color/black"
-                        android:textSize="16sp"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="@+id/tv_companyPICEmailTittle"
-                        app:layout_constraintTop_toBottomOf="@+id/tv_companyPICEmailTittle" />
-
-                    <TextView
                         android:id="@+id/tv_companyPICPhoneNumberTittle"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="16dp"
                         android:fontFamily="@font/open_sans"
-                        android:text="Nomor telepon ILC"
+                        android:text="Nomor telepon PIC"
                         android:textColor="@color/gray_hintText"
                         android:textSize="12sp"
-                        app:layout_constraintStart_toStartOf="@+id/et_companyPICEmail"
-                        app:layout_constraintTop_toBottomOf="@+id/et_companyPICEmail" />
+                        app:layout_constraintStart_toStartOf="@+id/et_companyPICName"
+                        app:layout_constraintTop_toBottomOf="@+id/et_companyPICName" />
 
                     <EditText
                         android:id="@+id/et_companyPICPhoneNumber"

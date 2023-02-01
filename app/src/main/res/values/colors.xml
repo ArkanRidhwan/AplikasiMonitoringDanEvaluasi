@@ -17,4 +17,6 @@
     <color name="gray_hintText">#5C5F65</color>
     <color name="gray_boxModule">#E1E2E6</color>
     <color name="red_Chat">#F19BA7</color>
+    <color name="red_rejected">#F6543B</color>
+    <color name="green_accepted">#01B853</color>
 </resources>

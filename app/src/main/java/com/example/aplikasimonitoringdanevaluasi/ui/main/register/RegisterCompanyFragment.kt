@@ -58,7 +58,7 @@ class RegisterCompanyFragment : Fragment() {
                     progressBarCompanyRegister.playAnimation()
                     val company = Company(
                         id = UUID.randomUUID().toString(),
-                        contactEmail = email.toString(),
+                        email = email.toString(),
                         companyName = companyName,
                         companyAddress = companyAddress,
                         contactName = contactName,

@@ -2,7 +2,7 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="180dp"
-    android:layout_height="230dp"
+    android:layout_height="wrap_content"
     android:layout_marginLeft="10dp"
     android:layout_marginTop="10dp"
     android:layout_marginRight="10dp"
@@ -33,17 +33,57 @@
         <TextView
             android:id="@+id/tv_logbookContent"
             android:layout_width="140dp"
-            android:layout_height="170dp"
+            android:layout_height="150dp"
             android:layout_marginStart="8dp"
+            android:layout_marginTop="4dp"
             android:layout_marginEnd="8dp"
             android:fontFamily="@font/open_sans"
             android:paddingStart="5dp"
-            android:text="Content"
+            android:text="@string/loremIpsum"
             android:textColor="@color/black"
             android:textSize="14sp"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tv_logbookDate" />
+
+        <ImageView
+            android:id="@+id/iv_status_accepted"
+            android:layout_width="140dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="16dp"
+            android:scaleType="fitXY"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_logbookContent"
+            app:srcCompat="@drawable/ic_status_accepted" />
+
+        <ImageView
+            android:id="@+id/iv_status_rejected"
+            android:layout_width="140dp"
+            android:layout_height="30dp"
+            android:scaleType="fitXY"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_logbookContent"
+            app:srcCompat="@drawable/ic_status_rejected" />
+
+        <ImageView
+            android:id="@+id/iv_status_processed"
+            android:layout_width="140dp"
+            android:layout_height="30dp"
+            android:scaleType="fitXY"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tv_logbookContent"
+            app:srcCompat="@drawable/ic_status_processed" />
+
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>

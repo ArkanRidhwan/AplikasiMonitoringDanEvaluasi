@@ -14,6 +14,7 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.net.toFile
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import com.example.aplikasimonitoringdanevaluasi.R
 import com.example.aplikasimonitoringdanevaluasi.databinding.FragmentEditProfileCompanyBinding
 import com.example.aplikasimonitoringdanevaluasi.model.Company
 import com.example.aplikasimonitoringdanevaluasi.utils.*
@@ -43,8 +44,25 @@ class EditProfileCompanyFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.apply {
+            val userId = getInstance(requireContext()).getString(Constant.ID)
             ivBack.setOnClickListener {
                 requireActivity().onBackPressed()
+            }
+
+            editProfileCompanyViewModel.getCompanyById(userId).observe(viewLifecycleOwner) {
+                etCompanyName.setText(it?.companyName)
+                etEmailCompany.setText(it?.email)
+                etCompanyPassword.setText(it?.password)
+                etCompanyAddress.setText(it?.companyAddress)
+                etCompanyPICName.setText(it?.contactName)
+                etCompanyPICPhoneNumber.setText(it?.contactPhoneNumber)
+                if(it?.image?.isEmpty() == true){
+                    ivProfile.setImageResource(R.drawable.img_no_image)
+                } else {
+                    if (it != null) {
+                        ivProfile.loadCircleImageFromUrl(it.image)
+                    }
+                }
             }
 
             val startForImageResult =
@@ -95,7 +113,7 @@ class EditProfileCompanyFragment : Fragment() {
             }
 
             btnSaveProfile.setOnClickListener {
-                val email = etCompanyPICEmail.text.toString()
+                val email = etEmailCompany.text.toString()
                 val password = etCompanyPassword.text.toString()
                 val companyName = etCompanyName.text.toString()
                 val companyAddress = etCompanyAddress.text.toString()
@@ -120,7 +138,7 @@ class EditProfileCompanyFragment : Fragment() {
                             urlDownload = url.toString()
                             val admin = Company(
                                 id = userId,
-                                contactEmail = email,
+                                email = email,
                                 password = password,
                                 companyName = companyName,
                                 companyAddress = companyAddress,
@@ -128,7 +146,7 @@ class EditProfileCompanyFragment : Fragment() {
                                 contactPhoneNumber = contactPhoneNumber,
                                 image = urlDownload.toString()
                             )
-                            editProfileCompanyViewModel.updateCompany(admin, userId)
+                            editProfileCompanyViewModel.updateCompanyById(admin, userId)
                                 .observe(viewLifecycleOwner) { data ->
                                     if (data == true) {
                                         requireActivity().onBackPressed()

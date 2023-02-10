@@ -27,7 +27,8 @@ class DetailCompanyStudentViewModel : ViewModel() {
             companyId = data.companyId,
             studentId = data.studentId,
             studentName = data.studentName,
-            studentEmail = data.studentEmail
+            studentEmail = data.studentEmail,
+            image = data.image
         )
         collRequestStudent.child(data.id).setValue(student)
             .addOnCompleteListener {
@@ -70,7 +71,7 @@ class DetailCompanyStudentViewModel : ViewModel() {
                 if (snapshot.exists()) {
                     for (i in snapshot.children) {
                         val valueStudent = i.getValue(RequestStudent::class.java)
-                        if (valueStudent?.id == id) {
+                        if (valueStudent?.studentId == id) {
                             requestStudent = valueStudent
                         }
                     }

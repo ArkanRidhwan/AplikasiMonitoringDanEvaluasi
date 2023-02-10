@@ -8,7 +8,6 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.example.aplikasimonitoringdanevaluasi.databinding.FragmentAddLogbookBinding
 import com.example.aplikasimonitoringdanevaluasi.model.Logbook
-import com.example.aplikasimonitoringdanevaluasi.ui.admin.course.UploadVideoViewModel
 import com.example.aplikasimonitoringdanevaluasi.utils.Constant
 import com.example.aplikasimonitoringdanevaluasi.utils.getDateNow
 import com.example.aplikasimonitoringdanevaluasi.utils.getInstance
@@ -20,6 +19,9 @@ class AddLogbookFragment : Fragment() {
 
     private lateinit var binding: FragmentAddLogbookBinding
     private val uploadLogbookViewModel: AddLogbookViewModel by viewModels()
+    private var companyId = ""
+    private var studentApprovalStatus = ""
+    private var imageProfileStudentLogbook = ""
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -32,28 +34,41 @@ class AddLogbookFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.apply {
+            val logbookUserId = getInstance(requireContext()).getString(Constant.ID)
+            uploadLogbookViewModel.getRequestStudentById(logbookUserId)
+                .observe(viewLifecycleOwner) {
+                    companyId = it?.companyId.toString()
+                    studentApprovalStatus = it?.status.toString()
+                    imageProfileStudentLogbook = it?.image.toString()
+                }
+
             btnSave.setOnClickListener {
                 val content = etContentLogbook.text.toString()
                 val name = getInstance(requireContext()).getString(Constant.NAME)
                 val logbookId = UUID.randomUUID().toString()
-                val logbookUserId = getInstance(requireContext()).getString(Constant.ID)
                 val logbook = Logbook(
                     id = logbookId,
                     logbookUserId = logbookUserId,
+                    companyId = companyId,
                     name = name,
                     content = content,
                     date = getDateNow(),
-                    status = false
+                    status = "1",
+                    image = imageProfileStudentLogbook
                 )
-                uploadLogbookViewModel.saveLogbook(logbook)
-                    .observe(viewLifecycleOwner) { data ->
-                        if (data == true) {
-                            requireActivity().onBackPressed()
-                            requireContext().showToast("Menyimpan logbook berhasil")
-                        } else {
-                            requireContext().showToast("Menyimpan logbook gagal")
+                if (studentApprovalStatus == "2") {
+                    uploadLogbookViewModel.saveLogbook(logbook)
+                        .observe(viewLifecycleOwner) { data ->
+                            if (data == true) {
+                                requireActivity().onBackPressed()
+                                requireContext().showToast("Menyimpan logbook berhasil")
+                            } else {
+                                requireContext().showToast("Menyimpan logbook gagal")
+                            }
                         }
-                    }
+                } else {
+                    requireContext().showToast("Silahkan ajukan lamaran perusahaan terlebih dahulu")
+                }
             }
         }
     }

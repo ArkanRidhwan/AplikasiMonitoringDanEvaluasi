@@ -1,0 +1,439 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/gray_primary"
+    tools:context=".ui.company.home.AddReportFragment">
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textView13"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="24dp"
+                android:fontFamily="@font/open_sans"
+                android:text="Laporan1"
+                android:textColor="@color/black"
+                android:textSize="24sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tv_reportQuestion1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:layout_marginEnd="24dp"
+                android:fontFamily="@font/proza_libre"
+                android:text="@string/sample_question"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/textView13"
+                app:layout_constraintTop_toBottomOf="@+id/textView13" />
+
+            <EditText
+                android:id="@+id/et_reportAnswer1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="24dp"
+                android:ems="10"
+                android:fontFamily="@font/open_sans"
+                android:hint="Isi jawaban disini"
+                android:inputType="textPersonName"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/tv_reportQuestion1"
+                app:layout_constraintTop_toBottomOf="@+id/tv_reportQuestion1" />
+
+            <TextView
+                android:id="@+id/tv_reportQuestion2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:fontFamily="@font/proza_libre"
+                android:text="@string/sample_question"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="@+id/et_reportAnswer1"
+                app:layout_constraintStart_toStartOf="@+id/et_reportAnswer1"
+                app:layout_constraintTop_toBottomOf="@+id/et_reportAnswer1" />
+
+            <EditText
+                android:id="@+id/et_reportAnswer2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:fontFamily="@font/open_sans"
+                android:hint="Isi jawaban disini"
+                android:inputType="textPersonName"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="@+id/et_reportAnswer1"
+                app:layout_constraintStart_toStartOf="@+id/tv_reportQuestion2"
+                app:layout_constraintTop_toBottomOf="@+id/tv_reportQuestion2" />
+
+            <TextView
+                android:id="@+id/tv_reportQuestion3"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:fontFamily="@font/proza_libre"
+                android:text="@string/sample_question"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="@+id/et_reportAnswer2"
+                app:layout_constraintStart_toStartOf="@+id/et_reportAnswer2"
+                app:layout_constraintTop_toBottomOf="@+id/et_reportAnswer2" />
+
+            <EditText
+                android:id="@+id/et_reportAnswer3"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:fontFamily="@font/open_sans"
+                android:hint="Isi jawaban disini"
+                android:inputType="textPersonName"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="@+id/et_reportAnswer2"
+                app:layout_constraintStart_toStartOf="@+id/tv_reportQuestion3"
+                app:layout_constraintTop_toBottomOf="@+id/tv_reportQuestion3" />
+
+            <TextView
+                android:id="@+id/tv_reportQuestion4"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:fontFamily="@font/proza_libre"
+                android:text="@string/sample_question"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="@+id/et_reportAnswer3"
+                app:layout_constraintStart_toStartOf="@+id/et_reportAnswer3"
+                app:layout_constraintTop_toBottomOf="@+id/et_reportAnswer3" />
+
+            <EditText
+                android:id="@+id/et_reportAnswer4"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:fontFamily="@font/open_sans"
+                android:hint="Isi jawaban disini"
+                android:inputType="textPersonName"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="@+id/et_reportAnswer3"
+                app:layout_constraintStart_toStartOf="@+id/tv_reportQuestion4"
+                app:layout_constraintTop_toBottomOf="@+id/tv_reportQuestion4" />
+
+            <TextView
+                android:id="@+id/tv_reportQuestion5"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:fontFamily="@font/proza_libre"
+                android:text="@string/sample_question"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="@+id/et_reportAnswer4"
+                app:layout_constraintStart_toStartOf="@+id/et_reportAnswer4"
+                app:layout_constraintTop_toBottomOf="@+id/et_reportAnswer4" />
+
+            <EditText
+                android:id="@+id/et_reportAnswer5"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:fontFamily="@font/open_sans"
+                android:hint="Isi jawaban disini"
+                android:inputType="textPersonName"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="@+id/et_reportAnswer4"
+                app:layout_constraintStart_toStartOf="@+id/tv_reportQuestion5"
+                app:layout_constraintTop_toBottomOf="@+id/tv_reportQuestion5" />
+
+            <TextView
+                android:id="@+id/tv_reportQuestion6"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:fontFamily="@font/proza_libre"
+                android:text="@string/sample_question"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="@+id/et_reportAnswer5"
+                app:layout_constraintStart_toStartOf="@+id/et_reportAnswer5"
+                app:layout_constraintTop_toBottomOf="@+id/et_reportAnswer5" />
+
+            <RadioGroup
+                android:id="@+id/radioGroup1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="24dp"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/tv_reportQuestion6"
+                app:layout_constraintTop_toBottomOf="@+id/tv_reportQuestion6">
+
+                <RadioButton
+                    android:id="@+id/rb_1.1"
+                    android:layout_width="90dp"
+                    android:layout_height="90dp"
+                    android:background="@drawable/radio_background_selector"
+                    android:button="@android:color/transparent"
+                    android:checked="true"
+                    android:drawableTop="@drawable/ic_very_angry"
+                    android:fontFamily="@font/roboto"
+                    android:padding="8dp"
+                    android:text="Tidak baik"
+                    android:textAlignment="center"
+                    android:textSize="12sp" />
+
+                <RadioButton
+                    android:id="@+id/rb_1.2"
+                    android:layout_width="90dp"
+                    android:layout_height="90dp"
+                    android:layout_marginStart="5dp"
+                    android:background="@drawable/radio_background_selector"
+                    android:button="@android:color/transparent"
+                    android:drawableTop="@drawable/ic_angry"
+                    android:fontFamily="@font/roboto"
+                    android:padding="8dp"
+                    android:text="Kurang baik"
+                    android:textAlignment="center"
+                    android:textSize="12sp" />
+
+                <RadioButton
+                    android:id="@+id/rb_1.3"
+                    android:layout_width="90dp"
+                    android:layout_height="90dp"
+                    android:layout_marginStart="5dp"
+                    android:background="@drawable/radio_background_selector"
+                    android:button="@android:color/transparent"
+                    android:drawableTop="@drawable/ic_happy"
+                    android:fontFamily="@font/roboto"
+                    android:padding="8dp"
+                    android:text="Baik"
+                    android:textAlignment="center"
+                    android:textSize="12sp" />
+
+
+                <RadioButton
+                    android:id="@+id/rb_1.4"
+                    android:layout_width="90dp"
+                    android:layout_height="90dp"
+                    android:layout_marginStart="5dp"
+                    android:background="@drawable/radio_background_selector"
+                    android:button="@android:color/transparent"
+                    android:drawableTop="@drawable/ic_very_happy"
+                    android:fontFamily="@font/roboto"
+                    android:padding="8dp"
+                    android:text="Sangat baik"
+                    android:textAlignment="center"
+                    android:textSize="12sp" />
+            </RadioGroup>
+
+            <TextView
+                android:id="@+id/tv_reportQuestion7"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:fontFamily="@font/proza_libre"
+                android:text="@string/sample_question"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="@+id/tv_reportQuestion6"
+                app:layout_constraintStart_toStartOf="@+id/tv_reportQuestion6"
+                app:layout_constraintTop_toBottomOf="@+id/radioGroup1" />
+
+            <RadioGroup
+                android:id="@+id/radioGroup2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="24dp"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/tv_reportQuestion6"
+                app:layout_constraintTop_toBottomOf="@+id/tv_reportQuestion7">
+
+                <RadioButton
+                    android:id="@+id/rb_2.1"
+                    android:layout_width="90dp"
+                    android:layout_height="90dp"
+                    android:background="@drawable/radio_background_selector"
+                    android:button="@android:color/transparent"
+                    android:checked="true"
+                    android:drawableTop="@drawable/ic_very_angry"
+                    android:fontFamily="@font/roboto"
+                    android:padding="8dp"
+                    android:text="Tidak baik"
+                    android:textAlignment="center"
+                    android:textSize="12sp" />
+
+                <RadioButton
+                    android:id="@+id/rb_2.2"
+                    android:layout_width="90dp"
+                    android:layout_height="90dp"
+                    android:layout_marginStart="5dp"
+                    android:background="@drawable/radio_background_selector"
+                    android:button="@android:color/transparent"
+                    android:drawableTop="@drawable/ic_angry"
+                    android:fontFamily="@font/roboto"
+                    android:padding="8dp"
+                    android:text="Kurang baik"
+                    android:textAlignment="center"
+                    android:textSize="12sp" />
+
+                <RadioButton
+                    android:id="@+id/rb_2.3"
+                    android:layout_width="90dp"
+                    android:layout_height="90dp"
+                    android:layout_marginStart="5dp"
+                    android:background="@drawable/radio_background_selector"
+                    android:button="@android:color/transparent"
+                    android:drawableTop="@drawable/ic_happy"
+                    android:fontFamily="@font/roboto"
+                    android:padding="8dp"
+                    android:text="Baik"
+                    android:textAlignment="center"
+                    android:textSize="12sp" />
+
+
+                <RadioButton
+                    android:id="@+id/rb_2.4"
+                    android:layout_width="90dp"
+                    android:layout_height="90dp"
+                    android:layout_marginStart="5dp"
+                    android:background="@drawable/radio_background_selector"
+                    android:button="@android:color/transparent"
+                    android:drawableTop="@drawable/ic_very_happy"
+                    android:fontFamily="@font/roboto"
+                    android:padding="8dp"
+                    android:text="Sangat baik"
+                    android:textAlignment="center"
+                    android:textSize="12sp" />
+            </RadioGroup>
+
+            <TextView
+                android:id="@+id/tv_reportQuestion8"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:fontFamily="@font/proza_libre"
+                android:text="@string/sample_question"
+                android:textColor="@color/black"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="@+id/tv_reportQuestion7"
+                app:layout_constraintStart_toStartOf="@+id/tv_reportQuestion7"
+                app:layout_constraintTop_toBottomOf="@+id/radioGroup2" />
+
+            <RadioGroup
+                android:id="@+id/radioGroup3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="24dp"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/tv_reportQuestion8"
+                app:layout_constraintTop_toBottomOf="@+id/tv_reportQuestion8">
+
+                <RadioButton
+                    android:id="@+id/rb_3.1"
+                    android:layout_width="90dp"
+                    android:layout_height="90dp"
+                    android:background="@drawable/radio_background_selector"
+                    android:button="@android:color/transparent"
+                    android:checked="true"
+                    android:drawableTop="@drawable/ic_very_angry"
+                    android:fontFamily="@font/roboto"
+                    android:padding="8dp"
+                    android:text="Tidak baik"
+                    android:textAlignment="center"
+                    android:textSize="12sp" />
+
+                <RadioButton
+                    android:id="@+id/rb_3.2"
+                    android:layout_width="90dp"
+                    android:layout_height="90dp"
+                    android:layout_marginStart="5dp"
+                    android:background="@drawable/radio_background_selector"
+                    android:button="@android:color/transparent"
+                    android:drawableTop="@drawable/ic_angry"
+                    android:fontFamily="@font/roboto"
+                    android:padding="8dp"
+                    android:text="Kurang baik"
+                    android:textAlignment="center"
+                    android:textSize="12sp" />
+
+                <RadioButton
+                    android:id="@+id/rb_3.3"
+                    android:layout_width="90dp"
+                    android:layout_height="90dp"
+                    android:layout_marginStart="5dp"
+                    android:background="@drawable/radio_background_selector"
+                    android:button="@android:color/transparent"
+                    android:drawableTop="@drawable/ic_happy"
+                    android:fontFamily="@font/roboto"
+                    android:padding="8dp"
+                    android:text="Baik"
+                    android:textAlignment="center"
+                    android:textSize="12sp" />
+
+
+                <RadioButton
+                    android:id="@+id/rb_3.4"
+                    android:layout_width="90dp"
+                    android:layout_height="90dp"
+                    android:layout_marginStart="5dp"
+                    android:background="@drawable/radio_background_selector"
+                    android:button="@android:color/transparent"
+                    android:drawableTop="@drawable/ic_very_happy"
+                    android:fontFamily="@font/roboto"
+                    android:padding="8dp"
+                    android:text="Sangat baik"
+                    android:textAlignment="center"
+                    android:textSize="12sp" />
+
+            </RadioGroup>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_save"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:layout_marginBottom="32dp"
+                android:layout_weight="1"
+                android:background="@drawable/bg_btn_soft_rectangle"
+                android:fontFamily="@font/roboto"
+                android:text="Simpan"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/tv_reportQuestion8"
+                app:layout_constraintStart_toStartOf="@+id/tv_reportQuestion8"
+                app:layout_constraintTop_toBottomOf="@+id/radioGroup3" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -6,20 +6,22 @@ import kotlinx.android.parcel.Parcelize
 @Parcelize
 data class RequestLogbook(
     val id: String = "",
-    val status: Boolean = false,
+    val status: String = "",
     val companyId: String = "",
     val studentId: String = "",
     val studentName: String = "",
     val logbookDate: String = "",
+    val content: String = "",
 ) : Parcelable {
     companion object {
         fun processStudentRequest(
             id: String,
-            status: Boolean,
+            status: String,
             companyId: String,
             studentId: String,
             studentName: String,
-            logbookDate: String
+            logbookDate: String,
+            content: String
         ): RequestLogbook {
             return RequestLogbook(
                 id,
@@ -27,7 +29,8 @@ data class RequestLogbook(
                 companyId,
                 studentId,
                 studentName,
-                logbookDate
+                logbookDate,
+                content
             )
         }
     }

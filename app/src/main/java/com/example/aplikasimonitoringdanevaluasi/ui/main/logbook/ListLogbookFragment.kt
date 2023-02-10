@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import com.example.aplikasimonitoringdanevaluasi.R
 import com.example.aplikasimonitoringdanevaluasi.databinding.FragmentListLogbookBinding
 import com.example.aplikasimonitoringdanevaluasi.ui.student.home.HomeStudentFragmentDirections
@@ -21,9 +22,7 @@ class ListLogbookFragment : Fragment() {
     private lateinit var binding: FragmentListLogbookBinding
     private lateinit var listLogbookAdapter: ListLogbookAdapter
     private val listLogbookViewModel: ListLogbookViewModel by viewModels()
-    /*private var role = getInstance(requireContext()).getString(Constant.ROLE)
-    private val userId = getInstance(requireContext()).getString(Constant.ID)
-    private val logbookStudentId = getInstance(requireContext()).getString(Constant.LOGBOOK_STUDENT_ID)*/
+    private val args: ListLogbookFragmentArgs by navArgs()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -37,7 +36,7 @@ class ListLogbookFragment : Fragment() {
         val role = getInstance(requireContext()).getString(Constant.ROLE)
         listLogbookAdapter = ListLogbookAdapter()
         binding.apply {
-            when(role) {
+            when (role) {
                 getString(R.string.student) -> {
                     ivBack.gone()
                     tvBartittle.gone()
@@ -85,11 +84,11 @@ class ListLogbookFragment : Fragment() {
 
     private fun loadLogbookAdmin() {
         binding.apply {
-            val logbookStudentId = getInstance(requireContext()).getString(Constant.LOGBOOK_STUDENT_ID)
+            val studentId = args.student.id
             recyclerView.adapter = listLogbookAdapter
             progressBar.visible()
             recyclerView.gone()
-            listLogbookViewModel.getAdminLogbook(logbookStudentId).observe(viewLifecycleOwner) {
+            listLogbookViewModel.getAdminLogbook(studentId).observe(viewLifecycleOwner) {
                 if (it?.isNotEmpty() == true) {
                     listLogbookAdapter.setListData(it)
                     progressBar.gone()

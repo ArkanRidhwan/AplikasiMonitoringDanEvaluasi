@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.aplikasimonitoringdanevaluasi.model.Logbook
+import com.example.aplikasimonitoringdanevaluasi.model.RequestStudent
 import com.example.aplikasimonitoringdanevaluasi.model.Student
 import com.example.aplikasimonitoringdanevaluasi.model.Video
 import com.example.aplikasimonitoringdanevaluasi.utils.Constant
@@ -17,7 +18,7 @@ class AddLogbookViewModel : ViewModel() {
 
     private val database = Firebase.database
     private val collLogbook = database.getReference(Constant.COLL_LOGBOOK)
-    private val collStudent = database.getReference(Constant.COLL_STUDENT)
+    private val collRequestStudent = database.getReference(Constant.COLL_REQUESTSTUDENT)
 
     fun saveLogbook(data: Logbook): LiveData<Boolean> {
         val status = MutableLiveData<Boolean>()
@@ -29,6 +30,7 @@ class AddLogbookViewModel : ViewModel() {
             content = data.content,
             date = data.date,
             status = data.status,
+            image = data.image
         )
         collLogbook.child(data.id).setValue(logbook)
             .addOnCompleteListener {
@@ -40,15 +42,15 @@ class AddLogbookViewModel : ViewModel() {
         return status
     }
 
-    fun getStudentById(id: String): LiveData<Student?> {
-        val dataStudent = MutableLiveData<Student?>()
-        var student: Student? = null
-        collStudent.addValueEventListener(object : ValueEventListener {
+    fun getRequestStudentById(id: String): LiveData<RequestStudent?> {
+        val dataStudent = MutableLiveData<RequestStudent?>()
+        var student: RequestStudent? = null
+        collRequestStudent.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 if (snapshot.exists()) {
                     for (i in snapshot.children) {
-                        val valueStudent = i.getValue(Student::class.java)
-                        if (valueStudent?.id == id) {
+                        val valueStudent = i.getValue(RequestStudent::class.java)
+                        if (valueStudent?.studentId == id) {
                             student = valueStudent
                         }
                     }

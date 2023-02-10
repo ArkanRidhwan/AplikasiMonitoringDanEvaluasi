@@ -6,8 +6,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.example.aplikasimonitoringdanevaluasi.databinding.FragmentHomeCompanyBinding
-import com.example.aplikasimonitoringdanevaluasi.utils.*
+import com.example.aplikasimonitoringdanevaluasi.utils.Constant
+import com.example.aplikasimonitoringdanevaluasi.utils.getInstance
+import com.example.aplikasimonitoringdanevaluasi.utils.gone
+import com.example.aplikasimonitoringdanevaluasi.utils.visible
 
 
 class HomeCompanyFragment : Fragment() {
@@ -28,6 +32,13 @@ class HomeCompanyFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         binding.apply {
             homeCompanyAdapter = HomeCompanyAdapter()
+            homeCompanyAdapter.onItemClick = {
+                val action =
+                    HomeCompanyFragmentDirections.actionHomeCompanyFragmentToDetailStudentCompanyFragment(
+                        it
+                    )
+                findNavController().navigate(action)
+            }
         }
     }
 
@@ -40,7 +51,7 @@ class HomeCompanyFragment : Fragment() {
         binding.apply {
             val userId = getInstance(requireContext()).getString(Constant.ID)
             recycleView.adapter = homeCompanyAdapter
-            homeCompanyViewModel.getRequestStudent("3", userId).observe(viewLifecycleOwner) {
+            homeCompanyViewModel.getRequestStudent("2", userId).observe(viewLifecycleOwner) {
                 if (it?.isNotEmpty() == true) {
                     homeCompanyAdapter.setListData(it)
                     recycleView.visible()

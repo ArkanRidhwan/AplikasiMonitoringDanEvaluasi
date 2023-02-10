@@ -129,6 +129,9 @@
         <argument
             android:name="role"
             app:argType="string" />
+        <action
+            android:id="@+id/action_homeCompanyFragment_to_detailStudentCompanyFragment"
+            app:destination="@id/detailStudentCompanyFragment" />
     </fragment>
     <fragment
         android:id="@+id/homeStudentFragment"
@@ -260,7 +263,14 @@
         android:id="@+id/detailStudentCompanyFragment"
         android:name="com.example.aplikasimonitoringdanevaluasi.ui.company.home.DetailStudentCompanyFragment"
         android:label="fragment_detail_student_company"
-        tools:layout="@layout/fragment_detail_student_company" />
+        tools:layout="@layout/fragment_detail_student_company" >
+        <argument
+            android:name="requestStudent"
+            app:argType="com.example.aplikasimonitoringdanevaluasi.model.RequestStudent" />
+        <action
+            android:id="@+id/action_detailStudentCompanyFragment_to_addReportFragment"
+            app:destination="@id/addReportFragment" />
+    </fragment>
     <fragment
         android:id="@+id/detailCompanyStudentFragment"
         android:name="com.example.aplikasimonitoringdanevaluasi.ui.student.home.DetailCompanyStudentFragment"
@@ -398,6 +408,9 @@
         <action
             android:id="@+id/action_listLogbookFragment_to_detailLogbookFragment"
             app:destination="@id/detailLogbookFragment" />
+        <argument
+            android:name="student"
+            app:argType="com.example.aplikasimonitoringdanevaluasi.model.Student" />
     </fragment>
     <fragment
         android:id="@+id/listVideoFragment"
@@ -441,6 +454,18 @@
         tools:layout="@layout/fragment_detail_request_student" >
         <argument
             android:name="RequestStudent"
+            app:argType="com.example.aplikasimonitoringdanevaluasi.model.RequestStudent" />
+    </fragment>
+    <fragment
+        android:id="@+id/addReportFragment"
+        android:name="com.example.aplikasimonitoringdanevaluasi.ui.company.home.AddReportFragment"
+        android:label="fragment_add_report"
+        tools:layout="@layout/fragment_add_report" >
+        <argument
+            android:name="studentId"
+            app:argType="string" />
+        <argument
+            android:name="requestStudent"
             app:argType="com.example.aplikasimonitoringdanevaluasi.model.RequestStudent" />
     </fragment>
 </navigation>

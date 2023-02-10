@@ -11,7 +11,8 @@ data class Logbook(
     val name: String = "",
     val content: String = "",
     val date: String = "",
-    val status: Boolean = false
+    val status: String = "",
+    val image: String = " "
 ) : Parcelable {
     companion object {
         fun saveLogbook(
@@ -21,9 +22,10 @@ data class Logbook(
             name: String,
             content: String,
             date: String,
-            status: Boolean
+            status: String,
+            image: String
         ): Logbook {
-            return Logbook(id, logbookUserId, companyId, name, content, date, status)
+            return Logbook(id, logbookUserId, companyId, name, content, date, status, image)
         }
     }
 }

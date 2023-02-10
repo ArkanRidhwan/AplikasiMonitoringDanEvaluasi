@@ -15,6 +15,7 @@ class StudentLogbookRequestFragment : Fragment() {
     private lateinit var binding: FragmentStudentLogbookRequestBinding
     private lateinit var logbookRequestAdapter: StudentLogbookRequestAdapter
     private val logbookRequestViewModel: StudentLogbookRequestViewModel by viewModels()
+    private var studentId = ""
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -27,6 +28,9 @@ class StudentLogbookRequestFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         logbookRequestAdapter = StudentLogbookRequestAdapter()
+        binding.apply {
+
+        }
     }
 
     override fun onResume() {
@@ -38,7 +42,7 @@ class StudentLogbookRequestFragment : Fragment() {
         binding.apply {
             val userId = getInstance(requireContext()).getString(Constant.ID)
             recycleView.adapter = logbookRequestAdapter
-            logbookRequestViewModel.getRequestLogbook(false, userId).observe(viewLifecycleOwner) {
+            logbookRequestViewModel.getRequestLogbook(userId, "1").observe(viewLifecycleOwner) {
                 if (it?.isNotEmpty() == true) {
                     logbookRequestAdapter.setListData(it)
                     recycleView.visible()

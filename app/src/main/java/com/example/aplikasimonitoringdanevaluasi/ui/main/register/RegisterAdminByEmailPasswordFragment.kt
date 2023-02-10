@@ -18,6 +18,7 @@ class RegisterAdminByEmailPasswordFragment : Fragment() {
 
     private lateinit var binding: FragmentRegisterAdminByEmailPasswordBinding
     private val registerViewModel: RegisterViewModel by viewModels()
+    private var availableEmail = ""
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -67,10 +68,41 @@ class RegisterAdminByEmailPasswordFragment : Fragment() {
                         phoneNumber = phoneNumber,
                     )
 
-                    registerViewModel.getAdminByEmail(email)
-                        .observe(viewLifecycleOwner) { dataAdmin ->
-                            if (dataAdmin != null) {
-                                requireContext().showToast("Email yang anda masukkan sudah terdaftar")
+                    registerViewModel.getAdminByEmail(email).observe(viewLifecycleOwner) { data ->
+                        availableEmail = data?.email.toString()
+                        if (availableEmail != "null") {
+                            registerViewModel.saveAdmin(admin).observe(viewLifecycleOwner) {
+                                if (it == true) {
+                                    getInstance(requireContext()).apply {
+                                        putString(Constant.ID, admin.id)
+                                        putString(Constant.NAME, admin.name)
+                                        putString(Constant.ROLE, getString(R.string.admin))
+                                    }
+                                    findNavController().navigate(
+                                        RegisterAdminByEmailPasswordFragmentDirections.actionRegisterAdminByEmailPasswordFragmentToHomeAdminFragment(
+                                            getString(R.string.admin)
+                                        )
+                                    )
+                                    requireContext().showToast("Regitrasi berhasil")
+                                } else {
+                                    btnRegister.visible()
+                                    progressBarAdminRegister.gone()
+                                    requireContext().showToast("Regitrasi gagal")
+                                }
+                            }
+                        } else {
+                            btnRegister.visible()
+                            progressBarAdminRegister.gone()
+                            etAdminEmail.error("Email sudah terdaftar")
+                            etAdminEmail.requestFocus()
+                            //requireContext().showToast("Email sudah terdaftar")
+                        }
+                    }
+
+                    /*registerViewModel.getAdminByEmail(email)
+                        .observe(viewLifecycleOwner) {
+                            if (it != null) {
+                                etAdminEmail.error("Email sudah terdaftar")
                                 progressBarAdminRegister.gone()
                                 btnRegister.visible()
                             } else {
@@ -95,7 +127,7 @@ class RegisterAdminByEmailPasswordFragment : Fragment() {
                                         }
                                     }
                             }
-                        }
+                        }*/
                 }
             }
         }

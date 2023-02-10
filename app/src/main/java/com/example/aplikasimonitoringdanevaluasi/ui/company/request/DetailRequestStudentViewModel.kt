@@ -6,7 +6,6 @@ import androidx.lifecycle.ViewModel
 import com.example.aplikasimonitoringdanevaluasi.model.RequestStudent
 import com.example.aplikasimonitoringdanevaluasi.model.Student
 import com.example.aplikasimonitoringdanevaluasi.utils.Constant
-import com.example.aplikasimonitoringdanevaluasi.utils.showToast
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
@@ -44,14 +43,15 @@ class DetailRequestStudentViewModel : ViewModel() {
 
     fun updateRequestStatusAccepted(data: RequestStudent, userId: String): LiveData<Boolean> {
         val status = MutableLiveData<Boolean>()
-        val student = RequestStudent.processStudentRequest2(
+        val student = RequestStudent.processStudentRequest(
             id = userId,
             status = data.status,
             companyId = data.companyId,
             studentId = data.studentId,
             studentEmail = data.studentEmail,
             studentName = data.studentName,
-            image = data.image
+            image = data.image,
+            reportStatus = data.reportStatus
         )
         collRequestStudent.child(userId).setValue(student)
             .addOnCompleteListener {

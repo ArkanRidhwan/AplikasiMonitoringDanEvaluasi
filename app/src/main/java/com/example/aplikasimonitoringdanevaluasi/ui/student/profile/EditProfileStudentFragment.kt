@@ -48,14 +48,14 @@ class EditProfileStudentFragment : Fragment() {
             }
 
             editProfileStudentViewModel.getStudentById(userId).observe(viewLifecycleOwner) {
-                etStudentName.hint = it?.name
-                etEmailStudent.hint = it?.email
-                etStudentPassword.hint = it?.password
-                etStudentCompanyName.hint = it?.companyName
-                etStudentJob.hint = it?.job
-                etStudentPhoneNumber.hint = it?.phoneNumber
-                etStudentClassName.hint = it?.className
-                etStudentMajor.hint = it?.studentMajor
+                etStudentName.setText(it?.name)
+                etEmailStudent.setText(it?.email)
+                etStudentPassword.setText(it?.password)
+                etStudentCompanyName.setText(it?.companyName)
+                etStudentJob.setText(it?.job)
+                etStudentPhoneNumber.setText(it?.phoneNumber)
+                etStudentClassName.setText(it?.className)
+                etStudentMajor.setText(it?.studentMajor)
                 if(it?.image?.isEmpty() == true){
                     ivProfile.setImageResource(R.drawable.img_no_image)
                 } else {

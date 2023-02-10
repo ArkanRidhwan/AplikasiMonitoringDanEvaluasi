@@ -38,14 +38,6 @@ class HomeStudentFragment : Fragment() {
             TabLayoutMediator(binding.tabLayout, binding.viewPager) { tab, position ->
                 tab.text = resources.getString(TAB_TITLES[position])
             }.attach()
-
-            /*fabChat.setOnClickListener {
-                findNavController().navigate(
-                    HomeStudentFragmentDirections.actionHomeStudentFragmentToListContactChatFragment(
-                        *//*getString(R.string.student)*//*
-                    )
-                )
-            }*/
         }
     }
 

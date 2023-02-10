@@ -4,8 +4,10 @@ import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.example.aplikasimonitoringdanevaluasi.R
 import com.example.aplikasimonitoringdanevaluasi.databinding.LayoutListContactChatBinding
 import com.example.aplikasimonitoringdanevaluasi.model.Student
+import com.example.aplikasimonitoringdanevaluasi.utils.loadCircleImageFromUrl
 
 class ListStudentAdapter : RecyclerView.Adapter<ListStudentAdapter.ViewHolder>() {
 
@@ -26,6 +28,11 @@ class ListStudentAdapter : RecyclerView.Adapter<ListStudentAdapter.ViewHolder>()
             binding.apply {
                 tvChatListStudentName.text = data.name
                 tvChatListStudentCompanyName.text = data.companyName
+                if (data.image.isEmpty()) {
+                    ivChatListStudent.setImageResource(R.drawable.img_no_image)
+                } else {
+                    ivChatListStudent.loadCircleImageFromUrl(data.image)
+                }
                 itemView.setOnClickListener {
                     onItemClick?.invoke(data)
                 }

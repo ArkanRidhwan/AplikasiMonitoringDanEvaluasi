@@ -48,14 +48,14 @@ class DetailRequestStudentFragment : Fragment() {
                     ivProfilePicture.setImageResource(R.drawable.img_no_image)
                 } else {
                     if (it != null) {
-                        ivBack.loadCircleImageFromUrl(it.image)
+                        ivProfilePicture.loadCircleImageFromUrl(it.image)
                     }
                 }
             }
             btnAccept.setOnClickListener {
                 val student = RequestStudent(
                     id = id,
-                    status = "3",
+                    status = "2",
                     companyId = companyId,
                     studentId = studentId,
                     studentName = studentName,

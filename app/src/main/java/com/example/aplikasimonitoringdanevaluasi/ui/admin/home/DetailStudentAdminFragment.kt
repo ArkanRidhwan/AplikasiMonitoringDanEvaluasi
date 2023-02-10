@@ -7,11 +7,13 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import com.example.aplikasimonitoringdanevaluasi.R
 import com.example.aplikasimonitoringdanevaluasi.databinding.FragmentDetailStudentAdminBinding
 import com.example.aplikasimonitoringdanevaluasi.model.Student
 import com.example.aplikasimonitoringdanevaluasi.ui.main.chat.ListContactChatFragmentDirections
 import com.example.aplikasimonitoringdanevaluasi.utils.Constant
 import com.example.aplikasimonitoringdanevaluasi.utils.getInstance
+import com.example.aplikasimonitoringdanevaluasi.utils.loadCircleImageFromUrl
 
 
 class DetailStudentAdminFragment : Fragment() {
@@ -36,11 +38,16 @@ class DetailStudentAdminFragment : Fragment() {
             tvStudentCompanyName.text = args.student.companyName
             tvStudentJob.text = args.student.job
             tvStudentSchoolMajor.text = args.student.studentMajor
-            getInstance(requireContext()).putString(Constant.LOGBOOK_STUDENT_ID, args.student.id)
+            tvStudentPhoneNumber.text = args.student.phoneNumber
+            if (args.student.image.isEmpty()) {
+                ivProfilePicture.setImageResource(R.drawable.img_no_image)
+            } else {
+                ivProfilePicture.loadCircleImageFromUrl(args.student.image)
+            }
 
             btnLogbook.setOnClickListener {
                 val action =
-                    DetailStudentAdminFragmentDirections.actionDetailStudentAdminFragmentToListLogbookFragment()
+                    DetailStudentAdminFragmentDirections.actionDetailStudentAdminFragmentToListLogbookFragment(args.student)
                 findNavController().navigate(action)
             }
         }

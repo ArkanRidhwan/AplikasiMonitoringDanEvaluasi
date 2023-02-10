@@ -45,7 +45,7 @@ class StudentRequestFragment : Fragment() {
         binding.apply {
             val userId = getInstance(requireContext()).getString(Constant.ID)
             recycleView.adapter = studentRequestAdapter
-            studentRequestViewModel.getRequestStudent("2", userId).observe(viewLifecycleOwner) {
+            studentRequestViewModel.getRequestStudent("1", userId).observe(viewLifecycleOwner) {
                 if (it?.isNotEmpty() == true) {
                     studentRequestAdapter.setListData(it)
                     recycleView.visible()

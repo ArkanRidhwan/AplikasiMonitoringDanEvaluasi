@@ -4,8 +4,11 @@ import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.example.aplikasimonitoringdanevaluasi.R
 import com.example.aplikasimonitoringdanevaluasi.databinding.LayoutListLogbookRequestBinding
 import com.example.aplikasimonitoringdanevaluasi.model.Logbook
+import com.example.aplikasimonitoringdanevaluasi.model.RequestLogbook
+import com.example.aplikasimonitoringdanevaluasi.utils.loadCircleImageFromUrl
 
 class StudentLogbookRequestAdapter :
     RecyclerView.Adapter<StudentLogbookRequestAdapter.ViewHolder>() {
@@ -27,6 +30,12 @@ class StudentLogbookRequestAdapter :
             binding.apply {
                 tvStudentName.text = data.name
                 tvStudentLogbookDate.text = data.date
+                tvContent.text = data.content
+                if (data.image.isEmpty()) {
+                    ivProfileLogbook.setImageResource(R.drawable.img_no_image)
+                } else {
+                    ivProfileLogbook.loadCircleImageFromUrl(data.image)
+                }
             }
         }
     }

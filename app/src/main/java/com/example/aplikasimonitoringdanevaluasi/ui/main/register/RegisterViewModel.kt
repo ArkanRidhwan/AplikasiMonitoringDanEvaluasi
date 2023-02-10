@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.aplikasimonitoringdanevaluasi.model.Admin
 import com.example.aplikasimonitoringdanevaluasi.model.Company
+import com.example.aplikasimonitoringdanevaluasi.model.RequestStudent
 import com.example.aplikasimonitoringdanevaluasi.model.Student
 import com.example.aplikasimonitoringdanevaluasi.utils.Constant
 import com.google.firebase.database.DataSnapshot
@@ -132,7 +133,7 @@ class RegisterViewModel : ViewModel() {
         return dataStudent
     }
 
-    fun getAdminByEmail(email: String): LiveData<Admin?> {
+    /*fun getAdminByEmail(email: String): LiveData<Admin?> {
         val dataAdmin = MutableLiveData<Admin?>()
         var admin: Admin? = null
         collAdmin.addValueEventListener(object : ValueEventListener {
@@ -149,6 +150,31 @@ class RegisterViewModel : ViewModel() {
                     dataAdmin.value = admin
                 } else {
                     dataAdmin.value = null
+                }
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                dataAdmin.value = null
+            }
+        })
+        return dataAdmin
+    }*/
+
+    fun getAdminByEmail(email: String): LiveData<Admin?> {
+        val dataAdmin = MutableLiveData<Admin?>()
+        var admin: Admin? = null
+        collAdmin.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                if (snapshot.exists()) {
+                    for (i in snapshot.children) {
+                        val valueStudent = i.getValue(Admin::class.java)
+                        admin = if (valueStudent?.email == email) {
+                            null
+                        } else {
+                            valueStudent
+                        }
+                    }
+                    dataAdmin.value = admin
                 }
             }
 

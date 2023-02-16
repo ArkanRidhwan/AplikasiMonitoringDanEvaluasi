@@ -3,6 +3,7 @@ package com.example.aplikasimonitoringdanevaluasi.ui.main.login
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import at.favre.lib.crypto.bcrypt.BCrypt
 import com.example.aplikasimonitoringdanevaluasi.model.Admin
 import com.example.aplikasimonitoringdanevaluasi.model.Company
 import com.example.aplikasimonitoringdanevaluasi.model.Student
@@ -28,8 +29,12 @@ class LoginViewModel() : ViewModel() {
                 if (snapshot.exists()) {
                     for (i in snapshot.children) {
                         val valueAdmin = i.getValue(Admin::class.java)
-                        if (valueAdmin?.email == email && valueAdmin.password == password) {
-                            admin = valueAdmin
+                        if (valueAdmin?.password?.isNotEmpty() == true) {
+                            val hash = valueAdmin.password
+                            val result = BCrypt.verifyer().verify(password.toCharArray(), hash)
+                            if (valueAdmin.email == email && result.verified) {
+                                admin = valueAdmin
+                            }
                         }
                     }
                     dataAdmin.value = admin
@@ -44,7 +49,90 @@ class LoginViewModel() : ViewModel() {
         return dataAdmin
     }
 
+
     fun loginCompanyByEmailPassword(email: String, password: String): LiveData<Company?> {
+        val dataCompany = MutableLiveData<Company?>()
+        var company: Company? = null
+        collCompany.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                if (snapshot.exists()) {
+                    for (i in snapshot.children) {
+                        val valueCompany = i.getValue(Company::class.java)
+                        if (valueCompany?.password?.isNotEmpty() == true) {
+                            val hash = valueCompany.password
+                            val result = BCrypt.verifyer().verify(password.toCharArray(), hash)
+                            if (valueCompany.email == email && result.verified) {
+                                company = valueCompany
+                            }
+                        }
+                    }
+                    dataCompany.value = company
+                }
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                company = null
+            }
+        })
+        return dataCompany
+    }
+
+    fun loginStudentByEmailPassword(email: String, password: String): LiveData<Student?> {
+        val dataStudent = MutableLiveData<Student?>()
+        var student: Student? = null
+        collStudent.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                if (snapshot.exists()) {
+                    for (i in snapshot.children) {
+                        val valueStudent = i.getValue(Student::class.java)
+                        if (valueStudent?.password?.isNotEmpty() == true) {
+                            val hash = valueStudent.password
+                            val result = BCrypt.verifyer().verify(password.toCharArray(), hash)
+                            if (valueStudent.email == email && result.verified) {
+                                student = valueStudent
+                            }
+                        }
+                    }
+                    dataStudent.value = student
+                }
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                student = null
+            }
+
+        })
+        return dataStudent
+    }
+
+    /*fun loginStudentByEmailPassword(email: String, password: String): LiveData<Student?> {
+        val dataStudent = MutableLiveData<Student?>()
+        var student: Student? = null
+        collStudent.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                if (snapshot.exists()) {
+                    for (i in snapshot.children) {
+                        val valueStudent = i.getValue(Student::class.java)
+                        val hash = valueStudent?.password.toString()
+                        val result = BCrypt.verifyer().verify(password.toCharArray(), hash)
+                        if (valueStudent?.email == email && result.verified) {
+                            student = valueStudent
+                        }
+                    }
+                    dataStudent.value = student
+                }
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                student = null
+            }
+
+        })
+        return dataStudent
+    }*/
+
+
+    /*fun loginCompanyByEmailPassword(email: String, password: String): LiveData<Company?> {
         val dataCompany = MutableLiveData<Company?>()
         var company: Company? = null
         collCompany.addValueEventListener(object : ValueEventListener {
@@ -66,9 +154,9 @@ class LoginViewModel() : ViewModel() {
 
         })
         return dataCompany
-    }
+    }*/
 
-    fun loginStudentByEmailPassword(email: String, password: String): LiveData<Student?> {
+    /*fun loginStudentByEmailPassword(email: String, password: String): LiveData<Student?> {
         val dataStudent = MutableLiveData<Student?>()
         var student: Student? = null
         collStudent.addValueEventListener(object : ValueEventListener {
@@ -90,6 +178,32 @@ class LoginViewModel() : ViewModel() {
 
         })
         return dataStudent
+    }*/
+
+    fun loginAdminByGoogleAuth(email: String): LiveData<Admin?> {
+        val dataAdmin = MutableLiveData<Admin?>()
+        var admin: Admin? = null
+        collAdmin.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                if (snapshot.exists()) {
+                    for (i in snapshot.children) {
+                        val valueAdmin = i.getValue(Admin::class.java)
+                        if (valueAdmin?.email == email) {
+                            admin = valueAdmin
+                        }
+                    }
+                    dataAdmin.value = admin
+                } else {
+                    dataAdmin.value = null
+                }
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                dataAdmin.value = null
+            }
+
+        })
+        return dataAdmin
     }
 
     fun loginCompanyByGoogleAuth(email: String): LiveData<Company?> {

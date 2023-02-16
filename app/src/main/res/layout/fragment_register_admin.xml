@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    tools:context=".ui.main.register.RegisterCompanyFragment">
+    tools:context=".ui.main.register.RegisterAdminFragment">
 
     <View
         android:id="@+id/viewBG"
@@ -31,13 +31,13 @@
         app:layout_constraintTop_toTopOf="@+id/viewBG" />
 
     <EditText
-        android:id="@+id/et_companyName"
+        android:id="@+id/et_adminName"
         android:layout_width="350dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="18dp"
         android:ems="10"
         android:fontFamily="@font/open_sans"
-        android:hint="Masukkan nama perusahaan"
+        android:hint="Masukkan nama"
         android:inputType="textPersonName"
         android:textColor="@color/black"
         android:textColorHint="@color/gray_hintText"
@@ -47,56 +47,23 @@
         app:layout_constraintTop_toBottomOf="@+id/tv_subTittleRegisterCompany" />
 
     <EditText
-        android:id="@+id/et_companyAddress"
+        android:id="@+id/et_adminPhoneNumber"
         android:layout_width="350dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:ems="10"
         android:fontFamily="@font/open_sans"
-        android:hint="Masukkan alamat perusahaan"
-        android:inputType="textPersonName"
-        android:textColor="@color/black"
-        android:textColorHint="@color/gray_hintText"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="@+id/et_companyName"
-        app:layout_constraintStart_toStartOf="@+id/et_companyName"
-        app:layout_constraintTop_toBottomOf="@+id/et_companyName" />
-
-    <EditText
-        android:id="@+id/et_companyContactName"
-        android:layout_width="350dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:ems="10"
-        android:fontFamily="@font/open_sans"
-        android:hint="Masukkan nama PIC"
+        android:hint="Masukkan nomor telepon"
         android:inputType="phone"
         android:textColor="@color/black"
         android:textColorHint="@color/gray_hintText"
         android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="@+id/et_companyAddress"
-        app:layout_constraintStart_toStartOf="@+id/et_companyAddress"
-        app:layout_constraintTop_toBottomOf="@+id/et_companyAddress" />
-
-
-    <EditText
-        android:id="@+id/et_companyPhoneNumber"
-        android:layout_width="350dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:ems="10"
-        android:fontFamily="@font/open_sans"
-        android:hint="Masukkan nomor telepon PIC"
-        android:inputType="phone"
-        android:textColor="@color/black"
-        android:textColorHint="@color/gray_hintText"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="@+id/et_companyContactName"
-        app:layout_constraintStart_toStartOf="@+id/et_companyContactName"
-        app:layout_constraintTop_toBottomOf="@+id/et_companyContactName" />
+        app:layout_constraintEnd_toEndOf="@+id/et_adminName"
+        app:layout_constraintStart_toStartOf="@+id/et_adminName"
+        app:layout_constraintTop_toBottomOf="@+id/et_adminName" />
 
     <EditText
-        android:id="@+id/et_verificationNumber"
+        android:id="@+id/et_adminVerificationNumber"
         android:layout_width="350dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
@@ -107,9 +74,10 @@
         android:textColor="@color/black"
         android:textColorHint="@color/gray_hintText"
         android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="@+id/et_companyPhoneNumber"
-        app:layout_constraintStart_toStartOf="@+id/et_companyPhoneNumber"
-        app:layout_constraintTop_toBottomOf="@+id/et_companyPhoneNumber" />
+        app:layout_constraintEnd_toEndOf="@+id/et_adminPhoneNumber"
+        app:layout_constraintStart_toStartOf="@+id/et_adminPhoneNumber"
+        app:layout_constraintTop_toBottomOf="@+id/et_adminPhoneNumber" />
+
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_register"
@@ -121,14 +89,13 @@
         android:textColor="@color/white"
         android:textSize="16sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/tv_sudahPunyaAkunRegisterCompany"
-        app:layout_constraintEnd_toEndOf="@+id/et_companyPhoneNumber"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/et_companyPhoneNumber"
-        app:layout_constraintTop_toBottomOf="@+id/et_verificationNumber" />
+        app:layout_constraintBottom_toTopOf="@+id/tv_sudahPunyaAkunRegisterAdmin"
+        app:layout_constraintEnd_toEndOf="@+id/et_adminVerificationNumber"
+        app:layout_constraintStart_toStartOf="@+id/et_adminVerificationNumber"
+        app:layout_constraintTop_toBottomOf="@+id/et_adminVerificationNumber" />
 
     <TextView
-        android:id="@+id/tv_sudahPunyaAkunRegisterCompany"
+        android:id="@+id/tv_sudahPunyaAkunRegisterAdmin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="70dp"
@@ -139,7 +106,7 @@
         android:textSize="14sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/et_companyName" />
+        app:layout_constraintStart_toStartOf="@+id/et_adminVerificationNumber" />
 
     <TextView
         android:id="@+id/tv_studentSignInNow"
@@ -151,21 +118,22 @@
         android:textColor="@color/blue_Register"
         android:textSize="14sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/tv_sudahPunyaAkunRegisterCompany"
-        app:layout_constraintStart_toEndOf="@+id/tv_sudahPunyaAkunRegisterCompany"
-        app:layout_constraintTop_toTopOf="@+id/tv_sudahPunyaAkunRegisterCompany" />
+        app:layout_constraintBottom_toBottomOf="@+id/tv_sudahPunyaAkunRegisterAdmin"
+        app:layout_constraintStart_toEndOf="@+id/tv_sudahPunyaAkunRegisterAdmin"
+        app:layout_constraintTop_toTopOf="@+id/tv_sudahPunyaAkunRegisterAdmin" />
 
     <com.airbnb.lottie.LottieAnimationView
-        android:id="@+id/progressBarCompanyRegister"
+        android:id="@+id/progressBarAdminRegister"
         android:layout_width="350dp"
         android:layout_height="wrap_content"
         android:visibility="gone"
-        app:layout_constraintBottom_toTopOf="@+id/tv_sudahPunyaAkunRegisterCompany"
-        app:layout_constraintEnd_toEndOf="@+id/et_verificationNumber"
-        app:layout_constraintStart_toStartOf="@+id/et_verificationNumber"
-        app:layout_constraintTop_toBottomOf="@+id/et_verificationNumber"
+        app:layout_constraintBottom_toTopOf="@+id/tv_sudahPunyaAkunRegisterAdmin"
+        app:layout_constraintEnd_toEndOf="@+id/et_adminVerificationNumber"
+        app:layout_constraintStart_toStartOf="@+id/et_adminVerificationNumber"
+        app:layout_constraintTop_toBottomOf="@+id/et_adminVerificationNumber"
         app:lottie_autoPlay="true"
         app:lottie_loop="true"
         app:lottie_rawRes="@raw/lottie_loading" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+

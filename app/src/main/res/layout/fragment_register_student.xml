@@ -177,9 +177,9 @@
         android:layout_height="wrap_content"
         android:visibility="gone"
         app:layout_constraintBottom_toTopOf="@+id/rv_studentHaveAnAccount"
-        app:layout_constraintEnd_toEndOf="@+id/btn_register"
-        app:layout_constraintStart_toStartOf="@+id/btn_register"
-        app:layout_constraintTop_toBottomOf="@+id/et_studentClassName"
+        app:layout_constraintEnd_toEndOf="@+id/et_studentSchoolMajor"
+        app:layout_constraintStart_toStartOf="@+id/et_studentSchoolMajor"
+        app:layout_constraintTop_toBottomOf="@+id/et_studentSchoolMajor"
         app:lottie_autoPlay="true"
         app:lottie_loop="true"
         app:lottie_rawRes="@raw/lottie_loading" />

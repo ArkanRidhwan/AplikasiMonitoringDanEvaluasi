@@ -1,14 +1,12 @@
 package com.example.aplikasimonitoringdanevaluasi.ui.main.video
 
 import android.content.pm.ActivityInfo
-import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.LinearLayout
-import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.navArgs
@@ -18,7 +16,6 @@ import com.example.aplikasimonitoringdanevaluasi.utils.Constant
 import com.example.aplikasimonitoringdanevaluasi.utils.gone
 import com.example.aplikasimonitoringdanevaluasi.utils.showToast
 import com.example.aplikasimonitoringdanevaluasi.utils.visible
-import com.google.android.exoplayer2.ExoPlayer
 import com.google.android.exoplayer2.MediaItem
 import com.google.android.exoplayer2.Player
 import com.google.android.exoplayer2.SimpleExoPlayer
@@ -89,6 +86,7 @@ class WatchVideoFragment : Fragment() {
                     ivBar.gone()
                     tvBartittle.gone()
                     ivBack.gone()
+                    btnDelete.gone()
                     scrollViewLayout.gone()
                     videoView.layoutParams.height = ViewGroup.LayoutParams.MATCH_PARENT
                 } else {
@@ -102,6 +100,7 @@ class WatchVideoFragment : Fragment() {
                     ivBar.visible()
                     tvBartittle.visible()
                     ivBack.visible()
+                    btnDelete.visible()
                     scrollViewLayout.visible()
                     videoView.layoutParams.height = 650
                 }
@@ -132,19 +131,20 @@ class WatchVideoFragment : Fragment() {
 
             btnDelete.setOnClickListener {
                 //Loading nanti
-                collVideo.child(args.video.id).addListenerForSingleValueEvent(object : ValueEventListener {
-                    override fun onDataChange(snapshot: DataSnapshot) {
-                        for (i in snapshot.children) {
-                            i.ref.removeValue()
+                collVideo.child(args.video.id)
+                    .addListenerForSingleValueEvent(object : ValueEventListener {
+                        override fun onDataChange(snapshot: DataSnapshot) {
+                            for (i in snapshot.children) {
+                                i.ref.removeValue()
+                            }
+                            requireActivity().showToast("Berhasil")
+                            requireActivity().onBackPressed()
                         }
-                        requireActivity().showToast("Berhasil")
-                        requireActivity().onBackPressed()
-                    }
 
-                    override fun onCancelled(error: DatabaseError) {
-                        requireActivity().showToast("Gagal")
-                    }
-                })
+                        override fun onCancelled(error: DatabaseError) {
+                            requireActivity().showToast("Gagal")
+                        }
+                    })
             }
         }
     }

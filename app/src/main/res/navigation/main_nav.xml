@@ -53,9 +53,6 @@
             android:name="role"
             app:argType="string" />
         <action
-            android:id="@+id/action_loginFragment_to_registerCompanyByEmailPassword"
-            app:destination="@id/registerCompanyByEmailPassword" />
-        <action
             android:id="@+id/action_loginFragment_to_registerStudentByEmailPassword"
             app:destination="@id/registerStudentByEmailPassword" />
         <action
@@ -64,6 +61,12 @@
         <action
             android:id="@+id/action_loginFragment_to_homeAdminFragment"
             app:destination="@id/homeAdminFragment" />
+        <action
+            android:id="@+id/action_loginFragment_to_registerAdminFragment"
+            app:destination="@id/registerAdminFragment" />
+        <action
+            android:id="@+id/action_loginFragment_to_registerCompanyByEmailPassword"
+            app:destination="@id/registerCompanyByEmailPassword" />
     </fragment>
     <fragment
         android:id="@+id/registerCompanyFragment"
@@ -467,5 +470,25 @@
         <argument
             android:name="requestStudent"
             app:argType="com.example.aplikasimonitoringdanevaluasi.model.RequestStudent" />
+    </fragment>
+    <fragment
+        android:id="@+id/registerAdminFragment"
+        android:name="com.example.aplikasimonitoringdanevaluasi.ui.main.register.RegisterAdminFragment"
+        android:label="fragment_register_admin"
+        tools:layout="@layout/fragment_register_admin" >
+        <action
+            android:id="@+id/action_registerAdminFragment_to_homeAdminFragment"
+            app:destination="@id/homeAdminFragment" />
+        <action
+            android:id="@+id/action_registerAdminFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+        <argument
+            android:name="role"
+            app:argType="string"
+            app:nullable="true" />
+        <argument
+            android:name="email"
+            app:argType="string"
+            app:nullable="true" />
     </fragment>
 </navigation>

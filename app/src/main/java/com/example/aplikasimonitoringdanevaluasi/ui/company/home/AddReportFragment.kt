@@ -32,12 +32,11 @@ class AddReportFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.apply {
+            addReportFragmentViewModel.getReportById(args.studentId).observe(viewLifecycleOwner) {
+                tittle = it?.tittle.toString()
+            }
+
             btnSave.setOnClickListener {
-
-                addReportFragmentViewModel.getReportById(args.studentId).observe(viewLifecycleOwner) {
-                    tittle = it?.tittle.toString()
-                }
-
                 val reportUserId = getInstance(requireContext()).getString(Constant.ID)
                 val answer1 = etReportAnswer1.text.toString()
                 val answer2 = etReportAnswer2.text.toString()
@@ -78,7 +77,7 @@ class AddReportFragment : Fragment() {
                 tittle = if (tittle.isEmpty()) {
                     "Laporan1"
                 } else if (tittle == "Laporan1") {
-                    " Laporan2"
+                    "Laporan2"
                 } else {
                     "Laporan3"
                 }

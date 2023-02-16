@@ -7,10 +7,13 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import at.favre.lib.crypto.bcrypt.BCrypt
 import com.example.aplikasimonitoringdanevaluasi.R
 import com.example.aplikasimonitoringdanevaluasi.databinding.FragmentRegisterCompanyByEmailPasswordBinding
 import com.example.aplikasimonitoringdanevaluasi.model.Company
 import com.example.aplikasimonitoringdanevaluasi.utils.*
+import com.google.firebase.database.ktx.database
+import com.google.firebase.ktx.Firebase
 import java.util.*
 
 class RegisterCompanyByEmailPasswordFragment : Fragment() {
@@ -31,8 +34,12 @@ class RegisterCompanyByEmailPasswordFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         binding.apply {
             btnRegister.setOnClickListener {
+                val emailFiltered = etCompanyEmail.text.toString().replace(".", "").replace("#", "")
+                    .replace("$", "")
+                    .replace("[", "").replace("]", "")
                 val email = etCompanyEmail.text.toString()
                 val password = etCompanyPassword.text.toString()
+                val passwordVerification = etCompanyPasswordVerification.text.toString()
                 val companyName = etCompanyName.text.toString()
                 val companyAddress = etCompanyAddress.text.toString()
                 val contactName = etCompanyContactName.text.toString()
@@ -56,21 +63,65 @@ class RegisterCompanyByEmailPasswordFragment : Fragment() {
                 } else if (contactPhoneNumber.isEmpty()) {
                     etCompanyContactPhoneNumber.error("Nomor telepon  PIC tidak boleh kosong")
                     etCompanyContactPhoneNumber.requestFocus()
+                } else if (passwordVerification.isEmpty()) {
+                    etCompanyPasswordVerification.error("Konfirmasi password tidak boleh kosong")
+                    etCompanyPasswordVerification.requestFocus()
+                } else if (passwordVerification != password) {
+                    etCompanyPasswordVerification.error("Password tidak sesuai")
+                    etCompanyPasswordVerification.requestFocus()
                 } else {
+                    val passHash =
+                        BCrypt.withDefaults().hashToString(4, password.toCharArray())
                     btnRegister.gone()
                     progressBarCompanyRegister.visible()
                     progressBarCompanyRegister.playAnimation()
                     val company = Company(
                         id = UUID.randomUUID().toString(),
                         email = email,
-                        password = password,
+                        password = passHash,
                         companyName = companyName,
                         companyAddress = companyAddress,
                         contactName = contactName,
                         contactPhoneNumber = contactPhoneNumber
                     )
 
-                    registerViewModel.getCompanyByEmail(email)
+                    val database = Firebase.database.getReference(Constant.COLL_COMPANY)
+                    database.child(emailFiltered).get()
+                        .addOnSuccessListener {
+                            if (it.value == null) {
+                                registerViewModel.saveCompany(company)
+                                    .observe(viewLifecycleOwner) { data ->
+                                        if (data == true) {
+                                            getInstance(requireContext()).apply {
+                                                putString(Constant.ID, company.id)
+                                                putString(Constant.NAME, company.companyName)
+                                                putString(
+                                                    Constant.ROLE,
+                                                    getString(R.string.company)
+                                                )
+                                            }
+                                            findNavController().navigate(
+                                                RegisterCompanyByEmailPasswordFragmentDirections.actionRegisterCompanyByEmailPasswordToHomeCompanyFragment(
+                                                    getString(R.string.company)
+                                                )
+                                            )
+                                            requireContext().showToast("Regitrasi berhasil")
+                                        } else {
+                                            btnRegister.visible()
+                                            progressBarCompanyRegister.gone()
+                                            requireContext().showToast("Regitrasi gagal")
+                                        }
+                                    }
+                            } else {
+                                requireActivity().showToast("Email sudah terdaftar")
+                                btnRegister.visible()
+                                progressBarCompanyRegister.gone()
+                            }
+                        }
+                        .addOnFailureListener {
+                            requireActivity().showToast("Database error")
+                        }
+                    /*registerViewModel.getCompanyByEmail(email)
                         .observe(viewLifecycleOwner) { dataCompany ->
                             if (dataCompany != null) {
                                 requireContext().showToast("Email yang anda masukkan sudah terdaftar")
@@ -98,7 +149,7 @@ class RegisterCompanyByEmailPasswordFragment : Fragment() {
                                         }
                                     }
                             }
-                        }
+                        }*/
 
                     /*registerViewModel.getCompanyByEmail(email)
                         .observe(viewLifecycleOwner) {

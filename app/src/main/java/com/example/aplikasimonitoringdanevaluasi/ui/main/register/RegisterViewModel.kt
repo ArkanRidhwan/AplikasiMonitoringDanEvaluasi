@@ -5,7 +5,6 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.aplikasimonitoringdanevaluasi.model.Admin
 import com.example.aplikasimonitoringdanevaluasi.model.Company
-import com.example.aplikasimonitoringdanevaluasi.model.RequestStudent
 import com.example.aplikasimonitoringdanevaluasi.model.Student
 import com.example.aplikasimonitoringdanevaluasi.utils.Constant
 import com.google.firebase.database.DataSnapshot
@@ -31,7 +30,10 @@ class RegisterViewModel : ViewModel() {
             phoneNumber = data.phoneNumber,
             image = ""
         )
-        collAdmin.child(data.id).setValue(admin)
+        collAdmin.child(
+            data.email.replace(".", "").replace("#", "").replace("$", "")
+                .replace("[", "").replace("]", "")
+        ).setValue(admin)
             .addOnCompleteListener {
                 status.value = true
             }
@@ -40,6 +42,7 @@ class RegisterViewModel : ViewModel() {
             }
         return status
     }
+
 
     fun saveCompany(data: Company): LiveData<Boolean> {
         val status = MutableLiveData<Boolean>()
@@ -53,7 +56,18 @@ class RegisterViewModel : ViewModel() {
             contactPhoneNumber = data.contactPhoneNumber,
             image = ""
         )
-        collCompany.child(data.id).setValue(company)
+        /*collCompany.child(data.id).setValue(company)
+            .addOnCompleteListener {
+                status.value = true
+            }
+            .addOnFailureListener {
+                status.value = false
+            }
+        return status*/
+        collCompany.child(
+            data.email.replace(".", "").replace("#", "").replace("$", "")
+                .replace("[", "").replace("]", "")
+        ).setValue(company)
             .addOnCompleteListener {
                 status.value = true
             }
@@ -77,7 +91,10 @@ class RegisterViewModel : ViewModel() {
             studentMajor = data.studentMajor,
             image = ""
         )
-        collStudent.child(data.id).setValue(student)
+        collStudent.child(
+            data.email.replace(".", "").replace("#", "").replace("$", "")
+                .replace("[", "").replace("]", "")
+        ).setValue(student)
             .addOnCompleteListener {
                 status.value = true
             }
@@ -85,9 +102,40 @@ class RegisterViewModel : ViewModel() {
                 status.value = false
             }
         return status
+        /*collStudent.child(data.id).setValue(student)
+            .addOnCompleteListener {
+                status.value = true
+            }
+            .addOnFailureListener {
+                status.value = false
+            }
+        return status*/
     }
 
-    fun getCompany(phoneNumber: String): LiveData<Company?> {
+    fun getAdmin(email: String?): LiveData<Admin?> {
+        val dataAdmin = MutableLiveData<Admin?>()
+        var admin: Admin? = null
+        collAdmin.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                if (snapshot.exists()) {
+                    for (i in snapshot.children) {
+                        val valueAdmin = i.getValue(Admin::class.java)
+                        if (valueAdmin?.email == email) {
+                            admin = valueAdmin
+                        }
+                    }
+                    dataAdmin.value = admin
+                }
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                dataAdmin.value = null
+            }
+        })
+        return dataAdmin
+    }
+
+    fun getCompany(email: String?): LiveData<Company?> {
         val dataCompany = MutableLiveData<Company?>()
         var company: Company? = null
         collCompany.addValueEventListener(object : ValueEventListener {
@@ -95,7 +143,7 @@ class RegisterViewModel : ViewModel() {
                 if (snapshot.exists()) {
                     for (i in snapshot.children) {
                         val valueCompany = i.getValue(Company::class.java)
-                        if (valueCompany?.contactPhoneNumber == phoneNumber) {
+                        if (valueCompany?.email == email) {
                             company = valueCompany
                         }
                     }
@@ -110,7 +158,7 @@ class RegisterViewModel : ViewModel() {
         return dataCompany
     }
 
-    fun getStudent(phoneNumber: String): LiveData<Student?> {
+    fun getStudent(email: String?): LiveData<Student?> {
         val dataStudent = MutableLiveData<Student?>()
         var student: Student? = null
         collStudent.addValueEventListener(object : ValueEventListener {
@@ -118,7 +166,7 @@ class RegisterViewModel : ViewModel() {
                 if (snapshot.exists()) {
                     for (i in snapshot.children) {
                         val valueStudent = i.getValue(Student::class.java)
-                        if (valueStudent?.phoneNumber == phoneNumber) {
+                        if (valueStudent?.email == email) {
                             student = valueStudent
                         }
                     }
@@ -133,24 +181,15 @@ class RegisterViewModel : ViewModel() {
         return dataStudent
     }
 
-    /*fun getAdminByEmail(email: String): LiveData<Admin?> {
+
+    fun getAdminByEmail(email: String): LiveData<Admin?> {
         val dataAdmin = MutableLiveData<Admin?>()
         var admin: Admin? = null
         collAdmin.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
-                if (snapshot.exists()) {
-                    for (i in snapshot.children) {
-                        val valueAdmin = i.getValue(Admin::class.java)
-                        admin = if (valueAdmin?.email == email) {
-                            valueAdmin
-                        } else {
-                            null
-                        }
-                    }
-                    dataAdmin.value = admin
-                } else {
-                    dataAdmin.value = null
-                }
+                admin = snapshot.child("admin").child(email.replace(".", ""))
+                    .getValue(Admin::class.java)
+                dataAdmin.value = admin
             }
 
             override fun onCancelled(error: DatabaseError) {
@@ -158,9 +197,9 @@ class RegisterViewModel : ViewModel() {
             }
         })
         return dataAdmin
-    }*/
+    }
 
-    fun getAdminByEmail(email: String): LiveData<Admin?> {
+    /*fun getAdminByEmail(email: String): LiveData<Admin?> {
         val dataAdmin = MutableLiveData<Admin?>()
         var admin: Admin? = null
         collAdmin.addValueEventListener(object : ValueEventListener {
@@ -183,7 +222,7 @@ class RegisterViewModel : ViewModel() {
             }
         })
         return dataAdmin
-    }
+    }*/
 
     fun getCompanyByEmail(email: String): LiveData<Company?> {
         val dataCompany = MutableLiveData<Company?>()

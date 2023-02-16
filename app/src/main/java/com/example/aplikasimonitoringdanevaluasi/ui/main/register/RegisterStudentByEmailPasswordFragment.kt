@@ -7,10 +7,13 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import at.favre.lib.crypto.bcrypt.BCrypt
 import com.example.aplikasimonitoringdanevaluasi.R
 import com.example.aplikasimonitoringdanevaluasi.databinding.FragmentRegisterStudentByEmailPasswordBinding
 import com.example.aplikasimonitoringdanevaluasi.model.Student
 import com.example.aplikasimonitoringdanevaluasi.utils.*
+import com.google.firebase.database.ktx.database
+import com.google.firebase.ktx.Firebase
 import java.util.*
 
 class RegisterStudentByEmailPasswordFragment : Fragment() {
@@ -31,8 +34,12 @@ class RegisterStudentByEmailPasswordFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         binding.apply {
             btnRegister.setOnClickListener {
+                val emailFiltered = etStudentEmail.text.toString().replace(".", "").replace("#", "")
+                    .replace("$", "")
+                    .replace("[", "").replace("]", "")
                 val email = etStudentEmail.text.toString()
                 val password = etStudentPassword.text.toString()
+                val passwordVerification = etStudentPasswordVerification.text.toString()
                 val name = etStudentName.text.toString()
                 val job = etStudentJob.text.toString()
                 val companyName = etStudentCompanyName.text.toString()
@@ -64,14 +71,22 @@ class RegisterStudentByEmailPasswordFragment : Fragment() {
                 } else if (major.isEmpty()) {
                     etStudentSchoolMajor.error("Jurusan tidak boleh kosong")
                     etStudentSchoolMajor.requestFocus()
+                } else if (passwordVerification.isEmpty()) {
+                    etStudentPasswordVerification.error("Konfirmasi password tidak boleh kosong")
+                    etStudentPasswordVerification.requestFocus()
+                } else if (password != passwordVerification) {
+                    etStudentPasswordVerification.error("Password tidak sesuai")
+                    etStudentPasswordVerification.requestFocus()
                 } else {
+                    val passHash =
+                        BCrypt.withDefaults().hashToString(4, password.toCharArray())
                     btnRegister.gone()
                     progressBarStudentRegister.visible()
                     progressBarStudentRegister.playAnimation()
                     val student = Student(
                         id = UUID.randomUUID().toString(),
                         email = email,
-                        password = password,
+                        password = passHash,
                         name = name,
                         job = job,
                         companyName = companyName,
@@ -80,7 +95,43 @@ class RegisterStudentByEmailPasswordFragment : Fragment() {
                         studentMajor = major
                     )
 
-                    registerViewModel.getStudentByEmail(email)
+                    val database = Firebase.database.getReference(Constant.COLL_STUDENT)
+                    database.child(emailFiltered).get()
+                        .addOnSuccessListener {
+                            if (it.value == null) {
+                                registerViewModel.saveStudent(student)
+                                    .observe(viewLifecycleOwner) { data ->
+                                        if (data == true) {
+                                            getInstance(requireContext()).apply {
+                                                putString(Constant.ID, student.id)
+                                                putString(Constant.NAME, student.name)
+                                                putString(
+                                                    Constant.ROLE,
+                                                    getString(R.string.student)
+                                                )
+                                            }
+                                            findNavController().navigate(
+                                                RegisterStudentByEmailPasswordFragmentDirections.actionRegisterStudentByEmailPasswordToHomeStudentFragment(
+                                                    getString(R.string.student)
+                                                )
+                                            )
+                                            requireContext().showToast("Regitrasi berhasil")
+                                        } else {
+                                            btnRegister.visible()
+                                            progressBarStudentRegister.gone()
+                                            requireContext().showToast("Regitrasi gagal")
+                                        }
+                                    }
+                            } else {
+                                requireActivity().showToast("Email sudah terdaftar")
+                                btnRegister.visible()
+                                progressBarStudentRegister.gone()
+                            }
+                        }
+                        .addOnFailureListener {
+                            requireActivity().showToast("Database error")
+                        }
+                    /*registerViewModel.getStudentByEmail(email)
                         .observe(viewLifecycleOwner) { dataStudent ->
                             if (dataStudent != null) {
                                 requireContext().showToast("Email yang anda masukkan sudah terdaftar")
@@ -111,7 +162,7 @@ class RegisterStudentByEmailPasswordFragment : Fragment() {
                                         }
                                     }
                             }
-                        }
+                        }*/
                 }
             }
         }

@@ -67,7 +67,10 @@ class LoginFragment : Fragment() {
                                     if (it != null) {
                                         loginFirebase()
                                         getInstance(requireContext()).putString(Constant.ID, it.id)
-                                        getInstance(requireContext()).putString(Constant.NAME, it.name)
+                                        getInstance(requireContext()).putString(
+                                            Constant.NAME,
+                                            it.name
+                                        )
                                         getInstance(requireContext()).putString(
                                             Constant.ROLE,
                                             getString(R.string.admin)
@@ -161,17 +164,14 @@ class LoginFragment : Fragment() {
                         )
                     findNavController().navigate(action)
                 }
-                else -> {
-                    tvRegisterLogin.setOnClickListener {
-                        val action =
-                            LoginFragmentDirections.actionLoginFragmentToRegisterAdminByEmailPasswordFragment(
-                                args.role,
-                                null
-                            )
-                        findNavController().navigate(action)
-                    }
-                    tvOr.gone()
-                    ivGoogleLogin.gone()
+
+                getString(R.string.admin) -> tvRegisterLogin.setOnClickListener {
+                    val action =
+                        LoginFragmentDirections.actionLoginFragmentToRegisterAdminByEmailPasswordFragment(
+                            args.role,
+                            null
+                        )
+                    findNavController().navigate(action)
                 }
             }
         }
@@ -180,9 +180,21 @@ class LoginFragment : Fragment() {
     private fun loginFirebase() {
         requireContext().showToast("Login berhasil")
         when (args.role) {
-            getString(R.string.company) -> findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToHomeCompanyFragment(getString(R.string.company)))
-            getString(R.string.student) -> findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToHomeStudentFragment(getString(R.string.student)))
-            getString(R.string.admin) -> findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToHomeAdminFragment(getString(R.string.admin)))
+            getString(R.string.company) -> findNavController().navigate(
+                LoginFragmentDirections.actionLoginFragmentToHomeCompanyFragment(
+                    getString(R.string.company)
+                )
+            )
+            getString(R.string.student) -> findNavController().navigate(
+                LoginFragmentDirections.actionLoginFragmentToHomeStudentFragment(
+                    getString(R.string.student)
+                )
+            )
+            getString(R.string.admin) -> findNavController().navigate(
+                LoginFragmentDirections.actionLoginFragmentToHomeAdminFragment(
+                    getString(R.string.admin)
+                )
+            )
         }
     }
 
@@ -229,10 +241,52 @@ class LoginFragment : Fragment() {
     private fun updateUI(email: String) {
         binding.apply {
             when (args.role) {
+                getString(R.string.admin) -> {
+                    loginViewModel.loginAdminByGoogleAuth(email).observe(viewLifecycleOwner) {
+                        if (it != null) {
+                            getInstance(requireContext()).putString(Constant.ID, it.id)
+                            getInstance(requireContext()).putString(
+                                Constant.NAME,
+                                it.name
+                            )
+                            getInstance(requireContext()).putString(
+                                Constant.ROLE,
+                                getString(R.string.admin)
+                            )
+                            findNavController().navigate(
+                                LoginFragmentDirections.actionLoginFragmentToHomeAdminFragment(
+                                    getString(R.string.admin)
+                                )
+                            )
+                        } else {
+                            val action =
+                                LoginFragmentDirections.actionLoginFragmentToRegisterAdminFragment(
+                                    args.role,
+                                    email
+                                )
+                            findNavController().navigate(action)
+                        }
+                        btnLogin.visible()
+                        progressBarLogin.gone()
+                    }
+                }
                 getString(R.string.company) -> {
                     loginViewModel.loginCompanyByGoogleAuth(email).observe(viewLifecycleOwner) {
                         if (it != null) {
-                            findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToHomeCompanyFragment(getString(R.string.company)))
+                            getInstance(requireContext()).putString(Constant.ID, it.id)
+                            getInstance(requireContext()).putString(
+                                Constant.NAME,
+                                it.contactName
+                            )
+                            getInstance(requireContext()).putString(
+                                Constant.ROLE,
+                                getString(R.string.company)
+                            )
+                            findNavController().navigate(
+                                LoginFragmentDirections.actionLoginFragmentToHomeCompanyFragment(
+                                    getString(R.string.company)
+                                )
+                            )
                         } else {
                             val action =
                                 LoginFragmentDirections.actionLoginFragmentToRegisterCompanyFragment(
@@ -248,7 +302,20 @@ class LoginFragment : Fragment() {
                 getString(R.string.student) -> {
                     loginViewModel.loginStudentByGoogleAuth(email).observe(viewLifecycleOwner) {
                         if (it != null) {
-                            findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToHomeStudentFragment(getString(R.string.student)))
+                            getInstance(requireContext()).putString(Constant.ID, it.id)
+                            getInstance(requireContext()).putString(
+                                Constant.NAME,
+                                it.name
+                            )
+                            getInstance(requireContext()).putString(
+                                Constant.ROLE,
+                                getString(R.string.student)
+                            )
+                            findNavController().navigate(
+                                LoginFragmentDirections.actionLoginFragmentToHomeStudentFragment(
+                                    getString(R.string.student)
+                                )
+                            )
                         } else {
                             val action =
                                 LoginFragmentDirections.actionLoginFragmentToRegisterStudentFragment(

@@ -107,4 +107,7 @@ dependencies {
     implementation 'com.google.android.exoplayer:exoplayer:2.17.1'
 
     implementation 'com.google.android.material:material:1.7.0'
+
+    //Encryption and Description
+    implementation group: 'at.favre.lib', name: 'bcrypt', version: '0.9.0'
 }

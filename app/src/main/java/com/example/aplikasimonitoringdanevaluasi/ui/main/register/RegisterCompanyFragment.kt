@@ -33,11 +33,17 @@ class RegisterCompanyFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         binding.apply {
             auth = FirebaseAuth.getInstance()
+            tvStudentSignInNow.setOnClickListener {
+                RegisterCompanyFragmentDirections.actionRegisterCompanyFragmentToLoginFragment(
+                    getInstance(requireContext()).getString(Constant.ROLE)
+                )
+            }
             btnRegister.setOnClickListener {
                 val companyName = etCompanyName.text.toString()
                 val companyAddress = etCompanyAddress.text.toString()
                 val contactName = etCompanyContactName.text.toString()
                 val phoneNumber = etCompanyPhoneNumber.text.toString()
+                val verificationNumber = etVerificationNumber.text.toString()
                 val email = auth.currentUser?.email
 
                 if (companyName.isEmpty()) {
@@ -52,6 +58,12 @@ class RegisterCompanyFragment : Fragment() {
                 } else if (phoneNumber.isEmpty()) {
                     etCompanyPhoneNumber.error("Nomor telepon tidak boleh kosong")
                     etCompanyPhoneNumber.requestFocus()
+                } else if (verificationNumber.isEmpty()) {
+                    etVerificationNumber.error("Nomor verifikasi tidak boleh kosong")
+                    etVerificationNumber.requestFocus()
+                } else if (verificationNumber != "2000") {
+                    etVerificationNumber.error("Nomor verifikasi salah")
+                    etVerificationNumber.requestFocus()
                 } else {
                     btnRegister.gone()
                     progressBarCompanyRegister.visible()
@@ -67,7 +79,7 @@ class RegisterCompanyFragment : Fragment() {
 
                     registerViewModel.saveCompany(company).observe(viewLifecycleOwner) { it ->
                         if (it == true) {
-                            registerViewModel.getCompany(phoneNumber).observe(viewLifecycleOwner) {
+                            registerViewModel.getCompany(email).observe(viewLifecycleOwner) {
                                 getInstance(requireContext()).putString(Constant.ID, it?.id)
                                 getInstance(requireContext()).putString(
                                     Constant.NAME,
@@ -77,7 +89,11 @@ class RegisterCompanyFragment : Fragment() {
                                     Constant.ROLE,
                                     getString(R.string.company)
                                 )
-                                findNavController().navigate(RegisterCompanyFragmentDirections.actionRegisterCompanyFragmentToHomeCompanyFragment(getString(R.string.company)))
+                                findNavController().navigate(
+                                    RegisterCompanyFragmentDirections.actionRegisterCompanyFragmentToHomeCompanyFragment(
+                                        getString(R.string.company)
+                                    )
+                                )
                             }
                         } else {
                             btnRegister.visible()

@@ -53,10 +53,16 @@ fun ImageView.loadCircleImageFromUri(uri: Uri?) {
 
 @SuppressLint("SimpleDateFormat")
 fun getDateNow(): String {
-    val sdf = SimpleDateFormat("EEE, d MMM yyyy")
+    val sdf = SimpleDateFormat("EEE, d MMM yyyy ")
     val currentDate = sdf.format(Date())
     return currentDate
 }
+
+/*fun getTimeStamp(): String {
+    val sdf = SimpleDateFormat("EEE, d MMM yyyy ")
+    val currentDate = sdf.format(Date())
+    return currentDate
+}*/
 
 fun ImageView.loadCircleImageFromUrl(url: String) {
     Glide.with(context)

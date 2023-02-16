@@ -54,7 +54,6 @@ class ProfileCompanyFragment : Fragment() {
                 }
             }
             ivLogout.setOnClickListener {
-                auth = Firebase.auth
                 logout()
             }
             btnEditProfile.setOnClickListener {

@@ -10,6 +10,7 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
+import java.sql.Timestamp
 import java.util.*
 
 class ChatViewModel() : ViewModel() {
@@ -26,7 +27,8 @@ class ChatViewModel() : ViewModel() {
             receiverName = data.receiverName,
             senderId = data.senderId,
             senderName = data.senderName,
-            message = data.message
+            message = data.message,
+            date = System.currentTimeMillis()
         )
         collChat.child(uuid).setValue(chat)
             .addOnCompleteListener {
@@ -41,7 +43,7 @@ class ChatViewModel() : ViewModel() {
     fun getMessage(senderId: String, receiverId: String): LiveData<List<Chat>?> {
         val dataChat = MutableLiveData<List<Chat>?>()
         val chats = ArrayList<Chat>()
-        collChat.addValueEventListener(object : ValueEventListener {
+        collChat.orderByChild("date").addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 if (snapshot.exists()) {
                     chats.clear()

@@ -61,7 +61,7 @@ class AddLogbookFragment : Fragment() {
                         .observe(viewLifecycleOwner) { data ->
                             if (data == true) {
                                 requireActivity().onBackPressed()
-                                requireContext().showToast("Menyimpan logbook berhasil")
+                                //requireContext().showToast("Menyimpan logbook berhasil")
                             } else {
                                 requireContext().showToast("Menyimpan logbook gagal")
                             }

@@ -56,9 +56,10 @@ class ProfileStudentFragment : Fragment() {
                     }
                 }
             }
-            binding.ivLogout.setOnClickListener {
+            ivLogout.setOnClickListener {
                 logout()
             }
+
             btnEditProfile.setOnClickListener {
                 val action =
                     ProfileStudentFragmentDirections.actionProfileStudentFragmentToEditProfileStudentFragment()

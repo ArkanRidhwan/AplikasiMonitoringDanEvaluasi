@@ -76,7 +76,7 @@ class RegisterStudentFragment : Fragment() {
 
                     registerViewModel.saveStudent(student).observe(viewLifecycleOwner) { it ->
                         if (it == true) {
-                            registerViewModel.getStudent(phoneNumber).observe(viewLifecycleOwner) {
+                            registerViewModel.getStudent(email).observe(viewLifecycleOwner) {
                                 getInstance(requireContext()).putString(Constant.ID, it?.id)
                                 getInstance(requireContext()).putString(Constant.NAME, it?.name)
                                 getInstance(requireContext()).putString(

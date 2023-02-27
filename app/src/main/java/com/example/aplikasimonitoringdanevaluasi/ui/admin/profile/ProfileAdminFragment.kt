@@ -8,12 +8,13 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
 import com.example.aplikasimonitoringdanevaluasi.R
 import com.example.aplikasimonitoringdanevaluasi.databinding.FragmentProfileAdminBinding
 import com.example.aplikasimonitoringdanevaluasi.ui.main.MainActivity
 import com.example.aplikasimonitoringdanevaluasi.utils.Constant
 import com.example.aplikasimonitoringdanevaluasi.utils.getInstance
-import com.example.aplikasimonitoringdanevaluasi.utils.loadCircleImageFromUrl
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
@@ -42,11 +43,15 @@ class ProfileAdminFragment : Fragment() {
                 tvAdminEmail.text = it?.email
                 tvAdminPhoneNumber.text = it?.phoneNumber
                 if (it?.image?.isEmpty() == true) {
-                    ivAdminProfile.setImageResource(R.drawable.img_no_image)
+                    ivAdminProfile.setImageResource(R.drawable.ic_image_no_image)
                 } else {
-                    if (it != null) {
-                        ivAdminProfile.loadCircleImageFromUrl(it.image)
-                    }
+                    Glide.with(requireContext())
+                        .load(it?.image)
+                        .apply(
+                            RequestOptions.placeholderOf(R.drawable.ic_image_loading)
+                                .error(R.drawable.ic_image_error)
+                        )
+                        .into(ivAdminProfile)
                 }
             }
             ivLogout.setOnClickListener {

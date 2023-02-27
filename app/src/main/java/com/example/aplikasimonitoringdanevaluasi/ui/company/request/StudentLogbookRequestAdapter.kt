@@ -4,11 +4,11 @@ import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
 import com.example.aplikasimonitoringdanevaluasi.R
 import com.example.aplikasimonitoringdanevaluasi.databinding.LayoutListLogbookRequestBinding
 import com.example.aplikasimonitoringdanevaluasi.model.Logbook
-import com.example.aplikasimonitoringdanevaluasi.model.RequestLogbook
-import com.example.aplikasimonitoringdanevaluasi.utils.loadCircleImageFromUrl
 
 class StudentLogbookRequestAdapter :
     RecyclerView.Adapter<StudentLogbookRequestAdapter.ViewHolder>() {
@@ -24,7 +24,7 @@ class StudentLogbookRequestAdapter :
         notifyDataSetChanged()
     }
 
-    class ViewHolder(private val binding: LayoutListLogbookRequestBinding) :
+    inner class ViewHolder(private val binding: LayoutListLogbookRequestBinding) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(data: Logbook) {
             binding.apply {
@@ -32,9 +32,18 @@ class StudentLogbookRequestAdapter :
                 tvStudentLogbookDate.text = data.date
                 tvContent.text = data.content
                 if (data.image.isEmpty()) {
-                    ivProfileLogbook.setImageResource(R.drawable.img_no_image)
+                    ivProfileLogbook.setImageResource(R.drawable.ic_image_no_image)
                 } else {
-                    ivProfileLogbook.loadCircleImageFromUrl(data.image)
+                    Glide.with(itemView.context)
+                        .load(data.image)
+                        .apply(
+                            RequestOptions.placeholderOf(R.drawable.ic_image_loading)
+                                .error(R.drawable.ic_image_error)
+                        )
+                        .into(ivProfileLogbook)
+                }
+                itemView.setOnClickListener {
+                    onItemClick?.invoke(data)
                 }
             }
         }

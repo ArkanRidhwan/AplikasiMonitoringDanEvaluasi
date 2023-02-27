@@ -4,13 +4,8 @@ import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
-import com.bumptech.glide.request.RequestOptions
-import com.example.aplikasimonitoringdanevaluasi.R
 import com.example.aplikasimonitoringdanevaluasi.databinding.LayoutListLogbookBinding
-import com.example.aplikasimonitoringdanevaluasi.databinding.LayoutListVideoBinding
 import com.example.aplikasimonitoringdanevaluasi.model.Logbook
-import com.example.aplikasimonitoringdanevaluasi.model.Video
 import com.example.aplikasimonitoringdanevaluasi.utils.visible
 
 class ListLogbookAdapter : RecyclerView.Adapter<ListLogbookAdapter.ViewHolder>() {
@@ -31,6 +26,18 @@ class ListLogbookAdapter : RecyclerView.Adapter<ListLogbookAdapter.ViewHolder>()
             binding.apply {
                 tvLogbookDate.text = data.date
                 tvLogbookContent.text = data.content
+                when (data.status) {
+                    "1" -> {
+                        ivStatusProcessed.visible()
+                    }
+                    "2" -> {
+                        ivStatusRejected.visible()
+                    }
+                    else -> {
+                        ivStatusAccepted.visible()
+                    }
+                }
+
                 itemView.setOnClickListener {
                     onItemClick?.invoke(data)
                 }

@@ -42,7 +42,6 @@ class RegisterStudentByEmailPasswordFragment : Fragment() {
                 val passwordVerification = etStudentPasswordVerification.text.toString()
                 val name = etStudentName.text.toString()
                 val job = etStudentJob.text.toString()
-                val companyName = etStudentCompanyName.text.toString()
                 val className = etStudentClassName.text.toString()
                 val phoneNumber = etStudentPhoneNumber.text.toString()
                 val major = etStudentSchoolMajor.text.toString()
@@ -59,9 +58,6 @@ class RegisterStudentByEmailPasswordFragment : Fragment() {
                 } else if (job.isEmpty()) {
                     etStudentJob.error("Pekerjaan tidak boleh kosong")
                     etStudentJob.requestFocus()
-                } else if (companyName.isEmpty()) {
-                    etStudentCompanyName.error("Nama perusahaan tidak boleh kosong")
-                    etStudentCompanyName.requestFocus()
                 } else if (className.isEmpty()) {
                     etStudentClassName.error("Nama kelas tidak boleh kosong")
                     etStudentClassName.requestFocus()
@@ -86,10 +82,9 @@ class RegisterStudentByEmailPasswordFragment : Fragment() {
                     val student = Student(
                         id = UUID.randomUUID().toString(),
                         email = email,
-                        password = passHash,
+                        password = encrypt(password).toString(),
                         name = name,
                         job = job,
-                        companyName = companyName,
                         className = className,
                         phoneNumber = phoneNumber,
                         studentMajor = major

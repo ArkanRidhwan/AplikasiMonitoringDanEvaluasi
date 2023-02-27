@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import com.example.aplikasimonitoringdanevaluasi.R
 import com.example.aplikasimonitoringdanevaluasi.databinding.FragmentHomeAdminBinding
 import com.example.aplikasimonitoringdanevaluasi.utils.gone
 import com.example.aplikasimonitoringdanevaluasi.utils.visible
@@ -34,15 +35,15 @@ class HomeAdminFragment : Fragment() {
             findNavController().navigate(action)
         }
 
-        binding.apply {
+       /* binding.apply {
             fabChatAdmin.setOnClickListener {
                 findNavController().navigate(
                     HomeAdminFragmentDirections.actionHomeAdminFragmentToListContactChatFragment(
-                        /* getString(R.string.admin)*/
+                        getString(R.string.admin)
                     )
                 )
             }
-        }
+        }*/
     }
 
     override fun onResume() {

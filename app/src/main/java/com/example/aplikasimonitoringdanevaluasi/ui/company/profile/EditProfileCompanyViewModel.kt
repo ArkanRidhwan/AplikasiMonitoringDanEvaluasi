@@ -28,7 +28,10 @@ class EditProfileCompanyViewModel : ViewModel() {
             contactPhoneNumber = data.contactPhoneNumber,
             image = data.image
         )
-        collCompany.child(userId).setValue(company)
+        collCompany.child(
+            data.email.replace(".", "").replace("#", "").replace("$", "")
+                .replace("[", "").replace("]", "")
+        ).setValue(company)
             .addOnCompleteListener {
                 status.value = true
             }

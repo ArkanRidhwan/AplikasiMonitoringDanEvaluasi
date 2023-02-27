@@ -7,9 +7,14 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
+import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
+import com.example.aplikasimonitoringdanevaluasi.R
 import com.example.aplikasimonitoringdanevaluasi.databinding.FragmentChatBinding
 import com.example.aplikasimonitoringdanevaluasi.model.Chat
-import com.example.aplikasimonitoringdanevaluasi.utils.*
+import com.example.aplikasimonitoringdanevaluasi.utils.Constant
+import com.example.aplikasimonitoringdanevaluasi.utils.getInstance
+import com.example.aplikasimonitoringdanevaluasi.utils.showToast
 
 class ChatFragment : Fragment() {
 
@@ -36,6 +41,17 @@ class ChatFragment : Fragment() {
             chatAdapter = ChatAdapter()
             rvChat.adapter = chatAdapter
             tvChatPersonName.text = args.receiverName
+            if (args.image.isEmpty()) {
+                ivChatProfileImage.setImageResource(R.drawable.ic_image_no_image)
+            } else {
+                Glide.with(requireContext())
+                    .load(args.image)
+                    .apply(
+                        RequestOptions.placeholderOf(R.drawable.ic_image_loading)
+                            .error(R.drawable.ic_image_error)
+                    )
+                    .into(ivChatProfileImage)
+            }
             tvSendMessage.setOnClickListener {
                 val message = edtMessage.text.toString()
                 if (message.isNotEmpty()) {

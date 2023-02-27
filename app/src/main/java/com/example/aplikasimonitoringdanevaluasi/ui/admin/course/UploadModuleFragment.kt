@@ -3,6 +3,7 @@ package com.example.aplikasimonitoringdanevaluasi.ui.admin.course
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.os.Handler
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -14,8 +15,6 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.example.aplikasimonitoringdanevaluasi.databinding.FragmentUploadModuleBinding
 import com.example.aplikasimonitoringdanevaluasi.model.Module
-import com.example.aplikasimonitoringdanevaluasi.model.Video
-import com.example.aplikasimonitoringdanevaluasi.ui.storage.StorageActivity
 import com.example.aplikasimonitoringdanevaluasi.utils.getDateNow
 import com.example.aplikasimonitoringdanevaluasi.utils.gone
 import com.example.aplikasimonitoringdanevaluasi.utils.showToast
@@ -24,7 +23,6 @@ import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.ktx.component1
 import com.google.firebase.storage.ktx.component2
 import com.google.firebase.storage.ktx.storage
-import org.koin.core.component.getScopeName
 import java.io.File
 import java.util.*
 
@@ -76,12 +74,29 @@ class UploadModuleFragment : Fragment() {
                     action = Intent.ACTION_GET_CONTENT
                 }
                 startForDocumentResult.launch(intent)
+
+                Handler().postDelayed({
+                    ivChooseModule.gone()
+                    ivChangeModule.visible()
+                    tvChangeModule.visible()
+                }, 1000)
+            }
+
+            ivChangeModule.setOnClickListener {
+                val intent = Intent().apply {
+                    type = "application/pdf"
+                    action = Intent.ACTION_GET_CONTENT
+                }
+                startForDocumentResult.launch(intent)
             }
 
             btnUploadModule.setOnClickListener {
                 val tittle = etUploadModuleTittle.text.toString()
                 val description = etUploadModuleContent.text.toString()
 
+                tvChangeModule.gone()
+                ivChangeModule.gone()
+                tvModuleName.gone()
                 progressBar.visible()
                 tvProgress.visible()
                 val storageRef = Firebase.storage.reference
@@ -101,12 +116,13 @@ class UploadModuleFragment : Fragment() {
                             task.storage.downloadUrl.addOnSuccessListener { url ->
                                 Log.d(TAG, "Document: $url")
                                 urlDownload = url.toString()
-                                var id = UUID.randomUUID().toString()
+                                val id = UUID.randomUUID().toString()
                                 val module = Module(
                                     id = id,
                                     tittle = tittle,
                                     description = description,
                                     date = getDateNow(),
+                                    timestamp = System.currentTimeMillis(),
                                     link = urlDownload.toString(),
                                 )
                                 uploadModuleViewModel.saveModule(module)

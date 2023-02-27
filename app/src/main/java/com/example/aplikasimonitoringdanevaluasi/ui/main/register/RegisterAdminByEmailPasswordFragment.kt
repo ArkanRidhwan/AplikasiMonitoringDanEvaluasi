@@ -1,6 +1,7 @@
 package com.example.aplikasimonitoringdanevaluasi.ui.main.register
 
 import android.os.Bundle
+import android.util.Base64.*
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,7 +15,11 @@ import com.example.aplikasimonitoringdanevaluasi.model.Admin
 import com.example.aplikasimonitoringdanevaluasi.utils.*
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
+import okio.ByteString.Companion.decodeBase64
 import java.util.*
+import javax.crypto.Cipher
+import javax.crypto.spec.IvParameterSpec
+import javax.crypto.spec.SecretKeySpec
 
 
 class RegisterAdminByEmailPasswordFragment : Fragment() {
@@ -65,7 +70,7 @@ class RegisterAdminByEmailPasswordFragment : Fragment() {
                 } else if (verification.isEmpty()) {
                     etAdminVerification.error("Nomor verifikasi tidak boleh kosong")
                     etAdminVerification.requestFocus()
-                } else if (verification != getString(R.string.verification)) {
+                } else if (verification != getString(R.string.verificationAdmin)) {
                     etAdminVerification.error("Nomor verifikasi salah")
                     etAdminVerification.requestFocus()
                 } else if (passwordVerification.isEmpty()) {
@@ -83,10 +88,11 @@ class RegisterAdminByEmailPasswordFragment : Fragment() {
                     val admin = Admin(
                         id = UUID.randomUUID().toString(),
                         email = email,
-                        password = passHash,
+                        password = encrypt(password).toString(),
                         name = name,
                         phoneNumber = phoneNumber,
                     )
+
 
                     val database = Firebase.database.getReference(Constant.COLL_ADMIN)
                     database.child(emailFiltered).get()

@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.aplikasimonitoringdanevaluasi.databinding.FragmentAddReportBinding
 import com.example.aplikasimonitoringdanevaluasi.model.Report
@@ -117,7 +118,11 @@ class AddReportFragment : Fragment() {
                     addReportFragmentViewModel.saveReport(report).observe(viewLifecycleOwner) {
                         if (it == true) {
                             requireActivity().showToast("Berhasil disimpan")
-                            requireActivity().onBackPressed()
+                            val action =
+                                AddReportFragmentDirections.actionAddReportFragmentToHomeCompanyFragment(
+                                    getInstance(requireContext()).getString(Constant.ROLE)
+                                )
+                            findNavController().navigate(action)
                         } else {
                             requireActivity().showToast("Gagal disimpan")
                         }

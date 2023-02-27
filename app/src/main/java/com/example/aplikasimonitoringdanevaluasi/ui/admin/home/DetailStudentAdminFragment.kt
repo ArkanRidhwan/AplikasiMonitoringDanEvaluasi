@@ -7,19 +7,16 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
 import com.example.aplikasimonitoringdanevaluasi.R
 import com.example.aplikasimonitoringdanevaluasi.databinding.FragmentDetailStudentAdminBinding
-import com.example.aplikasimonitoringdanevaluasi.model.Student
-import com.example.aplikasimonitoringdanevaluasi.ui.main.chat.ListContactChatFragmentDirections
-import com.example.aplikasimonitoringdanevaluasi.utils.Constant
-import com.example.aplikasimonitoringdanevaluasi.utils.getInstance
-import com.example.aplikasimonitoringdanevaluasi.utils.loadCircleImageFromUrl
 
 
 class DetailStudentAdminFragment : Fragment() {
 
     private lateinit var binding: FragmentDetailStudentAdminBinding
-    private val args : DetailStudentAdminFragmentArgs by navArgs()
+    private val args: DetailStudentAdminFragmentArgs by navArgs()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -40,14 +37,22 @@ class DetailStudentAdminFragment : Fragment() {
             tvStudentSchoolMajor.text = args.student.studentMajor
             tvStudentPhoneNumber.text = args.student.phoneNumber
             if (args.student.image.isEmpty()) {
-                ivProfilePicture.setImageResource(R.drawable.img_no_image)
+                ivProfilePicture.setImageResource(R.drawable.ic_image_no_image)
             } else {
-                ivProfilePicture.loadCircleImageFromUrl(args.student.image)
+                Glide.with(requireContext())
+                    .load(args.student.image)
+                    .apply(
+                        RequestOptions.placeholderOf(R.drawable.ic_image_loading)
+                            .error(R.drawable.ic_image_error)
+                    )
+                    .into(ivProfilePicture)
             }
 
             btnLogbook.setOnClickListener {
                 val action =
-                    DetailStudentAdminFragmentDirections.actionDetailStudentAdminFragmentToListLogbookFragment(args.student)
+                    DetailStudentAdminFragmentDirections.actionDetailStudentAdminFragmentToListLogbookFragment(
+                        args.student, null
+                    )
                 findNavController().navigate(action)
             }
         }

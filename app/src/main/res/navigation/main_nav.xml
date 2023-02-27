@@ -115,9 +115,6 @@
             android:name="role"
             app:argType="string" />
         <action
-            android:id="@+id/action_homeAdminFragment_to_listContactChatFragment"
-            app:destination="@id/listContactChatFragment" />
-        <action
             android:id="@+id/action_homeAdminFragment_to_uploadVideoFragment"
             app:destination="@id/uploadVideoFragment" />
         <action
@@ -141,12 +138,6 @@
         android:name="com.example.aplikasimonitoringdanevaluasi.ui.student.home.HomeStudentFragment"
         android:label="fragment_home_student"
         tools:layout="@layout/fragment_home_student" >
-        <argument
-            android:name="role"
-            app:argType="string" />
-        <action
-            android:id="@+id/action_homeStudentFragment_to_listContactChatFragment"
-            app:destination="@id/listContactChatFragment" />
         <action
             android:id="@+id/action_homeStudentFragment_to_detailCompanyStudentFragment"
             app:destination="@id/detailCompanyStudentFragment" />
@@ -156,6 +147,9 @@
         <action
             android:id="@+id/action_homeStudentFragment_to_detailLogbookFragment"
             app:destination="@id/detailLogbookFragment" />
+        <argument
+            android:name="role"
+            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/profileAdminFragment"
@@ -252,15 +246,21 @@
         <argument
             android:name="receiverName"
             app:argType="string" />
+        <argument
+            android:name="image"
+            app:argType="string" />
     </fragment>
     <fragment
-        android:id="@+id/listContactChatFragment"
-        android:name="com.example.aplikasimonitoringdanevaluasi.ui.main.chat.ListContactChatFragment"
-        android:label="fragment_list_contact_chat"
-        tools:layout="@layout/fragment_list_contact_chat" >
+        android:id="@+id/listContactChatStudentFragment"
+        android:name="com.example.aplikasimonitoringdanevaluasi.ui.main.chat.ListContactChatStudentFragment"
+        android:label="fragment_list_contact_chat_student"
+        tools:layout="@layout/fragment_list_contact_chat_student">
         <action
             android:id="@+id/action_listContactChatFragment_to_chatFragment"
             app:destination="@id/chatFragment" />
+        <argument
+            android:name="role"
+            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/detailStudentCompanyFragment"
@@ -273,6 +273,9 @@
         <action
             android:id="@+id/action_detailStudentCompanyFragment_to_addReportFragment"
             app:destination="@id/addReportFragment" />
+        <action
+            android:id="@+id/action_detailStudentCompanyFragment_to_listLogbookFragment"
+            app:destination="@id/listLogbookFragment" />
     </fragment>
     <fragment
         android:id="@+id/detailCompanyStudentFragment"
@@ -321,6 +324,9 @@
         <action
             android:id="@+id/action_requestFragment_to_detailRequestStudentFragment"
             app:destination="@id/detailRequestStudentFragment" />
+        <action
+            android:id="@+id/action_requestFragment_to_studentLogbookRequestDetailFragment"
+            app:destination="@id/studentLogbookRequestDetailFragment" />
     </fragment>
     <fragment
         android:id="@+id/listCompanyFragment"
@@ -413,7 +419,12 @@
             app:destination="@id/detailLogbookFragment" />
         <argument
             android:name="student"
-            app:argType="com.example.aplikasimonitoringdanevaluasi.model.Student" />
+            app:argType="com.example.aplikasimonitoringdanevaluasi.model.Student"
+            app:nullable="true" />
+        <argument
+            android:name="studentId"
+            app:argType="string"
+            app:nullable="true" />
     </fragment>
     <fragment
         android:id="@+id/listVideoFragment"
@@ -458,6 +469,9 @@
         <argument
             android:name="RequestStudent"
             app:argType="com.example.aplikasimonitoringdanevaluasi.model.RequestStudent" />
+        <action
+            android:id="@+id/action_detailRequestStudentFragment_to_requestFragment"
+            app:destination="@id/requestFragment" />
     </fragment>
     <fragment
         android:id="@+id/addReportFragment"
@@ -470,6 +484,9 @@
         <argument
             android:name="requestStudent"
             app:argType="com.example.aplikasimonitoringdanevaluasi.model.RequestStudent" />
+        <action
+            android:id="@+id/action_addReportFragment_to_homeCompanyFragment"
+            app:destination="@id/homeCompanyFragment" />
     </fragment>
     <fragment
         android:id="@+id/registerAdminFragment"
@@ -490,5 +507,23 @@
             android:name="email"
             app:argType="string"
             app:nullable="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/listContactChatAdminFragment"
+        android:name="com.example.aplikasimonitoringdanevaluasi.ui.main.chat.ListContactChatAdminFragment"
+        android:label="fragment_list_contact_chat_admin"
+        tools:layout="@layout/fragment_list_contact_chat_admin" >
+        <action
+            android:id="@+id/action_listContactChatAdminFragment_to_chatFragment"
+            app:destination="@id/chatFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/studentLogbookRequestDetailFragment"
+        android:name="com.example.aplikasimonitoringdanevaluasi.ui.company.request.DetailStudentLogbookRequestFragment"
+        android:label="fragment_student_logbook_request_detail"
+        tools:layout="@layout/fragment_detail_student_logbook_request" >
+        <argument
+            android:name="logbook"
+            app:argType="com.example.aplikasimonitoringdanevaluasi.model.Logbook" />
     </fragment>
 </navigation>

@@ -229,6 +229,7 @@ class UploadVideoFragment : Fragment() {
                                     tittle = tittle,
                                     description = description,
                                     date = getDateNow(),
+                                    timestamp = System.currentTimeMillis(),
                                     link = urlDownload.toString(),
                                 )
                                 uploadVideoViewModel.saveVideo(video)

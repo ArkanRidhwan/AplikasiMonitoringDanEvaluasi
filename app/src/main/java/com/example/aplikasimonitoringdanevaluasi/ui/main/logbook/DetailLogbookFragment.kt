@@ -7,16 +7,12 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.navArgs
 import com.example.aplikasimonitoringdanevaluasi.databinding.FragmentDetailLogbookBinding
-import com.example.aplikasimonitoringdanevaluasi.ui.admin.home.DetailStudentAdminFragmentArgs
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.ktx.auth
-import com.google.firebase.ktx.Firebase
 
 
 class DetailLogbookFragment : Fragment() {
 
     private lateinit var binding: FragmentDetailLogbookBinding
-    private val args : DetailLogbookFragmentArgs by navArgs()
+    private val args: DetailLogbookFragmentArgs by navArgs()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -29,8 +25,9 @@ class DetailLogbookFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.apply {
-            tvDate.text = args.logbook.date
+            tvDate.text = "Dibuat pada: ${args.logbook.date}"
             tvContentLogbook.text = args.logbook.content
+            tvActivityDate.text = "Tanggal kegiatan: ${args.logbook.activityDate}"
         }
     }
 }

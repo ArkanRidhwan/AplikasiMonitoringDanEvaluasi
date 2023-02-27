@@ -4,10 +4,11 @@ import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
 import com.example.aplikasimonitoringdanevaluasi.R
 import com.example.aplikasimonitoringdanevaluasi.databinding.LayoutListStudentAdminBinding
 import com.example.aplikasimonitoringdanevaluasi.model.Student
-import com.example.aplikasimonitoringdanevaluasi.utils.loadCircleImageFromUrl
 
 class HomeAdminAdapter : RecyclerView.Adapter<HomeAdminAdapter.ViewHolder>() {
     private val data = ArrayList<Student>()
@@ -26,11 +27,21 @@ class HomeAdminAdapter : RecyclerView.Adapter<HomeAdminAdapter.ViewHolder>() {
         fun bind(data: Student) {
             binding.apply {
                 tvStudentName.text = data.name
-                tvStudentCompany.text = data.companyName
-                if (data.image.isEmpty()) {
-                    ivStudentPicture.setImageResource(R.drawable.img_no_image)
+                if (data.companyName.isEmpty()) {
+                    tvStudentCompany.text = "Lamaran perusahaan belum diterima"
                 } else {
-                    ivStudentPicture.loadCircleImageFromUrl(data.image)
+                    tvStudentCompany.text = data.companyName
+                }
+                if (data.image.isEmpty()) {
+                    ivStudentPicture.setImageResource(R.drawable.ic_image_no_image)
+                } else {
+                    Glide.with(itemView.context)
+                        .load(data.image)
+                        .apply(
+                            RequestOptions.placeholderOf(R.drawable.ic_image_loading)
+                                .error(R.drawable.ic_image_error)
+                        )
+                        .into(ivStudentPicture)
                 }
                 itemView.setOnClickListener {
                     onItemClick?.invoke(data)

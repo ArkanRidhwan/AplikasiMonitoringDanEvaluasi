@@ -21,6 +21,7 @@ class UploadVideoViewModel : ViewModel() {
             tittle = data.tittle,
             description = data.description,
             date = data.date,
+            timestamp = data.timestamp,
             link = data.link,
         )
         collVideo.child(data.id).setValue(admin)

@@ -3,12 +3,12 @@ package com.example.aplikasimonitoringdanevaluasi.ui.company.request
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
 import com.example.aplikasimonitoringdanevaluasi.R
 import com.example.aplikasimonitoringdanevaluasi.databinding.LayoutListStudentRequestBinding
 import com.example.aplikasimonitoringdanevaluasi.model.RequestStudent
-import com.example.aplikasimonitoringdanevaluasi.utils.loadCircleImageFromUrl
 
 class StudentRequestAdapter : RecyclerView.Adapter<StudentRequestAdapter.ViewHolder>() {
 
@@ -30,9 +30,15 @@ class StudentRequestAdapter : RecyclerView.Adapter<StudentRequestAdapter.ViewHol
                 tvStudentName.text = data.studentName
                 tvStudentEmail.text = data.studentEmail
                 if (data.image.isEmpty()) {
-                    ivProfileStudent.setImageResource(R.drawable.img_no_image)
+                    ivProfileStudent.setImageResource(R.drawable.ic_image_no_image)
                 } else {
-                    ivProfileStudent.loadCircleImageFromUrl(data.image)
+                    Glide.with(itemView.context)
+                        .load(data.image)
+                        .apply(
+                            RequestOptions.placeholderOf(R.drawable.ic_image_loading)
+                                .error(R.drawable.ic_image_error)
+                        )
+                        .into(ivProfileStudent)
                 }
                 itemView.setOnClickListener {
                     onItemClick?.invoke(data)

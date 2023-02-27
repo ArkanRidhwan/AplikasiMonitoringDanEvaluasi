@@ -45,12 +45,16 @@ class ProfileCompanyFragment : Fragment() {
                 tvContactName.text = it?.contactName
                 tvContactEmail.text = it?.email
                 tvContactPhoneNumber.text = it?.contactPhoneNumber
-                if(it?.image?.isEmpty() == true){
-                    ivCompanyProfile.setImageResource(R.drawable.img_no_image)
+                if (it?.image?.isEmpty() == true) {
+                    ivCompanyProfile.setImageResource(R.drawable.ic_image_no_image)
                 } else {
-                    if (it != null) {
-                        ivCompanyProfile.loadCircleImageFromUrl(it.image)
-                    }
+                    Glide.with(requireContext())
+                        .load(it?.image)
+                        .apply(
+                            RequestOptions.placeholderOf(R.drawable.ic_image_loading)
+                                .error(R.drawable.ic_image_error)
+                        )
+                        .into(ivCompanyProfile)
                 }
             }
             ivLogout.setOnClickListener {

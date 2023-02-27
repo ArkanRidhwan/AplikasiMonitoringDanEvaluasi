@@ -52,7 +52,7 @@
                 android:layout_marginTop="90dp"
                 android:padding="1.5dp"
                 android:scaleType="fitXY"
-                android:src="@drawable/img_no_image"
+                android:src="@drawable/ic_image_no_image"
                 app:layout_constraintEnd_toEndOf="@+id/viewBG2"
                 app:layout_constraintHorizontal_bias="0.497"
                 app:layout_constraintStart_toStartOf="@+id/viewBG2"
@@ -127,6 +127,7 @@
                         android:fontFamily="@font/open_sans"
                         android:textColor="@color/black"
                         android:textSize="16sp"
+                        android:inputType="textPersonName"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="@+id/tv_studentAdminTittle"
                         app:layout_constraintTop_toBottomOf="@+id/tv_studentAdminTittle" />
@@ -153,6 +154,7 @@
                         android:fontFamily="@font/open_sans"
                         android:textColor="@color/black"
                         android:textSize="16sp"
+                        android:enabled="false"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="@+id/tv_adminEmailTittle"
                         app:layout_constraintTop_toBottomOf="@+id/tv_adminEmailTittle" />
@@ -205,6 +207,7 @@
                         android:layout_marginBottom="32dp"
                         android:fontFamily="@font/open_sans"
                         android:textColor="@color/black"
+                        android:inputType="phone"
                         android:textSize="16sp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"

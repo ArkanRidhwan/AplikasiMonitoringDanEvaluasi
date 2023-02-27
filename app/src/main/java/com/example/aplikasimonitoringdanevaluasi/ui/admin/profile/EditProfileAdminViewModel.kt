@@ -16,7 +16,7 @@ class EditProfileAdminViewModel : ViewModel() {
     private val database = Firebase.database
     private val collAdmin = database.getReference(Constant.COLL_ADMIN)
 
-    fun updateAdminById(data: Admin, userId: String): LiveData<Boolean> {
+    fun updateAdminByEmail(data: Admin, userId: String): LiveData<Boolean> {
         val status = MutableLiveData<Boolean>()
         val admin = Admin.saveRegistrationAdmin(
             id = userId,
@@ -26,7 +26,10 @@ class EditProfileAdminViewModel : ViewModel() {
             phoneNumber = data.phoneNumber,
             image = data.image
         )
-        collAdmin.child(userId).setValue(admin)
+        collAdmin.child(
+            data.email.replace(".", "").replace("#", "").replace("$", "")
+                .replace("[", "").replace("]", "")
+        ).setValue(admin)
             .addOnCompleteListener {
                 status.value = true
             }

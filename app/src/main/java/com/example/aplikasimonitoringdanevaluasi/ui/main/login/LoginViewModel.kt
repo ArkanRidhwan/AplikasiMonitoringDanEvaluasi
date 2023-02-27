@@ -8,6 +8,7 @@ import com.example.aplikasimonitoringdanevaluasi.model.Admin
 import com.example.aplikasimonitoringdanevaluasi.model.Company
 import com.example.aplikasimonitoringdanevaluasi.model.Student
 import com.example.aplikasimonitoringdanevaluasi.utils.Constant
+import com.example.aplikasimonitoringdanevaluasi.utils.decrypt
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
@@ -29,16 +30,27 @@ class LoginViewModel() : ViewModel() {
                 if (snapshot.exists()) {
                     for (i in snapshot.children) {
                         val valueAdmin = i.getValue(Admin::class.java)
-                        if (valueAdmin?.password?.isNotEmpty() == true) {
-                            val hash = valueAdmin.password
-                            val result = BCrypt.verifyer().verify(password.toCharArray(), hash)
-                            if (valueAdmin.email == email && result.verified) {
-                                admin = valueAdmin
-                            }
+                        val decryptedPass = decrypt(valueAdmin?.password.toString())
+                        if (valueAdmin?.email == email && decryptedPass == password) {
+                            admin = valueAdmin
                         }
                     }
                     dataAdmin.value = admin
                 }
+                /*if (snapshot.exists()) {
+                        for (i in snapshot.children) {
+                            val valueAdmin = i.getValue(Admin::class.java)
+
+                            if (valueAdmin?.password?.isNotEmpty() == true) {
+                                val hash = valueAdmin.password
+                                val result = BCrypt.verifyer().verify(password.toCharArray(), hash)
+                                if (valueAdmin.email == email && result.verified) {
+                                    admin = valueAdmin
+                                }
+                            }
+                        }
+                        dataAdmin.value = admin
+                    }*/
             }
 
             override fun onCancelled(error: DatabaseError) {
@@ -58,6 +70,13 @@ class LoginViewModel() : ViewModel() {
                 if (snapshot.exists()) {
                     for (i in snapshot.children) {
                         val valueCompany = i.getValue(Company::class.java)
+                        val decryptedPass = decrypt(valueCompany?.password.toString())
+                        if (valueCompany?.email == email && decryptedPass == password) {
+                            company = valueCompany
+                        }
+                    }
+                    /*for (i in snapshot.children) {
+                        val valueCompany = i.getValue(Company::class.java)
                         if (valueCompany?.password?.isNotEmpty() == true) {
                             val hash = valueCompany.password
                             val result = BCrypt.verifyer().verify(password.toCharArray(), hash)
@@ -65,7 +84,7 @@ class LoginViewModel() : ViewModel() {
                                 company = valueCompany
                             }
                         }
-                    }
+                    }*/
                     dataCompany.value = company
                 }
             }
@@ -85,6 +104,14 @@ class LoginViewModel() : ViewModel() {
                 if (snapshot.exists()) {
                     for (i in snapshot.children) {
                         val valueStudent = i.getValue(Student::class.java)
+                        val decryptedPass = decrypt(valueStudent?.password.toString())
+                        if (valueStudent?.email == email && decryptedPass == password) {
+                            student = valueStudent
+                        }
+                    }
+
+                    /*for (i in snapshot.children) {
+                        val valueStudent = i.getValue(Student::class.java)
                         if (valueStudent?.password?.isNotEmpty() == true) {
                             val hash = valueStudent.password
                             val result = BCrypt.verifyer().verify(password.toCharArray(), hash)
@@ -92,7 +119,7 @@ class LoginViewModel() : ViewModel() {
                                 student = valueStudent
                             }
                         }
-                    }
+                    }*/
                     dataStudent.value = student
                 }
             }

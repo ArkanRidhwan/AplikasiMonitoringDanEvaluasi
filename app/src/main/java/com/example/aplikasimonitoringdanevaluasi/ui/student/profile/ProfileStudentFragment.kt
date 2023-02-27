@@ -48,12 +48,16 @@ class ProfileStudentFragment : Fragment() {
                 tvStudentPhoneNumber.text = it?.phoneNumber
                 tvStudentClassName.text = it?.className
                 tvStudentMajor.text = it?.studentMajor
-                if(it?.image?.isEmpty() == true){
-                    ivProfile.setImageResource(R.drawable.img_no_image)
+                if (it?.image?.isEmpty() == true) {
+                    ivProfile.setImageResource(R.drawable.ic_image_no_image)
                 } else {
-                    if (it != null) {
-                        ivProfile.loadCircleImageFromUrl(it.image)
-                    }
+                    Glide.with(requireContext())
+                        .load(it?.image)
+                        .apply(
+                            RequestOptions.placeholderOf(R.drawable.ic_image_loading)
+                                .error(R.drawable.ic_image_error)
+                        )
+                        .into(ivProfile)
                 }
             }
             ivLogout.setOnClickListener {

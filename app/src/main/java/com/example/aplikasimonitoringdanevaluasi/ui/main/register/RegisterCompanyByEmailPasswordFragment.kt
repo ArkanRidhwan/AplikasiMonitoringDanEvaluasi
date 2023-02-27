@@ -44,6 +44,7 @@ class RegisterCompanyByEmailPasswordFragment : Fragment() {
                 val companyAddress = etCompanyAddress.text.toString()
                 val contactName = etCompanyContactName.text.toString()
                 val contactPhoneNumber = etCompanyContactPhoneNumber.text.toString()
+                val verificationNumber = etVerificationNumber.text.toString()
 
                 if (email.isEmpty()) {
                     etCompanyEmail.error("Email Tidak boleh kosong")
@@ -69,6 +70,12 @@ class RegisterCompanyByEmailPasswordFragment : Fragment() {
                 } else if (passwordVerification != password) {
                     etCompanyPasswordVerification.error("Password tidak sesuai")
                     etCompanyPasswordVerification.requestFocus()
+                } else if (verificationNumber.isEmpty()) {
+                    etVerificationNumber.error("Nomor verifikasi tidak boleh kosong")
+                    etVerificationNumber.requestFocus()
+                } else if (verificationNumber != getString(R.string.verificationCompany)) {
+                    etVerificationNumber.error("Nomor verifikasi salah")
+                    etVerificationNumber.requestFocus()
                 } else {
                     val passHash =
                         BCrypt.withDefaults().hashToString(4, password.toCharArray())
@@ -78,7 +85,7 @@ class RegisterCompanyByEmailPasswordFragment : Fragment() {
                     val company = Company(
                         id = UUID.randomUUID().toString(),
                         email = email,
-                        password = passHash,
+                        password = encrypt(password).toString(),
                         companyName = companyName,
                         companyAddress = companyAddress,
                         contactName = contactName,

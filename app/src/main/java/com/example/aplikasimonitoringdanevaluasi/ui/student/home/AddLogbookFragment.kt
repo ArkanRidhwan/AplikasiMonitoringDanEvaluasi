@@ -44,6 +44,7 @@ class AddLogbookFragment : Fragment() {
 
             btnSave.setOnClickListener {
                 val content = etContentLogbook.text.toString()
+                val activityDate = etActivityDateLogbook.text.toString()
                 val name = getInstance(requireContext()).getString(Constant.NAME)
                 val logbookId = UUID.randomUUID().toString()
                 val logbook = Logbook(
@@ -51,8 +52,10 @@ class AddLogbookFragment : Fragment() {
                     logbookUserId = logbookUserId,
                     companyId = companyId,
                     name = name,
+                    activityDate = activityDate,
                     content = content,
                     date = getDateNow(),
+                    timestamp = System.currentTimeMillis(),
                     status = "1",
                     image = imageProfileStudentLogbook
                 )

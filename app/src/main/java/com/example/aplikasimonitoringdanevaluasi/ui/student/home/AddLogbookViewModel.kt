@@ -27,8 +27,10 @@ class AddLogbookViewModel : ViewModel() {
             logbookUserId = data.logbookUserId,
             companyId = data.companyId,
             name = data.name,
+            activityDate = data.activityDate,
             content = data.content,
             date = data.date,
+            timestamp = data.timestamp,
             status = data.status,
             image = data.image
         )

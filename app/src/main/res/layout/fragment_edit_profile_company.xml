@@ -51,7 +51,7 @@
                 android:layout_marginTop="90dp"
                 android:padding="1.5dp"
                 android:scaleType="fitXY"
-                android:src="@drawable/img_no_image"
+                android:src="@drawable/ic_image_no_image"
                 app:layout_constraintEnd_toEndOf="@+id/viewBG2"
                 app:layout_constraintHorizontal_bias="0.497"
                 app:layout_constraintStart_toStartOf="@+id/viewBG2"
@@ -126,6 +126,7 @@
                         android:fontFamily="@font/open_sans"
                         android:textColor="@color/black"
                         android:textSize="16sp"
+                        android:inputType="text"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="@+id/tv_companyNameTittle"
                         app:layout_constraintTop_toBottomOf="@+id/tv_companyNameTittle" />
@@ -151,6 +152,7 @@
                         android:layout_marginEnd="16dp"
                         android:fontFamily="@font/open_sans"
                         android:textColor="@color/black"
+                        android:enabled="false"
                         android:textSize="16sp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="@+id/tv_emailCompanyTittle"
@@ -204,6 +206,7 @@
                         android:fontFamily="@font/open_sans"
                         android:textColor="@color/black"
                         android:textSize="16sp"
+                        android:inputType="text"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="@+id/tv_companyAddressTittle"
                         app:layout_constraintTop_toBottomOf="@+id/tv_companyAddressTittle" />
@@ -229,6 +232,7 @@
                         android:fontFamily="@font/open_sans"
                         android:textColor="@color/black"
                         android:textSize="16sp"
+                        android:inputType="textPersonName"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="@+id/tv_companyPICNameTittle"
                         app:layout_constraintTop_toBottomOf="@+id/tv_companyPICNameTittle" />
@@ -255,6 +259,7 @@
                         android:fontFamily="@font/open_sans"
                         android:textColor="@color/black"
                         android:textSize="16sp"
+                        android:inputType="phone"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="@+id/tv_companyPICPhoneNumberTittle"

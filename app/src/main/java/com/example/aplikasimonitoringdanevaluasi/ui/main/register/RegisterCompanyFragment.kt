@@ -61,7 +61,7 @@ class RegisterCompanyFragment : Fragment() {
                 } else if (verificationNumber.isEmpty()) {
                     etVerificationNumber.error("Nomor verifikasi tidak boleh kosong")
                     etVerificationNumber.requestFocus()
-                } else if (verificationNumber != "2000") {
+                } else if (verificationNumber != getString(R.string.verificationCompany)) {
                     etVerificationNumber.error("Nomor verifikasi salah")
                     etVerificationNumber.requestFocus()
                 } else {

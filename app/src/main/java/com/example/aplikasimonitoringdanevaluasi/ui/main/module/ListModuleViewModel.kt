@@ -20,7 +20,7 @@ class ListModuleViewModel : ViewModel() {
     fun getAllModule(): LiveData<List<Module>?> {
         val dataModule = MutableLiveData<List<Module>?>()
         val module = ArrayList<Module>()
-        collModule.addValueEventListener(object : ValueEventListener {
+        collModule.orderByChild("timestamp").addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 if (snapshot.exists()) {
                     module.clear()

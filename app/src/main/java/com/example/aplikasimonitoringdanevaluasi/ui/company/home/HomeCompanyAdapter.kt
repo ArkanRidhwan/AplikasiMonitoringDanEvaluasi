@@ -4,11 +4,11 @@ import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
 import com.example.aplikasimonitoringdanevaluasi.R
 import com.example.aplikasimonitoringdanevaluasi.databinding.LayoutListStudentCompanyBinding
-import com.example.aplikasimonitoringdanevaluasi.databinding.LayoutListStudentRequestBinding
 import com.example.aplikasimonitoringdanevaluasi.model.RequestStudent
-import com.example.aplikasimonitoringdanevaluasi.utils.loadCircleImageFromUrl
 import com.example.aplikasimonitoringdanevaluasi.utils.visible
 
 class HomeCompanyAdapter : RecyclerView.Adapter<HomeCompanyAdapter.ViewHolder>() {
@@ -30,15 +30,15 @@ class HomeCompanyAdapter : RecyclerView.Adapter<HomeCompanyAdapter.ViewHolder>()
             binding.apply {
                 tvStudentName.text = data.studentName
                 tvStudentEmail.text = data.studentEmail
-                if (data.reportStatus.isEmpty()){
+                if (data.reportStatus.isEmpty()) {
                     ivReportUndone1.visible()
                     ivReportLocked2.visible()
                     ivReportLocked3.visible()
-                } else if(data.reportStatus == "Laporan1"){
+                } else if (data.reportStatus == "Laporan1") {
                     ivReportDone1.visible()
                     ivReportUndone2.visible()
                     ivReportLocked3.visible()
-                } else if(data.reportStatus == "Laporan2") {
+                } else if (data.reportStatus == "Laporan2") {
                     ivReportDone1.visible()
                     ivReportDone2.visible()
                     ivReportLocked3.visible()
@@ -49,9 +49,15 @@ class HomeCompanyAdapter : RecyclerView.Adapter<HomeCompanyAdapter.ViewHolder>()
                 }
 
                 if (data.image.isEmpty()) {
-                    ivStudentPicture.setImageResource(R.drawable.img_no_image)
+                    ivStudentPicture.setImageResource(R.drawable.ic_image_no_image)
                 } else {
-                    ivStudentPicture.loadCircleImageFromUrl(data.image)
+                    Glide.with(itemView.context)
+                        .load(data.image)
+                        .apply(
+                            RequestOptions.placeholderOf(R.drawable.ic_image_loading)
+                                .error(R.drawable.ic_image_error)
+                        )
+                        .into(ivStudentPicture)
                 }
                 itemView.setOnClickListener {
                     onItemClick?.invoke(data)

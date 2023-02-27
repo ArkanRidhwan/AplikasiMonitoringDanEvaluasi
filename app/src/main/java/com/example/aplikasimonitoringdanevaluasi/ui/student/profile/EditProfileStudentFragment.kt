@@ -14,6 +14,8 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.net.toFile
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
 import com.example.aplikasimonitoringdanevaluasi.R
 import com.example.aplikasimonitoringdanevaluasi.databinding.FragmentEditProfileStudentBinding
 import com.example.aplikasimonitoringdanevaluasi.model.Student
@@ -50,18 +52,22 @@ class EditProfileStudentFragment : Fragment() {
             editProfileStudentViewModel.getStudentById(userId).observe(viewLifecycleOwner) {
                 etStudentName.setText(it?.name)
                 etEmailStudent.setText(it?.email)
-                etStudentPassword.setText(it?.password)
+                etStudentPassword.setText(decrypt(it?.password.toString()))
                 etStudentCompanyName.setText(it?.companyName)
                 etStudentJob.setText(it?.job)
                 etStudentPhoneNumber.setText(it?.phoneNumber)
                 etStudentClassName.setText(it?.className)
                 etStudentMajor.setText(it?.studentMajor)
-                if(it?.image?.isEmpty() == true){
-                    ivProfile.setImageResource(R.drawable.img_no_image)
+                if (it?.image?.isEmpty() == true) {
+                    ivProfile.setImageResource(R.drawable.ic_image_no_image)
                 } else {
-                    if (it != null) {
-                        ivProfile.loadCircleImageFromUrl(it.image)
-                    }
+                    Glide.with(requireContext())
+                        .load(it?.image)
+                        .apply(
+                            RequestOptions.placeholderOf(R.drawable.ic_image_loading)
+                                .error(R.drawable.ic_image_error)
+                        )
+                        .into(ivProfile)
                 }
             }
 
@@ -113,7 +119,7 @@ class EditProfileStudentFragment : Fragment() {
 
             btnSaveProfile.setOnClickListener {
                 val email = etEmailStudent.text.toString()
-                val password = etStudentPassword.text.toString()
+                val password = encrypt(etStudentPassword.text.toString())
                 val name = etStudentName.text.toString()
                 val companyName = etStudentCompanyName.text.toString()
                 val job = etStudentJob.text.toString()
@@ -138,10 +144,10 @@ class EditProfileStudentFragment : Fragment() {
                         task.storage.downloadUrl.addOnSuccessListener { url ->
                             Log.d(TAG, "downloadUri: $url")
                             urlDownload = url.toString()
-                            val admin = Student(
+                            val student = Student(
                                 id = userId,
                                 email = email,
-                                password = password,
+                                password = password.toString(),
                                 name = name,
                                 companyName = companyName,
                                 job = job,
@@ -150,7 +156,7 @@ class EditProfileStudentFragment : Fragment() {
                                 studentMajor = studentMajor,
                                 image = urlDownload.toString()
                             )
-                            editProfileStudentViewModel.updateStudentById(admin, userId)
+                            editProfileStudentViewModel.updateStudentById(student, userId)
                                 .observe(viewLifecycleOwner) { data ->
                                     if (data == true) {
                                         requireActivity().onBackPressed()

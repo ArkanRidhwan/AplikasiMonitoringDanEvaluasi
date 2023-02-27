@@ -24,7 +24,7 @@
         android:fontFamily="@font/proza_libre"
         android:text="Unggah Video"
         android:textColor="@color/white"
-        android:textSize="18sp"
+        android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/iv_bar"
         app:layout_constraintEnd_toEndOf="parent"

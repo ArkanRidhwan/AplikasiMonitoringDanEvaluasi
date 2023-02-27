@@ -12,10 +12,7 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.navArgs
 import com.example.aplikasimonitoringdanevaluasi.R
 import com.example.aplikasimonitoringdanevaluasi.databinding.FragmentWatchVideoBinding
-import com.example.aplikasimonitoringdanevaluasi.utils.Constant
-import com.example.aplikasimonitoringdanevaluasi.utils.gone
-import com.example.aplikasimonitoringdanevaluasi.utils.showToast
-import com.example.aplikasimonitoringdanevaluasi.utils.visible
+import com.example.aplikasimonitoringdanevaluasi.utils.*
 import com.google.android.exoplayer2.MediaItem
 import com.google.android.exoplayer2.Player
 import com.google.android.exoplayer2.SimpleExoPlayer
@@ -45,6 +42,12 @@ class WatchVideoFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         binding.apply {
+            val role = getInstance(requireContext()).getString(Constant.ROLE)
+            if (role == getString(R.string.student))
+                btnDelete.gone()
+            else
+                btnDelete.visible()
+
             tvVideoTittle.text = args.video.tittle
             tvVideoContent.text = args.video.description
             tvVideoDate.text = args.video.date
@@ -102,6 +105,10 @@ class WatchVideoFragment : Fragment() {
                     ivBack.visible()
                     btnDelete.visible()
                     scrollViewLayout.visible()
+                    if (role == getString(R.string.student))
+                        binding.btnDelete.gone()
+                    else
+                        binding.btnDelete.visible()
                     videoView.layoutParams.height = 650
                 }
                 isFullScreen = !isFullScreen

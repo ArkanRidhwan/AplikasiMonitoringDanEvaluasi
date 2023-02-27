@@ -6,7 +6,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.example.aplikasimonitoringdanevaluasi.databinding.FragmentStudentLogbookRequestBinding
+import com.example.aplikasimonitoringdanevaluasi.ui.company.home.HomeCompanyFragmentDirections
 import com.example.aplikasimonitoringdanevaluasi.utils.*
 
 
@@ -29,7 +31,13 @@ class StudentLogbookRequestFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         logbookRequestAdapter = StudentLogbookRequestAdapter()
         binding.apply {
-
+            logbookRequestAdapter.onItemClick = {
+                val action =
+                    RequestFragmentDirections.actionRequestFragmentToStudentLogbookRequestDetailFragment(
+                        it
+                    )
+                findNavController().navigate(action)
+            }
         }
     }
 
@@ -47,7 +55,6 @@ class StudentLogbookRequestFragment : Fragment() {
                     logbookRequestAdapter.setListData(it)
                     recycleView.visible()
                 } else {
-                    requireActivity().showToast("Gagal")
                     recycleView.gone()
                 }
             }

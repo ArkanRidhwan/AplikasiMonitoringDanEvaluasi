@@ -27,13 +27,17 @@ class ListCompanyAdapter : RecyclerView.Adapter<ListCompanyAdapter.ViewHolder>()
         fun bind(data: Company) {
             binding.apply {
                 tvNameCompany.text = data.companyName
-                Glide.with(itemView.context)
-                    .load(data.image)
-                    .apply(
-                        RequestOptions.placeholderOf(R.drawable.ic_image_loading)
-                            .error(R.drawable.ic_image_error)
-                    )
-                    .into(ivProfileCompany)
+                if (data.image.isEmpty()) {
+                    ivProfileCompany.setImageResource(R.drawable.ic_image_no_image)
+                } else {
+                    Glide.with(itemView.context)
+                        .load(data.image)
+                        .apply(
+                            RequestOptions.placeholderOf(R.drawable.ic_image_loading)
+                                .error(R.drawable.ic_image_error)
+                        )
+                        .into(ivProfileCompany)
+                }
                 itemView.setOnClickListener {
                     onItemClick?.invoke(data)
                 }

@@ -3,7 +3,6 @@ package com.example.aplikasimonitoringdanevaluasi.ui.main.video
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.aplikasimonitoringdanevaluasi.model.Student
 import com.example.aplikasimonitoringdanevaluasi.model.Video
 import com.example.aplikasimonitoringdanevaluasi.utils.Constant
 import com.google.firebase.database.DataSnapshot
@@ -20,7 +19,30 @@ class ListVideoViewModel : ViewModel() {
     fun getAllVideo(): LiveData<List<Video>?> {
         val dataVideo = MutableLiveData<List<Video>?>()
         val video = ArrayList<Video>()
-        collVideo.addValueEventListener(object : ValueEventListener {
+
+        collVideo.orderByChild("timestamp").addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                if (snapshot.exists()) {
+                    video.clear()
+                    for (i in snapshot.children) {
+                        i.getValue(Video::class.java)?.let {
+                            video.add(it)
+                        }
+                    }
+                    dataVideo.value = video
+                } else {
+                    dataVideo.value = null
+                }
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                video.clear()
+            }
+
+        })
+        return dataVideo
+
+        /*collVideo.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 if (snapshot.exists()) {
                     video.clear()
@@ -40,6 +62,6 @@ class ListVideoViewModel : ViewModel() {
             }
 
         })
-        return dataVideo
+        return dataVideo*/
     }
 }

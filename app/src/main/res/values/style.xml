@@ -12,6 +12,12 @@
         <item name="color">@color/white</item>
     </style>
 
+    <style name="roundProfileReport">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">35dp</item>
+        <item name="color">@color/white</item>
+    </style>
+
     <style name="roundProfile">
         <item name="cornerFamily">rounded</item>
         <item name="cornerSize">70dp</item>
@@ -43,7 +49,7 @@
 
     <style name="roundvideoview">
         <item name="cornerFamily">rounded</item>
-        <item name="cornerSize">15dp</item>
+        <item name="cornerSize">20dp</item>
         <item name="color">@color/white</item>
     </style>
 </resources>

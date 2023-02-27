@@ -61,7 +61,7 @@
                 android:layout_marginTop="50dp"
                 android:padding="1.5dp"
                 android:scaleType="fitXY"
-                android:src="@drawable/img_no_image"
+                android:src="@drawable/ic_image_no_image"
                 app:layout_constraintEnd_toEndOf="@+id/viewBG2"
                 app:layout_constraintHorizontal_bias="0.497"
                 app:layout_constraintStart_toStartOf="@+id/viewBG2"
@@ -265,7 +265,7 @@
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btn_editProfile"
                 android:layout_width="0dp"
-                android:layout_height="50dp"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="32dp"
                 android:layout_marginBottom="90dp"
                 android:background="@drawable/bg_btn_profile"

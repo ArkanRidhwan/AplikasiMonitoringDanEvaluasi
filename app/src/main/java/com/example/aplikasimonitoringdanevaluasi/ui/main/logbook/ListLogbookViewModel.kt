@@ -47,7 +47,7 @@ class ListLogbookViewModel : ViewModel() {
     fun getStudentLogbook(userId: String): LiveData<List<Logbook>?> {
         val dataLogbook = MutableLiveData<List<Logbook>?>()
         val logbook = ArrayList<Logbook>()
-        collLogbook.addValueEventListener(object : ValueEventListener {
+        collLogbook.orderByChild("timestamp").addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 if (snapshot.exists()) {
                     logbook.clear()
@@ -74,7 +74,7 @@ class ListLogbookViewModel : ViewModel() {
     fun getAdminLogbook(userId: String): LiveData<List<Logbook>?> {
         val dataLogbook = MutableLiveData<List<Logbook>?>()
         val logbook = ArrayList<Logbook>()
-        collLogbook.addValueEventListener(object : ValueEventListener {
+        collLogbook.orderByChild("timestamp").addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 if (snapshot.exists()) {
                     logbook.clear()

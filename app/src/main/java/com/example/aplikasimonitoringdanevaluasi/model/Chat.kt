@@ -7,5 +7,5 @@ data class Chat(
     val senderId: String = "",
     val senderName: String = "",
     val message: String = "",
-    val date: Long = 0
+    val timestamp: Long = 0
 )

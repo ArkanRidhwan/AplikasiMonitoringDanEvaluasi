@@ -2,6 +2,7 @@ package com.example.aplikasimonitoringdanevaluasi.ui.main.login
 
 import android.app.Activity
 import android.os.Bundle
+import android.os.Handler
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -60,78 +61,90 @@ class LoginFragment : Fragment() {
                     tvOr.gone()
                     progressBarLogin.visible()
                     progressBarLogin.playAnimation()
-                    when (args.role) {
-                        getString(R.string.admin) -> {
-                            loginViewModel.loginAdminByEmailPassword(email, password)
-                                .observe(viewLifecycleOwner) {
-                                    if (it != null) {
-                                        loginFirebase()
-                                        getInstance(requireContext()).putString(Constant.ID, it.id)
-                                        getInstance(requireContext()).putString(
-                                            Constant.NAME,
-                                            it.name
-                                        )
-                                        getInstance(requireContext()).putString(
-                                            Constant.ROLE,
-                                            getString(R.string.admin)
-                                        )
-                                    } else {
-                                        requireContext().showToast("Email atau password salah")
-                                        progressBarLogin.gone()
-                                        btnLogin.visible()
-                                        ivGoogleLogin.visible()
-                                        tvOr.visible()
+                    Handler().postDelayed({
+                        when (args.role) {
+                            getString(R.string.admin) -> {
+                                loginViewModel.loginAdminByEmailPassword(email, password)
+                                    .observe(viewLifecycleOwner) {
+                                        if (it != null) {
+                                            loginFirebase()
+                                            getInstance(requireContext()).putString(
+                                                Constant.ID,
+                                                it.id
+                                            )
+                                            getInstance(requireContext()).putString(
+                                                Constant.NAME,
+                                                it.name
+                                            )
+                                            getInstance(requireContext()).putString(
+                                                Constant.ROLE,
+                                                getString(R.string.admin)
+                                            )
+                                        } else {
+                                            requireContext().showToast("Email atau password salah")
+                                            progressBarLogin.gone()
+                                            btnLogin.visible()
+                                            ivGoogleLogin.visible()
+                                            tvOr.visible()
+                                        }
                                     }
-                                }
-                        }
+                            }
 
-                        getString(R.string.company) -> {
-                            loginViewModel.loginCompanyByEmailPassword(email, password)
-                                .observe(viewLifecycleOwner) {
-                                    if (it != null) {
-                                        loginFirebase()
-                                        getInstance(requireContext()).putString(Constant.ID, it.id)
-                                        getInstance(requireContext()).putString(
-                                            Constant.NAME,
-                                            it.contactName
-                                        )
-                                        getInstance(requireContext()).putString(
-                                            Constant.ROLE,
-                                            getString(R.string.company)
-                                        )
-                                    } else {
-                                        requireContext().showToast("Email atau password salah")
-                                        progressBarLogin.gone()
-                                        btnLogin.visible()
-                                        ivGoogleLogin.visible()
-                                        tvOr.visible()
+                            getString(R.string.company) -> {
+                                loginViewModel.loginCompanyByEmailPassword(email, password)
+                                    .observe(viewLifecycleOwner) {
+                                        if (it != null) {
+                                            loginFirebase()
+                                            getInstance(requireContext()).putString(
+                                                Constant.ID,
+                                                it.id
+                                            )
+                                            getInstance(requireContext()).putString(
+                                                Constant.NAME,
+                                                it.contactName
+                                            )
+                                            getInstance(requireContext()).putString(
+                                                Constant.ROLE,
+                                                getString(R.string.company)
+                                            )
+                                        } else {
+                                            requireContext().showToast("Email atau password salah")
+                                            progressBarLogin.gone()
+                                            btnLogin.visible()
+                                            ivGoogleLogin.visible()
+                                            tvOr.visible()
+                                        }
                                     }
-                                }
-                        }
-                        getString(R.string.student) -> {
-                            loginViewModel.loginStudentByEmailPassword(email, password)
-                                .observe(viewLifecycleOwner) {
-                                    if (it != null) {
-                                        loginFirebase()
-                                        getInstance(requireContext()).putString(Constant.ID, it.id)
-                                        getInstance(requireContext()).putString(
-                                            Constant.NAME,
-                                            it.name
-                                        )
-                                        getInstance(requireContext()).putString(
-                                            Constant.ROLE,
-                                            getString(R.string.student)
-                                        )
-                                    } else {
-                                        requireContext().showToast("Email atau password salah")
-                                        btnLogin.visible()
-                                        progressBarLogin.gone()
-                                        ivGoogleLogin.visible()
-                                        tvOr.visible()
+                            }
+                            getString(R.string.student) -> {
+                                loginViewModel.loginStudentByEmailPassword(email, password)
+                                    .observe(viewLifecycleOwner) {
+                                        if (it != null) {
+                                            loginFirebase()
+                                            getInstance(requireContext()).putString(
+                                                Constant.ID,
+                                                it.id
+                                            )
+                                            getInstance(requireContext()).putString(
+                                                Constant.NAME,
+                                                it.name
+                                            )
+                                            getInstance(requireContext()).putString(
+                                                Constant.ROLE,
+                                                getString(R.string.student)
+                                            )
+                                        } else {
+                                            requireContext().showToast("Email atau password salah")
+                                            btnLogin.visible()
+                                            progressBarLogin.gone()
+                                            ivGoogleLogin.visible()
+                                            tvOr.visible()
+                                        }
                                     }
-                                }
+                            }
                         }
-                    }
+                    }, 1000)
+
                 }
             }
 

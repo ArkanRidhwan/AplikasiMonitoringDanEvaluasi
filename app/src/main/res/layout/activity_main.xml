@@ -10,15 +10,15 @@
         android:id="@+id/fragmentContainerView"
         android:name="androidx.navigation.fragment.NavHostFragment"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
         app:defaultNavHost="true"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/bottomNavAdminAndroidCom"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:navGraph="@navigation/main_nav" />
 
-    <com.ismaeldivita.chipnavigation.ChipNavigationBar
+    <!--<com.ismaeldivita.chipnavigation.ChipNavigationBar
         android:id="@+id/btm_navCompany"
         android:layout_width="match_parent"
         android:layout_height="70dp"
@@ -52,7 +52,7 @@
         app:cnb_menuResource="@menu/btm_nav_student"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent" />-->
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavAdminAndroidCom"

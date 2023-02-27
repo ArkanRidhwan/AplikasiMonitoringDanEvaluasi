@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.marginBottom
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -45,6 +46,9 @@ class ListLogbookFragment : Fragment() {
                 getString(R.string.admin) -> {
                     fabAddLogbook.gone()
                 }
+                getString(R.string.company) -> {
+                    fabAddLogbook.gone()
+                }
             }
 
             fabAddLogbook.setOnClickListener {
@@ -69,6 +73,13 @@ class ListLogbookFragment : Fragment() {
                             )
                         findNavController().navigate(action)
                     }
+                    getString(R.string.company) -> {
+                        val action =
+                            ListLogbookFragmentDirections.actionListLogbookFragmentToDetailLogbookFragment(
+                                it
+                            )
+                        findNavController().navigate(action)
+                    }
                 }
             }
         }
@@ -79,22 +90,45 @@ class ListLogbookFragment : Fragment() {
         when (getInstance(requireContext()).getString(Constant.ROLE)) {
             getString(R.string.student) -> loadLogbookStudent()
             getString(R.string.admin) -> loadLogbookAdmin()
+            getString(R.string.company) -> loadLogbookCompany()
+        }
+    }
+
+    private fun loadLogbookCompany() {
+        binding.apply {
+            val studentId = args.studentId
+            recyclerView.adapter = listLogbookAdapter
+            progressBar.visible()
+            recyclerView.gone()
+            if (studentId != null) {
+                listLogbookViewModel.getAdminLogbook(studentId).observe(viewLifecycleOwner) {
+                    if (it?.isNotEmpty() == true) {
+                        listLogbookAdapter.setListData(it)
+                        progressBar.gone()
+                        recyclerView.visible()
+                    } else {
+                        progressBar.gone()
+                    }
+                }
+            }
         }
     }
 
     private fun loadLogbookAdmin() {
         binding.apply {
-            val studentId = args.student.id
+            val studentId = args.student?.id
             recyclerView.adapter = listLogbookAdapter
             progressBar.visible()
             recyclerView.gone()
-            listLogbookViewModel.getAdminLogbook(studentId).observe(viewLifecycleOwner) {
-                if (it?.isNotEmpty() == true) {
-                    listLogbookAdapter.setListData(it)
-                    progressBar.gone()
-                    recyclerView.visible()
-                } else {
-                    progressBar.gone()
+            if (studentId != null) {
+                listLogbookViewModel.getAdminLogbook(studentId).observe(viewLifecycleOwner) {
+                    if (it?.isNotEmpty() == true) {
+                        listLogbookAdapter.setListData(it)
+                        progressBar.gone()
+                        recyclerView.visible()
+                    } else {
+                        progressBar.gone()
+                    }
                 }
             }
         }

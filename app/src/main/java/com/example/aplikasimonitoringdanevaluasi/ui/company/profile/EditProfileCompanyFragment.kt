@@ -14,6 +14,8 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.net.toFile
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
 import com.example.aplikasimonitoringdanevaluasi.R
 import com.example.aplikasimonitoringdanevaluasi.databinding.FragmentEditProfileCompanyBinding
 import com.example.aplikasimonitoringdanevaluasi.model.Company
@@ -52,16 +54,20 @@ class EditProfileCompanyFragment : Fragment() {
             editProfileCompanyViewModel.getCompanyById(userId).observe(viewLifecycleOwner) {
                 etCompanyName.setText(it?.companyName)
                 etEmailCompany.setText(it?.email)
-                etCompanyPassword.setText(it?.password)
+                etCompanyPassword.setText(decrypt(it?.password.toString()))
                 etCompanyAddress.setText(it?.companyAddress)
                 etCompanyPICName.setText(it?.contactName)
                 etCompanyPICPhoneNumber.setText(it?.contactPhoneNumber)
-                if(it?.image?.isEmpty() == true){
-                    ivProfile.setImageResource(R.drawable.img_no_image)
+                if (it?.image?.isEmpty() == true) {
+                    ivProfile.setImageResource(R.drawable.ic_image_no_image)
                 } else {
-                    if (it != null) {
-                        ivProfile.loadCircleImageFromUrl(it.image)
-                    }
+                    Glide.with(requireContext())
+                        .load(it?.image)
+                        .apply(
+                            RequestOptions.placeholderOf(R.drawable.ic_image_loading)
+                                .error(R.drawable.ic_image_error)
+                        )
+                        .into(ivProfile)
                 }
             }
 
@@ -114,7 +120,7 @@ class EditProfileCompanyFragment : Fragment() {
 
             btnSaveProfile.setOnClickListener {
                 val email = etEmailCompany.text.toString()
-                val password = etCompanyPassword.text.toString()
+                val password = encrypt(etCompanyPassword.text.toString())
                 val companyName = etCompanyName.text.toString()
                 val companyAddress = etCompanyAddress.text.toString()
                 val contactName = etCompanyPICName.text.toString()
@@ -139,7 +145,7 @@ class EditProfileCompanyFragment : Fragment() {
                             val admin = Company(
                                 id = userId,
                                 email = email,
-                                password = password,
+                                password = password.toString(),
                                 companyName = companyName,
                                 companyAddress = companyAddress,
                                 contactName = contactName,

@@ -48,11 +48,8 @@ class ListModuleFragment : Fragment() {
             listModuleAdapter = ListModuleAdapter()
             recyclerView.adapter = listModuleAdapter
             listModuleViewModel.getAllModule().observe(viewLifecycleOwner) {
-                if (it?.isNotEmpty() == true) {
+                if (it?.isNotEmpty() == true)
                     listModuleAdapter.setListData(it)
-                } else {
-
-                }
             }
             listModuleAdapter.onItemClick = {
                 when (role) {

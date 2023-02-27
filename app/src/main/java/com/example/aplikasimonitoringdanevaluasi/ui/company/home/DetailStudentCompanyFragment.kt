@@ -8,6 +8,9 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
+import com.example.aplikasimonitoringdanevaluasi.R
 import com.example.aplikasimonitoringdanevaluasi.databinding.FragmentDetailStudentCompanyBinding
 
 
@@ -36,12 +39,31 @@ class DetailStudentCompanyFragment : Fragment() {
                 tvStudentJob.text = it?.job.toString()
                 tvStudentClassName.text = it?.className.toString()
                 tvStudentMajorName.text = it?.studentMajor.toString()
+                if (it?.image?.isEmpty() == true) {
+                    ivProfilePicture.setImageResource(R.drawable.ic_image_no_image)
+                } else {
+                    Glide.with(requireContext())
+                        .load(it?.image)
+                        .apply(
+                            RequestOptions.placeholderOf(R.drawable.ic_image_loading)
+                                .error(R.drawable.ic_image_error)
+                        )
+                        .into(ivProfilePicture)
+                }
             }
             btnAddReport.setOnClickListener {
                 val action =
                     DetailStudentCompanyFragmentDirections.actionDetailStudentCompanyFragmentToAddReportFragment(
                         studentId,
                         args.requestStudent
+                    )
+                findNavController().navigate(action)
+            }
+
+            btnStudentLogbook.setOnClickListener {
+                val action =
+                    DetailStudentCompanyFragmentDirections.actionDetailStudentCompanyFragmentToListLogbookFragment(
+                       null, studentId
                     )
                 findNavController().navigate(action)
             }

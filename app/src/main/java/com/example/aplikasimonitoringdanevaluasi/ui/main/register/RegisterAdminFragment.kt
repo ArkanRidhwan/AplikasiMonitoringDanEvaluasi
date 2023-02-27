@@ -50,7 +50,7 @@ class RegisterAdminFragment : Fragment() {
                 } else if (verificationNumber.isEmpty()) {
                     etAdminVerificationNumber.error("Nomor verifikasi tidak boleh kosong")
                     etAdminVerificationNumber.requestFocus()
-                } else if (verificationNumber != "3000") {
+                } else if (verificationNumber != getString(R.string.verificationAdmin)) {
                     etAdminVerificationNumber.error("Nomor verifikasi salah")
                     etAdminVerificationNumber.requestFocus()
                 } else {

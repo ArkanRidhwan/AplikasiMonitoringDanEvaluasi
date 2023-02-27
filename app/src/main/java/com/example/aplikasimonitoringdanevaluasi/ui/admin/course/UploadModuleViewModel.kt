@@ -4,7 +4,6 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.aplikasimonitoringdanevaluasi.model.Module
-import com.example.aplikasimonitoringdanevaluasi.model.Video
 import com.example.aplikasimonitoringdanevaluasi.utils.Constant
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
@@ -21,6 +20,7 @@ class UploadModuleViewModel : ViewModel() {
             tittle = data.tittle,
             description = data.description,
             date = data.date,
+            timestamp = data.timestamp,
             link = data.link,
         )
         collModule.child(data.id).setValue(admin)

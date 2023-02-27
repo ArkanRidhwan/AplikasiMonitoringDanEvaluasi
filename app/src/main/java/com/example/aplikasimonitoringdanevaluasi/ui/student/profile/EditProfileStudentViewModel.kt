@@ -3,7 +3,6 @@ package com.example.aplikasimonitoringdanevaluasi.ui.student.profile
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.aplikasimonitoringdanevaluasi.model.Company
 import com.example.aplikasimonitoringdanevaluasi.model.Student
 import com.example.aplikasimonitoringdanevaluasi.utils.Constant
 import com.google.firebase.database.DataSnapshot
@@ -31,7 +30,10 @@ class EditProfileStudentViewModel : ViewModel() {
             studentMajor = data.studentMajor,
             image = data.image
         )
-        collStudent.child(userId).setValue(student)
+        collStudent.child(
+            data.email.replace(".", "").replace("#", "").replace("$", "")
+                .replace("[", "").replace("]", "")
+        ).setValue(student)
             .addOnCompleteListener {
                 status.value = true
             }

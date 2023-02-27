@@ -54,14 +54,18 @@ class EditProfileAdminFragment : Fragment() {
             editProfileAdminViewModel.getAdminById(userId).observe(viewLifecycleOwner) {
                 etAdminEmail.setText(it?.email)
                 etAdminName.setText(it?.name)
-                etAdminPassword.setText(it?.password)
+                etAdminPassword.setText(decrypt(it?.password.toString()))
                 etAdminPhoneNumber.setText(it?.phoneNumber)
-                if(it?.image?.isEmpty() == true){
-                    ivProfile.setImageResource(R.drawable.img_no_image)
+                if (it?.image?.isEmpty() == true) {
+                    ivProfile.setImageResource(R.drawable.ic_image_no_image)
                 } else {
-                    if (it != null) {
-                        ivProfile.loadCircleImageFromUrl(it.image)
-                    }
+                    Glide.with(requireContext())
+                        .load(it?.image)
+                        .apply(
+                            RequestOptions.placeholderOf(R.drawable.ic_image_loading)
+                                .error(R.drawable.ic_image_error)
+                        )
+                        .into(ivProfile)
                 }
             }
 
@@ -115,7 +119,7 @@ class EditProfileAdminFragment : Fragment() {
             btnSaveProfile.setOnClickListener {
 
                 val email = etAdminEmail.text.toString()
-                val password = etAdminPassword.text.toString()
+                val password = encrypt(etAdminPassword.text.toString())
                 val name = etAdminName.text.toString()
                 val phoneNumber = etAdminPhoneNumber.text.toString()
 
@@ -136,9 +140,8 @@ class EditProfileAdminFragment : Fragment() {
                                 .observe(viewLifecycleOwner) {
                                     val admin = Admin(
                                         id = userId,
-                                        //email = it?.email ?: "Error",
                                         email = email,
-                                        password = password,
+                                        password = password.toString(),
                                         name = name,
                                         phoneNumber = phoneNumber,
                                         image = urlDownload.toString()
@@ -156,7 +159,7 @@ class EditProfileAdminFragment : Fragment() {
                                     } else {
 
                                     }*/
-                                    editProfileAdminViewModel.updateAdminById(admin, userId)
+                                    editProfileAdminViewModel.updateAdminByEmail(admin, userId)
                                         .observe(viewLifecycleOwner) { data ->
                                             if (data == true) {
                                                 requireActivity().onBackPressed()

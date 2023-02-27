@@ -7,12 +7,13 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
+import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
 import com.example.aplikasimonitoringdanevaluasi.R
 import com.example.aplikasimonitoringdanevaluasi.databinding.FragmentDetailCompanyStudentBinding
 import com.example.aplikasimonitoringdanevaluasi.model.RequestStudent
 import com.example.aplikasimonitoringdanevaluasi.utils.Constant
 import com.example.aplikasimonitoringdanevaluasi.utils.getInstance
-import com.example.aplikasimonitoringdanevaluasi.utils.loadCircleImageFromUrl
 import com.example.aplikasimonitoringdanevaluasi.utils.showToast
 import java.util.*
 
@@ -49,9 +50,15 @@ class DetailCompanyStudentFragment : Fragment() {
             tvCompanyContactEmail.text = args.company.email
             companyImage = args.company.image
             if (companyImage.isEmpty()) {
-                ivProfilePicture.setImageResource(R.drawable.img_no_image)
+                ivProfilePicture.setImageResource(R.drawable.ic_image_no_image)
             } else {
-                ivProfilePicture.loadCircleImageFromUrl(companyImage)
+                Glide.with(requireContext())
+                    .load(companyImage)
+                    .apply(
+                        RequestOptions.placeholderOf(R.drawable.ic_image_loading)
+                            .error(R.drawable.ic_image_error)
+                    )
+                    .into(ivProfilePicture)
             }
             val studentId = getInstance(requireContext()).getString(Constant.ID)
 

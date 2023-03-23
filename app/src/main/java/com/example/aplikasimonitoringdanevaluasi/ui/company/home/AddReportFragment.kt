@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import com.example.aplikasimonitoringdanevaluasi.R
 import com.example.aplikasimonitoringdanevaluasi.databinding.FragmentAddReportBinding
 import com.example.aplikasimonitoringdanevaluasi.model.Report
 import com.example.aplikasimonitoringdanevaluasi.model.RequestStudent
@@ -34,7 +35,16 @@ class AddReportFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         binding.apply {
             addReportFragmentViewModel.getReportById(args.studentId).observe(viewLifecycleOwner) {
-                tittle = it?.tittle.toString()
+                tittle = it?.reportStatus.toString()
+                if (tittle.isEmpty()){
+                    tvTittleReport.text = getString(R.string.Report1)
+                } else if (tittle == "Laporan1"){
+                    tvTittleReport.text = getString(R.string.Report2)
+                } else if (tittle == "Laporan2"){
+                    tvTittleReport.text = getString(R.string.Report3)
+                } else {
+                    tvTittleReport.text = getString(R.string.Report4)
+                }
             }
 
             btnSave.setOnClickListener {
@@ -79,9 +89,12 @@ class AddReportFragment : Fragment() {
                     "Laporan1"
                 } else if (tittle == "Laporan1") {
                     "Laporan2"
-                } else {
+                } else if (tittle == "Laporan2") {
                     "Laporan3"
+                } else {
+                    "Laporan4"
                 }
+
 
                 if (answer1.isEmpty()) {
                     etReportAnswer1.error("Jawaban tidak boleh kosong")

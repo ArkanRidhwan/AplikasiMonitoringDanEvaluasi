@@ -23,6 +23,7 @@ class UploadVideoViewModel : ViewModel() {
             date = data.date,
             timestamp = data.timestamp,
             link = data.link,
+            courseId = data.courseId
         )
         collVideo.child(data.id).setValue(admin)
             .addOnCompleteListener {

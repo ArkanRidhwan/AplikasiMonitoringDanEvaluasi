@@ -21,6 +21,7 @@ class UploadModuleViewModel : ViewModel() {
             description = data.description,
             date = data.date,
             timestamp = data.timestamp,
+            courseId = data.courseId,
             link = data.link,
         )
         collModule.child(data.id).setValue(admin)

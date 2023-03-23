@@ -18,7 +18,7 @@
         app:cnb_backgroundColor="@color/red_bottomnav"/>
 
     <item
-        android:id="@+id/courseAdminFragment"
+        android:id="@+id/listCourseAdminFragment"
         android:icon="@drawable/ic_course"
         android:title="Course"
         app:cnb_iconColor="@color/red_primary"

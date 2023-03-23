@@ -45,14 +45,14 @@ class AddReportViewModel : ViewModel() {
         return status
     }
 
-    fun getReportById(id: String): LiveData<Report?> {
-        val dataReport = MutableLiveData<Report?>()
-        var report: Report? = null
-        collReport.addValueEventListener(object : ValueEventListener {
+    fun getReportById(id: String): LiveData<RequestStudent?> {
+        val dataReport = MutableLiveData<RequestStudent?>()
+        var report: RequestStudent? = null
+        collRequestStudent.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 if (snapshot.exists()) {
                     for (i in snapshot.children) {
-                        val valueStudent = i.getValue(Report::class.java)
+                        val valueStudent = i.getValue(RequestStudent::class.java)
                         if (valueStudent?.studentId == id) {
                             report = valueStudent
                         }

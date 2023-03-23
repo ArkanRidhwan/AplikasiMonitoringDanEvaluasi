@@ -17,9 +17,11 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.navArgs
 import com.example.aplikasimonitoringdanevaluasi.R
 import com.example.aplikasimonitoringdanevaluasi.databinding.FragmentUploadVideoBinding
 import com.example.aplikasimonitoringdanevaluasi.model.Video
+import com.example.aplikasimonitoringdanevaluasi.ui.extra.AddCourseFragmentArgs
 import com.example.aplikasimonitoringdanevaluasi.utils.getDateNow
 import com.example.aplikasimonitoringdanevaluasi.utils.gone
 import com.example.aplikasimonitoringdanevaluasi.utils.showToast
@@ -45,6 +47,7 @@ class UploadVideoFragment : Fragment() {
     private lateinit var binding: FragmentUploadVideoBinding
     private lateinit var file: File
     private val uploadVideoViewModel: UploadVideoViewModel by viewModels()
+    private val args: UploadVideoFragmentArgs by navArgs()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -230,6 +233,7 @@ class UploadVideoFragment : Fragment() {
                                     description = description,
                                     date = getDateNow(),
                                     timestamp = System.currentTimeMillis(),
+                                    courseId = args.tittleCourseId.toString(),
                                     link = urlDownload.toString(),
                                 )
                                 uploadVideoViewModel.saveVideo(video)

@@ -14,7 +14,6 @@ object Constant {
     const val COLL_LOGBOOK= "logbook"
     const val COLL_REPORT= "report"
     const val COLL_REQUESTSTUDENT= "requestStudent"
-    const val COLL_REQUESTLOGBOOK= "requestLogbook"
-
-    const val LOGBOOK_STUDENT_ID = "name"
+    const val COLL_COURSE= "course"
+    const val COLL_EVALUATION= "evaluation"
 }

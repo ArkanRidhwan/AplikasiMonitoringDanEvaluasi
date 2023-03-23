@@ -43,7 +43,7 @@ class ChatViewModel() : ViewModel() {
     fun getMessage(senderId: String, receiverId: String): LiveData<List<Chat>?> {
         val dataChat = MutableLiveData<List<Chat>?>()
         val chats = ArrayList<Chat>()
-        collChat.orderByChild("date").addValueEventListener(object : ValueEventListener {
+        collChat.orderByChild("timestamp").addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 if (snapshot.exists()) {
                     chats.clear()

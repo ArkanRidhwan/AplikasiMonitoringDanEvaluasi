@@ -13,6 +13,7 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.navArgs
 import com.example.aplikasimonitoringdanevaluasi.databinding.FragmentUploadModuleBinding
 import com.example.aplikasimonitoringdanevaluasi.model.Module
 import com.example.aplikasimonitoringdanevaluasi.utils.getDateNow
@@ -35,6 +36,7 @@ class UploadModuleFragment : Fragment() {
     private lateinit var file: File
     private lateinit var binding: FragmentUploadModuleBinding
     private val uploadModuleViewModel: UploadModuleViewModel by viewModels()
+    private val args: UploadModuleFragmentArgs by navArgs()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -123,6 +125,7 @@ class UploadModuleFragment : Fragment() {
                                     description = description,
                                     date = getDateNow(),
                                     timestamp = System.currentTimeMillis(),
+                                    courseId = args.tittleCourseId.toString(),
                                     link = urlDownload.toString(),
                                 )
                                 uploadModuleViewModel.saveModule(module)

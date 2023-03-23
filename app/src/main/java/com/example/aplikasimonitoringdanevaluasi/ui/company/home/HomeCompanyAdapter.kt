@@ -34,18 +34,27 @@ class HomeCompanyAdapter : RecyclerView.Adapter<HomeCompanyAdapter.ViewHolder>()
                     ivReportUndone1.visible()
                     ivReportLocked2.visible()
                     ivReportLocked3.visible()
+                    ivReportLocked4.visible()
                 } else if (data.reportStatus == "Laporan1") {
                     ivReportDone1.visible()
                     ivReportUndone2.visible()
                     ivReportLocked3.visible()
+                    ivReportLocked4.visible()
                 } else if (data.reportStatus == "Laporan2") {
                     ivReportDone1.visible()
                     ivReportDone2.visible()
-                    ivReportLocked3.visible()
+                    ivReportUndone3.visible()
+                    ivReportLocked4.visible()
+                } else if(data.reportStatus == "Laporan3") {
+                    ivReportDone1.visible()
+                    ivReportDone2.visible()
+                    ivReportDone3.visible()
+                    ivReportUndone4.visible()
                 } else {
                     ivReportDone1.visible()
                     ivReportDone2.visible()
                     ivReportDone3.visible()
+                    ivReportDone4.visible()
                 }
 
                 if (data.image.isEmpty()) {

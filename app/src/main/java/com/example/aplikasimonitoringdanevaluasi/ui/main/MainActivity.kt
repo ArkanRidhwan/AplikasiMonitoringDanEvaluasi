@@ -7,8 +7,6 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
 import com.example.aplikasimonitoringdanevaluasi.R
 import com.example.aplikasimonitoringdanevaluasi.databinding.ActivityMainBinding
-import com.example.aplikasimonitoringdanevaluasi.ui.student.home.HomeStudentFragment
-import com.example.aplikasimonitoringdanevaluasi.ui.student.profile.ProfileStudentFragment
 
 class MainActivity : AppCompatActivity() {
 
@@ -61,13 +59,13 @@ class MainActivity : AppCompatActivity() {
 
             navController.addOnDestinationChangedListener { _, destination, _ ->
                 when (destination.id) {
-                    R.id.homeAdminFragment, R.id.listContactChatAdminFragment, R.id.courseAdminFragment, R.id.profileAdminFragment -> {
+                    R.id.homeAdminFragment, R.id.listContactChatAdminFragment, R.id.listCourseAdminFragment, R.id.profileAdminFragment -> {
                         bottomNavAdminAndroidCom.visibility = View.VISIBLE
                     }
                     R.id.homeCompanyFragment, R.id.requestFragment, R.id.profileCompanyFragment -> {
                         bottomNavCompanyAndroidCom.visibility = View.VISIBLE
                     }
-                    R.id.homeStudentFragment, R.id.listContactChatStudentFragment, R.id.courseStudentFragment, R.id.profileStudentFragment -> {
+                    R.id.homeStudentFragment, R.id.listContactChatStudentFragment, /*R.id.courseStudentFragment*/ R.id.listCourseStudentFragment, R.id.profileStudentFragment -> {
                         bottomNavStudentAndroidCom.visibility = View.VISIBLE
                     }
                     else -> {

@@ -45,8 +45,7 @@
         android:id="@+id/recyclerView"
         android:layout_width="0dp"
         android:layout_height="match_parent"
-        android:paddingBottom="10dp"
-        android:layout_marginBottom="56dp"
+
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -72,7 +71,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
-        android:layout_marginBottom="80dp"
+        android:layout_marginBottom="20dp"
         android:backgroundTint="@color/red_primary"
         android:clickable="true"
         android:src="@drawable/ic_add"

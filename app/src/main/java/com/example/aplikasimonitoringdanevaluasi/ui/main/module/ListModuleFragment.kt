@@ -37,11 +37,8 @@ class ListModuleFragment : Fragment() {
                 fabAddModule.gone()
             }
             fabAddModule.setOnClickListener {
-                /*val action =
-                    HomeAdminFragmentDirections.actionHomeAdminFragmentToUploadModuleFragment()
-                findNavController().navigate(action)*/
                 val action =
-                    CourseAdminFragmentDirections.actionCourseAdminFragmentToUploadModuleFragment()
+                    CourseAdminFragmentDirections.actionCourseAdminFragmentToUploadModuleFragment(null)
                 findNavController().navigate(action)
             }
 

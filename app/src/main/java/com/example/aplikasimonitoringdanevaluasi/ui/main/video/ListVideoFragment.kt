@@ -41,7 +41,7 @@ class ListVideoFragment : Fragment() {
 
             fabAddVideo.setOnClickListener {
                 val action =
-                    CourseAdminFragmentDirections.actionCourseAdminFragmentToUploadVideoFragment()
+                    CourseAdminFragmentDirections.actionCourseAdminFragmentToUploadVideoFragment(null)
                 findNavController().navigate(action)
             }
 

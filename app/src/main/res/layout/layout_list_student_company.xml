@@ -93,6 +93,20 @@
             app:layout_constraintTop_toBottomOf="@+id/textView2"
             app:srcCompat="@drawable/ic_report_done" />
 
+        <TextView
+            android:id="@+id/tv_report1"
+            android:layout_width="0dp"
+            android:layout_height="15dp"
+            android:layout_marginBottom="8dp"
+            android:fontFamily="@font/open_sans"
+            android:text="Laporan 1"
+            android:textColor="@color/gray_hintText"
+            android:textSize="10sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/iv_reportUndone1"
+            app:layout_constraintStart_toStartOf="@+id/iv_reportUndone1"
+            app:layout_constraintTop_toBottomOf="@+id/iv_reportUndone1" />
+
         <ImageView
             android:id="@+id/iv_reportLocked2"
             android:layout_width="45dp"
@@ -120,6 +134,20 @@
             app:layout_constraintTop_toTopOf="@+id/iv_reportLocked2"
             app:srcCompat="@drawable/ic_report_done" />
 
+
+        <TextView
+            android:id="@+id/tv_report2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:fontFamily="@font/open_sans"
+            android:text="Laporan 2"
+            android:textColor="@color/gray_hintText"
+            android:textSize="10sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/iv_reportLocked2"
+            app:layout_constraintStart_toStartOf="@+id/iv_reportLocked2"
+            app:layout_constraintTop_toBottomOf="@+id/iv_reportLocked2" />
 
         <ImageView
             android:id="@+id/iv_reportLocked3"
@@ -151,35 +179,7 @@
             app:srcCompat="@drawable/ic_report_done" />
 
         <TextView
-            android:id="@+id/textView3"
-            android:layout_width="0dp"
-            android:layout_height="15dp"
-            android:layout_marginBottom="8dp"
-            android:fontFamily="@font/open_sans"
-            android:text="Laporan 1"
-            android:textColor="@color/gray_hintText"
-            android:textSize="10sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@+id/iv_reportUndone1"
-            app:layout_constraintStart_toStartOf="@+id/iv_reportUndone1"
-            app:layout_constraintTop_toBottomOf="@+id/iv_reportUndone1" />
-
-        <TextView
-            android:id="@+id/textView4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:fontFamily="@font/open_sans"
-            android:text="Laporan 2"
-            android:textColor="@color/gray_hintText"
-            android:textSize="10sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@+id/iv_reportLocked2"
-            app:layout_constraintStart_toStartOf="@+id/iv_reportLocked2"
-            app:layout_constraintTop_toBottomOf="@+id/iv_reportLocked2" />
-
-        <TextView
-            android:id="@+id/textView5"
+            android:id="@+id/tv_report3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
@@ -191,5 +191,48 @@
             app:layout_constraintEnd_toEndOf="@+id/iv_reportLocked3"
             app:layout_constraintStart_toStartOf="@+id/iv_reportLocked3"
             app:layout_constraintTop_toBottomOf="@+id/iv_reportLocked3" />
+
+        <ImageView
+            android:id="@+id/iv_reportLocked4"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_marginStart="28dp"
+            app:layout_constraintStart_toEndOf="@+id/iv_reportLocked3"
+            app:layout_constraintTop_toTopOf="@+id/iv_reportLocked3"
+            app:srcCompat="@drawable/ic_report_locked" />
+
+        <ImageView
+            android:id="@+id/iv_reportUndone4"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_marginStart="28dp"
+            android:visibility="gone"
+            app:layout_constraintStart_toEndOf="@+id/iv_reportLocked3"
+            app:layout_constraintTop_toTopOf="@+id/iv_reportLocked3"
+            app:srcCompat="@drawable/ic_report_undone" />
+
+        <ImageView
+            android:id="@+id/iv_reportDone4"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_marginStart="28dp"
+            android:visibility="gone"
+            app:layout_constraintStart_toEndOf="@+id/iv_reportLocked3"
+            app:layout_constraintTop_toTopOf="@+id/iv_reportLocked3"
+            app:srcCompat="@drawable/ic_report_done" />
+
+        <TextView
+            android:id="@+id/tv_report4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:fontFamily="@font/open_sans"
+            android:text="Laporan 4"
+            android:textColor="@color/gray_hintText"
+            android:textSize="10sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/iv_reportLocked4"
+            app:layout_constraintStart_toStartOf="@+id/iv_reportLocked4"
+            app:layout_constraintTop_toBottomOf="@+id/iv_reportLocked4" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>

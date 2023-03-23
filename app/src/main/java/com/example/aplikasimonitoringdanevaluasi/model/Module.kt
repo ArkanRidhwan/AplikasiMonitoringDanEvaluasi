@@ -10,6 +10,7 @@ data class Module(
     val description: String = "",
     val date: String = "",
     val timestamp: Long = 0,
+    val courseId: String = "",
     val link: String = ""
 ): Parcelable {
     companion object {
@@ -19,9 +20,10 @@ data class Module(
             description: String,
             date: String,
             timestamp: Long,
+            courseId: String,
             link: String
         ): Module {
-            return Module(id, tittle, description, date, timestamp, link)
+            return Module(id, tittle, description, date, timestamp, courseId, link)
         }
     }
 }

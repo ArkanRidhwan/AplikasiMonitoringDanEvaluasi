@@ -1,6 +1,7 @@
 package com.example.aplikasimonitoringdanevaluasi.ui.admin.profile
 
 import android.app.Activity
+import android.content.Context
 import android.graphics.ImageDecoder
 import android.os.Build
 import android.os.Bundle
@@ -9,6 +10,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.InputMethodManager
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.net.toFile
@@ -117,7 +119,7 @@ class EditProfileAdminFragment : Fragment() {
             }
 
             btnSaveProfile.setOnClickListener {
-
+                hideKeyboard()
                 val email = etAdminEmail.text.toString()
                 val password = encrypt(etAdminPassword.text.toString())
                 val name = etAdminName.text.toString()
@@ -183,5 +185,10 @@ class EditProfileAdminFragment : Fragment() {
 
     companion object {
         private const val TAG = "EditProfileAdminFragment"
+    }
+
+    private fun hideKeyboard() {
+        val imm = context?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        imm.hideSoftInputFromWindow(requireView().windowToken, 0)
     }
 }

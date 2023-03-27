@@ -190,6 +190,9 @@
         <action
             android:id="@+id/action_registerCompanyByEmailPassword_to_homeCompanyFragment"
             app:destination="@id/homeCompanyFragment" />
+        <action
+            android:id="@+id/action_registerCompanyByEmailPassword_to_loginFragment"
+            app:destination="@id/loginFragment" />
     </fragment>
     <fragment
         android:id="@+id/registerStudentByEmailPassword"
@@ -206,6 +209,9 @@
         <action
             android:id="@+id/action_registerStudentByEmailPassword_to_homeStudentFragment"
             app:destination="@id/homeStudentFragment" />
+        <action
+            android:id="@+id/action_registerStudentByEmailPassword_to_loginFragment"
+            app:destination="@id/loginFragment" />
     </fragment>
     <fragment
         android:id="@+id/profileCompanyFragment"
@@ -234,6 +240,9 @@
             android:name="email"
             app:argType="string"
             app:nullable="true" />
+        <action
+            android:id="@+id/action_registerAdminByEmailPasswordFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
     </fragment>
     <fragment
         android:id="@+id/chatFragment"
@@ -346,10 +355,10 @@
             android:name="student"
             app:argType="com.example.aplikasimonitoringdanevaluasi.model.Student" />
         <action
-            android:id="@+id/action_detailStudentAdminFragment_to_listLogbookFragment"
-            app:destination="@id/listLogbookFragment" />
+            android:id="@+id/action_detailStudentAdminFragment_to_listReportAdminFragment"
+            app:destination="@id/listReportAdminFragment" />
         <action
-            android:id="@+id/action_detailStudentAdminFragment_to_listLogbookFragment2"
+            android:id="@+id/action_detailStudentAdminFragment_to_listLogbookFragment"
             app:destination="@id/listLogbookFragment" />
     </fragment>
     <fragment
@@ -427,13 +436,8 @@
             android:id="@+id/action_listLogbookFragment_to_detailLogbookFragment"
             app:destination="@id/detailLogbookFragment" />
         <argument
-            android:name="student"
-            app:argType="com.example.aplikasimonitoringdanevaluasi.model.Student"
-            app:nullable="true" />
-        <argument
             android:name="studentId"
-            app:argType="string"
-            app:nullable="true" />
+            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/listVideoFragment"
@@ -454,12 +458,22 @@
         android:id="@+id/listReportAdminFragment"
         android:name="com.example.aplikasimonitoringdanevaluasi.ui.admin.home.ListReportAdminFragment"
         android:label="fragment_list_report_admin"
-        tools:layout="@layout/fragment_list_report_admin" />
+        tools:layout="@layout/fragment_list_report_admin" >
+        <action
+            android:id="@+id/action_listReportAdminFragment_to_detailReportFragment"
+            app:destination="@id/detailReportFragment" />
+        <argument android:name="studentId"
+            app:argType="string" />
+    </fragment>
     <fragment
         android:id="@+id/detailReportFragment"
         android:name="com.example.aplikasimonitoringdanevaluasi.ui.admin.home.DetailReportFragment"
         android:label="fragment_detail_report"
-        tools:layout="@layout/fragment_detail_report" />
+        tools:layout="@layout/fragment_detail_report" >
+        <argument
+            android:name="studentId"
+            app:argType="string" />
+    </fragment>
     <fragment
         android:id="@+id/studentLogbookRequestFragment"
         android:name="com.example.aplikasimonitoringdanevaluasi.ui.company.request.StudentLogbookRequestFragment"
@@ -487,9 +501,6 @@
         android:name="com.example.aplikasimonitoringdanevaluasi.ui.company.home.AddReportFragment"
         android:label="fragment_add_report"
         tools:layout="@layout/fragment_add_report" >
-        <argument
-            android:name="studentId"
-            app:argType="string" />
         <argument
             android:name="requestStudent"
             app:argType="com.example.aplikasimonitoringdanevaluasi.model.RequestStudent" />
@@ -623,5 +634,14 @@
         <action
             android:id="@+id/action_listCourseStudentFragment_to_detailCourseFragment"
             app:destination="@id/detailCourseFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/listLogbookStudentFragment"
+        android:name="com.example.aplikasimonitoringdanevaluasi.ui.main.logbook.ListLogbookStudentFragment"
+        android:label="fragment_list_logbook_student"
+        tools:layout="@layout/fragment_list_logbook_student">
+        <action
+            android:id="@+id/action_listLogbookAdminFragment_to_detailLogbookFragment"
+            app:destination="@id/detailLogbookFragment" />
     </fragment>
 </navigation>

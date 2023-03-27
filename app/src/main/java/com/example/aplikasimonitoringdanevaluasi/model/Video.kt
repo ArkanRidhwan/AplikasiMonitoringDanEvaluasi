@@ -9,7 +9,7 @@ data class Video(
     val tittle: String = "",
     val description: String = "",
     val date: String = "",
-    val timestamp: Long = 0,
+    val timestamp: String = "",
     val courseId: String = "",
     val link: String = ""
 ) : Parcelable {
@@ -19,7 +19,7 @@ data class Video(
             tittle: String,
             description: String,
             date: String,
-            timestamp: Long,
+            timestamp: String,
             courseId: String,
             link: String
         ): Video {

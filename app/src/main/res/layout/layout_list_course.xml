@@ -4,8 +4,9 @@
     android:id="@+id/cardView"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-
-    android:layout_marginBottom="5dp"
+    android:layout_marginLeft="8dp"
+    android:layout_marginRight="8dp"
+    android:layout_marginBottom="8dp"
     app:cardCornerRadius="10dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -45,7 +46,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <ImageView
+        <!--<ImageView
             android:id="@+id/iv_courseUnlocked"
             android:layout_width="45dp"
             android:layout_height="45dp"
@@ -54,10 +55,10 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_report_done" />
+            app:srcCompat="@drawable/ic_report_done" />-->
 
 
-        <ImageView
+       <!-- <ImageView
             android:id="@+id/iv_courseLocked"
             android:layout_width="45dp"
             android:layout_height="45dp"
@@ -66,7 +67,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_report_locked" />
+            app:srcCompat="@drawable/ic_report_locked" />-->
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

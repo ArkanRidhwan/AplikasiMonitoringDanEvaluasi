@@ -1,9 +1,11 @@
 package com.example.aplikasimonitoringdanevaluasi.ui.main.register
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.InputMethodManager
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -34,6 +36,7 @@ class RegisterStudentByEmailPasswordFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         binding.apply {
             btnRegister.setOnClickListener {
+                hideKeyboard()
                 val emailFiltered = etStudentEmail.text.toString().replace(".", "").replace("#", "")
                     .replace("$", "")
                     .replace("[", "").replace("]", "")
@@ -87,7 +90,8 @@ class RegisterStudentByEmailPasswordFragment : Fragment() {
                         job = job,
                         className = className,
                         phoneNumber = phoneNumber,
-                        studentMajor = major
+                        studentMajor = major,
+                        timestamp = System.currentTimeMillis().toString()
                     )
 
                     val database = Firebase.database.getReference(Constant.COLL_STUDENT)
@@ -160,6 +164,18 @@ class RegisterStudentByEmailPasswordFragment : Fragment() {
                         }*/
                 }
             }
+            tvStudentSignInNow.setOnClickListener {
+                findNavController().navigate(
+                    RegisterStudentByEmailPasswordFragmentDirections.actionRegisterStudentByEmailPasswordToLoginFragment(
+                        getString(R.string.student)
+                    )
+                )
+            }
         }
+    }
+
+    private fun hideKeyboard() {
+        val imm = context?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        imm.hideSoftInputFromWindow(requireView().windowToken, 0)
     }
 }

@@ -77,7 +77,8 @@ class DetailRequestStudentViewModel : ViewModel() {
             studentEmail = data.studentEmail,
             studentName = data.studentName,
             image = data.image,
-            reportStatus = data.reportStatus
+            reportStatus = data.reportStatus,
+            timestamp = data.timestamp
         )
         collRequestStudent.child(userId).setValue(student)
             .addOnCompleteListener {
@@ -118,7 +119,8 @@ class DetailRequestStudentViewModel : ViewModel() {
             className = data.className,
             phoneNumber = data.phoneNumber,
             studentMajor = data.studentMajor,
-            image = data.image
+            image = data.image,
+            timestamp = data.timestamp
         )
         collStudent.child(
             data.email.replace(".", "").replace("#", "").replace("$", "")

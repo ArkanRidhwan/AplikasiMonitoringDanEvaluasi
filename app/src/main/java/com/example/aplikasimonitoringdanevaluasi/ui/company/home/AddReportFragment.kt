@@ -34,13 +34,13 @@ class AddReportFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.apply {
-            addReportFragmentViewModel.getReportById(args.studentId).observe(viewLifecycleOwner) {
+            addReportFragmentViewModel.getReportById(args.requestStudent.studentId).observe(viewLifecycleOwner) {
                 tittle = it?.reportStatus.toString()
                 if (tittle.isEmpty()){
                     tvTittleReport.text = getString(R.string.Report1)
-                } else if (tittle == "Laporan1"){
+                } else if (tittle == "Laporan 1"){
                     tvTittleReport.text = getString(R.string.Report2)
-                } else if (tittle == "Laporan2"){
+                } else if (tittle == "Laporan 2"){
                     tvTittleReport.text = getString(R.string.Report3)
                 } else {
                     tvTittleReport.text = getString(R.string.Report4)
@@ -86,13 +86,13 @@ class AddReportFragment : Fragment() {
                 }
 
                 tittle = if (tittle.isEmpty()) {
-                    "Laporan1"
-                } else if (tittle == "Laporan1") {
-                    "Laporan2"
-                } else if (tittle == "Laporan2") {
-                    "Laporan3"
+                    "Laporan 1"
+                } else if (tittle == "Laporan 1") {
+                    "Laporan 2"
+                } else if (tittle == "Laporan 2") {
+                    "Laporan 3"
                 } else {
-                    "Laporan4"
+                    "Laporan 4"
                 }
 
 
@@ -115,9 +115,11 @@ class AddReportFragment : Fragment() {
                     val report = Report(
                         id = UUID.randomUUID().toString(),
                         companyId = reportUserId,
-                        studentId = args.studentId,
-                        date = getDateNow(),
+                        studentId = args.requestStudent.studentId,
+                        studentName = args.requestStudent.studentName,
                         tittle = tittle,
+                        date = getDateNow(),
+                        timestamp = System.currentTimeMillis().toString(),
                         answer1 = answer1,
                         answer2 = answer2,
                         answer3 = answer3,

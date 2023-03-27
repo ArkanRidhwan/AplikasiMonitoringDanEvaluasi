@@ -25,6 +25,10 @@ class DetailLogbookFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.apply {
+            ivBack.setOnClickListener {
+                requireActivity().onBackPressed()
+            }
+
             tvDate.text = "Dibuat pada: ${args.logbook.date}"
             tvContentLogbook.text = args.logbook.content
             tvActivityDate.text = "Tanggal kegiatan: ${args.logbook.activityDate}"

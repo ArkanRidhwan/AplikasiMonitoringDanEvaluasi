@@ -71,7 +71,8 @@ class RegisterStudentFragment : Fragment() {
                         job = job,
                         className = className,
                         phoneNumber = phoneNumber,
-                        studentMajor = studentMajor
+                        studentMajor = studentMajor,
+                        timestamp = System.currentTimeMillis().toString()
                     )
 
                     registerViewModel.saveStudent(student).observe(viewLifecycleOwner) { it ->
@@ -96,6 +97,14 @@ class RegisterStudentFragment : Fragment() {
                         }
                     }
                 }
+            }
+
+            tvStudentSignInNow.setOnClickListener {
+                findNavController().navigate(
+                    RegisterStudentFragmentDirections.actionRegisterStudentFragmentToLoginFragment(
+                        getString(R.string.student)
+                    )
+                )
             }
         }
     }

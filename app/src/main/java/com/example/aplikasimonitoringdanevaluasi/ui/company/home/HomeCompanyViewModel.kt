@@ -18,10 +18,10 @@ class HomeCompanyViewModel : ViewModel() {
     private val collRequestStudent = database.getReference(Constant.COLL_REQUESTSTUDENT)
     private val collStudent = database.getReference(Constant.COLL_STUDENT)
 
-    fun getRequestStudent(status: String, companyId: String): LiveData<List<RequestStudent>?> {
+    fun getApprovedStudent(status: String, companyId: String): LiveData<List<RequestStudent>?> {
         val dataRequestStudent = MutableLiveData<List<RequestStudent>?>()
         val requestStudent = ArrayList<RequestStudent>()
-        collRequestStudent.addValueEventListener(object : ValueEventListener {
+        collRequestStudent.orderByChild("timestamp").addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 if (snapshot.exists()) {
                     requestStudent.clear()
@@ -69,26 +69,31 @@ class HomeCompanyViewModel : ViewModel() {
         return dataStudent
     }
 
-    fun getRequestStudentById(id: String): LiveData<RequestStudent?> {
-        val dataStudent = MutableLiveData<RequestStudent?>()
-        var student: RequestStudent? = null
-        collRequestStudent.addValueEventListener(object : ValueEventListener {
+    fun getFilter(status: String, companyId: String): LiveData<List<RequestStudent>?> {
+        val dataRequestStudent = MutableLiveData<List<RequestStudent>?>()
+        val requestStudent = ArrayList<RequestStudent>()
+        collRequestStudent.orderByChild("studentName").addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 if (snapshot.exists()) {
+                    requestStudent.clear()
                     for (i in snapshot.children) {
-                        val valueStudent = i.getValue(RequestStudent::class.java)
-                        if (valueStudent?.companyId == id) {
-                            student = valueStudent
+                        i.getValue(RequestStudent::class.java)?.let {
+                            if (it.status == status && it.companyId == companyId){
+                                requestStudent.add(it)
+                            }
                         }
                     }
-                    dataStudent.value = student
+                    dataRequestStudent.value = requestStudent
+                } else {
+                    dataRequestStudent.value = null
                 }
             }
 
             override fun onCancelled(error: DatabaseError) {
-                dataStudent.value = null
+                dataRequestStudent.value = null
             }
+
         })
-        return dataStudent
+        return dataRequestStudent
     }
 }

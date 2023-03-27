@@ -119,7 +119,7 @@
         app:layout_constraintStart_toStartOf="@+id/et_adminVerificationNumber" />
 
     <TextView
-        android:id="@+id/tv_studentSignInNow"
+        android:id="@+id/tv_adminSignInNow"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"

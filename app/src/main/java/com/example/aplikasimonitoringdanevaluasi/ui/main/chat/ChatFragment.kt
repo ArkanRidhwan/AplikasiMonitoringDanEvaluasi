@@ -34,6 +34,9 @@ class ChatFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.apply {
+            ivChatBackButton.setOnClickListener {
+                requireActivity().onBackPressed()
+            }
             /*if (edtMessage.text.toString().trim().isEmpty() || edtMessage.text.toString().trim().isBlank()
             ) {
                 tvSendMessage.gone()

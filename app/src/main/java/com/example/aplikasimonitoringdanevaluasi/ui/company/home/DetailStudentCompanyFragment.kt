@@ -31,6 +31,10 @@ class DetailStudentCompanyFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         binding.apply {
+            ivBack.setOnClickListener {
+                requireActivity().onBackPressed()
+            }
+
             studentId = args.requestStudent.studentId
             homeCompanyViewModel.getStudentById(studentId).observe(viewLifecycleOwner) {
                 tvStudentName.text = it?.name.toString()
@@ -54,7 +58,6 @@ class DetailStudentCompanyFragment : Fragment() {
             btnAddReport.setOnClickListener {
                 val action =
                     DetailStudentCompanyFragmentDirections.actionDetailStudentCompanyFragmentToAddReportFragment(
-                        studentId,
                         args.requestStudent
                     )
                 findNavController().navigate(action)
@@ -63,7 +66,7 @@ class DetailStudentCompanyFragment : Fragment() {
             btnStudentLogbook.setOnClickListener {
                 val action =
                     DetailStudentCompanyFragmentDirections.actionDetailStudentCompanyFragmentToListLogbookFragment(
-                       null, studentId
+                        studentId
                     )
                 findNavController().navigate(action)
             }

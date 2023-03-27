@@ -1,6 +1,7 @@
 package com.example.aplikasimonitoringdanevaluasi.ui.student.profile
 
 import android.app.Activity
+import android.content.Context
 import android.graphics.ImageDecoder
 import android.os.Build
 import android.os.Bundle
@@ -9,6 +10,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.InputMethodManager
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.net.toFile
@@ -45,6 +47,7 @@ class EditProfileStudentFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         binding.apply {
             val userId = getInstance(requireContext()).getString(Constant.ID)
+            var timestamp = ""
             ivBack.setOnClickListener {
                 requireActivity().onBackPressed()
             }
@@ -69,6 +72,7 @@ class EditProfileStudentFragment : Fragment() {
                         )
                         .into(ivProfile)
                 }
+                timestamp = it?.timestamp.toString()
             }
 
             val startForImageResult =
@@ -118,6 +122,8 @@ class EditProfileStudentFragment : Fragment() {
             }
 
             btnSaveProfile.setOnClickListener {
+                hideKeyboard()
+
                 val email = etEmailStudent.text.toString()
                 val password = encrypt(etStudentPassword.text.toString())
                 val name = etStudentName.text.toString()
@@ -154,7 +160,8 @@ class EditProfileStudentFragment : Fragment() {
                                 className = className,
                                 phoneNumber = phoneNumber,
                                 studentMajor = studentMajor,
-                                image = urlDownload.toString()
+                                image = urlDownload.toString(),
+                                timestamp = timestamp
                             )
                             editProfileStudentViewModel.updateStudentById(student, userId)
                                 .observe(viewLifecycleOwner) { data ->
@@ -177,5 +184,10 @@ class EditProfileStudentFragment : Fragment() {
 
     companion object {
         private const val TAG = "EditProfileStudentFragment"
+    }
+
+    private fun hideKeyboard() {
+        val imm = context?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        imm.hideSoftInputFromWindow(requireView().windowToken, 0)
     }
 }

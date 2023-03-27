@@ -89,7 +89,8 @@ class RegisterViewModel : ViewModel() {
             className = data.className,
             phoneNumber = data.phoneNumber,
             studentMajor = data.studentMajor,
-            image = ""
+            image = "",
+            timestamp = data.timestamp
         )
         collStudent.child(
             data.email.replace(".", "").replace("#", "").replace("$", "")

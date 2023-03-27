@@ -1,12 +1,14 @@
 package com.example.aplikasimonitoringdanevaluasi.ui.main.login
 
 import android.app.Activity
+import android.content.Context
 import android.os.Bundle
 import android.os.Handler
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.InputMethodManager
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -61,6 +63,7 @@ class LoginFragment : Fragment() {
                     tvOr.gone()
                     progressBarLogin.visible()
                     progressBarLogin.playAnimation()
+                    hideKeyboard()
                     Handler().postDelayed({
                         when (args.role) {
                             getString(R.string.admin) -> {
@@ -343,5 +346,10 @@ class LoginFragment : Fragment() {
                 }
             }
         }
+    }
+
+    private fun hideKeyboard() {
+        val imm = context?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        imm.hideSoftInputFromWindow(requireView().windowToken, 0)
     }
 }

@@ -10,10 +10,11 @@ data class Course(
     val studentId: String = "",
     val tittle: String = "",
     val number: String = "",
-    val timestamp: Long = 0,
+    val timestamp: String = "",
     val check1: Boolean = false,
     val check2: Boolean = false,
-    val check3: Boolean =false
+    val check3: Boolean = false,
+    val finalCheck: Boolean = false,
 ) : Parcelable {
     companion object {
         fun saveCourse(
@@ -22,10 +23,11 @@ data class Course(
             studentId: String,
             tittle: String,
             number: String,
-            timestamp: Long,
+            timestamp: String,
             check1: Boolean,
             check2: Boolean,
-            check3: Boolean
+            check3: Boolean,
+            finalCheck: Boolean
         ): Course {
             return Course(
                 id,
@@ -36,7 +38,8 @@ data class Course(
                 timestamp,
                 check1,
                 check2,
-                check3
+                check3,
+                finalCheck
             )
         }
     }

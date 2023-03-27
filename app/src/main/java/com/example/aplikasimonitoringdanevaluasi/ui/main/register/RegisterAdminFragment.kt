@@ -90,6 +90,13 @@ class RegisterAdminFragment : Fragment() {
                     }
                 }
             }
+            tvAdminSignInNow.setOnClickListener {
+                findNavController().navigate(
+                    RegisterAdminFragmentDirections.actionRegisterAdminFragmentToLoginFragment(
+                        getString(R.string.admin)
+                    )
+                )
+            }
         }
     }
 }

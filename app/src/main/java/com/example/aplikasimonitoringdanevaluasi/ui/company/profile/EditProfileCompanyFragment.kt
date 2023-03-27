@@ -1,6 +1,7 @@
 package com.example.aplikasimonitoringdanevaluasi.ui.company.profile
 
 import android.app.Activity
+import android.content.Context
 import android.graphics.ImageDecoder
 import android.os.Build
 import android.os.Bundle
@@ -9,6 +10,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.InputMethodManager
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.net.toFile
@@ -119,6 +121,7 @@ class EditProfileCompanyFragment : Fragment() {
             }
 
             btnSaveProfile.setOnClickListener {
+                hideKeyboard()
                 val email = etEmailCompany.text.toString()
                 val password = encrypt(etCompanyPassword.text.toString())
                 val companyName = etCompanyName.text.toString()
@@ -173,5 +176,10 @@ class EditProfileCompanyFragment : Fragment() {
 
     companion object {
         private const val TAG = "EditProfileCompanyFragment"
+    }
+
+    private fun hideKeyboard() {
+        val imm = context?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        imm.hideSoftInputFromWindow(requireView().windowToken, 0)
     }
 }

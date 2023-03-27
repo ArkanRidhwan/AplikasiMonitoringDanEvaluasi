@@ -37,7 +37,7 @@ class AddCourseTittleFragment : Fragment() {
                     id = UUID.randomUUID().toString(),
                     tittle = courseTittle,
                     number = courseNumber,
-                    timestamp = System.currentTimeMillis()
+                    timestamp = System.currentTimeMillis().toString()
                 )
 
                 courseTittleViewModel.saveCourse(course)

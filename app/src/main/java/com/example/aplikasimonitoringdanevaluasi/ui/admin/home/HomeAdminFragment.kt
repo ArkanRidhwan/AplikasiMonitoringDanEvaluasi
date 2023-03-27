@@ -4,11 +4,16 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.example.aplikasimonitoringdanevaluasi.R
 import com.example.aplikasimonitoringdanevaluasi.databinding.FragmentHomeAdminBinding
+import com.example.aplikasimonitoringdanevaluasi.model.RequestStudent
+import com.example.aplikasimonitoringdanevaluasi.model.Student
+import com.example.aplikasimonitoringdanevaluasi.utils.Constant
+import com.example.aplikasimonitoringdanevaluasi.utils.getInstance
 import com.example.aplikasimonitoringdanevaluasi.utils.gone
 import com.example.aplikasimonitoringdanevaluasi.utils.visible
 
@@ -34,16 +39,36 @@ class HomeAdminFragment : Fragment() {
                 HomeAdminFragmentDirections.actionHomeAdminFragmentToDetailStudentAdminFragment(it)
             findNavController().navigate(action)
         }
+        binding.apply {
+            searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+                override fun onQueryTextSubmit(query: String?): Boolean {
+                    query?.let { searchQuery(it) }
+                    return true
+                }
 
-       /* binding.apply {
-            fabChatAdmin.setOnClickListener {
-                findNavController().navigate(
-                    HomeAdminFragmentDirections.actionHomeAdminFragmentToListContactChatFragment(
-                        getString(R.string.admin)
-                    )
-                )
+                override fun onQueryTextChange(query: String?): Boolean {
+                    query?.let { searchQuery(it) }
+                    return true
+                }
+
+            })
+        }
+    }
+
+    private fun searchQuery(e: String) {
+        homeAdminViewModel.getFilter().observe(viewLifecycleOwner){
+            val filteredItem = ArrayList<Student>()
+            // loop through the array list to obtain the required value
+            if (it != null) {
+                for (item in it) {
+                    if (item.name.toLowerCase().contains(e.toLowerCase())) {
+                        filteredItem.add(item)
+                    }
+                }
             }
-        }*/
+            // add the filtered value to adapter
+            homeAdminAdapter.setListData(filteredItem)
+        }
     }
 
     override fun onResume() {
@@ -63,6 +88,8 @@ class HomeAdminFragment : Fragment() {
                     recycleView.visible()
                 } else {
                     progressBar.gone()
+                    tvStudentNotCreated.visible()
+                    recycleView.gone()
                 }
             }
         }

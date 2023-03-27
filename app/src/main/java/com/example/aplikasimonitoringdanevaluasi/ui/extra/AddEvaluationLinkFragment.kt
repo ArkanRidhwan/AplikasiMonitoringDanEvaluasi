@@ -39,7 +39,7 @@ class AddEvaluationLinkFragment : Fragment() {
                 val evaluation = Evaluation(
                     id = UUID.randomUUID().toString(),
                     link = link,
-                    timestamp = System.currentTimeMillis(),
+                    timestamp = System.currentTimeMillis().toString(),
                     courseId = args.tittleCourseId.toString()
 
                 )

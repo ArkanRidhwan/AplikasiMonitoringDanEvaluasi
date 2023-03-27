@@ -11,7 +11,7 @@
         android:id="@+id/iv_bar"
         android:layout_width="wrap_content"
         android:layout_height="60dp"
-        android:background="@color/red_primary"
+        android:background="@color/gray_primary2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -21,9 +21,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/proza_libre"
-        android:text="TextView"
+        android:text="Detail Laporan"
         android:textColor="@color/white"
-        android:textSize="20sp"
+        android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/iv_bar"
         app:layout_constraintEnd_toEndOf="parent"
@@ -34,10 +34,10 @@
         android:id="@+id/iv_back"
         android:layout_width="40dp"
         android:layout_height="45dp"
-        android:layout_marginEnd="100dp"
+        android:layout_marginStart="16dp"
         android:src="@drawable/ic_back_button"
         app:layout_constraintBottom_toBottomOf="@+id/tv_Bartittle"
-        app:layout_constraintEnd_toStartOf="@+id/tv_Bartittle"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/tv_Bartittle"
         app:tint="@color/white" />
 
@@ -54,9 +54,11 @@
             android:layout_height="wrap_content">
 
             <androidx.cardview.widget.CardView
-                android:layout_width="350dp"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
                 android:layout_marginTop="32dp"
+                android:layout_marginEnd="32dp"
                 android:layout_marginBottom="32dp"
                 app:cardCornerRadius="20dp"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -359,32 +361,16 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
+                        android:layout_marginBottom="24dp"
                         android:ems="10"
                         android:fontFamily="@font/open_sans"
-                        android:paddingStart="15dp"
                         android:text="Jawaban"
                         android:textColor="@color/black"
                         android:textSize="16sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="@+id/tv_question10"
                         app:layout_constraintStart_toStartOf="@+id/tv_question10"
                         app:layout_constraintTop_toBottomOf="@+id/tv_question10" />
-
-                    <androidx.appcompat.widget.AppCompatButton
-                        android:id="@+id/btn_login"
-                        android:layout_width="0dp"
-                        android:layout_height="50dp"
-                        android:layout_marginTop="32dp"
-                        android:layout_marginBottom="32dp"
-                        android:background="@drawable/bg_btn"
-                        android:fontFamily="@font/roboto"
-                        android:text="SIMPAN"
-                        android:textColor="@color/white"
-                        android:textSize="16sp"
-                        android:textStyle="bold"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="@+id/tv_answer10"
-                        app:layout_constraintStart_toStartOf="@+id/tv_answer10"
-                        app:layout_constraintTop_toBottomOf="@+id/tv_answer10" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.cardview.widget.CardView>

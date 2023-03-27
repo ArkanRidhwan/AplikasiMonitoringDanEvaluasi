@@ -29,6 +29,10 @@ class DetailStudentAdminFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.apply {
+            ivBack.setOnClickListener {
+                requireActivity().onBackPressed()
+            }
+
             tvStudentName.text = args.student.name
             tvStudentNameEmail.text = args.student.email
             tvStudentClassName.text = args.student.className
@@ -51,8 +55,14 @@ class DetailStudentAdminFragment : Fragment() {
             btnLogbook.setOnClickListener {
                 val action =
                     DetailStudentAdminFragmentDirections.actionDetailStudentAdminFragmentToListLogbookFragment(
-                        args.student, null
+                        args.student.id
                     )
+                findNavController().navigate(action)
+            }
+
+            btnLaporan.setOnClickListener {
+                val action =
+                    DetailStudentAdminFragmentDirections.actionDetailStudentAdminFragmentToListReportAdminFragment(args.student.id)
                 findNavController().navigate(action)
             }
         }

@@ -36,35 +36,9 @@ class ListLogbookFragment : Fragment() {
         val role = getInstance(requireContext()).getString(Constant.ROLE)
         listLogbookAdapter = ListLogbookAdapter()
         binding.apply {
-            when (role) {
-                getString(R.string.student) -> {
-                    ivBack.gone()
-                    tvBartittle.gone()
-                    ivBar.gone()
-                }
-                getString(R.string.admin) -> {
-                    fabAddLogbook.gone()
-                }
-                getString(R.string.company) -> {
-                    fabAddLogbook.gone()
-                }
-            }
-
-            fabAddLogbook.setOnClickListener {
-                val action =
-                    HomeStudentFragmentDirections.actionHomeStudentFragmentToAddLogbookFragment()
-                findNavController().navigate(action)
-            }
 
             listLogbookAdapter.onItemClick = {
                 when (role) {
-                    getString(R.string.student) -> {
-                        val action =
-                            HomeStudentFragmentDirections.actionHomeStudentFragmentToDetailLogbookFragment(
-                                it
-                            )
-                        findNavController().navigate(action)
-                    }
                     getString(R.string.admin) -> {
                         val action =
                             ListLogbookFragmentDirections.actionListLogbookFragmentToDetailLogbookFragment(
@@ -87,7 +61,6 @@ class ListLogbookFragment : Fragment() {
     override fun onResume() {
         super.onResume()
         when (getInstance(requireContext()).getString(Constant.ROLE)) {
-            getString(R.string.student) -> loadLogbookStudent()
             getString(R.string.admin) -> loadLogbookAdmin()
             getString(R.string.company) -> loadLogbookCompany()
         }
@@ -100,12 +73,13 @@ class ListLogbookFragment : Fragment() {
             progressBar.visible()
             recyclerView.gone()
             if (studentId != null) {
-                listLogbookViewModel.getAdminLogbook(studentId).observe(viewLifecycleOwner) {
+                listLogbookViewModel.getLogbook(studentId).observe(viewLifecycleOwner) {
                     if (it?.isNotEmpty() == true) {
                         listLogbookAdapter.setListData(it)
                         progressBar.gone()
                         recyclerView.visible()
                     } else {
+                        tvLogbookNotCreated.visible()
                         progressBar.gone()
                     }
                 }
@@ -115,36 +89,17 @@ class ListLogbookFragment : Fragment() {
 
     private fun loadLogbookAdmin() {
         binding.apply {
-            val studentId = args.student?.id
+            val studentId = args.studentId
             recyclerView.adapter = listLogbookAdapter
             progressBar.visible()
             recyclerView.gone()
-            if (studentId != null) {
-                listLogbookViewModel.getAdminLogbook(studentId).observe(viewLifecycleOwner) {
-                    if (it?.isNotEmpty() == true) {
-                        listLogbookAdapter.setListData(it)
-                        progressBar.gone()
-                        recyclerView.visible()
-                    } else {
-                        progressBar.gone()
-                    }
-                }
-            }
-        }
-    }
-
-    private fun loadLogbookStudent() {
-        binding.apply {
-            val userId = getInstance(requireContext()).getString(Constant.ID)
-            recyclerView.adapter = listLogbookAdapter
-            progressBar.visible()
-            recyclerView.gone()
-            listLogbookViewModel.getStudentLogbook(userId).observe(viewLifecycleOwner) {
+            listLogbookViewModel.getLogbook(studentId).observe(viewLifecycleOwner) {
                 if (it?.isNotEmpty() == true) {
                     listLogbookAdapter.setListData(it)
                     progressBar.gone()
                     recyclerView.visible()
                 } else {
+                    tvLogbookNotCreated.visible()
                     progressBar.gone()
                 }
             }

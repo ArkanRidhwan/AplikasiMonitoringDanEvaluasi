@@ -53,25 +53,25 @@ class MainActivity : AppCompatActivity() {
         }
         val navController = findNavController(R.id.fragmentContainerView)
         binding.apply {
+            bottomNavStudentAndroidCom.setupWithNavController(navController)
             bottomNavAdminAndroidCom.setupWithNavController(navController)
             bottomNavCompanyAndroidCom.setupWithNavController(navController)
-            bottomNavStudentAndroidCom.setupWithNavController(navController)
 
             navController.addOnDestinationChangedListener { _, destination, _ ->
                 when (destination.id) {
+                    R.id.homeStudentFragment, R.id.listContactChatStudentFragment, R.id.listCourseStudentFragment, R.id.profileStudentFragment -> {
+                        bottomNavStudentAndroidCom.visibility = View.VISIBLE
+                    }
                     R.id.homeAdminFragment, R.id.listContactChatAdminFragment, R.id.listCourseAdminFragment, R.id.profileAdminFragment -> {
                         bottomNavAdminAndroidCom.visibility = View.VISIBLE
                     }
                     R.id.homeCompanyFragment, R.id.requestFragment, R.id.profileCompanyFragment -> {
                         bottomNavCompanyAndroidCom.visibility = View.VISIBLE
                     }
-                    R.id.homeStudentFragment, R.id.listContactChatStudentFragment, /*R.id.courseStudentFragment*/ R.id.listCourseStudentFragment, R.id.profileStudentFragment -> {
-                        bottomNavStudentAndroidCom.visibility = View.VISIBLE
-                    }
                     else -> {
+                        binding.bottomNavStudentAndroidCom.visibility = View.GONE
                         binding.bottomNavAdminAndroidCom.visibility = View.GONE
                         binding.bottomNavCompanyAndroidCom.visibility = View.GONE
-                        binding.bottomNavStudentAndroidCom.visibility = View.GONE
                     }
                 }
             }

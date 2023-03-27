@@ -12,12 +12,8 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.aplikasimonitoringdanevaluasi.databinding.FragmentDetailCourseBinding
 import com.example.aplikasimonitoringdanevaluasi.model.Course
-import com.example.aplikasimonitoringdanevaluasi.model.Module
-import com.example.aplikasimonitoringdanevaluasi.utils.getDateNow
 import com.example.aplikasimonitoringdanevaluasi.utils.gone
-import com.example.aplikasimonitoringdanevaluasi.utils.showToast
 import com.example.aplikasimonitoringdanevaluasi.utils.visible
-import java.util.*
 
 class DetailCourseFragment : Fragment() {
 
@@ -67,21 +63,22 @@ class DetailCourseFragment : Fragment() {
                         check2 = it.check2
                         check3 = it.check3
                     }
+
+
+                    val course = Course(
+                        id = args.course.id,
+                        tittle = args.course.tittle,
+                        number = args.course.number,
+                        timestamp = args.course.timestamp,
+                        check1 = true,
+                        check2 = check2,
+                        check3 = check3
+                    )
+
+                    detailCourseViewModel.updateCourseById(course, args.course.id)
+                        .observe(viewLifecycleOwner) {
+                        }
                 }
-
-                val course = Course(
-                    id = args.course.id,
-                    tittle = args.course.tittle,
-                    number = args.course.number,
-                    timestamp = args.course.timestamp,
-                    check1 = true,
-                    check2 = check2,
-                    check3 = check3
-                )
-
-                detailCourseViewModel.updateCourseById(course, args.course.id)
-                    .observe(viewLifecycleOwner) {
-                    }
             }
 
             cvModule.setOnClickListener {
@@ -99,21 +96,22 @@ class DetailCourseFragment : Fragment() {
                         check1 = it.check1
                         check3 = it.check3
                     }
+
+
+                    val course = Course(
+                        id = args.course.id,
+                        tittle = args.course.tittle,
+                        number = args.course.number,
+                        timestamp = args.course.timestamp,
+                        check1 = check1,
+                        check2 = true,
+                        check3 = check3
+                    )
+
+                    detailCourseViewModel.updateCourseById(course, args.course.id)
+                        .observe(viewLifecycleOwner) {
+                        }
                 }
-
-                val course = Course(
-                    id = args.course.id,
-                    tittle = args.course.tittle,
-                    number = args.course.number,
-                    timestamp = args.course.timestamp,
-                    check1 = check1,
-                    check2 = true,
-                    check3 = check3
-                )
-
-                detailCourseViewModel.updateCourseById(course, args.course.id)
-                    .observe(viewLifecycleOwner) {
-                    }
             }
 
             cvEvaluationLink.setOnClickListener {
@@ -132,23 +130,49 @@ class DetailCourseFragment : Fragment() {
                         check1 = it.check1
                         check2 = it.check2
                     }
+
+
+                    val course = Course(
+                        id = args.course.id,
+                        tittle = args.course.tittle,
+                        number = args.course.number,
+                        timestamp = args.course.timestamp,
+                        check1 = check1,
+                        check2 = check2,
+                        check3 = true
+                    )
+
+                    detailCourseViewModel.updateCourseById(course, args.course.id)
+                        .observe(viewLifecycleOwner) {
+                        }
                 }
-
-                val course = Course(
-                    id = args.course.id,
-                    tittle = args.course.tittle,
-                    number = args.course.number,
-                    timestamp = args.course.timestamp,
-                    check1 = check1,
-                    check2 = check2,
-                    check3 = true
-                )
-
-                detailCourseViewModel.updateCourseById(course, args.course.id)
-                    .observe(viewLifecycleOwner) {
-                    }
             }
 
+            btnDone.setOnClickListener {
+                detailCourseViewModel.getCourseById(args.course.id).observe(viewLifecycleOwner) {
+                    if (it != null) {
+                        check1 = it.check1
+                        check2 = it.check2
+                        check3 = it.check3
+                    }
+
+                    val course = Course(
+                        id = args.course.id,
+                        tittle = args.course.tittle,
+                        number = args.course.number,
+                        timestamp = args.course.timestamp,
+                        check1 = check1,
+                        check2 = check2,
+                        check3 = check3,
+                        finalCheck = true
+                    )
+
+                    detailCourseViewModel.updateCourseById(course, args.course.id)
+                        .observe(viewLifecycleOwner) {
+                        }
+                }
+                requireActivity().onBackPressed()
+            }
         }
     }
 }

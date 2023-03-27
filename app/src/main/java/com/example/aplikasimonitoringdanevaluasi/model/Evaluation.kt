@@ -6,14 +6,14 @@ import kotlinx.android.parcel.Parcelize
 @Parcelize
 data class Evaluation(
     val id: String = "",
-    val timestamp: Long = 0,
+    val timestamp: String = "",
     val courseId: String = "",
     val link: String = ""
 ) : Parcelable {
     companion object {
         fun saveEvaluation(
             id: String,
-            timestamp: Long,
+            timestamp: String,
             courseId: String,
             link: String
         ): Evaluation {

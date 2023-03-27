@@ -1,9 +1,11 @@
 package com.example.aplikasimonitoringdanevaluasi.ui.main.register
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.InputMethodManager
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -34,6 +36,7 @@ class RegisterCompanyByEmailPasswordFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         binding.apply {
             btnRegister.setOnClickListener {
+                hideKeyboard()
                 val emailFiltered = etCompanyEmail.text.toString().replace(".", "").replace("#", "")
                     .replace("$", "")
                     .replace("[", "").replace("]", "")
@@ -199,6 +202,20 @@ class RegisterCompanyByEmailPasswordFragment : Fragment() {
                         }*/
                 }
             }
+
+            tvCompanySignInNow.setOnClickListener {
+                findNavController().navigate(
+                    RegisterCompanyByEmailPasswordFragmentDirections.actionRegisterCompanyByEmailPasswordToLoginFragment(
+                        getString(R.string.company)
+                    )
+                )
+
+            }
         }
+    }
+
+    private fun hideKeyboard() {
+        val imm = context?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        imm.hideSoftInputFromWindow(requireView().windowToken, 0)
     }
 }

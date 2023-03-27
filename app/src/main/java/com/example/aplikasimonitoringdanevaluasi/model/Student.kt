@@ -15,6 +15,7 @@ data class Student(
     val phoneNumber: String = "",
     val studentMajor: String = "",
     val image: String = "",
+    val timestamp: String = "",
 ) : Parcelable {
     companion object {
         fun saveRegistrationStudent(
@@ -27,7 +28,8 @@ data class Student(
             className: String,
             phoneNumber: String,
             studentMajor: String,
-            image: String
+            image: String,
+            timestamp: String
         ): Student {
             return Student(
                 id,
@@ -39,7 +41,8 @@ data class Student(
                 className,
                 phoneNumber,
                 studentMajor,
-                image
+                image,
+                timestamp
             )
         }
     }

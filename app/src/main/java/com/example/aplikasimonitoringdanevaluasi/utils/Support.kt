@@ -30,8 +30,8 @@ private lateinit var preferenceManager: PreferenceManager
 
 
 fun encrypt(strToEncrypt: String): String? {
-    val iv = "bVQzNFNhRkQ1Njc4UUFaWA==" // base64 decode => mT34SaFD5678QAZX
     val secretKey = "tK5UTui+DPh8lIlBxya5XVsmeDCoUl6vHhdIESMB6sQ="
+    val iv = "bVQzNFNhRkQ1Njc4UUFaWA==" // base64 decode => mT34SaFD5678QAZX
     val salt = "QWlGNHNhMTJTQWZ2bGhpV3U="
     try {
         val ivParameterSpec = IvParameterSpec(Base64.decode(iv, Base64.DEFAULT))
@@ -56,8 +56,8 @@ fun encrypt(strToEncrypt: String): String? {
 
 fun decrypt(strToDecrypt: String): String? {
     val secretKey = "tK5UTui+DPh8lIlBxya5XVsmeDCoUl6vHhdIESMB6sQ="
-    val salt = "QWlGNHNhMTJTQWZ2bGhpV3U=" // base64 decode => AiF4sa12SAfvlhiWu
     val iv = "bVQzNFNhRkQ1Njc4UUFaWA==" // base64 decode => mT34SaFD5678QAZX
+    val salt = "QWlGNHNhMTJTQWZ2bGhpV3U=" // base64 decode => AiF4sa12SAfvlhiWu
     try {
 
         val ivParameterSpec = IvParameterSpec(Base64.decode(iv, Base64.DEFAULT))

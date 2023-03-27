@@ -4,9 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.aplikasimonitoringdanevaluasi.model.Logbook
-import com.example.aplikasimonitoringdanevaluasi.model.RequestLogbook
 import com.example.aplikasimonitoringdanevaluasi.model.RequestStudent
-import com.example.aplikasimonitoringdanevaluasi.model.Student
 import com.example.aplikasimonitoringdanevaluasi.utils.Constant
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -23,7 +21,7 @@ class StudentLogbookRequestViewModel : ViewModel() {
     fun getRequestLogbook(companyId: String, status: String): LiveData<List<Logbook>?> {
         val dataRequestLogbook = MutableLiveData<List<Logbook>?>()
         val requestLogbook = ArrayList<Logbook>()
-        collLogbook.addValueEventListener(object : ValueEventListener {
+        collLogbook.orderByChild("timestamp").addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 if (snapshot.exists()) {
                     requestLogbook.clear()
@@ -48,26 +46,29 @@ class StudentLogbookRequestViewModel : ViewModel() {
         return dataRequestLogbook
     }
 
-    fun getRequestStudentById(id: String): LiveData<RequestStudent?> {
-        val dataStudent = MutableLiveData<RequestStudent?>()
-        var student: RequestStudent? = null
-        collRequestStudent.addValueEventListener(object : ValueEventListener {
+    fun getFilter(): LiveData<List<Logbook>?> {
+        val dataRequestLogbook = MutableLiveData<List<Logbook>?>()
+        val requestLogbook = ArrayList<Logbook>()
+        collLogbook.orderByChild("name").addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 if (snapshot.exists()) {
+                    requestLogbook.clear()
                     for (i in snapshot.children) {
-                        val valueStudent = i.getValue(RequestStudent::class.java)
-                        if (valueStudent?.companyId == id) {
-                            student = valueStudent
+                        i.getValue(Logbook::class.java)?.let {
+                            requestLogbook.add(it)
                         }
                     }
-                    dataStudent.value = student
+                    dataRequestLogbook.value = requestLogbook
+                } else {
+                    dataRequestLogbook.value = null
                 }
             }
 
             override fun onCancelled(error: DatabaseError) {
-                dataStudent.value = null
+                dataRequestLogbook.value = null
             }
+
         })
-        return dataStudent
+        return dataRequestLogbook
     }
 }

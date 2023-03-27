@@ -1,9 +1,11 @@
 package com.example.aplikasimonitoringdanevaluasi.ui.student.home
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.InputMethodManager
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.example.aplikasimonitoringdanevaluasi.databinding.FragmentAddLogbookBinding
@@ -43,6 +45,7 @@ class AddLogbookFragment : Fragment() {
                 }
 
             btnSave.setOnClickListener {
+                hideKeyboard()
                 val content = etContentLogbook.text.toString()
                 val activityDate = etActivityDateLogbook.text.toString()
                 val name = getInstance(requireContext()).getString(Constant.NAME)
@@ -64,7 +67,7 @@ class AddLogbookFragment : Fragment() {
                         .observe(viewLifecycleOwner) { data ->
                             if (data == true) {
                                 requireActivity().onBackPressed()
-                                //requireContext().showToast("Menyimpan logbook berhasil")
+                                requireContext().showToast("Berhasil menyimpan logbook")
                             } else {
                                 requireContext().showToast("Menyimpan logbook gagal")
                             }
@@ -74,5 +77,10 @@ class AddLogbookFragment : Fragment() {
                 }
             }
         }
+    }
+
+    private fun hideKeyboard() {
+        val imm = context?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        imm.hideSoftInputFromWindow(requireView().windowToken, 0)
     }
 }

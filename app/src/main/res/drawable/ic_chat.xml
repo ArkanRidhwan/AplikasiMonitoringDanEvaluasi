@@ -6,13 +6,13 @@
   <path
       android:pathData="M18.2,23.6C23.291,23.6 25.837,23.6 27.418,22.018C29,20.437 29,17.891 29,12.8C29,7.709 29,5.163 27.418,3.582C25.837,2 23.291,2 18.2,2H12.8C7.709,2 5.163,2 3.582,3.582C2,5.163 2,7.709 2,12.8C2,17.891 2,20.437 3.582,22.018C4.464,22.901 5.645,23.291 7.4,23.462"
       android:strokeLineJoin="round"
-      android:strokeWidth="4"
+      android:strokeWidth="3"
       android:fillColor="#00000000"
       android:strokeColor="#ffffff"
       android:strokeLineCap="round"/>
   <path
       android:pathData="M18.2,23.6C16.531,23.6 14.693,24.275 13.015,25.146C10.317,26.546 8.969,27.246 8.304,26.799C7.64,26.354 7.766,24.97 8.018,22.204L8.075,21.575"
-      android:strokeWidth="4"
+      android:strokeWidth="3"
       android:fillColor="#00000000"
       android:strokeColor="#ffffff"
       android:strokeLineCap="round"/>

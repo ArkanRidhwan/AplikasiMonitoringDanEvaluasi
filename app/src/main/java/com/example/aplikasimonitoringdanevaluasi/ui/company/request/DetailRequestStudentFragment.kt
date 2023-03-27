@@ -53,6 +53,7 @@ class DetailRequestStudentFragment : Fragment() {
             var phoneNumber = ""
             var studentMajor = ""
             var image = ""
+            var timestamp = ""
 
             detailRequestStudentViewModel.getStudentById(studentId).observe(viewLifecycleOwner) {
                 email = it?.email.toString()
@@ -62,6 +63,7 @@ class DetailRequestStudentFragment : Fragment() {
                 phoneNumber = it?.phoneNumber.toString()
                 studentMajor = it?.studentMajor.toString()
                 image = it?.image.toString()
+                timestamp = it?.timestamp.toString()
 
                 tvStudentNameEmail.text = email
                 tvStudentName.text = it?.name.toString()
@@ -91,7 +93,8 @@ class DetailRequestStudentFragment : Fragment() {
                     studentId = studentId,
                     studentName = studentName,
                     studentEmail = studentEmail,
-                    image = studentImage
+                    image = studentImage,
+                    timestamp = System.currentTimeMillis().toString()
                 )
                 detailRequestStudentViewModel.updateRequestStatusAccepted(requestStudent, id)
                     .observe(viewLifecycleOwner) {
@@ -113,7 +116,8 @@ class DetailRequestStudentFragment : Fragment() {
                     className = className,
                     phoneNumber = phoneNumber,
                     studentMajor = studentMajor,
-                    image = image
+                    image = image,
+                    timestamp = timestamp
                 )
                 detailRequestStudentViewModel.updateStudentById(student, studentId)
                     .observe(viewLifecycleOwner) {

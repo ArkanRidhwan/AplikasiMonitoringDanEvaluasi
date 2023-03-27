@@ -18,33 +18,7 @@ class ListLogbookViewModel : ViewModel() {
     private val collLogbook = database.getReference(Constant.COLL_LOGBOOK)
     private val collStudent = database.getReference(Constant.COLL_STUDENT)
 
-   /* fun getAllLogbook(): LiveData<List<Logbook>?> {
-        val dataLogbook = MutableLiveData<List<Logbook>?>()
-        val logbook = ArrayList<Logbook>()
-        collLogbook.addValueEventListener(object : ValueEventListener {
-            override fun onDataChange(snapshot: DataSnapshot) {
-                if (snapshot.exists()) {
-                    logbook.clear()
-                    for (i in snapshot.children) {
-                        i.getValue(Logbook::class.java)?.let {
-                            logbook.add(it)
-                        }
-                    }
-                    dataLogbook.value = logbook
-                } else {
-                    dataLogbook.value = null
-                }
-            }
-
-            override fun onCancelled(error: DatabaseError) {
-                dataLogbook.value = null
-            }
-
-        })
-        return dataLogbook
-    }*/
-
-    fun getStudentLogbook(userId: String): LiveData<List<Logbook>?> {
+    fun getLogbook(userId: String): LiveData<List<Logbook>?> {
         val dataLogbook = MutableLiveData<List<Logbook>?>()
         val logbook = ArrayList<Logbook>()
         collLogbook.orderByChild("timestamp").addValueEventListener(object : ValueEventListener {

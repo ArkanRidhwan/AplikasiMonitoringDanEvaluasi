@@ -28,7 +28,7 @@ class ChatViewModel() : ViewModel() {
             senderId = data.senderId,
             senderName = data.senderName,
             message = data.message,
-            timestamp = System.currentTimeMillis()
+            timestamp = System.currentTimeMillis().toString()
         )
         collChat.child(uuid).setValue(chat)
             .addOnCompleteListener {

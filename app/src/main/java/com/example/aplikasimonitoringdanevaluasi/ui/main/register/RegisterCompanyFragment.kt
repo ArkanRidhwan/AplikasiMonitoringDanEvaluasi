@@ -33,11 +33,6 @@ class RegisterCompanyFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         binding.apply {
             auth = FirebaseAuth.getInstance()
-            tvStudentSignInNow.setOnClickListener {
-                RegisterCompanyFragmentDirections.actionRegisterCompanyFragmentToLoginFragment(
-                    getInstance(requireContext()).getString(Constant.ROLE)
-                )
-            }
             btnRegister.setOnClickListener {
                 val companyName = etCompanyName.text.toString()
                 val companyAddress = etCompanyAddress.text.toString()
@@ -102,6 +97,13 @@ class RegisterCompanyFragment : Fragment() {
                         }
                     }
                 }
+            }
+            tvCompanySignInNow.setOnClickListener {
+                findNavController().navigate(
+                    RegisterCompanyFragmentDirections.actionRegisterCompanyFragmentToLoginFragment(
+                        getString(R.string.company)
+                    )
+                )
             }
         }
     }

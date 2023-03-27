@@ -1,10 +1,12 @@
 package com.example.aplikasimonitoringdanevaluasi.ui.main.register
 
+import android.content.Context
 import android.os.Bundle
 import android.util.Base64.*
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.InputMethodManager
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -26,8 +28,6 @@ class RegisterAdminByEmailPasswordFragment : Fragment() {
 
     private lateinit var binding: FragmentRegisterAdminByEmailPasswordBinding
     private val registerViewModel: RegisterViewModel by viewModels()
-    private var availableEmail = ""
-    private var step = 1
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -42,6 +42,7 @@ class RegisterAdminByEmailPasswordFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         binding.apply {
             btnRegister.setOnClickListener {
+                hideKeyboard()
                 val emailFiltered =
                     etAdminEmail.text.toString().replace(".", "").replace("#", "").replace("$", "")
                         .replace("[", "").replace("]", "")
@@ -213,6 +214,19 @@ class RegisterAdminByEmailPasswordFragment : Fragment() {
                         }
                 }*/
             }
+
+            tvAdminSignInNow.setOnClickListener {
+                findNavController().navigate(
+                    RegisterAdminByEmailPasswordFragmentDirections.actionRegisterAdminByEmailPasswordFragmentToLoginFragment(
+                        getString(R.string.admin)
+                    )
+                )
+            }
         }
+    }
+
+    private fun hideKeyboard() {
+        val imm = context?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        imm.hideSoftInputFromWindow(requireView().windowToken, 0)
     }
 }

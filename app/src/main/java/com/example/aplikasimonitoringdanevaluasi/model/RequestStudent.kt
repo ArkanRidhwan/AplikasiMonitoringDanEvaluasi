@@ -13,23 +13,10 @@ data class RequestStudent(
     val studentName: String = "",
     val studentEmail: String = "",
     val image: String = "",
-    val reportStatus: String = ""
+    val reportStatus: String = "",
+    val timestamp: String = "",
 ) : Parcelable {
     companion object {
-        /*fun processStudentRequest(
-            id: String,
-            status: String,
-            companyId: String,
-            studentId: String
-        ): RequestStudent {
-            return RequestStudent(
-                id,
-                status,
-                companyId,
-                studentId
-            )
-        }*/
-
         fun processStudentRequest(
             id: String,
             status: String,
@@ -39,7 +26,8 @@ data class RequestStudent(
             studentName: String,
             studentEmail: String,
             image: String,
-            reportStatus: String
+            reportStatus: String,
+            timestamp: String
         ): RequestStudent {
             return RequestStudent(
                 id,
@@ -50,7 +38,8 @@ data class RequestStudent(
                 studentName,
                 studentEmail,
                 image,
-                reportStatus
+                reportStatus,
+                timestamp
             )
         }
     }

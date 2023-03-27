@@ -124,7 +124,7 @@ class UploadModuleFragment : Fragment() {
                                     tittle = tittle,
                                     description = description,
                                     date = getDateNow(),
-                                    timestamp = System.currentTimeMillis(),
+                                    timestamp = System.currentTimeMillis().toString(),
                                     courseId = args.tittleCourseId.toString(),
                                     link = urlDownload.toString(),
                                 )

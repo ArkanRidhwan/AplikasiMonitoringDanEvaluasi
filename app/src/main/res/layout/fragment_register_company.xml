@@ -152,7 +152,7 @@
         app:layout_constraintStart_toStartOf="@+id/et_companyName" />
 
     <TextView
-        android:id="@+id/tv_studentSignInNow"
+        android:id="@+id/tv_companySignInNow"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"

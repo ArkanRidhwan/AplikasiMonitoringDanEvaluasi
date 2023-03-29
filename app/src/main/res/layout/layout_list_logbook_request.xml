@@ -23,7 +23,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:shapeAppearance="@style/roundimageview2"
-            app:srcCompat="@drawable/spongebob" />
+            app:srcCompat="@drawable/ic_image_no_image" />
 
         <TextView
             android:id="@+id/tv_studentName"

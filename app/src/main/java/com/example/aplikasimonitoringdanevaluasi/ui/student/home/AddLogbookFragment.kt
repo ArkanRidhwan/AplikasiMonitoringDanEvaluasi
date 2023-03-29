@@ -58,7 +58,7 @@ class AddLogbookFragment : Fragment() {
                     activityDate = activityDate,
                     content = content,
                     date = getDateNow(),
-                    timestamp = System.currentTimeMillis(),
+                    timestamp = System.currentTimeMillis().toString(),
                     status = "1",
                     image = imageProfileStudentLogbook
                 )
@@ -73,7 +73,7 @@ class AddLogbookFragment : Fragment() {
                             }
                         }
                 } else {
-                    requireContext().showToast("Silahkan ajukan lamaran perusahaan terlebih dahulu")
+                    requireContext().showToast("Silahkan ajukan lamaran ke perusahaan terlebih dahulu")
                 }
             }
         }

@@ -77,6 +77,9 @@ class DetailStudentLogbookRequestFragment : Fragment() {
                     }
                 requireActivity().onBackPressed()
             }
+            ivBack.setOnClickListener {
+                requireActivity().onBackPressed()
+            }
         }
     }
 }

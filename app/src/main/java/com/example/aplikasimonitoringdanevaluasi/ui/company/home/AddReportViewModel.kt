@@ -35,7 +35,17 @@ class AddReportViewModel : ViewModel() {
             answer5 = data.answer5,
             answer6 = data.answer6,
             answer7 = data.answer7,
-            answer8 = data.answer8
+            answer8 = data.answer8,
+            answer9 = data.answer9,
+            answer10 = data.answer10,
+            answer11 = data.answer11,
+            answer12 = data.answer12,
+            answer13 = data.answer13,
+            answer14 = data.answer14,
+            answer15 = data.answer15,
+            answer16 = data.answer16,
+            answer17 = data.answer17,
+            answer18 = data.answer18
         )
         collReport.child(data.id).setValue(report)
             .addOnCompleteListener {

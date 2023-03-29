@@ -6,8 +6,9 @@
     <color name="teal_200">#FF03DAC5</color>
     <color name="teal_700">#FF018786</color>
     <color name="black">#000000</color>
+    <color name="darkMode">#27282B</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="red_primary">#FF0150</color>
+    <color name="red_primary">#E42127</color>
     <color name="gray_primary">#E8E4E3</color>
     <color name="gray_primary2">#394149</color>
     <color name="gray_bottomnav">#F2F2F2</color>

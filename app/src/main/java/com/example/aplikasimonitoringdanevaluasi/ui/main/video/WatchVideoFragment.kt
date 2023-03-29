@@ -153,6 +153,9 @@ class WatchVideoFragment : Fragment() {
                         }
                     })
             }
+            ivBack.setOnClickListener {
+                requireActivity().onBackPressed()
+            }
         }
     }
 

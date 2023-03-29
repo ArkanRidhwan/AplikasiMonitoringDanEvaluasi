@@ -12,7 +12,7 @@ data class Logbook(
     val activityDate: String = "",
     val content: String = "",
     val date: String = "",
-    val timestamp: Long = 0,
+    val timestamp: String = "",
     val status: String = "",
     val image: String = " "
 ) : Parcelable {
@@ -25,7 +25,7 @@ data class Logbook(
             activityDate: String,
             content: String,
             date: String,
-            timestamp: Long,
+            timestamp: String,
             status: String,
             image: String
         ): Logbook {

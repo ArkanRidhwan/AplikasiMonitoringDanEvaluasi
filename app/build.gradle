@@ -98,7 +98,7 @@ dependencies {
     implementation 'androidx.core:core-splashscreen:1.0.0'
 
     //CustomBottomNav
-    implementation 'com.github.ismaeldivita:chip-navigation-bar:1.4.0'
+    //implementation 'com.github.ismaeldivita:chip-navigation-bar:1.4.0'
 
     //Lottie
     implementation 'com.airbnb.android:lottie:3.7.0'

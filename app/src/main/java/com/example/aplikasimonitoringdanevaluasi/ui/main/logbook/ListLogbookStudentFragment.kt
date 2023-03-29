@@ -42,7 +42,7 @@ class ListLogbookStudentFragment : Fragment() {
         }
         listLogbookAdapter.onItemClick = {
             val action =
-                ListLogbookStudentFragmentDirections.actionListLogbookAdminFragmentToDetailLogbookFragment(
+                HomeStudentFragmentDirections.actionHomeStudentFragmentToDetailLogbookFragment(
                     it
                 )
             findNavController().navigate(action)
@@ -65,6 +65,7 @@ class ListLogbookStudentFragment : Fragment() {
                     listLogbookAdapter.setListData(it)
                     progressBar.gone()
                     recyclerView.visible()
+                    tvLogbookNotCreated.gone()
                 } else {
                     tvLogbookNotCreated.visible()
                     progressBar.gone()

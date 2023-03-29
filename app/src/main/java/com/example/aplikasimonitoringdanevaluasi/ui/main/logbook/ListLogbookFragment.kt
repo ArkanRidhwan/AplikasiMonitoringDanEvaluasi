@@ -55,6 +55,9 @@ class ListLogbookFragment : Fragment() {
                     }
                 }
             }
+            ivBack.setOnClickListener {
+                requireActivity().onBackPressed()
+            }
         }
     }
 

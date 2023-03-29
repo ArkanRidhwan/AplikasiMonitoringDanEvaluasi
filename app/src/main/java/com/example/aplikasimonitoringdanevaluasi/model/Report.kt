@@ -19,7 +19,17 @@ data class Report(
     val answer5: String = "",
     val answer6: String = "",
     val answer7: String = "",
-    val answer8: String = ""
+    val answer8: String = "",
+    val answer9: String = "",
+    val answer10: String = "",
+    val answer11: String = "",
+    val answer12: String = "",
+    val answer13: String = "",
+    val answer14: String = "",
+    val answer15: String = "",
+    val answer16: String = "",
+    val answer17: String = "",
+    val answer18: String = ""
 ) : Parcelable {
     companion object {
         fun saveReport(
@@ -37,7 +47,17 @@ data class Report(
             answer5: String,
             answer6: String,
             answer7: String,
-            answer8: String
+            answer8: String,
+            answer9: String,
+            answer10: String,
+            answer11: String,
+            answer12: String,
+            answer13: String,
+            answer14: String,
+            answer15: String,
+            answer16: String,
+            answer17: String,
+            answer18: String,
         ): Report {
             return Report(
                 id,
@@ -54,7 +74,17 @@ data class Report(
                 answer5,
                 answer6,
                 answer7,
-                answer8
+                answer8,
+                answer9,
+                answer10,
+                answer11,
+                answer12,
+                answer13,
+                answer14,
+                answer15,
+                answer16,
+                answer17,
+                answer18
             )
         }
     }

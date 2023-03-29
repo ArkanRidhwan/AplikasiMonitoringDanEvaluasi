@@ -210,7 +210,6 @@ class UploadVideoFragment : Fragment() {
                             tvUploadVideoContent.visible()
                             etUploadVideoContent.visible()
                             etUploadVideoTittle.visible()
-                            requireContext().showToast("Upload Video Failed!")
                         }
                         .addOnSuccessListener { task ->
                             progressBarUpload.gone()
@@ -221,7 +220,6 @@ class UploadVideoFragment : Fragment() {
                             tvUploadVideoContent.visible()
                             etUploadVideoContent.visible()
                             etUploadVideoTittle.visible()
-                            requireContext().showToast("Upload Video Success!")
 
                             task.storage.downloadUrl.addOnSuccessListener { url ->
                                 Log.d(TAG, "downloadUri: $url")
@@ -240,9 +238,9 @@ class UploadVideoFragment : Fragment() {
                                     .observe(viewLifecycleOwner) { data ->
                                         if (data == true) {
                                             requireActivity().onBackPressed()
-                                            requireContext().showToast("Menyimpan video berhasil")
+                                            requireContext().showToast("Berhasil menyimpan video")
                                         } else {
-                                            requireContext().showToast("Menyimpan video gagal")
+                                            requireContext().showToast("Gagal menyimpan video")
                                         }
                                     }
                             }

@@ -9,70 +9,126 @@
         android:id="@+id/splashScreenFragment"
         android:name="com.example.aplikasimonitoringdanevaluasi.ui.main.SplashFragment"
         android:label="fragment_splash_screen"
-        tools:layout="@layout/fragment_splash" >
+        tools:layout="@layout/fragment_splash">
         <action
             android:id="@+id/action_splashScreenFragment_to_welcomeFragment"
-            app:destination="@id/welcomeFragment" />
+            app:destination="@id/welcomeFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out" />
         <action
             android:id="@+id/action_splashScreenFragment_to_homeCompanyFragment"
-            app:destination="@id/homeCompanyFragment" />
+            app:destination="@id/homeCompanyFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out" />
         <action
             android:id="@+id/action_splashScreenFragment_to_homeAdminFragment"
-            app:destination="@id/homeAdminFragment" />
+            app:destination="@id/homeAdminFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out" />
         <action
             android:id="@+id/action_splashScreenFragment_to_homeStudentFragment"
-            app:destination="@id/homeStudentFragment" />
+            app:destination="@id/homeStudentFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out" />
     </fragment>
     <fragment
         android:id="@+id/welcomeFragment"
         android:name="com.example.aplikasimonitoringdanevaluasi.ui.main.welcome.WelcomeFragment"
         android:label="fragment_welcome"
-        tools:layout="@layout/fragment_welcome" >
+        tools:layout="@layout/fragment_welcome">
         <action
             android:id="@+id/action_welcomeFragment_to_loginFragment"
-            app:destination="@id/loginFragment" />
+            app:destination="@id/loginFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out" />
     </fragment>
     <fragment
         android:id="@+id/loginFragment"
         android:name="com.example.aplikasimonitoringdanevaluasi.ui.main.login.LoginFragment"
         android:label="fragment_login"
-        tools:layout="@layout/fragment_login" >
+        tools:layout="@layout/fragment_login">
         <action
             android:id="@+id/action_loginFragment_to_registerCompanyFragment"
-            app:destination="@id/registerCompanyFragment" />
+            app:destination="@id/registerCompanyFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out" />
         <action
             android:id="@+id/action_loginFragment_to_registerStudentFragment"
-            app:destination="@id/registerStudentFragment" />
+            app:destination="@id/registerStudentFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out" />
         <action
             android:id="@+id/action_loginFragment_to_homeCompanyFragment"
-            app:destination="@id/homeCompanyFragment" />
+            app:destination="@id/homeCompanyFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out" />
         <action
             android:id="@+id/action_loginFragment_to_homeStudentFragment"
-            app:destination="@id/homeStudentFragment" />
+            app:destination="@id/homeStudentFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out" />
         <argument
             android:name="role"
             app:argType="string" />
         <action
             android:id="@+id/action_loginFragment_to_registerStudentByEmailPassword"
-            app:destination="@id/registerStudentByEmailPassword" />
+            app:destination="@id/registerStudentByEmailPassword"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out" />
         <action
             android:id="@+id/action_loginFragment_to_registerAdminByEmailPasswordFragment"
-            app:destination="@id/registerAdminByEmailPasswordFragment" />
+            app:destination="@id/registerAdminByEmailPasswordFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out" />
         <action
             android:id="@+id/action_loginFragment_to_homeAdminFragment"
-            app:destination="@id/homeAdminFragment" />
+            app:destination="@id/homeAdminFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out" />
         <action
             android:id="@+id/action_loginFragment_to_registerAdminFragment"
-            app:destination="@id/registerAdminFragment" />
+            app:destination="@id/registerAdminFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out" />
         <action
             android:id="@+id/action_loginFragment_to_registerCompanyByEmailPassword"
-            app:destination="@id/registerCompanyByEmailPassword" />
+            app:destination="@id/registerCompanyByEmailPassword"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out" />
     </fragment>
     <fragment
         android:id="@+id/registerCompanyFragment"
         android:name="com.example.aplikasimonitoringdanevaluasi.ui.main.register.RegisterCompanyFragment"
         android:label="fragment_register_company"
-        tools:layout="@layout/fragment_register_company" >
+        tools:layout="@layout/fragment_register_company">
         <argument
             android:name="role"
             app:argType="string" />
@@ -82,19 +138,31 @@
             app:nullable="true" />
         <action
             android:id="@+id/action_registerCompanyFragment_to_loginFragment"
-            app:destination="@id/loginFragment" />
+            app:destination="@id/loginFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out" />
         <action
             android:id="@+id/action_registerCompanyFragment_to_homeCompanyFragment"
-            app:destination="@id/homeCompanyFragment" />
+            app:destination="@id/homeCompanyFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out" />
     </fragment>
     <fragment
         android:id="@+id/registerStudentFragment"
         android:name="com.example.aplikasimonitoringdanevaluasi.ui.main.register.RegisterStudentFragment"
         android:label="fragment_register_student"
-        tools:layout="@layout/fragment_register_student" >
+        tools:layout="@layout/fragment_register_student">
         <action
             android:id="@+id/action_registerStudentFragment_to_loginFragment"
-            app:destination="@id/loginFragment" />
+            app:destination="@id/loginFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out" />
         <argument
             android:name="role"
             app:argType="string" />
@@ -104,49 +172,77 @@
             app:nullable="true" />
         <action
             android:id="@+id/action_registerStudentFragment_to_homeStudentFragment"
-            app:destination="@id/homeStudentFragment" />
+            app:destination="@id/homeStudentFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out" />
     </fragment>
     <fragment
         android:id="@+id/homeAdminFragment"
         android:name="com.example.aplikasimonitoringdanevaluasi.ui.admin.home.HomeAdminFragment"
         android:label="fragment_home_admin"
-        tools:layout="@layout/fragment_home_admin" >
+        tools:layout="@layout/fragment_home_admin">
         <argument
             android:name="role"
             app:argType="string" />
         <action
             android:id="@+id/action_homeAdminFragment_to_uploadVideoFragment"
-            app:destination="@id/uploadVideoFragment" />
+            app:destination="@id/uploadVideoFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out" />
         <action
             android:id="@+id/action_homeAdminFragment_to_detailStudentAdminFragment"
-            app:destination="@id/detailStudentAdminFragment" />
+            app:destination="@id/detailStudentAdminFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out" />
     </fragment>
     <fragment
         android:id="@+id/homeCompanyFragment"
         android:name="com.example.aplikasimonitoringdanevaluasi.ui.company.home.HomeCompanyFragment"
         android:label="fragment_home_company"
-        tools:layout="@layout/fragment_home_company" >
+        tools:layout="@layout/fragment_home_company">
         <argument
             android:name="role"
             app:argType="string" />
         <action
             android:id="@+id/action_homeCompanyFragment_to_detailStudentCompanyFragment"
-            app:destination="@id/detailStudentCompanyFragment" />
+            app:destination="@id/detailStudentCompanyFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out" />
     </fragment>
     <fragment
         android:id="@+id/homeStudentFragment"
         android:name="com.example.aplikasimonitoringdanevaluasi.ui.student.home.HomeStudentFragment"
         android:label="fragment_home_student"
-        tools:layout="@layout/fragment_home_student" >
+        tools:layout="@layout/fragment_home_student">
         <action
             android:id="@+id/action_homeStudentFragment_to_detailCompanyStudentFragment"
-            app:destination="@id/detailCompanyStudentFragment" />
+            app:destination="@id/detailCompanyStudentFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out" />
         <action
             android:id="@+id/action_homeStudentFragment_to_addLogbookFragment"
-            app:destination="@id/addLogbookFragment" />
+            app:destination="@id/addLogbookFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out" />
         <action
             android:id="@+id/action_homeStudentFragment_to_detailLogbookFragment"
-            app:destination="@id/detailLogbookFragment" />
+            app:destination="@id/detailLogbookFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out" />
         <argument
             android:name="role"
             app:argType="string" />
@@ -155,31 +251,47 @@
         android:id="@+id/profileAdminFragment"
         android:name="com.example.aplikasimonitoringdanevaluasi.ui.admin.profile.ProfileAdminFragment"
         android:label="fragment_profile_admin"
-        tools:layout="@layout/fragment_profile_admin" >
+        tools:layout="@layout/fragment_profile_admin">
         <action
             android:id="@+id/action_profileAdminFragment_to_welcomeFragment"
-            app:destination="@id/welcomeFragment" />
+            app:destination="@id/welcomeFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out" />
         <action
             android:id="@+id/action_profileAdminFragment_to_editProfileAdminFragment"
-            app:destination="@id/editProfileAdminFragment" />
+            app:destination="@id/editProfileAdminFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out" />
     </fragment>
     <fragment
         android:id="@+id/profileStudentFragment"
         android:name="com.example.aplikasimonitoringdanevaluasi.ui.student.profile.ProfileStudentFragment"
         android:label="fragment_profile_student"
-        tools:layout="@layout/fragment_profile_student" >
+        tools:layout="@layout/fragment_profile_student">
         <action
             android:id="@+id/action_profileStudentFragment_to_welcomeFragment"
-            app:destination="@id/welcomeFragment" />
+            app:destination="@id/welcomeFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out" />
         <action
             android:id="@+id/action_profileStudentFragment_to_editProfileStudentFragment"
-            app:destination="@id/editProfileStudentFragment" />
+            app:destination="@id/editProfileStudentFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out" />
     </fragment>
     <fragment
         android:id="@+id/registerCompanyByEmailPassword"
         android:name="com.example.aplikasimonitoringdanevaluasi.ui.main.register.RegisterCompanyByEmailPasswordFragment"
         android:label="fragment_register_company_by_email_password"
-        tools:layout="@layout/fragment_register_company_by_email_password" >
+        tools:layout="@layout/fragment_register_company_by_email_password">
         <argument
             android:name="role"
             app:argType="string" />
@@ -189,16 +301,24 @@
             app:nullable="true" />
         <action
             android:id="@+id/action_registerCompanyByEmailPassword_to_homeCompanyFragment"
-            app:destination="@id/homeCompanyFragment" />
+            app:destination="@id/homeCompanyFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out" />
         <action
             android:id="@+id/action_registerCompanyByEmailPassword_to_loginFragment"
-            app:destination="@id/loginFragment" />
+            app:destination="@id/loginFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out" />
     </fragment>
     <fragment
         android:id="@+id/registerStudentByEmailPassword"
         android:name="com.example.aplikasimonitoringdanevaluasi.ui.main.register.RegisterStudentByEmailPasswordFragment"
         android:label="fragment_register_student_by_email_password"
-        tools:layout="@layout/fragment_register_student_by_email_password" >
+        tools:layout="@layout/fragment_register_student_by_email_password">
         <argument
             android:name="role"
             app:argType="string" />
@@ -208,31 +328,51 @@
             app:nullable="true" />
         <action
             android:id="@+id/action_registerStudentByEmailPassword_to_homeStudentFragment"
-            app:destination="@id/homeStudentFragment" />
+            app:destination="@id/homeStudentFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out" />
         <action
             android:id="@+id/action_registerStudentByEmailPassword_to_loginFragment"
-            app:destination="@id/loginFragment" />
+            app:destination="@id/loginFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out" />
     </fragment>
     <fragment
         android:id="@+id/profileCompanyFragment"
         android:name="com.example.aplikasimonitoringdanevaluasi.ui.company.profile.ProfileCompanyFragment"
         android:label="fragment_profile_company"
-        tools:layout="@layout/fragment_profile_company" >
+        tools:layout="@layout/fragment_profile_company">
         <action
             android:id="@+id/action_profileCompanyFragment_to_welcomeFragment"
-            app:destination="@id/welcomeFragment" />
+            app:destination="@id/welcomeFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out" />
         <action
             android:id="@+id/action_profileCompanyFragment_to_editProfileCompanyFragment"
-            app:destination="@id/editProfileCompanyFragment" />
+            app:destination="@id/editProfileCompanyFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out" />
     </fragment>
     <fragment
         android:id="@+id/registerAdminByEmailPasswordFragment"
         android:name="com.example.aplikasimonitoringdanevaluasi.ui.main.register.RegisterAdminByEmailPasswordFragment"
         android:label="fragment_register_admin_by_email_password"
-        tools:layout="@layout/fragment_register_admin_by_email_password" >
+        tools:layout="@layout/fragment_register_admin_by_email_password">
         <action
             android:id="@+id/action_registerAdminByEmailPasswordFragment_to_homeAdminFragment"
-            app:destination="@id/homeAdminFragment" />
+            app:destination="@id/homeAdminFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out" />
         <argument
             android:name="role"
             app:argType="string" />
@@ -242,13 +382,17 @@
             app:nullable="true" />
         <action
             android:id="@+id/action_registerAdminByEmailPasswordFragment_to_loginFragment"
-            app:destination="@id/loginFragment" />
+            app:destination="@id/loginFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out" />
     </fragment>
     <fragment
         android:id="@+id/chatFragment"
         android:name="com.example.aplikasimonitoringdanevaluasi.ui.main.chat.ChatFragment"
         android:label="fragment_chat"
-        tools:layout="@layout/fragment_chat" >
+        tools:layout="@layout/fragment_chat">
         <argument
             android:name="receiverId"
             app:argType="string" />
@@ -266,7 +410,11 @@
         tools:layout="@layout/fragment_list_contact_chat_student">
         <action
             android:id="@+id/action_listContactChatFragment_to_chatFragment"
-            app:destination="@id/chatFragment" />
+            app:destination="@id/chatFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out" />
         <argument
             android:name="role"
             app:argType="string" />
@@ -275,22 +423,30 @@
         android:id="@+id/detailStudentCompanyFragment"
         android:name="com.example.aplikasimonitoringdanevaluasi.ui.company.home.DetailStudentCompanyFragment"
         android:label="fragment_detail_student_company"
-        tools:layout="@layout/fragment_detail_student_company" >
+        tools:layout="@layout/fragment_detail_student_company">
         <argument
             android:name="requestStudent"
             app:argType="com.example.aplikasimonitoringdanevaluasi.model.RequestStudent" />
         <action
             android:id="@+id/action_detailStudentCompanyFragment_to_addReportFragment"
-            app:destination="@id/addReportFragment" />
+            app:destination="@id/addReportFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out" />
         <action
             android:id="@+id/action_detailStudentCompanyFragment_to_listLogbookFragment"
-            app:destination="@id/listLogbookFragment" />
+            app:destination="@id/listLogbookFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out" />
     </fragment>
     <fragment
         android:id="@+id/detailCompanyStudentFragment"
         android:name="com.example.aplikasimonitoringdanevaluasi.ui.student.home.DetailCompanyStudentFragment"
         android:label="fragment_detail_company_student"
-        tools:layout="@layout/fragment_detail_company_student" >
+        tools:layout="@layout/fragment_detail_company_student">
         <argument
             android:name="company"
             app:argType="com.example.aplikasimonitoringdanevaluasi.model.Company" />
@@ -299,67 +455,111 @@
         android:id="@+id/courseStudentFragment"
         android:name="com.example.aplikasimonitoringdanevaluasi.ui.student.course.CourseStudentFragment"
         android:label="fragment_course_student"
-        tools:layout="@layout/fragment_course_student" >
+        tools:layout="@layout/fragment_course_student">
         <action
             android:id="@+id/action_courseStudentFragment_to_watchVideoFragment"
-            app:destination="@id/watchVideoFragment" />
+            app:destination="@id/watchVideoFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out" />
         <action
             android:id="@+id/action_courseStudentFragment_to_downloadModuleFragment"
-            app:destination="@id/downloadModuleFragment" />
+            app:destination="@id/downloadModuleFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out" />
     </fragment>
     <fragment
         android:id="@+id/courseAdminFragment"
         android:name="com.example.aplikasimonitoringdanevaluasi.ui.admin.course.CourseAdminFragment"
         android:label="fragment_course_admin"
-        tools:layout="@layout/fragment_course_admin" >
+        tools:layout="@layout/fragment_course_admin">
         <action
             android:id="@+id/action_courseAdminFragment_to_uploadVideoFragment"
-            app:destination="@id/uploadVideoFragment" />
+            app:destination="@id/uploadVideoFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out" />
         <action
             android:id="@+id/action_courseAdminFragment_to_uploadModuleFragment"
-            app:destination="@id/uploadModuleFragment" />
+            app:destination="@id/uploadModuleFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out" />
         <action
             android:id="@+id/action_courseAdminFragment_to_watchVideoFragment"
-            app:destination="@id/watchVideoFragment" />
+            app:destination="@id/watchVideoFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out" />
         <action
             android:id="@+id/action_courseAdminFragment_to_downloadModuleFragment"
-            app:destination="@id/downloadModuleFragment" />
+            app:destination="@id/downloadModuleFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out" />
     </fragment>
     <fragment
         android:id="@+id/requestFragment"
         android:name="com.example.aplikasimonitoringdanevaluasi.ui.company.request.RequestFragment"
         android:label="fragment_request"
-        tools:layout="@layout/fragment_request" >
+        tools:layout="@layout/fragment_request">
         <action
             android:id="@+id/action_requestFragment_to_detailRequestStudentFragment"
-            app:destination="@id/detailRequestStudentFragment" />
+            app:destination="@id/detailRequestStudentFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out" />
         <action
             android:id="@+id/action_requestFragment_to_studentLogbookRequestDetailFragment"
-            app:destination="@id/studentLogbookRequestDetailFragment" />
+            app:destination="@id/studentLogbookRequestDetailFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out" />
     </fragment>
     <fragment
         android:id="@+id/listCompanyFragment"
         android:name="com.example.aplikasimonitoringdanevaluasi.ui.student.home.ListCompanyFragment"
         android:label="fragment_list_company"
-        tools:layout="@layout/fragment_list_company" >
+        tools:layout="@layout/fragment_list_company">
         <action
             android:id="@+id/action_listCompanyFragment_to_detailCompanyStudentFragment"
-            app:destination="@id/detailCompanyStudentFragment" />
+            app:destination="@id/detailCompanyStudentFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out" />
     </fragment>
     <fragment
         android:id="@+id/detailStudentAdminFragment"
         android:name="com.example.aplikasimonitoringdanevaluasi.ui.admin.home.DetailStudentAdminFragment"
         android:label="fragment_detail_student_admin"
-        tools:layout="@layout/fragment_detail_student_admin" >
+        tools:layout="@layout/fragment_detail_student_admin">
         <argument
             android:name="student"
             app:argType="com.example.aplikasimonitoringdanevaluasi.model.Student" />
         <action
             android:id="@+id/action_detailStudentAdminFragment_to_listReportAdminFragment"
-            app:destination="@id/listReportAdminFragment" />
+            app:destination="@id/listReportAdminFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out" />
         <action
             android:id="@+id/action_detailStudentAdminFragment_to_listLogbookFragment"
-            app:destination="@id/listLogbookFragment" />
+            app:destination="@id/listLogbookFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out" />
     </fragment>
     <fragment
         android:id="@+id/editProfileCompanyFragment"
@@ -370,7 +570,7 @@
         android:id="@+id/uploadVideoFragment"
         android:name="com.example.aplikasimonitoringdanevaluasi.ui.admin.course.UploadVideoFragment"
         android:label="fragment_upload_video"
-        tools:layout="@layout/fragment_upload_video" >
+        tools:layout="@layout/fragment_upload_video">
         <argument
             android:name="tittleCourseId"
             app:argType="string"
@@ -385,7 +585,7 @@
         android:id="@+id/watchVideoFragment"
         android:name="com.example.aplikasimonitoringdanevaluasi.ui.main.video.WatchVideoFragment"
         android:label="fragment_watch_video"
-        tools:layout="@layout/fragment_watch_video" >
+        tools:layout="@layout/fragment_watch_video">
         <argument
             android:name="video"
             app:argType="com.example.aplikasimonitoringdanevaluasi.model.Video" />
@@ -394,8 +594,9 @@
         android:id="@+id/uploadModuleFragment"
         android:name="com.example.aplikasimonitoringdanevaluasi.ui.admin.course.UploadModuleFragment"
         android:label="fragment_upload_module"
-        tools:layout="@layout/fragment_upload_module" >
-        <argument android:name="tittleCourseId"
+        tools:layout="@layout/fragment_upload_module">
+        <argument
+            android:name="tittleCourseId"
             app:argType="string"
             app:nullable="true" />
     </fragment>
@@ -403,7 +604,7 @@
         android:id="@+id/downloadModuleFragment"
         android:name="com.example.aplikasimonitoringdanevaluasi.ui.main.module.DownloadModuleFragment"
         android:label="fragment_download_module"
-        tools:layout="@layout/fragment_download_module" >
+        tools:layout="@layout/fragment_download_module">
         <argument
             android:name="module"
             app:argType="com.example.aplikasimonitoringdanevaluasi.model.Module" />
@@ -422,7 +623,7 @@
         android:id="@+id/detailLogbookFragment"
         android:name="com.example.aplikasimonitoringdanevaluasi.ui.main.logbook.DetailLogbookFragment"
         android:label="fragment_detail_logbook"
-        tools:layout="@layout/fragment_detail_logbook" >
+        tools:layout="@layout/fragment_detail_logbook">
         <argument
             android:name="logbook"
             app:argType="com.example.aplikasimonitoringdanevaluasi.model.Logbook" />
@@ -431,10 +632,14 @@
         android:id="@+id/listLogbookFragment"
         android:name="com.example.aplikasimonitoringdanevaluasi.ui.main.logbook.ListLogbookFragment"
         android:label="fragment_list_logbook"
-        tools:layout="@layout/fragment_list_logbook" >
+        tools:layout="@layout/fragment_list_logbook">
         <action
             android:id="@+id/action_listLogbookFragment_to_detailLogbookFragment"
-            app:destination="@id/detailLogbookFragment" />
+            app:destination="@id/detailLogbookFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out" />
         <argument
             android:name="studentId"
             app:argType="string" />
@@ -458,18 +663,23 @@
         android:id="@+id/listReportAdminFragment"
         android:name="com.example.aplikasimonitoringdanevaluasi.ui.admin.home.ListReportAdminFragment"
         android:label="fragment_list_report_admin"
-        tools:layout="@layout/fragment_list_report_admin" >
+        tools:layout="@layout/fragment_list_report_admin">
         <action
             android:id="@+id/action_listReportAdminFragment_to_detailReportFragment"
-            app:destination="@id/detailReportFragment" />
-        <argument android:name="studentId"
+            app:destination="@id/detailReportFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out" />
+        <argument
+            android:name="studentId"
             app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/detailReportFragment"
         android:name="com.example.aplikasimonitoringdanevaluasi.ui.admin.home.DetailReportFragment"
         android:label="fragment_detail_report"
-        tools:layout="@layout/fragment_detail_report" >
+        tools:layout="@layout/fragment_detail_report">
         <argument
             android:name="studentId"
             app:argType="string" />
@@ -488,37 +698,53 @@
         android:id="@+id/detailRequestStudentFragment"
         android:name="com.example.aplikasimonitoringdanevaluasi.ui.company.request.DetailRequestStudentFragment"
         android:label="fragment_detail_request_student"
-        tools:layout="@layout/fragment_detail_request_student" >
+        tools:layout="@layout/fragment_detail_request_student">
         <argument
             android:name="RequestStudent"
             app:argType="com.example.aplikasimonitoringdanevaluasi.model.RequestStudent" />
         <action
             android:id="@+id/action_detailRequestStudentFragment_to_requestFragment"
-            app:destination="@id/requestFragment" />
+            app:destination="@id/requestFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out" />
     </fragment>
     <fragment
         android:id="@+id/addReportFragment"
         android:name="com.example.aplikasimonitoringdanevaluasi.ui.company.home.AddReportFragment"
         android:label="fragment_add_report"
-        tools:layout="@layout/fragment_add_report" >
+        tools:layout="@layout/fragment_add_report">
         <argument
             android:name="requestStudent"
             app:argType="com.example.aplikasimonitoringdanevaluasi.model.RequestStudent" />
         <action
             android:id="@+id/action_addReportFragment_to_homeCompanyFragment"
-            app:destination="@id/homeCompanyFragment" />
+            app:destination="@id/homeCompanyFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out" />
     </fragment>
     <fragment
         android:id="@+id/registerAdminFragment"
         android:name="com.example.aplikasimonitoringdanevaluasi.ui.main.register.RegisterAdminFragment"
         android:label="fragment_register_admin"
-        tools:layout="@layout/fragment_register_admin" >
+        tools:layout="@layout/fragment_register_admin">
         <action
             android:id="@+id/action_registerAdminFragment_to_homeAdminFragment"
-            app:destination="@id/homeAdminFragment" />
+            app:destination="@id/homeAdminFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out" />
         <action
             android:id="@+id/action_registerAdminFragment_to_loginFragment"
-            app:destination="@id/loginFragment" />
+            app:destination="@id/loginFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out" />
         <argument
             android:name="role"
             app:argType="string"
@@ -532,16 +758,20 @@
         android:id="@+id/listContactChatAdminFragment"
         android:name="com.example.aplikasimonitoringdanevaluasi.ui.main.chat.ListContactChatAdminFragment"
         android:label="fragment_list_contact_chat_admin"
-        tools:layout="@layout/fragment_list_contact_chat_admin" >
+        tools:layout="@layout/fragment_list_contact_chat_admin">
         <action
             android:id="@+id/action_listContactChatAdminFragment_to_chatFragment"
-            app:destination="@id/chatFragment" />
+            app:destination="@id/chatFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out" />
     </fragment>
     <fragment
         android:id="@+id/studentLogbookRequestDetailFragment"
         android:name="com.example.aplikasimonitoringdanevaluasi.ui.company.request.DetailStudentLogbookRequestFragment"
         android:label="fragment_student_logbook_request_detail"
-        tools:layout="@layout/fragment_detail_student_logbook_request" >
+        tools:layout="@layout/fragment_detail_student_logbook_request">
         <argument
             android:name="logbook"
             app:argType="com.example.aplikasimonitoringdanevaluasi.model.Logbook" />
@@ -550,19 +780,31 @@
         android:id="@+id/addCourseFragment"
         android:name="com.example.aplikasimonitoringdanevaluasi.ui.extra.AddCourseFragment"
         android:label="fragment_add_course"
-        tools:layout="@layout/fragment_add_course" >
+        tools:layout="@layout/fragment_add_course">
         <action
             android:id="@+id/action_addCourseFragment_to_uploadVideoFragment"
-            app:destination="@id/uploadVideoFragment" />
+            app:destination="@id/uploadVideoFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out" />
         <action
             android:id="@+id/action_addCourseFragment_to_uploadModuleFragment"
-            app:destination="@id/uploadModuleFragment" />
+            app:destination="@id/uploadModuleFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out" />
         <argument
             android:name="tittleId"
             app:argType="string" />
         <action
             android:id="@+id/action_addCourseFragment_to_addEvaluationLinkFragment"
-            app:destination="@id/addEvaluationLinkFragment" />
+            app:destination="@id/addEvaluationLinkFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out" />
     </fragment>
     <fragment
         android:id="@+id/addCourseTittleFragment"
@@ -570,8 +812,12 @@
         android:label="fragment_add_course_tittle"
         tools:layout="@layout/fragment_add_course_tittle">
         <action
-            android:id="@+id/action_courseTittleFragment_to_addCourseFragment"
-            app:destination="@id/addCourseFragment" />
+            android:id="@+id/action_addCourseTittleFragment_to_listCourseAdminFragment"
+            app:destination="@id/listCourseAdminFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out" />
     </fragment>
     <fragment
         android:id="@+id/listCourseAdminFragment"
@@ -580,42 +826,67 @@
         tools:layout="@layout/fragment_list_course_admin">
         <action
             android:id="@+id/action_listCourseFragment_to_chooseCourseTittleFragment"
-            app:destination="@id/chooseCourseTittleFragment" />
+            app:destination="@id/chooseCourseTittleFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out" />
         <action
             android:id="@+id/action_listCourseFragment_to_detailCourseFragment"
-            app:destination="@id/detailCourseFragment" />
+            app:destination="@id/detailCourseFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out" />
     </fragment>
     <fragment
         android:id="@+id/chooseCourseTittleFragment"
         android:name="com.example.aplikasimonitoringdanevaluasi.ui.extra.ChooseCourseTittleFragment"
         android:label="fragment_choose_course_tittle"
-        tools:layout="@layout/fragment_choose_course_tittle" >
+        tools:layout="@layout/fragment_choose_course_tittle">
         <action
             android:id="@+id/action_chooseCourseTittleFragment_to_addCourseTittleFragment"
-            app:destination="@id/addCourseTittleFragment" />
+            app:destination="@id/addCourseTittleFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out" />
         <action
             android:id="@+id/action_chooseCourseTittleFragment_to_addCourseFragment"
-            app:destination="@id/addCourseFragment" />
+            app:destination="@id/addCourseFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out" />
     </fragment>
     <fragment
         android:id="@+id/detailCourseFragment"
         android:name="com.example.aplikasimonitoringdanevaluasi.ui.extra.DetailCourseFragment"
         android:label="fragment_detail_course"
-        tools:layout="@layout/fragment_detail_course" >
+        tools:layout="@layout/fragment_detail_course">
         <action
             android:id="@+id/action_detailCourseFragment_to_downloadModuleFragment"
-            app:destination="@id/downloadModuleFragment" />
+            app:destination="@id/downloadModuleFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out" />
         <action
             android:id="@+id/action_detailCourseFragment_to_watchVideoFragment"
-            app:destination="@id/watchVideoFragment" />
-        <argument android:name="course"
+            app:destination="@id/watchVideoFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out" />
+        <argument
+            android:name="course"
             app:argType="com.example.aplikasimonitoringdanevaluasi.model.Course" />
     </fragment>
     <fragment
         android:id="@+id/addEvaluationLinkFragment"
         android:name="com.example.aplikasimonitoringdanevaluasi.ui.extra.AddEvaluationLinkFragment"
         android:label="fragment_add_evaluation_link"
-        tools:layout="@layout/fragment_add_evaluation_link" >
+        tools:layout="@layout/fragment_add_evaluation_link">
         <argument
             android:name="tittleCourseId"
             app:argType="string"
@@ -630,18 +901,18 @@
         android:id="@+id/listCourseStudentFragment"
         android:name="com.example.aplikasimonitoringdanevaluasi.ui.extra.ListCourseStudentFragment"
         android:label="fragment_list_course_student"
-        tools:layout="@layout/fragment_list_course_student" >
+        tools:layout="@layout/fragment_list_course_student">
         <action
             android:id="@+id/action_listCourseStudentFragment_to_detailCourseFragment"
-            app:destination="@id/detailCourseFragment" />
+            app:destination="@id/detailCourseFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out" />
     </fragment>
     <fragment
         android:id="@+id/listLogbookStudentFragment"
         android:name="com.example.aplikasimonitoringdanevaluasi.ui.main.logbook.ListLogbookStudentFragment"
         android:label="fragment_list_logbook_student"
-        tools:layout="@layout/fragment_list_logbook_student">
-        <action
-            android:id="@+id/action_listLogbookAdminFragment_to_detailLogbookFragment"
-            app:destination="@id/detailLogbookFragment" />
-    </fragment>
+        tools:layout="@layout/fragment_list_logbook_student" />
 </navigation>

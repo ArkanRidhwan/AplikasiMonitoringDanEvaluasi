@@ -100,9 +100,9 @@ class DetailRequestStudentFragment : Fragment() {
                     .observe(viewLifecycleOwner) {
                         if (it == true) {
                             requireActivity().onBackPressed()
-                            requireContext().showToast("Update berhasil")
+                            requireContext().showToast("Lamaran berhasil diproses")
                         } else {
-                            requireContext().showToast("Update gagal")
+                            requireContext().showToast("Lamaran gagal diproses")
                         }
                     }
 
@@ -123,9 +123,9 @@ class DetailRequestStudentFragment : Fragment() {
                     .observe(viewLifecycleOwner) {
                         if (it == true) {
                             requireActivity().onBackPressed()
-                            requireContext().showToast("Update berhasil")
+                            requireContext().showToast("Lamaran berhasil diproses")
                         } else {
-                            requireContext().showToast("Update gagal")
+                            requireContext().showToast("Lamaran gagal diproses")
                         }
                     }
                 val action =
@@ -148,6 +148,9 @@ class DetailRequestStudentFragment : Fragment() {
                     DetailRequestStudentFragmentDirections.actionDetailRequestStudentFragmentToRequestFragment(
                     )
                 findNavController().navigate(action)
+            }
+            ivBack.setOnClickListener {
+                requireActivity().onBackPressed()
             }
         }
     }

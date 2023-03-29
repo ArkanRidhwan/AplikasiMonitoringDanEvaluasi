@@ -25,15 +25,27 @@
             android:id="@+id/tv_tittleCourse"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
             android:fontFamily="@font/proza_libre"
             android:text="E-Learning"
             android:textColor="@color/white"
             android:textSize="16sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="@+id/tittle"
+            app:layout_constraintEnd_toEndOf="@+id/tittle"
             app:layout_constraintStart_toStartOf="@+id/tittle"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/iv_back"
+            android:layout_width="40dp"
+            android:layout_height="45dp"
+            android:layout_marginStart="16dp"
+            android:src="@drawable/ic_back_button"
+            app:layout_constraintBottom_toBottomOf="@+id/tv_tittleCourse"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/tv_tittleCourse"
+            app:tint="@color/white" />
+
 
         <ImageView
             android:id="@+id/iv_tittle"
@@ -150,8 +162,10 @@
             android:layout_marginStart="32dp"
             android:layout_marginTop="24dp"
             android:layout_marginEnd="32dp"
-            app:cardCornerRadius="30dp"
+            android:layout_marginBottom="24dp"
             android:clickable="true"
+            app:cardCornerRadius="30dp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/cv_module">
@@ -190,7 +204,7 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
         </com.google.android.material.card.MaterialCardView>
 
-        <androidx.appcompat.widget.AppCompatButton
+        <!--<androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_done"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -225,7 +239,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@+id/cv_evaluationLink"
             app:layout_constraintStart_toStartOf="@+id/cv_evaluationLink"
-            app:layout_constraintTop_toBottomOf="@+id/cv_evaluationLink" />
+            app:layout_constraintTop_toBottomOf="@+id/cv_evaluationLink" />-->
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

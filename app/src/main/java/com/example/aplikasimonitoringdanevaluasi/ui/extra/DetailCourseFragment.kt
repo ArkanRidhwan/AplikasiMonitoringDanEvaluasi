@@ -35,9 +35,12 @@ class DetailCourseFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.apply {
+            ivBack.setOnClickListener {
+                requireActivity().onBackPressed()
+            }
             tvTittleCourse.text = args.course.tittle
 
-            detailCourseViewModel.getCourseById(args.course.id).observe(viewLifecycleOwner) {
+            /*detailCourseViewModel.getCourseById(args.course.id).observe(viewLifecycleOwner) {
                 if (it?.check1 == true && it.check2 && it.check3) {
                     btnDone.visible()
                     btnNotDone.gone()
@@ -45,7 +48,7 @@ class DetailCourseFragment : Fragment() {
                     btnDone.gone()
                     btnNotDone.visible()
                 }
-            }
+            }*/
 
             cvVideo.setOnClickListener {
                 detailCourseViewModel.getVideoById(args.course.id).observe(viewLifecycleOwner) {
@@ -58,7 +61,7 @@ class DetailCourseFragment : Fragment() {
                     }
                 }
 
-                detailCourseViewModel.getCourseById(args.course.id).observe(viewLifecycleOwner) {
+                /*detailCourseViewModel.getCourseById(args.course.id).observe(viewLifecycleOwner) {
                     if (it != null) {
                         check2 = it.check2
                         check3 = it.check3
@@ -78,7 +81,7 @@ class DetailCourseFragment : Fragment() {
                     detailCourseViewModel.updateCourseById(course, args.course.id)
                         .observe(viewLifecycleOwner) {
                         }
-                }
+                }*/
             }
 
             cvModule.setOnClickListener {
@@ -91,7 +94,7 @@ class DetailCourseFragment : Fragment() {
                         findNavController().navigate(action)
                     }
                 }
-                detailCourseViewModel.getCourseById(args.course.id).observe(viewLifecycleOwner) {
+                /*detailCourseViewModel.getCourseById(args.course.id).observe(viewLifecycleOwner) {
                     if (it != null) {
                         check1 = it.check1
                         check3 = it.check3
@@ -111,7 +114,7 @@ class DetailCourseFragment : Fragment() {
                     detailCourseViewModel.updateCourseById(course, args.course.id)
                         .observe(viewLifecycleOwner) {
                         }
-                }
+                }*/
             }
 
             cvEvaluationLink.setOnClickListener {
@@ -125,7 +128,7 @@ class DetailCourseFragment : Fragment() {
                         }
                     }
 
-                detailCourseViewModel.getCourseById(args.course.id).observe(viewLifecycleOwner) {
+                /*detailCourseViewModel.getCourseById(args.course.id).observe(viewLifecycleOwner) {
                     if (it != null) {
                         check1 = it.check1
                         check2 = it.check2
@@ -145,10 +148,10 @@ class DetailCourseFragment : Fragment() {
                     detailCourseViewModel.updateCourseById(course, args.course.id)
                         .observe(viewLifecycleOwner) {
                         }
-                }
+                }*/
             }
 
-            btnDone.setOnClickListener {
+            /*btnDone.setOnClickListener {
                 detailCourseViewModel.getCourseById(args.course.id).observe(viewLifecycleOwner) {
                     if (it != null) {
                         check1 = it.check1
@@ -172,7 +175,7 @@ class DetailCourseFragment : Fragment() {
                         }
                 }
                 requireActivity().onBackPressed()
-            }
+            }*/
         }
     }
 }

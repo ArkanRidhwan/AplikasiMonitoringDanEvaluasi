@@ -52,6 +52,9 @@ class AddEvaluationLinkFragment : Fragment() {
                     }
                 }
             }
+            ivBack.setOnClickListener {
+                requireActivity().onBackPressed()
+            }
         }
     }
 }

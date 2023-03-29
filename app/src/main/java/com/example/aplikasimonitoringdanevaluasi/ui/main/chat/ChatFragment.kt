@@ -37,10 +37,6 @@ class ChatFragment : Fragment() {
             ivChatBackButton.setOnClickListener {
                 requireActivity().onBackPressed()
             }
-            /*if (edtMessage.text.toString().trim().isEmpty() || edtMessage.text.toString().trim().isBlank()
-            ) {
-                tvSendMessage.gone()
-            }*/
             chatAdapter = ChatAdapter()
             rvChat.adapter = chatAdapter
             tvChatPersonName.text = args.receiverName

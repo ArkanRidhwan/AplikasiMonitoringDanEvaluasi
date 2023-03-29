@@ -5,39 +5,23 @@
         android:id="@+id/homeStudentFragment"
         android:icon="@drawable/ic_home"
         android:title="Home"
-        app:cnb_iconColor="@color/red_primary"
-        app:cnb_textColor="@color/red_primary"
-        app:cnb_backgroundColor="@color/red_bottomnav"/>
+        android:iconTint="@color/red_primary"/>
 
     <item
         android:id="@+id/listContactChatStudentFragment"
         android:icon="@drawable/ic_chat"
         android:title="Consultation"
-        app:cnb_iconColor="@color/red_primary"
-        app:cnb_textColor="@color/red_primary"
-        app:cnb_backgroundColor="@color/red_bottomnav"/>
-
-    <!--<item
-        android:id="@+id/courseStudentFragment"
-        android:icon="@drawable/ic_course"
-        android:title="Course"
-        app:cnb_iconColor="@color/red_primary"
-        app:cnb_textColor="@color/red_primary"
-        app:cnb_backgroundColor="@color/red_bottomnav"/>-->
+        android:iconTint="@color/red_primary"/>
 
     <item
         android:id="@+id/listCourseStudentFragment"
         android:icon="@drawable/ic_course"
         android:title="Course"
-        app:cnb_iconColor="@color/red_primary"
-        app:cnb_textColor="@color/red_primary"
-        app:cnb_backgroundColor="@color/red_bottomnav"/>
+        android:iconTint="@color/red_primary"/>
 
     <item
         android:id="@+id/profileStudentFragment"
         android:icon="@drawable/ic_profile"
         android:title="Profile"
-        app:cnb_iconColor="@color/red_primary"
-        app:cnb_textColor="@color/red_primary"
-        app:cnb_backgroundColor="@color/red_bottomnav"/>
+        android:iconTint="@color/red_primary"/>
 </menu>

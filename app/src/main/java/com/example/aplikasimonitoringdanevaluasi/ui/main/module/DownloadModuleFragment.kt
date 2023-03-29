@@ -37,6 +37,9 @@ class DownloadModuleFragment : Fragment() {
                 i.data = Uri.parse(url)
                 startActivity(i)
             }
+            ivBack.setOnClickListener {
+                requireActivity().onBackPressed()
+            }
         }
     }
 }

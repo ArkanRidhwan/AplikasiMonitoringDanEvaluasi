@@ -39,6 +39,9 @@ class ListReportAdminFragment : Fragment() {
                     )
                 findNavController().navigate(action)
             }
+            ivBack.setOnClickListener {
+                requireActivity().onBackPressed()
+            }
         }
     }
 

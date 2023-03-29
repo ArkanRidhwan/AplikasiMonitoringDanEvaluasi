@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
     <style name="roundimageview1">
         <item name="cornerFamily">rounded</item>
         <item name="cornerSize">25dp</item>
@@ -51,5 +52,12 @@
         <item name="cornerFamily">rounded</item>
         <item name="cornerSize">20dp</item>
         <item name="color">@color/white</item>
+    </style>
+
+    <style name="animation" parent="@android:style/Animation.Activity">
+        <item name="android:windowEnterAnimation">@android:anim/fade_in</item>
+        <item name="android:windowExitAnimation">@android:anim/fade_out</item>
+        <item name="popEnterAnim">@android:anim/fade_in</item>
+        <item name="popExitAnim">@android:anim/fade_out</item>
     </style>
 </resources>

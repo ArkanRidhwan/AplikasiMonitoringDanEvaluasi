@@ -10,7 +10,7 @@
     <View
         android:id="@+id/upperViewChat"
         android:layout_width="match_parent"
-        android:layout_height="76dp"
+        android:layout_height="70dp"
         android:background="@drawable/bg_upper_chat"
         android:backgroundTint="@color/gray_primary2"
         android:outlineSpotShadowColor="@color/black"
@@ -29,7 +29,7 @@
         app:layout_constraintStart_toEndOf="@+id/iv_chatBackButton"
         app:layout_constraintTop_toTopOf="@+id/iv_chatBackButton"
         app:shapeAppearance="@style/profileChat"
-        app:srcCompat="@drawable/spongebob" />
+        app:srcCompat="@drawable/ic_image_no_image" />
 
     <ImageView
         android:id="@+id/iv_chatBackButton"
@@ -106,7 +106,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="14dp"
                     android:fontFamily="@font/open_sans"
-                    android:text="Send"
+                    android:text="Kirim"
                     android:textColor="@color/red_primary"
                     android:textSize="18sp"
                     android:textStyle="bold"

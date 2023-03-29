@@ -114,6 +114,9 @@ class DetailCompanyStudentFragment : Fragment() {
                         }
                 }
             }
+            ivBack.setOnClickListener {
+                requireActivity().onBackPressed()
+            }
         }
     }
 }

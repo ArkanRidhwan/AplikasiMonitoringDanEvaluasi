@@ -23,10 +23,10 @@ class CourseTittleViewModel : ViewModel() {
             tittle = data.tittle,
             number = data.number,
             timestamp = data.timestamp,
-            check1 = data.check1,
+            /*check1 = data.check1,
             check2 = data.check2,
             check3 = data.check3,
-            finalCheck = data.finalCheck
+            finalCheck = data.finalCheck*/
         )
         collCourse.child(data.id).setValue(logbook)
             .addOnCompleteListener {

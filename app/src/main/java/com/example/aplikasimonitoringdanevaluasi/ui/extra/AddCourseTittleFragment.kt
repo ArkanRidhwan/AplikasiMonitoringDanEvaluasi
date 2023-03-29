@@ -44,12 +44,11 @@ class AddCourseTittleFragment : Fragment() {
                     .observe(viewLifecycleOwner) { data ->
                         if (data == true) {
                             val action =
-                                AddCourseTittleFragmentDirections.actionCourseTittleFragmentToAddCourseFragment(courseTittle
-                                )
+                                AddCourseTittleFragmentDirections.actionAddCourseTittleFragmentToListCourseAdminFragment()
                             findNavController().navigate(action)
-                            requireContext().showToast("Data berhasil disimpan")
+                            requireContext().showToast("Bab baru berhasil ditambahkan")
                         } else {
-                            requireContext().showToast("Data gagal disimpan")
+                            requireContext().showToast("Bab baru gagal ditambahkan")
                         }
                     }
             }

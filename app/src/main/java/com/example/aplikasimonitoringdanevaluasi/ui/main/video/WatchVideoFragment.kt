@@ -9,6 +9,7 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
 import com.example.aplikasimonitoringdanevaluasi.R
 import com.example.aplikasimonitoringdanevaluasi.databinding.FragmentWatchVideoBinding
@@ -26,8 +27,7 @@ import com.google.firebase.ktx.Firebase
 class WatchVideoFragment : Fragment() {
 
     private lateinit var binding: FragmentWatchVideoBinding
-    private val database = Firebase.database
-    private val collVideo = database.getReference(Constant.COLL_VIDEO)
+    private val watchVideoViewModel: WatchVideoViewModel by viewModels()
     private val args: WatchVideoFragmentArgs by navArgs()
     var isFullScreen = false
     var isLockScreen = false
@@ -137,21 +137,14 @@ class WatchVideoFragment : Fragment() {
             }
 
             btnDelete.setOnClickListener {
-                //Loading nanti
-                collVideo.child(args.video.id)
-                    .addListenerForSingleValueEvent(object : ValueEventListener {
-                        override fun onDataChange(snapshot: DataSnapshot) {
-                            for (i in snapshot.children) {
-                                i.ref.removeValue()
-                            }
-                            requireActivity().showToast("Berhasil")
-                            requireActivity().onBackPressed()
-                        }
-
-                        override fun onCancelled(error: DatabaseError) {
-                            requireActivity().showToast("Gagal")
-                        }
-                    })
+                watchVideoViewModel.deleteVideo(args.video.id).observe(viewLifecycleOwner) {
+                    if (it == true) {
+                        requireActivity().onBackPressed()
+                        requireContext().showToast("Video berhasil dihapus")
+                    } else {
+                        requireContext().showToast("Video gagal dihapus")
+                    }
+                }
             }
             ivBack.setOnClickListener {
                 requireActivity().onBackPressed()

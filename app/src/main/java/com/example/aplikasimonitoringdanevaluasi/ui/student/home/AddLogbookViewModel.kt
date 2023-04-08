@@ -5,8 +5,6 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.aplikasimonitoringdanevaluasi.model.Logbook
 import com.example.aplikasimonitoringdanevaluasi.model.RequestStudent
-import com.example.aplikasimonitoringdanevaluasi.model.Student
-import com.example.aplikasimonitoringdanevaluasi.model.Video
 import com.example.aplikasimonitoringdanevaluasi.utils.Constant
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -18,7 +16,7 @@ class AddLogbookViewModel : ViewModel() {
 
     private val database = Firebase.database
     private val collLogbook = database.getReference(Constant.COLL_LOGBOOK)
-    private val collRequestStudent = database.getReference(Constant.COLL_REQUESTSTUDENT)
+    private val collRequestStudent = database.getReference(Constant.COLL_REQUEST_STUDENT)
 
     fun saveLogbook(data: Logbook): LiveData<Boolean> {
         val status = MutableLiveData<Boolean>()

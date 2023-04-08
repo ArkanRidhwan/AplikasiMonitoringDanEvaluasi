@@ -185,33 +185,6 @@
                         app:layout_constraintTop_toBottomOf="@+id/tv_studentPasswordTittle" />
 
                     <TextView
-                        android:id="@+id/tv_StudentCompanyNameTittle"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="16dp"
-                        android:fontFamily="@font/open_sans"
-                        android:text="Nama perusahaan"
-                        android:textColor="@color/gray_hintText"
-                        android:textSize="12sp"
-                        app:layout_constraintStart_toStartOf="@+id/et_studentPassword"
-                        app:layout_constraintTop_toBottomOf="@+id/et_studentPassword" />
-
-                    <EditText
-                        android:id="@+id/et_StudentCompanyName"
-                        android:layout_width="0dp"
-                        android:layout_height="40dp"
-                        android:layout_marginTop="2dp"
-                        android:layout_marginEnd="16dp"
-                        android:enabled="false"
-                        android:fontFamily="@font/open_sans"
-                        android:inputType="text"
-                        android:textColor="@color/black"
-                        android:textSize="16sp"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="@+id/tv_StudentCompanyNameTittle"
-                        app:layout_constraintTop_toBottomOf="@+id/tv_StudentCompanyNameTittle" />
-
-                    <TextView
                         android:id="@+id/tv_studentJobTittle"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -220,8 +193,8 @@
                         android:text="Pekerjaan magang"
                         android:textColor="@color/gray_hintText"
                         android:textSize="12sp"
-                        app:layout_constraintStart_toStartOf="@+id/et_StudentCompanyName"
-                        app:layout_constraintTop_toBottomOf="@+id/et_StudentCompanyName" />
+                        app:layout_constraintStart_toStartOf="@+id/et_studentPassword"
+                        app:layout_constraintTop_toBottomOf="@+id/et_studentPassword" />
 
                     <EditText
                         android:id="@+id/et_studentJob"
@@ -393,7 +366,7 @@
         android:fontFamily="@font/proza_libre"
         android:text="Edit Profil"
         android:textColor="@color/white"
-        android:textSize="20sp"
+        android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/iv_bar"
         app:layout_constraintEnd_toEndOf="parent"

@@ -39,15 +39,15 @@ import java.util.*
 
 class UploadVideoFragment : Fragment() {
 
-    private var videoUri: Uri? = null
-    private var isFullScreen = false
-    private var isLockScreen = false
-    private var urlDownload: String? = ""
-
     private lateinit var binding: FragmentUploadVideoBinding
     private lateinit var file: File
     private val uploadVideoViewModel: UploadVideoViewModel by viewModels()
     private val args: UploadVideoFragmentArgs by navArgs()
+
+    private var videoUri: Uri? = null
+    private var isFullScreen = false
+    private var isLockScreen = false
+    private var urlDownload: String? = ""
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -273,6 +273,6 @@ class UploadVideoFragment : Fragment() {
     }
 
     companion object {
-        private const val TAG = "StorageActivity"
+        private const val TAG = "UploadVideoFragment"
     }
 }

@@ -343,7 +343,7 @@
         android:fontFamily="@font/proza_libre"
         android:text="Edit Profil"
         android:textColor="@color/white"
-        android:textSize="20sp"
+        android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/iv_bar"
         app:layout_constraintEnd_toEndOf="parent"

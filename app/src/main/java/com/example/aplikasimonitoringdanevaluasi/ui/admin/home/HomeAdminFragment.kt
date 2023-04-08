@@ -18,7 +18,7 @@ import com.example.aplikasimonitoringdanevaluasi.utils.gone
 import com.example.aplikasimonitoringdanevaluasi.utils.visible
 
 
-class HomeAdminFragment : Fragment() {
+class  HomeAdminFragment : Fragment() {
 
     private lateinit var binding: FragmentHomeAdminBinding
     private val homeAdminViewModel: HomeAdminViewModel by viewModels()

@@ -35,6 +35,8 @@ class EditProfileStudentFragment : Fragment() {
     private lateinit var binding: FragmentEditProfileStudentBinding
     private lateinit var file: File
     private val editProfileStudentViewModel: EditProfileStudentViewModel by viewModels()
+    private var timestamp = ""
+    private var companyName = ""
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -47,16 +49,16 @@ class EditProfileStudentFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         binding.apply {
             val userId = getInstance(requireContext()).getString(Constant.ID)
-            var timestamp = ""
             ivBack.setOnClickListener {
                 requireActivity().onBackPressed()
             }
 
             editProfileStudentViewModel.getStudentById(userId).observe(viewLifecycleOwner) {
+                companyName = it?.companyName.toString()
+                timestamp = it?.timestamp.toString()
                 etStudentName.setText(it?.name)
                 etEmailStudent.setText(it?.email)
                 etStudentPassword.setText(decrypt(it?.password.toString()))
-                etStudentCompanyName.setText(it?.companyName)
                 etStudentJob.setText(it?.job)
                 etStudentPhoneNumber.setText(it?.phoneNumber)
                 etStudentClassName.setText(it?.className)
@@ -72,7 +74,6 @@ class EditProfileStudentFragment : Fragment() {
                         )
                         .into(ivProfile)
                 }
-                timestamp = it?.timestamp.toString()
             }
 
             val startForImageResult =
@@ -127,13 +128,11 @@ class EditProfileStudentFragment : Fragment() {
                 val email = etEmailStudent.text.toString()
                 val password = encrypt(etStudentPassword.text.toString())
                 val name = etStudentName.text.toString()
-                val companyName = etStudentCompanyName.text.toString()
                 val job = etStudentJob.text.toString()
                 val className = etStudentClassName.text.toString()
                 val phoneNumber = etStudentPhoneNumber.text.toString()
                 val studentMajor = etStudentMajor.text.toString()
                 val userId = getInstance(requireContext()).getString(Constant.ID)
-
 
                 progressBar.visible()
                 tvProgress.visible()

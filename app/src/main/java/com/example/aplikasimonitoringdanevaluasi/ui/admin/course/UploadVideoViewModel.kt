@@ -9,7 +9,7 @@ import com.example.aplikasimonitoringdanevaluasi.utils.Constant
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 
-class UploadVideoViewModel : ViewModel() {
+class  UploadVideoViewModel : ViewModel() {
 
     private val database = Firebase.database
     private val collVideo = database.getReference(Constant.COLL_VIDEO)

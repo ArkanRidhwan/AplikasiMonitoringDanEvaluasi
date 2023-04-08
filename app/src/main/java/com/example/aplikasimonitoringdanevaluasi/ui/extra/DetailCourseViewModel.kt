@@ -33,7 +33,7 @@ class DetailCourseViewModel : ViewModel() {
             check3 = data.check3,
             finalCheck = data.finalCheck*/
         )
-        collCourse.child(userId).setValue(course)
+         collCourse.child(userId).setValue(course)
             .addOnCompleteListener {
                 status.value = true
             }

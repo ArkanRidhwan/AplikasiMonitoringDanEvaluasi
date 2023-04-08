@@ -16,7 +16,7 @@ class AddReportViewModel : ViewModel() {
 
     private val database = Firebase.database
     private val collReport = database.getReference(Constant.COLL_REPORT)
-    private val collRequestStudent = database.getReference(Constant.COLL_REQUESTSTUDENT)
+    private val collRequestStudent = database.getReference(Constant.COLL_REQUEST_STUDENT)
 
     fun saveReport(data: Report): LiveData<Boolean> {
         val status = MutableLiveData<Boolean>()
@@ -57,7 +57,7 @@ class AddReportViewModel : ViewModel() {
         return status
     }
 
-    fun getReportById(id: String): LiveData<RequestStudent?> {
+    fun getRequestStudentById(id: String): LiveData<RequestStudent?> {
         val dataReport = MutableLiveData<RequestStudent?>()
         var report: RequestStudent? = null
         collRequestStudent.addValueEventListener(object : ValueEventListener {
@@ -80,7 +80,7 @@ class AddReportViewModel : ViewModel() {
         return dataReport
     }
 
-    fun updateRequestStudent(data: RequestStudent, userId: String): LiveData<Boolean> {
+    fun updateRequestStudentById(data: RequestStudent, userId: String): LiveData<Boolean> {
         val status = MutableLiveData<Boolean>()
         val student = RequestStudent(
             id = data.id,

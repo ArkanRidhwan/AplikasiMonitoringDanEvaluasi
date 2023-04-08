@@ -18,7 +18,7 @@ class DetailRequestStudentViewModel : ViewModel() {
     private val database = Firebase.database
     private val collStudent = database.getReference(Constant.COLL_STUDENT)
     private val collCompany = database.getReference(Constant.COLL_COMPANY)
-    private val collRequestStudent = database.getReference(Constant.COLL_REQUESTSTUDENT)
+    private val collRequestStudent = database.getReference(Constant.COLL_REQUEST_STUDENT)
 
     fun getStudentById(id: String): LiveData<Student?> {
         val dataStudent = MutableLiveData<Student?>()

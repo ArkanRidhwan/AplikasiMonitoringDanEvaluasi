@@ -30,7 +30,7 @@ class DetailStudentLogbookRequestFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.apply {
-            tvActivityDate.text = "Tanggal kegiatan: ${args.logbook.content}"
+            tvActivityDate.text = args.logbook.activityDate
             tvContentLogbook.text = args.logbook.content
             tvDate.text = "Dibuat pada: ${args.logbook.date}"
 
@@ -53,13 +53,12 @@ class DetailStudentLogbookRequestFragment : Fragment() {
                 )
                     .observe(viewLifecycleOwner) {
                         if (it == true) {
+                            requireContext().showToast("Logbook berhasil diproses")
                             requireActivity().onBackPressed()
-                            requireContext().showToast("Update berhasil")
                         } else {
-                            requireContext().showToast("Update gagal")
+                            requireContext().showToast("Logbook gagal diproses")
                         }
                     }
-                requireActivity().onBackPressed()
             }
 
             btnReject.setOnClickListener {
@@ -69,13 +68,12 @@ class DetailStudentLogbookRequestFragment : Fragment() {
                 )
                     .observe(viewLifecycleOwner) {
                         if (it == true) {
+                            requireContext().showToast("Logbook berhasil diproses")
                             requireActivity().onBackPressed()
-                            requireContext().showToast("Update berhasil")
                         } else {
-                            requireContext().showToast("Update gagal")
+                            requireContext().showToast("Logbook gagal diproses")
                         }
                     }
-                requireActivity().onBackPressed()
             }
             ivBack.setOnClickListener {
                 requireActivity().onBackPressed()

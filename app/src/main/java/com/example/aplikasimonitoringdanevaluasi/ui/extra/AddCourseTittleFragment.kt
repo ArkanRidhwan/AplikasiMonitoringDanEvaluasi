@@ -29,6 +29,10 @@ class AddCourseTittleFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.apply {
+            ivBack.setOnClickListener {
+                requireActivity().onBackPressed()
+            }
+
             btnAdd.setOnClickListener {
                 val courseTittle = etCourseTittle.text.toString()
                 val courseNumber = etCourseNumber.text.toString()

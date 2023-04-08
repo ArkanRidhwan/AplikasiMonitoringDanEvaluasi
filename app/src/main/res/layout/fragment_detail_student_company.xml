@@ -34,10 +34,10 @@
         android:id="@+id/iv_back"
         android:layout_width="40dp"
         android:layout_height="45dp"
-        android:layout_marginEnd="100dp"
+        android:layout_marginStart="16dp"
         android:src="@drawable/ic_back_button"
         app:layout_constraintBottom_toBottomOf="@+id/tv_Bartittle"
-        app:layout_constraintEnd_toStartOf="@+id/tv_Bartittle"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/tv_Bartittle"
         app:tint="@color/white" />
 

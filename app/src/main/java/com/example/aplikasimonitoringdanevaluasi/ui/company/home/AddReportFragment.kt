@@ -38,7 +38,7 @@ class AddReportFragment : Fragment() {
                 requireActivity().onBackPressed()
             }
 
-            addReportFragmentViewModel.getReportById(args.requestStudent.studentId)
+            addReportFragmentViewModel.getRequestStudentById(args.requestStudent.studentId)
                 .observe(viewLifecycleOwner) {
                     tittle = it?.reportStatus.toString()
                     if (tittle.isEmpty()) {
@@ -292,7 +292,7 @@ class AddReportFragment : Fragment() {
                         image = args.requestStudent.image,
                         reportStatus = tittle
                     )
-                    addReportFragmentViewModel.updateRequestStudent(
+                    addReportFragmentViewModel.updateRequestStudentById(
                         requestStudent,
                         args.requestStudent.id
                     ).observe(viewLifecycleOwner) {

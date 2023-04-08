@@ -795,9 +795,6 @@
             app:exitAnim="@android:anim/fade_out"
             app:popEnterAnim="@android:anim/fade_in"
             app:popExitAnim="@android:anim/fade_out" />
-        <argument
-            android:name="tittleId"
-            app:argType="string" />
         <action
             android:id="@+id/action_addCourseFragment_to_addEvaluationLinkFragment"
             app:destination="@id/addEvaluationLinkFragment"
@@ -805,6 +802,9 @@
             app:exitAnim="@android:anim/fade_out"
             app:popEnterAnim="@android:anim/fade_in"
             app:popExitAnim="@android:anim/fade_out" />
+        <argument
+            android:name="course"
+            app:argType="com.example.aplikasimonitoringdanevaluasi.model.Course" />
     </fragment>
     <fragment
         android:id="@+id/addCourseTittleFragment"
@@ -915,4 +915,9 @@
         android:name="com.example.aplikasimonitoringdanevaluasi.ui.main.logbook.ListLogbookStudentFragment"
         android:label="fragment_list_logbook_student"
         tools:layout="@layout/fragment_list_logbook_student" />
+    <activity
+        android:id="@+id/storageActivity"
+        android:name="com.example.aplikasimonitoringdanevaluasi.ui.storage.StorageActivity"
+        android:label="activity_storage"
+        tools:layout="@layout/activity_storage" />
 </navigation>

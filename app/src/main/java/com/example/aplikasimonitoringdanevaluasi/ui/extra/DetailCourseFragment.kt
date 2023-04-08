@@ -18,8 +18,8 @@ import com.example.aplikasimonitoringdanevaluasi.utils.visible
 class DetailCourseFragment : Fragment() {
 
     private lateinit var binding: FragmentDetailCourseBinding
-    private val args: DetailCourseFragmentArgs by navArgs()
     private val detailCourseViewModel: DetailCourseViewModel by viewModels()
+    private val args: DetailCourseFragmentArgs by navArgs()
     var check1: Boolean = false
     var check2: Boolean = false
     var check3: Boolean = false

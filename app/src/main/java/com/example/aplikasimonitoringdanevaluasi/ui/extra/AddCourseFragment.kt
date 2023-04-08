@@ -26,10 +26,11 @@ class AddCourseFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.apply {
+            tvBartittle.text = args.course.tittle
             cvVideo.setOnClickListener {
                 val action =
                     AddCourseFragmentDirections.actionAddCourseFragmentToUploadVideoFragment(
-                        args.tittleId
+                        args.course.id
                     )
                 findNavController().navigate(action)
             }
@@ -37,7 +38,7 @@ class AddCourseFragment : Fragment() {
             cvModule.setOnClickListener{
                 val action =
                     AddCourseFragmentDirections.actionAddCourseFragmentToUploadModuleFragment(
-                        args.tittleId
+                        args.course.id
                     )
                 findNavController().navigate(action)
             }
@@ -45,7 +46,7 @@ class AddCourseFragment : Fragment() {
             cvEvaluationLink.setOnClickListener {
                 val action =
                     AddCourseFragmentDirections.actionAddCourseFragmentToAddEvaluationLinkFragment(
-                        args.tittleId
+                        args.course.id
                     )
                 findNavController().navigate(action)
             }

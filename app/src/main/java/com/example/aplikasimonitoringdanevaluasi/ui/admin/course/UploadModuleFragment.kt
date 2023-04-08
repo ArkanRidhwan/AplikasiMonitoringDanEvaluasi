@@ -30,13 +30,13 @@ import java.util.*
 
 class UploadModuleFragment : Fragment() {
 
-    var documentUri: Uri? = null
-    var urlDownload: String? = ""
-
-    private lateinit var file: File
     private lateinit var binding: FragmentUploadModuleBinding
     private val uploadModuleViewModel: UploadModuleViewModel by viewModels()
+    private lateinit var file: File
     private val args: UploadModuleFragmentArgs by navArgs()
+
+    var documentUri: Uri? = null
+    var urlDownload: String? = ""
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

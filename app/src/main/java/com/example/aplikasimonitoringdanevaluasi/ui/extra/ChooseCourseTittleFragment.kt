@@ -34,6 +34,10 @@ class ChooseCourseTittleFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         binding.apply {
 
+            ivBack.setOnClickListener {
+                requireActivity().onBackPressed()
+            }
+
             listCourse = ArrayList()
             listNameCourse = ArrayList()
 
@@ -61,7 +65,7 @@ class ChooseCourseTittleFragment : Fragment() {
             btnContinue.setOnClickListener {
                 val action =
                     ChooseCourseTittleFragmentDirections.actionChooseCourseTittleFragmentToAddCourseFragment(
-                        course.id
+                        course
                     )
                 findNavController().navigate(action)
             }

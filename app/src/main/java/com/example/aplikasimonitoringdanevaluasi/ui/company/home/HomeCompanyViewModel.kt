@@ -15,7 +15,7 @@ import com.google.firebase.ktx.Firebase
 class HomeCompanyViewModel : ViewModel() {
 
     private val database = Firebase.database
-    private val collRequestStudent = database.getReference(Constant.COLL_REQUESTSTUDENT)
+    private val collRequestStudent = database.getReference(Constant.COLL_REQUEST_STUDENT)
     private val collStudent = database.getReference(Constant.COLL_STUDENT)
 
     fun getApprovedStudent(status: String, companyId: String): LiveData<List<RequestStudent>?> {

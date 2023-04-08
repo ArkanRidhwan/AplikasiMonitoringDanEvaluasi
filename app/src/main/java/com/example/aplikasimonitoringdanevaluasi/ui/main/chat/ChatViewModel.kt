@@ -13,7 +13,7 @@ import com.google.firebase.ktx.Firebase
 import java.sql.Timestamp
 import java.util.*
 
-class ChatViewModel() : ViewModel() {
+class  ChatViewModel() : ViewModel() {
 
     private val database = Firebase.database
     private val collChat = database.getReference(Constant.COLL_CHAT)

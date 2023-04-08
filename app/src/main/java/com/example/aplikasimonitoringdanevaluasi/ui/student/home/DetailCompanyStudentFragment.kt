@@ -21,14 +21,15 @@ import java.util.*
 class DetailCompanyStudentFragment : Fragment() {
 
     private lateinit var binding: FragmentDetailCompanyStudentBinding
-    private val args: DetailCompanyStudentFragmentArgs by navArgs()
     private val detailCompanyStudentViewModel: DetailCompanyStudentViewModel by viewModels()
+    private val args: DetailCompanyStudentFragmentArgs by navArgs()
     private var companyImage = ""
     private var studentImage = ""
     private var name = ""
     private var email = ""
     private var status = ""
     private var getRequestStudentId = ""
+    private var studentCompanyName = ""
 
 
     override fun onCreateView(
@@ -67,6 +68,7 @@ class DetailCompanyStudentFragment : Fragment() {
                     name = it?.name.toString()
                     email = it?.email.toString()
                     studentImage = it?.image.toString()
+                    studentCompanyName = it?.companyName.toString()
                 }
 
             detailCompanyStudentViewModel.getRequestStudentById(studentId)
@@ -87,33 +89,27 @@ class DetailCompanyStudentFragment : Fragment() {
                 )
 
                 if (getRequestStudentId == studentId) {
-                    if (status.isEmpty()) {
-                        detailCompanyStudentViewModel.saveRequestStudent(requestStudent)
-                            .observe(viewLifecycleOwner) {
-                                if (it == true) {
-                                    requireActivity().showToast("Lamaran berhasil")
-                                    requireActivity().onBackPressed()
-                                } else {
-                                    requireActivity().showToast("Lamaran gagal")
-                                }
-                            }
-                    } else if (status == "1") {
-                        requireActivity().showToast("Sedang diproses")
-                    } else {
-                        requireActivity().showToast("Sudah terdaftar")
+                    when (status) {
+                        "1" -> {
+                            requireActivity().showToast("Sedang diproses")
+                        }
+                        "2" -> {
+                            requireActivity().showToast("Sudah terdaftar")
+                        }
                     }
                 } else {
                     detailCompanyStudentViewModel.saveRequestStudent(requestStudent)
                         .observe(viewLifecycleOwner) {
                             if (it == true) {
-                                requireActivity().showToast("Lamaran berhasil")
+                                requireActivity().showToast("Lamaran berhasil dikirim")
                                 requireActivity().onBackPressed()
                             } else {
-                                requireActivity().showToast("Lamaran gagal")
+                                requireActivity().showToast("Lamaran gagal diproses")
                             }
                         }
                 }
             }
+            
             ivBack.setOnClickListener {
                 requireActivity().onBackPressed()
             }

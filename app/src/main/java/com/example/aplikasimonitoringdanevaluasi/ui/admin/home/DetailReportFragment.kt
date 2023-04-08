@@ -11,7 +11,7 @@ import com.example.aplikasimonitoringdanevaluasi.databinding.FragmentDetailRepor
 import com.example.aplikasimonitoringdanevaluasi.utils.gone
 
 
-class DetailReportFragment : Fragment() {
+class  DetailReportFragment : Fragment() {
 
     private lateinit var binding: FragmentDetailReportBinding
     private val detailReportViewModel: DetailReportViewModel by viewModels()

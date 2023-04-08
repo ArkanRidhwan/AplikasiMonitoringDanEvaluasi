@@ -22,7 +22,17 @@ class DetailRequestStudentFragment : Fragment() {
     private lateinit var binding: FragmentDetailRequestStudentBinding
     private val args: DetailRequestStudentFragmentArgs by navArgs()
     private val detailRequestStudentViewModel: DetailRequestStudentViewModel by viewModels()
-    private var companyName = ""
+    private var oldCompanyName = ""
+    private var newCompanyName = ""
+    private var studentName = ""
+    private var email = ""
+    private var password = ""
+    private var job = ""
+    private var className = ""
+    private var phoneNumber = ""
+    private var studentMajor = ""
+    private var image = ""
+    private var timestamp = ""
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -37,23 +47,14 @@ class DetailRequestStudentFragment : Fragment() {
         binding.apply {
             detailRequestStudentViewModel.getCompanyById(args.requestStudent.companyId)
                 .observe(viewLifecycleOwner) {
-                    companyName = it?.companyName.toString()
+                    newCompanyName = it?.companyName.toString()
                 }
 
             val id = args.requestStudent.id
             val studentId = args.requestStudent.studentId
             val companyId = args.requestStudent.companyId
-            val studentName = args.requestStudent.studentName
             val studentEmail = args.requestStudent.studentEmail
             val studentImage = args.requestStudent.image
-            var email = ""
-            var password = ""
-            var job = ""
-            var className = ""
-            var phoneNumber = ""
-            var studentMajor = ""
-            var image = ""
-            var timestamp = ""
 
             detailRequestStudentViewModel.getStudentById(studentId).observe(viewLifecycleOwner) {
                 email = it?.email.toString()
@@ -64,14 +65,16 @@ class DetailRequestStudentFragment : Fragment() {
                 studentMajor = it?.studentMajor.toString()
                 image = it?.image.toString()
                 timestamp = it?.timestamp.toString()
+                studentName = it?.name.toString()
+                oldCompanyName = it?.companyName.toString()
 
                 tvStudentNameEmail.text = email
-                tvStudentName.text = it?.name.toString()
-                tvStudentCompanyName.text = it?.job.toString()
-                tvStudentJob.text = it?.job.toString()
-                tvStudentClassName.text = it?.className.toString()
-                tvStudentPhoneNumber.text = it?.phoneNumber.toString()
-                tvStudentSchoolMajor.text = it?.studentMajor.toString()
+                tvStudentName.text = studentName
+                tvStudentCompanyName.text = oldCompanyName
+                tvStudentJob.text = job
+                tvStudentClassName.text = className
+                tvStudentPhoneNumber.text = phoneNumber
+                tvStudentSchoolMajor.text = studentMajor
                 if (it?.image?.isEmpty() == true) {
                     ivProfilePicture.setImageResource(R.drawable.ic_image_no_image)
                 } else {
@@ -84,12 +87,13 @@ class DetailRequestStudentFragment : Fragment() {
                         .into(ivProfilePicture)
                 }
             }
+
             btnAccept.setOnClickListener {
                 val requestStudent = RequestStudent(
                     id = id,
                     status = "2",
                     companyId = companyId,
-                    companyName = companyName,
+                    companyName = newCompanyName,
                     studentId = studentId,
                     studentName = studentName,
                     studentEmail = studentEmail,
@@ -99,7 +103,10 @@ class DetailRequestStudentFragment : Fragment() {
                 detailRequestStudentViewModel.updateRequestStatusAccepted(requestStudent, id)
                     .observe(viewLifecycleOwner) {
                         if (it == true) {
-                            requireActivity().onBackPressed()
+                            val action =
+                                DetailRequestStudentFragmentDirections.actionDetailRequestStudentFragmentToRequestFragment(
+                                )
+                            findNavController().navigate(action)
                             requireContext().showToast("Lamaran berhasil diproses")
                         } else {
                             requireContext().showToast("Lamaran gagal diproses")
@@ -111,7 +118,7 @@ class DetailRequestStudentFragment : Fragment() {
                     email = studentEmail,
                     password = password,
                     name = studentName,
-                    companyName = companyName,
+                    companyName = newCompanyName,
                     job = job,
                     className = className,
                     phoneNumber = phoneNumber,
@@ -121,34 +128,25 @@ class DetailRequestStudentFragment : Fragment() {
                 )
                 detailRequestStudentViewModel.updateStudentById(student, studentId)
                     .observe(viewLifecycleOwner) {
-                        if (it == true) {
-                            requireActivity().onBackPressed()
-                            requireContext().showToast("Lamaran berhasil diproses")
-                        } else {
-                            requireContext().showToast("Lamaran gagal diproses")
-                        }
+
                     }
-                val action =
-                    DetailRequestStudentFragmentDirections.actionDetailRequestStudentFragmentToRequestFragment(
-                    )
-                findNavController().navigate(action)
             }
 
             btnReject.setOnClickListener {
                 detailRequestStudentViewModel.updateRequestStatusRejected(id)
                     .observe(viewLifecycleOwner) {
                         if (it == true) {
-                            requireActivity().onBackPressed()
-                            requireContext().showToast("Update berhasil")
+                            val action =
+                                DetailRequestStudentFragmentDirections.actionDetailRequestStudentFragmentToRequestFragment(
+                                )
+                            findNavController().navigate(action)
+                            requireContext().showToast("Lamaran berhasil diproses")
                         } else {
-                            requireContext().showToast("Update gagal")
+                            requireContext().showToast("Lamaran gagal diproses")
                         }
                     }
-                val action =
-                    DetailRequestStudentFragmentDirections.actionDetailRequestStudentFragmentToRequestFragment(
-                    )
-                findNavController().navigate(action)
             }
+
             ivBack.setOnClickListener {
                 requireActivity().onBackPressed()
             }

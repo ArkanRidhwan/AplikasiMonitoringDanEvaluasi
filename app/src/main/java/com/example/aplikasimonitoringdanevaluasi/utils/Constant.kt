@@ -13,7 +13,7 @@ object Constant {
     const val COLL_MODULE= "module"
     const val COLL_LOGBOOK= "logbook"
     const val COLL_REPORT= "report"
-    const val COLL_REQUESTSTUDENT= "requestStudent"
+    const val COLL_REQUEST_STUDENT= "requestStudent"
     const val COLL_COURSE= "course"
     const val COLL_EVALUATION= "evaluation"
 }

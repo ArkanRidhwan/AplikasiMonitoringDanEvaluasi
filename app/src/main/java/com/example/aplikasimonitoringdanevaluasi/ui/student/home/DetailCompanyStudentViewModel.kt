@@ -3,7 +3,6 @@ package com.example.aplikasimonitoringdanevaluasi.ui.student.home
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.aplikasimonitoringdanevaluasi.model.Admin
 import com.example.aplikasimonitoringdanevaluasi.model.RequestStudent
 import com.example.aplikasimonitoringdanevaluasi.model.Student
 import com.example.aplikasimonitoringdanevaluasi.utils.Constant
@@ -17,18 +16,21 @@ class DetailCompanyStudentViewModel : ViewModel() {
 
     private val database = Firebase.database
     private val collStudent = database.getReference(Constant.COLL_STUDENT)
-    private val collRequestStudent = database.getReference(Constant.COLL_REQUESTSTUDENT)
+    private val collRequestStudent = database.getReference(Constant.COLL_REQUEST_STUDENT)
 
     fun saveRequestStudent(data: RequestStudent): LiveData<Boolean> {
         val status = MutableLiveData<Boolean>()
-        val student = RequestStudent(
+        val student = RequestStudent.processStudentRequest(
             id = data.id,
             status = data.status,
             companyId = data.companyId,
             studentId = data.studentId,
             studentName = data.studentName,
             studentEmail = data.studentEmail,
-            image = data.image
+            image = data.image,
+            reportStatus = data.reportStatus,
+            timestamp = data.timestamp,
+            companyName = data.companyName
         )
         collRequestStudent.child(data.id).setValue(student)
             .addOnCompleteListener {

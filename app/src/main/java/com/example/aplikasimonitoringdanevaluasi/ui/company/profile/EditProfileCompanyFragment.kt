@@ -34,7 +34,7 @@ class EditProfileCompanyFragment : Fragment() {
     var urlDownload: String? = ""
 
     private lateinit var binding: FragmentEditProfileCompanyBinding
-    private lateinit var file: File
+    private var file: File? = null
     private val editProfileCompanyViewModel: EditProfileCompanyViewModel by viewModels()
 
     override fun onCreateView(
@@ -82,7 +82,7 @@ class EditProfileCompanyFragment : Fragment() {
                             val imageUri = data?.data
                             file = imageUri?.toFile() as File
                             val bitmap = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
-                                ImageDecoder.decodeBitmap(ImageDecoder.createSource(file))
+                                ImageDecoder.decodeBitmap(ImageDecoder.createSource(file!!))
                             } else {
                                 MediaStore.Images.Media.getBitmap(
                                     requireActivity().contentResolver,

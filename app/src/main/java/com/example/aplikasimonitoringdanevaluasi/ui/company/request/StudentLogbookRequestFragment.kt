@@ -89,6 +89,7 @@ class StudentLogbookRequestFragment : Fragment() {
                     logbookRequestAdapter.setListData(it)
                     progressBar.gone()
                     recycleView.visible()
+                    tvLogbookNotCreated.gone()
                 } else {
                     tvLogbookNotCreated.visible()
                     progressBar.gone()

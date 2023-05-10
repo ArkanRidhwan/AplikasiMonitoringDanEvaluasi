@@ -21,6 +21,7 @@ import com.bumptech.glide.request.RequestOptions
 import com.example.aplikasimonitoringdanevaluasi.R
 import com.example.aplikasimonitoringdanevaluasi.databinding.FragmentEditProfileStudentBinding
 import com.example.aplikasimonitoringdanevaluasi.model.Student
+import com.example.aplikasimonitoringdanevaluasi.ui.storage.StorageActivity
 import com.example.aplikasimonitoringdanevaluasi.utils.*
 import com.github.dhaval2404.imagepicker.ImagePicker
 import com.google.firebase.storage.ktx.component1
@@ -33,7 +34,7 @@ class EditProfileStudentFragment : Fragment() {
     var urlDownload: String? = ""
 
     private lateinit var binding: FragmentEditProfileStudentBinding
-    private lateinit var file: File
+    private  var file: File? = null
     private val editProfileStudentViewModel: EditProfileStudentViewModel by viewModels()
     private var timestamp = ""
     private var companyName = ""
@@ -76,6 +77,7 @@ class EditProfileStudentFragment : Fragment() {
                 }
             }
 
+
             val startForImageResult =
                 registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result: ActivityResult ->
                     val resultCode = result.resultCode
@@ -85,7 +87,7 @@ class EditProfileStudentFragment : Fragment() {
                             val imageUri = data?.data
                             file = imageUri?.toFile() as File
                             val bitmap = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
-                                ImageDecoder.decodeBitmap(ImageDecoder.createSource(file))
+                                ImageDecoder.decodeBitmap(ImageDecoder.createSource(file!!))
                             } else {
                                 MediaStore.Images.Media.getBitmap(
                                     requireActivity().contentResolver,
@@ -138,14 +140,8 @@ class EditProfileStudentFragment : Fragment() {
                 tvProgress.visible()
                 ivProfile.uploadImage(file)
                     .addOnFailureListener {
-                        progressBar.gone()
-                        tvProgress.gone()
-                        requireContext().showToast("Upload Image Failed!")
                     }
                     .addOnSuccessListener { task ->
-                        progressBar.gone()
-                        tvProgress.gone()
-                        requireContext().showToast("Upload Image Success!")
                         task.storage.downloadUrl.addOnSuccessListener { url ->
                             Log.d(TAG, "downloadUri: $url")
                             urlDownload = url.toString()
@@ -165,6 +161,8 @@ class EditProfileStudentFragment : Fragment() {
                             editProfileStudentViewModel.updateStudentById(student, userId)
                                 .observe(viewLifecycleOwner) { data ->
                                     if (data == true) {
+                                        progressBar.gone()
+                                        tvProgress.gone()
                                         requireActivity().onBackPressed()
                                         requireContext().showToast("Update berhasil")
                                     } else {

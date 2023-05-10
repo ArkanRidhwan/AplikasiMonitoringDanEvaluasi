@@ -21,7 +21,7 @@ class HomeCompanyViewModel : ViewModel() {
     fun getApprovedStudent(status: String, companyId: String): LiveData<List<RequestStudent>?> {
         val dataRequestStudent = MutableLiveData<List<RequestStudent>?>()
         val requestStudent = ArrayList<RequestStudent>()
-        collRequestStudent.orderByChild("timestamp").addValueEventListener(object : ValueEventListener {
+        collRequestStudent.orderByChild("name").addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 if (snapshot.exists()) {
                     requestStudent.clear()

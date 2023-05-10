@@ -88,6 +88,7 @@ class StudentRequestFragment : Fragment() {
                     studentRequestAdapter.setListData(it)
                     progressBar.gone()
                     recycleView.visible()
+                    tvStudentRequestNotCreated.gone()
                 } else {
                     tvStudentRequestNotCreated.visible()
                     progressBar.gone()

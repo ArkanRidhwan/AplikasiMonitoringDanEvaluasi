@@ -66,11 +66,9 @@ class DetailRequestStudentFragment : Fragment() {
                 image = it?.image.toString()
                 timestamp = it?.timestamp.toString()
                 studentName = it?.name.toString()
-                oldCompanyName = it?.companyName.toString()
 
                 tvStudentNameEmail.text = email
                 tvStudentName.text = studentName
-                tvStudentCompanyName.text = oldCompanyName
                 tvStudentJob.text = job
                 tvStudentClassName.text = className
                 tvStudentPhoneNumber.text = phoneNumber

@@ -75,7 +75,7 @@
         android:layout_marginBottom="20dp"
         android:backgroundTint="@color/red_primary"
         android:clickable="true"
-        android:src="@drawable/ic_add"
+        android:src="@drawable/ic_edit_course"
         app:borderWidth="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

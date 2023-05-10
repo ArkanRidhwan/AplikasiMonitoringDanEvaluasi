@@ -240,13 +240,11 @@
                 android:layout_height="40dp"
                 android:layout_marginTop="32dp"
                 android:layout_marginEnd="30dp"
-                android:layout_marginBottom="32dp"
                 android:background="@drawable/bg_btn_soft_rectangle"
                 android:fontFamily="@font/roboto"
                 android:text="Lihat laporan"
                 android:textColor="@color/white"
                 android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tv_studentSchoolMajor" />
 
@@ -256,15 +254,28 @@
                 android:layout_height="40dp"
                 android:layout_marginStart="30dp"
                 android:layout_marginTop="32dp"
-                android:layout_marginBottom="32dp"
                 android:background="@drawable/bg_btn_soft_rectangle"
                 android:fontFamily="@font/roboto"
                 android:text="Lihat logbook"
                 android:textColor="@color/white"
                 android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tv_studentSchoolMajor" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_delete"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="32dp"
+                android:layout_marginBottom="32dp"
+                android:background="@drawable/bg_btn_delete"
+                android:text="Hapus akun siswa"
+                android:textAllCaps="false"
+                android:textColor="#9E0404"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/btn_laporan"
+                app:layout_constraintStart_toStartOf="@+id/btn_logbook"
+                app:layout_constraintTop_toBottomOf="@+id/btn_logbook" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

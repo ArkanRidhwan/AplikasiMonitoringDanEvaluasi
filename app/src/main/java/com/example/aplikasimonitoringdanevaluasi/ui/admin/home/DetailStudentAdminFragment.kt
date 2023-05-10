@@ -5,18 +5,22 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.example.aplikasimonitoringdanevaluasi.R
 import com.example.aplikasimonitoringdanevaluasi.databinding.FragmentDetailStudentAdminBinding
+import com.example.aplikasimonitoringdanevaluasi.utils.showToast
 
 
 class DetailStudentAdminFragment : Fragment() {
 
     private lateinit var binding: FragmentDetailStudentAdminBinding
+    private val detailStudentAdminViewModel: DetailStudentAdminViewModel by viewModels()
     private val args: DetailStudentAdminFragmentArgs by navArgs()
+    private var requestStudentId = ""
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -52,6 +56,10 @@ class DetailStudentAdminFragment : Fragment() {
                     .into(ivProfilePicture)
             }
 
+            detailStudentAdminViewModel.getRequestStudentById(args.student.id).observe(viewLifecycleOwner) {
+                requestStudentId = it?.id.toString()
+            }
+
             btnLogbook.setOnClickListener {
                 val action =
                     DetailStudentAdminFragmentDirections.actionDetailStudentAdminFragmentToListLogbookFragment(
@@ -64,6 +72,21 @@ class DetailStudentAdminFragment : Fragment() {
                 val action =
                     DetailStudentAdminFragmentDirections.actionDetailStudentAdminFragmentToListReportAdminFragment(args.student.id)
                 findNavController().navigate(action)
+            }
+
+            btnDelete.setOnClickListener {
+                detailStudentAdminViewModel.deleteStudent(args.student.email).observe(viewLifecycleOwner) {
+                    if (it == true) {
+                        requireActivity().onBackPressed()
+                        requireContext().showToast("Akun siswa berhasil dihapus")
+                    } else {
+                        requireContext().showToast("Akun siswa gagal dihapus")
+                    }
+                }
+
+                detailStudentAdminViewModel.deleteRequestStudent(requestStudentId).observe(viewLifecycleOwner) {
+
+                }
             }
         }
     }

@@ -79,9 +79,9 @@ class EditProfileAdminFragment : Fragment() {
                     when (resultCode) {
                         Activity.RESULT_OK -> {
                             val imageUri = data?.data
-                            val file = imageUri?.toFile() as File
+                            imageUri?.toFile() as File
                             val bitmap = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
-                                ImageDecoder.decodeBitmap(ImageDecoder.createSource(file))
+                                ImageDecoder.decodeBitmap(ImageDecoder.createSource(file!!))
                             } else {
                                 MediaStore.Images.Media.getBitmap(
                                     requireActivity().contentResolver,

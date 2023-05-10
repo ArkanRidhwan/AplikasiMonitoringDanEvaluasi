@@ -34,7 +34,7 @@ class ChatAdapter : RecyclerView.Adapter<ChatAdapter.ViewHolder>() {
                 if (getInstance(itemView.context).getString(Constant.ID) == data.senderId) {
                     cardView.setCardBackgroundColor(ContextCompat.getColor(itemView.context, R.color.white))
                 } else {
-                    cardView.setBackgroundColor(ContextCompat.getColor(itemView.context, R.color.red_Chat))
+                    cardView.setCardBackgroundColor(ContextCompat.getColor(itemView.context, R.color.red_Chat))
                 }
 
                 itemView.setOnClickListener {

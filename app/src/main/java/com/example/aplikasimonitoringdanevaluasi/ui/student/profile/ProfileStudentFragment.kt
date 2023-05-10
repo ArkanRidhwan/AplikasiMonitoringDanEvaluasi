@@ -43,7 +43,11 @@ class ProfileStudentFragment : Fragment() {
             studentProfileViewModel.studentProfile(userId).observe(viewLifecycleOwner) {
                 tvStudentName.text = it?.name
                 tvEmailStudent.text = it?.email
-                tvStudentCompanyName.text = it?.companyName
+                if(it?.companyName?.isEmpty() == true){
+                    tvStudentCompanyName.text = "Belum terdaftar"
+                } else {
+                    tvStudentCompanyName.text = it?.companyName
+                }
                 tvStudentJob.text = it?.job
                 tvStudentPhoneNumber.text = it?.phoneNumber
                 tvStudentClassName.text = it?.className

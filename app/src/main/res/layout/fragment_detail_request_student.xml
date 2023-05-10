@@ -21,7 +21,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/proza_libre"
-        android:text="Detail Student"
+        android:text="Detail Siswa"
         android:textColor="@color/white"
         android:textSize="16sp"
         android:textStyle="bold"
@@ -172,8 +172,8 @@
                 android:textColor="@color/gray_hintText"
                 android:textSize="12sp"
                 android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="@+id/tv_studentCompanyName"
-                app:layout_constraintTop_toBottomOf="@+id/tv_studentCompanyName" />
+                app:layout_constraintStart_toStartOf="@+id/tv_studentClassName"
+                app:layout_constraintTop_toBottomOf="@+id/tv_studentClassName" />
 
             <TextView
                 android:id="@+id/tv_studentJob"
@@ -210,29 +210,6 @@
                 app:layout_constraintStart_toStartOf="@+id/tv_studentSchoolMajorTittle"
                 app:layout_constraintTop_toBottomOf="@+id/tv_studentSchoolMajorTittle" />
 
-            <TextView
-                android:id="@+id/tv_studentCompanyNameTittle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:fontFamily="@font/open_sans"
-                android:text="Nama Perusahaan Magang"
-                android:textColor="@color/gray_hintText"
-                android:textSize="12sp"
-                android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="@+id/tv_studentClassName"
-                app:layout_constraintTop_toBottomOf="@+id/tv_studentClassName" />
-
-            <TextView
-                android:id="@+id/tv_studentCompanyName"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/open_sans"
-                android:text="Nama Perusahaan Magang"
-                android:textColor="@color/black"
-                android:textSize="18sp"
-                app:layout_constraintStart_toStartOf="@+id/tv_studentCompanyNameTittle"
-                app:layout_constraintTop_toBottomOf="@+id/tv_studentCompanyNameTittle" />
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btn_accept"

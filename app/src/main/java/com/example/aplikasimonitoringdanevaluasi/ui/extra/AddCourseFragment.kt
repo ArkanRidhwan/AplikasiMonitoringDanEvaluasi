@@ -5,14 +5,17 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.aplikasimonitoringdanevaluasi.databinding.FragmentAddCourseBinding
+import com.example.aplikasimonitoringdanevaluasi.utils.showToast
 
 
 class AddCourseFragment : Fragment() {
 
     private lateinit var binding: FragmentAddCourseBinding
+    private val addCourseViewModel: AddCourseViewModel by viewModels()
     private val args: AddCourseFragmentArgs by navArgs()
 
     override fun onCreateView(
@@ -27,6 +30,9 @@ class AddCourseFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         binding.apply {
             tvBartittle.text = args.course.tittle
+            ivBack.setOnClickListener {
+                requireActivity().onBackPressed()
+            }
             cvVideo.setOnClickListener {
                 val action =
                     AddCourseFragmentDirections.actionAddCourseFragmentToUploadVideoFragment(
@@ -35,7 +41,7 @@ class AddCourseFragment : Fragment() {
                 findNavController().navigate(action)
             }
 
-            cvModule.setOnClickListener{
+            cvModule.setOnClickListener {
                 val action =
                     AddCourseFragmentDirections.actionAddCourseFragmentToUploadModuleFragment(
                         args.course.id
@@ -50,6 +56,19 @@ class AddCourseFragment : Fragment() {
                     )
                 findNavController().navigate(action)
             }
+
+            /*btnDelete.setOnClickListener {
+                addCourseViewModel.deleteVideo(args.course.id).observe(viewLifecycleOwner) {
+                    if (it == true) {
+                        val action =
+                            AddCourseFragmentDirections.actionAddCourseFragmentToListCourseAdminFragment()
+                        findNavController().navigate(action)
+                        requireContext().showToast("Materi bab ini berhasil dihapus")
+                    } else {
+                        requireContext().showToast("Materi bab ini gagal dihapus")
+                    }
+                }
+            }*/
         }
     }
 }

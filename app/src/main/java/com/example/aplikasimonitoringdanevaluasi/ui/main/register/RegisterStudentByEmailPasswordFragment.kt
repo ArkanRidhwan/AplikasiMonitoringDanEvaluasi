@@ -77,8 +77,6 @@ class RegisterStudentByEmailPasswordFragment : Fragment() {
                     etStudentPasswordVerification.error("Password tidak sesuai")
                     etStudentPasswordVerification.requestFocus()
                 } else {
-                    val passHash =
-                        BCrypt.withDefaults().hashToString(4, password.toCharArray())
                     btnRegister.gone()
                     progressBarStudentRegister.visible()
                     progressBarStudentRegister.playAnimation()
@@ -130,38 +128,6 @@ class RegisterStudentByEmailPasswordFragment : Fragment() {
                         .addOnFailureListener {
                             requireActivity().showToast("Database error")
                         }
-                    /*registerViewModel.getStudentByEmail(email)
-                        .observe(viewLifecycleOwner) { dataStudent ->
-                            if (dataStudent != null) {
-                                requireContext().showToast("Email yang anda masukkan sudah terdaftar")
-                                progressBarStudentRegister.gone()
-                                btnRegister.visible()
-                            } else {
-                                registerViewModel.saveStudent(student)
-                                    .observe(viewLifecycleOwner) { data ->
-                                        if (data == true) {
-                                            getInstance(requireContext()).apply {
-                                                putString(Constant.ID, student.id)
-                                                putString(Constant.NAME, student.name)
-                                                putString(
-                                                    Constant.ROLE,
-                                                    getString(R.string.student)
-                                                )
-                                            }
-                                            findNavController().navigate(
-                                                RegisterStudentByEmailPasswordFragmentDirections.actionRegisterStudentByEmailPasswordToHomeStudentFragment(
-                                                    getString(R.string.student)
-                                                )
-                                            )
-                                            requireContext().showToast("Regitrasi berhasil")
-                                        } else {
-                                            btnRegister.visible()
-                                            progressBarStudentRegister.gone()
-                                            requireContext().showToast("Regitrasi gagal")
-                                        }
-                                    }
-                            }
-                        }*/
                 }
             }
             tvStudentSignInNow.setOnClickListener {

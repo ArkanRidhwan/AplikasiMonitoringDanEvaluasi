@@ -19,7 +19,7 @@ class ChooseCourseTittleViewModel : ViewModel() {
     fun getCourse(): LiveData<List<Course>?> {
         val dataCourse = MutableLiveData<List<Course>?>()
         val course = ArrayList<Course>()
-        collCourse.addValueEventListener(object : ValueEventListener {
+        collCourse.orderByChild("timestamp").addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 if (snapshot.exists()) {
                     course.clear()

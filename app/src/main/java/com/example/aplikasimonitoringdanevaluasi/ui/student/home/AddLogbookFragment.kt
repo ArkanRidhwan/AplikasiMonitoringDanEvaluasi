@@ -70,32 +70,41 @@ class AddLogbookFragment : Fragment() {
                 val name = getInstance(requireContext()).getString(Constant.NAME)
                 val logbookId = UUID.randomUUID().toString()
 
-
-                val logbook = Logbook(
-                    id = logbookId,
-                    logbookUserId = logbookUserId,
-                    companyId = companyId,
-                    name = name,
-                    activityDate = activityDate,
-                    content = content,
-                    date = getDateNow(),
-                    timestamp = System.currentTimeMillis().toString(),
-                    status = "1",
-                    image = imageProfileStudentLogbook
-                )
-                if (studentApprovalStatus == "2") {
-                    uploadLogbookViewModel.saveLogbook(logbook)
-                        .observe(viewLifecycleOwner) { data ->
-                            if (data == true) {
-                                requireActivity().onBackPressed()
-                                requireContext().showToast("Berhasil menyimpan logbook")
-                            } else {
-                                requireContext().showToast("Menyimpan logbook gagal")
-                            }
-                        }
+                if(activityDate.isEmpty()){
+                    requireActivity().showToast("Silahkan pilih tanggal terlebih dahulu")
+                } else if(content.isEmpty()){
+                    etContentLogbook.error("Email tidak boleh kosong")
+                    etContentLogbook.requestFocus()
                 } else {
-                    requireContext().showToast("Silahkan ajukan lamaran ke perusahaan terlebih dahulu")
+                    val logbook = Logbook(
+                        id = logbookId,
+                        logbookUserId = logbookUserId,
+                        companyId = companyId,
+                        name = name,
+                        activityDate = activityDate,
+                        content = content,
+                        date = getDateNow(),
+                        timestamp = System.currentTimeMillis().toString(),
+                        status = "1",
+                        image = imageProfileStudentLogbook
+                    )
+                    if (studentApprovalStatus == "2") {
+                        uploadLogbookViewModel.saveLogbook(logbook)
+                            .observe(viewLifecycleOwner) { data ->
+                                if (data == true) {
+                                    requireActivity().onBackPressed()
+                                    requireContext().showToast("Berhasil menyimpan logbook")
+                                } else {
+                                    requireContext().showToast("Menyimpan logbook gagal")
+                                }
+                            }
+                    } else {
+                        requireContext().showToast("Silahkan ajukan lamaran ke perusahaan terlebih dahulu")
+                    }
                 }
+            }
+            ivBack.setOnClickListener {
+                requireActivity().onBackPressed()
             }
         }
     }

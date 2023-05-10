@@ -21,7 +21,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/proza_libre"
-        android:text="Pilih Atau Tambah Bab"
+        android:text="Edit Materi Pembelajaran"
         android:textColor="@color/white"
         android:textSize="16sp"
         android:textStyle="bold"

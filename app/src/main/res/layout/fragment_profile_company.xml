@@ -7,221 +7,234 @@
     android:background="@color/gray_primary"
     tools:context=".ui.company.profile.ProfileCompanyFragment">
 
-    <View
-        android:id="@+id/viewBG1"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:background="@drawable/img_background_profile"
-        app:layout_constraintBottom_toBottomOf="@+id/viewBG2"
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <ImageView
-        android:id="@+id/iv_logout"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        android:src="@drawable/ic_logout"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/tv_logOut"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="6dp"
-        android:fontFamily="@font/proza_libre"
-        android:text="Keluar"
-        android:textColor="@color/white"
-        android:textSize="11sp"
-        app:layout_constraintEnd_toEndOf="@+id/iv_logout"
-        app:layout_constraintStart_toStartOf="@+id/iv_logout"
-        app:layout_constraintTop_toBottomOf="@+id/iv_logout" />
-
-    <View
-        android:id="@+id/viewBG2"
-        android:layout_width="0dp"
-        android:layout_height="100dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="120dp"
-        android:layout_marginEnd="24dp"
-        android:background="@drawable/bg_profile"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/iv_logout" />
-
-    <com.google.android.material.imageview.ShapeableImageView
-        android:id="@+id/iv_companyProfile"
-        android:layout_width="140dp"
-        android:layout_height="140dp"
-        android:layout_marginTop="50dp"
-        android:padding="1.5dp"
-        android:scaleType="fitXY"
-        android:src="@drawable/ic_image_no_image"
-        app:layout_constraintEnd_toEndOf="@+id/viewBG2"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="@+id/viewBG2"
-        app:layout_constraintTop_toBottomOf="@+id/iv_logout"
-        app:shapeAppearance="@style/roundProfile"
-        app:strokeColor="@color/white"
-        app:strokeWidth="3dp" />
-
-    <androidx.cardview.widget.CardView
-        android:id="@+id/cardView3"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:outlineAmbientShadowColor="@color/white"
-        android:outlineSpotShadowColor="@color/white"
-        app:cardCornerRadius="20dp"
-        app:layout_constraintEnd_toEndOf="@+id/viewBG2"
-        app:layout_constraintStart_toStartOf="@+id/viewBG2"
-        app:layout_constraintTop_toBottomOf="@+id/iv_companyProfile">
+        app:layout_constraintTop_toTopOf="parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/tv_companyName"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:fontFamily="@font/open_sans"
-                android:text="Nama Perusahaan"
-                android:textColor="@color/black"
-                android:textSize="18sp"
-                android:textStyle="bold"
+            <View
+                android:id="@+id/viewBG1"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:background="@drawable/img_background_profile"
+                app:layout_constraintBottom_toBottomOf="@+id/viewBG2"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
+            <ImageView
+                android:id="@+id/iv_logout"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:src="@drawable/ic_logout"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
             <TextView
-                android:id="@+id/tv_companyAddressTittle"
+                android:id="@+id/tv_logOut"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="32dp"
-                android:fontFamily="@font/open_sans"
-                android:text="Address"
-                android:textColor="@color/gray_hintText"
-                android:textSize="12sp"
+                android:layout_marginEnd="6dp"
+                android:fontFamily="@font/proza_libre"
+                android:text="Keluar"
+                android:textColor="@color/white"
+                android:textSize="11sp"
+                app:layout_constraintEnd_toEndOf="@+id/iv_logout"
+                app:layout_constraintStart_toStartOf="@+id/iv_logout"
+                app:layout_constraintTop_toBottomOf="@+id/iv_logout" />
+
+            <View
+                android:id="@+id/viewBG2"
+                android:layout_width="0dp"
+                android:layout_height="100dp"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="120dp"
+                android:layout_marginEnd="24dp"
+                android:background="@drawable/bg_profile"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tv_companyName" />
+                app:layout_constraintTop_toBottomOf="@+id/iv_logout" />
 
-            <TextView
-                android:id="@+id/tv_companyAddress"
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/iv_companyProfile"
+                android:layout_width="140dp"
+                android:layout_height="140dp"
+                android:layout_marginTop="50dp"
+                android:padding="1.5dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/ic_image_no_image"
+                app:layout_constraintEnd_toEndOf="@+id/viewBG2"
+                app:layout_constraintHorizontal_bias="0.497"
+                app:layout_constraintStart_toStartOf="@+id/viewBG2"
+                app:layout_constraintTop_toBottomOf="@+id/iv_logout"
+                app:shapeAppearance="@style/roundProfile"
+                app:strokeColor="@color/white"
+                app:strokeWidth="3dp" />
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardView3"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="2dp"
-                android:layout_marginEnd="16dp"
-                android:fontFamily="@font/open_sans"
-                android:text="TextView"
-                android:textColor="@color/black"
-                android:textSize="16sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="@+id/tv_companyAddressTittle"
-                app:layout_constraintTop_toBottomOf="@+id/tv_companyAddressTittle" />
+                android:outlineAmbientShadowColor="@color/white"
+                android:outlineSpotShadowColor="@color/white"
+                app:cardCornerRadius="20dp"
+                app:layout_constraintEnd_toEndOf="@+id/viewBG2"
+                app:layout_constraintStart_toStartOf="@+id/viewBG2"
+                app:layout_constraintTop_toBottomOf="@+id/iv_companyProfile">
 
-            <TextView
-                android:id="@+id/tv_contactNameTittle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:fontFamily="@font/open_sans"
-                android:text="Nama PIC"
-                android:textColor="@color/gray_hintText"
-                android:textSize="12sp"
-                app:layout_constraintStart_toStartOf="@+id/tv_companyAddress"
-                app:layout_constraintTop_toBottomOf="@+id/tv_companyAddress" />
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
 
-            <TextView
-                android:id="@+id/tv_contactName"
+                    <TextView
+                        android:id="@+id/tv_companyName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:fontFamily="@font/open_sans"
+                        android:text="Nama Perusahaan"
+                        android:textColor="@color/black"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/tv_companyAddressTittle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="32dp"
+                        android:fontFamily="@font/open_sans"
+                        android:text="Address"
+                        android:textColor="@color/gray_hintText"
+                        android:textSize="12sp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/tv_companyName" />
+
+                    <TextView
+                        android:id="@+id/tv_companyAddress"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp"
+                        android:layout_marginEnd="16dp"
+                        android:fontFamily="@font/open_sans"
+                        android:text="TextView"
+                        android:textColor="@color/black"
+                        android:textSize="16sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="@+id/tv_companyAddressTittle"
+                        app:layout_constraintTop_toBottomOf="@+id/tv_companyAddressTittle" />
+
+                    <TextView
+                        android:id="@+id/tv_contactNameTittle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:fontFamily="@font/open_sans"
+                        android:text="Nama PIC"
+                        android:textColor="@color/gray_hintText"
+                        android:textSize="12sp"
+                        app:layout_constraintStart_toStartOf="@+id/tv_companyAddress"
+                        app:layout_constraintTop_toBottomOf="@+id/tv_companyAddress" />
+
+                    <TextView
+                        android:id="@+id/tv_contactName"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp"
+                        android:layout_marginEnd="16dp"
+                        android:fontFamily="@font/open_sans"
+                        android:text="TextView"
+                        android:textColor="@color/black"
+                        android:textSize="16sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="@+id/tv_contactNameTittle"
+                        app:layout_constraintTop_toBottomOf="@+id/tv_contactNameTittle" />
+
+                    <TextView
+                        android:id="@+id/tv_contactEmailTittle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:fontFamily="@font/open_sans"
+                        android:text="Email PIC"
+                        android:textColor="@color/gray_hintText"
+                        android:textSize="12sp"
+                        app:layout_constraintStart_toStartOf="@+id/tv_contactName"
+                        app:layout_constraintTop_toBottomOf="@+id/tv_contactName" />
+
+                    <TextView
+                        android:id="@+id/tv_contactEmail"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp"
+                        android:layout_marginEnd="16dp"
+                        android:fontFamily="@font/open_sans"
+                        android:text="TextView"
+                        android:textColor="@color/black"
+                        android:textSize="16sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="@+id/tv_contactEmailTittle"
+                        app:layout_constraintTop_toBottomOf="@+id/tv_contactEmailTittle" />
+
+                    <TextView
+                        android:id="@+id/tv_contactPhoneNumberTittle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:fontFamily="@font/open_sans"
+                        android:text="Nomor PIC"
+                        android:textColor="@color/gray_hintText"
+                        android:textSize="12sp"
+                        app:layout_constraintStart_toStartOf="@+id/tv_contactEmail"
+                        app:layout_constraintTop_toBottomOf="@+id/tv_contactEmail" />
+
+                    <TextView
+                        android:id="@+id/tv_contactPhoneNumber"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp"
+                        android:layout_marginEnd="16dp"
+                        android:layout_marginBottom="50dp"
+                        android:fontFamily="@font/open_sans"
+                        android:text="TextView"
+                        android:textColor="@color/black"
+                        android:textSize="16sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="@+id/tv_contactPhoneNumberTittle"
+                        app:layout_constraintTop_toBottomOf="@+id/tv_contactPhoneNumberTittle" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btn_editProfile"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="2dp"
-                android:layout_marginEnd="16dp"
-                android:fontFamily="@font/open_sans"
-                android:text="TextView"
-                android:textColor="@color/black"
-                android:textSize="16sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="@+id/tv_contactNameTittle"
-                app:layout_constraintTop_toBottomOf="@+id/tv_contactNameTittle" />
-
-            <TextView
-                android:id="@+id/tv_contactEmailTittle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:fontFamily="@font/open_sans"
-                android:text="Email PIC"
-                android:textColor="@color/gray_hintText"
-                android:textSize="12sp"
-                app:layout_constraintStart_toStartOf="@+id/tv_contactName"
-                app:layout_constraintTop_toBottomOf="@+id/tv_contactName" />
-
-            <TextView
-                android:id="@+id/tv_contactEmail"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="2dp"
-                android:layout_marginEnd="16dp"
-                android:fontFamily="@font/open_sans"
-                android:text="TextView"
-                android:textColor="@color/black"
-                android:textSize="16sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="@+id/tv_contactEmailTittle"
-                app:layout_constraintTop_toBottomOf="@+id/tv_contactEmailTittle" />
-
-            <TextView
-                android:id="@+id/tv_contactPhoneNumberTittle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:fontFamily="@font/open_sans"
-                android:text="Nomor PIC"
-                android:textColor="@color/gray_hintText"
-                android:textSize="12sp"
-                app:layout_constraintStart_toStartOf="@+id/tv_contactEmail"
-                app:layout_constraintTop_toBottomOf="@+id/tv_contactEmail" />
-
-            <TextView
-                android:id="@+id/tv_contactPhoneNumber"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="2dp"
-                android:layout_marginEnd="16dp"
-                android:layout_marginBottom="50dp"
-                android:fontFamily="@font/open_sans"
-                android:text="TextView"
-                android:textColor="@color/black"
-                android:textSize="16sp"
+                android:layout_height="50dp"
+                android:layout_marginTop="32dp"
+                android:layout_marginBottom="90dp"
+                android:background="@drawable/bg_btn_profile"
+                android:text="Edit  Profil"
+                android:textColor="@color/white"
+                android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="@+id/tv_contactPhoneNumberTittle"
-                app:layout_constraintTop_toBottomOf="@+id/tv_contactPhoneNumberTittle" />
+                app:layout_constraintEnd_toEndOf="@+id/viewBG2"
+                app:layout_constraintStart_toStartOf="@+id/viewBG2"
+                app:layout_constraintTop_toBottomOf="@+id/cardView3" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
-    </androidx.cardview.widget.CardView>
-
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btn_editProfile"
-        android:layout_width="0dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="32dp"
-        android:background="@drawable/bg_btn_profile"
-        android:text="Edit  Profil"
-        android:textColor="@color/white"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@+id/viewBG2"
-        app:layout_constraintStart_toStartOf="@+id/viewBG2"
-        app:layout_constraintTop_toBottomOf="@+id/cardView3" />
-
-
-    <!--</androidx.constraintlayout.widget.ConstraintLayout>
-</ScrollView>-->
-
+    </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

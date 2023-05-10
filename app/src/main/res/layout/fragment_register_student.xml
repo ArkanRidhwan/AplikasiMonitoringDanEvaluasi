@@ -10,21 +10,23 @@
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="220dp"
         android:paddingBottom="30dp"
         android:scaleType="fitXY"
         android:src="@drawable/img_welcome_screen3"
-        app:layout_constraintBottom_toTopOf="@+id/tv_subTittleRegisterStudent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <View
         android:id="@+id/viewBG"
         android:layout_width="match_parent"
-        android:layout_height="580dp"
+        android:layout_height="0dp"
         android:background="@drawable/bg_welcomeloginregister"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
     <TextView
         android:id="@+id/tv_subTittleRegisterStudent"
@@ -42,9 +44,11 @@
 
     <EditText
         android:id="@+id/et_studentName"
-        android:layout_width="350dp"
+        android:layout_width="0dp"
         android:layout_height="48dp"
+        android:layout_marginStart="32dp"
         android:layout_marginTop="18dp"
+        android:layout_marginEnd="32dp"
         android:ems="10"
         android:fontFamily="@font/open_sans"
         android:hint="Masukkan nama"
@@ -58,7 +62,7 @@
 
     <EditText
         android:id="@+id/et_studentCompanyName"
-        android:layout_width="350dp"
+        android:layout_width="0dp"
         android:layout_height="48dp"
         android:layout_marginTop="16dp"
         android:ems="10"
@@ -74,7 +78,7 @@
 
     <EditText
         android:id="@+id/et_studentCompanyJob"
-        android:layout_width="350dp"
+        android:layout_width="0dp"
         android:layout_height="48dp"
         android:layout_marginTop="16dp"
         android:ems="10"
@@ -90,7 +94,7 @@
 
     <EditText
         android:id="@+id/et_studentClassName"
-        android:layout_width="350dp"
+        android:layout_width="0dp"
         android:layout_height="48dp"
         android:layout_marginTop="16dp"
         android:ems="10"
@@ -106,7 +110,7 @@
 
     <EditText
         android:id="@+id/et_studentPhoneNumber"
-        android:layout_width="350dp"
+        android:layout_width="0dp"
         android:layout_height="48dp"
         android:layout_marginTop="16dp"
         android:ems="10"
@@ -122,7 +126,7 @@
 
     <EditText
         android:id="@+id/et_studentSchoolMajor"
-        android:layout_width="350dp"
+        android:layout_width="0dp"
         android:layout_height="48dp"
         android:layout_marginTop="16dp"
         android:ems="10"
@@ -141,13 +145,13 @@
         android:id="@+id/btn_register"
         android:layout_width="0dp"
         android:layout_height="50dp"
+        android:layout_marginTop="50dp"
         android:background="@drawable/bg_btn"
         android:fontFamily="@font/roboto"
         android:text="Daftar"
         android:textColor="@color/white"
         android:textSize="16sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/rv_studentHaveAnAccount"
         app:layout_constraintEnd_toEndOf="@+id/et_studentClassName"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/et_studentClassName"

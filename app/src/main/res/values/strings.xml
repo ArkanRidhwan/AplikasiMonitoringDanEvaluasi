@@ -7,8 +7,8 @@
     <string name="admin">Admin</string>
     <string name="student">Student</string>
 
-    <string name="verificationCompany">3000</string>
-    <string name="verificationAdmin">2000</string>
+    <string name="verificationCompany">002</string>
+    <string name="verificationAdmin">001</string>
 
     //Report
     <string name="tv_reportQuestion1">1. Bagaimana kemampuan x terhadap z dalam menyelesaikan tanggung jawabnya?</string>
@@ -27,8 +27,8 @@
     <string name="requestAdapter2">Logbook Request</string>
     <string name="courseAdminAdapter1">Video</string>
     <string name="courseAdminAdapter2">Modul</string>
-    <string name="homeAdminAdapter1">Perusahaan</string>
-    <string name="homeAdminAdapter2">Logbook</string>
+    <string name="homeAdminAdapter1">Daftar Perusahaan</string>
+    <string name="homeAdminAdapter2">Daftar Logbook</string>
     <string name="loremIpsum">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, >Lorem ipsum dolorLorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, >Lorem ipsum dolorLorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, >Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum es dictum est a, mattis tellus. Sed dignissim, metus nec fringilla accumsan, risus sem sollicitudin lacus, ut interdum tellus elit sed risus. Maecenas eget condimentum velit, sit amet feugiat lectus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Praesent auctor purus luctus enim egestas, ac scelerisque ante pulvinar. Donec ut rhoncus ex. Suspendisse ac rhoncus nisl, eu tempor urna. Curabitur vel bibendum lorem. Morbi Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus. Sed dignissim, metus nec fringilla accumsan, risus sem sollicitudin lacus, ut interdum tellus elit sed risus. Maecenas eget condimentum velit, sit amet feugiat lectus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Praesent auctor purus luctus enim egestas, ac scelerisque ante pulvinar. Donec ut rhoncus ex. Suspendisse ac rhoncus nisl, eu tempor urna. Curabitur vel bibendum lorem. Morbi Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus. Sed dignissim, metus nec fringi Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus. Sed dignissim, metus nec fringi</string>
 
     //Report

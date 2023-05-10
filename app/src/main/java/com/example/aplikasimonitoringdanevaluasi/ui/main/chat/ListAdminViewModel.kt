@@ -19,7 +19,7 @@ class ListAdminViewModel : ViewModel() {
     fun getAdmin(): LiveData<List<Admin>?> {
         val dataAdmin = MutableLiveData<List<Admin>?>()
         val admin = ArrayList<Admin>()
-        collAdmin.orderByChild("timestamp").addValueEventListener(object : ValueEventListener {
+        collAdmin.orderByChild("name").addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 if (snapshot.exists()) {
                     admin.clear()

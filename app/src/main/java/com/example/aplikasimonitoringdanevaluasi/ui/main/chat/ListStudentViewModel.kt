@@ -18,7 +18,7 @@ class ListStudentViewModel : ViewModel() {
     fun getStudent(): LiveData<List<Student>?> {
         val dataStudent = MutableLiveData<List<Student>?>()
         val student = ArrayList<Student>()
-        collStudent.orderByChild("timestamp").addValueEventListener(object : ValueEventListener {
+        collStudent.orderByChild("name").addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 if (snapshot.exists()) {
                     student.clear()

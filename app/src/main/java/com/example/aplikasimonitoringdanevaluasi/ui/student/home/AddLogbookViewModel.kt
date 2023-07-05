@@ -64,4 +64,27 @@ class AddLogbookViewModel : ViewModel() {
         })
         return dataStudent
     }
+
+    fun getLogbookData(userId: String): LiveData<Logbook?> {
+        val dataLogbook = MutableLiveData<Logbook?>()
+        var logbook: Logbook? = null
+        collLogbook.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                if (snapshot.exists()) {
+                    for (i in snapshot.children) {
+                        val valueLogbook = i.getValue(Logbook::class.java)
+                        if (valueLogbook?.logbookUserId == userId) {
+                            logbook = valueLogbook
+                        }
+                    }
+                    dataLogbook.value = logbook
+                }
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                dataLogbook.value = null
+            }
+        })
+        return dataLogbook
+    }
 }

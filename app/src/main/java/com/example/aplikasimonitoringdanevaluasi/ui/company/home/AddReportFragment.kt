@@ -272,11 +272,7 @@ class AddReportFragment : Fragment() {
                     addReportFragmentViewModel.saveReport(report).observe(viewLifecycleOwner) {
                         if (it == true) {
                             requireActivity().showToast("Berhasil disimpan")
-                            val action =
-                                AddReportFragmentDirections.actionAddReportFragmentToHomeCompanyFragment(
-                                    getInstance(requireContext()).getString(Constant.ROLE)
-                                )
-                            findNavController().navigate(action)
+                            requireActivity().onBackPressed()
                         } else {
                             requireActivity().showToast("Gagal disimpan")
                         }

@@ -148,19 +148,6 @@ class EditProfileAdminFragment : Fragment() {
                                         phoneNumber = phoneNumber,
                                         image = urlDownload.toString()
                                     )
-                                    /*if (email.isEmpty()) {
-
-                                    } else if (password.isEmpty()) {
-
-                                    } else if (name.isEmpty()) {
-
-                                    } else if (phoneNumber.isEmpty()) {
-
-                                    } else if (ivProfile.isEmpty()) {
-
-                                    } else {
-
-                                    }*/
                                     editProfileAdminViewModel.updateAdminByEmail(admin, userId)
                                         .observe(viewLifecycleOwner) { data ->
                                             if (data == true) {
@@ -172,13 +159,11 @@ class EditProfileAdminFragment : Fragment() {
                                         }
                                 }
                         }
-
                     }
                     .addOnProgressListener { (bytesTransferred, totalByteCount) ->
                         val progress = (100.0 * bytesTransferred) / totalByteCount
                         tvProgress.text = "${progress.toInt()} %"
                     }
-                //}
             }
         }
     }

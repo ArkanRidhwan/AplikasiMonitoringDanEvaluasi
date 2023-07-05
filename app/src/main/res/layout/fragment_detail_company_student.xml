@@ -78,14 +78,17 @@
 
     <TextView
         android:id="@+id/tv_companyName"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
         android:layout_marginTop="2dp"
+        android:layout_marginEnd="24dp"
         android:fontFamily="@font/open_sans"
         android:text="Nama"
         android:textColor="@color/black"
         android:textSize="16sp"
-        app:layout_constraintStart_toStartOf="@+id/tv_companytNameTittle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_companytNameTittle" />
 
     <TextView
@@ -102,14 +105,15 @@
 
     <TextView
         android:id="@+id/tv_companyAddress"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="2dp"
         android:fontFamily="@font/open_sans"
         android:text="Alamat"
         android:textColor="@color/black"
         android:textSize="16sp"
-        app:layout_constraintStart_toStartOf="@+id/tv_companyAddresslTittle"
+        app:layout_constraintEnd_toEndOf="@+id/tv_companyName"
+        app:layout_constraintStart_toStartOf="@+id/tv_companyName"
         app:layout_constraintTop_toBottomOf="@+id/tv_companyAddresslTittle" />
 
     <TextView
@@ -126,14 +130,15 @@
 
     <TextView
         android:id="@+id/tv_companyContactName"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="2dp"
         android:fontFamily="@font/open_sans"
         android:text="Nama PIC"
         android:textColor="@color/black"
         android:textSize="16sp"
-        app:layout_constraintStart_toStartOf="@+id/tv_companyContactNameTittle"
+        app:layout_constraintEnd_toEndOf="@+id/tv_companyAddress"
+        app:layout_constraintStart_toStartOf="@+id/tv_companyAddress"
         app:layout_constraintTop_toBottomOf="@+id/tv_companyContactNameTittle" />
 
     <TextView
@@ -150,14 +155,15 @@
 
     <TextView
         android:id="@+id/tv_companyContactPhoneNumber"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="2dp"
         android:fontFamily="@font/open_sans"
         android:text="No Telepon PIC"
         android:textColor="@color/black"
         android:textSize="16sp"
-        app:layout_constraintStart_toStartOf="@+id/tv_companyContactPhoneNumberTittle"
+        app:layout_constraintEnd_toEndOf="@+id/tv_companyContactName"
+        app:layout_constraintStart_toStartOf="@+id/tv_companyContactName"
         app:layout_constraintTop_toBottomOf="@+id/tv_companyContactPhoneNumberTittle" />
 
     <TextView
@@ -174,14 +180,15 @@
 
     <TextView
         android:id="@+id/tv_companyContactEmail"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="2dp"
         android:fontFamily="@font/open_sans"
         android:text="Email PIC"
         android:textColor="@color/black"
         android:textSize="16sp"
-        app:layout_constraintStart_toStartOf="@+id/tv_companyContactEmailTittle"
+        app:layout_constraintEnd_toEndOf="@+id/tv_companyContactPhoneNumber"
+        app:layout_constraintStart_toStartOf="@+id/tv_companyContactPhoneNumber"
         app:layout_constraintTop_toBottomOf="@+id/tv_companyContactEmailTittle" />
 
     <androidx.appcompat.widget.AppCompatButton

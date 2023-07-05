@@ -15,12 +15,13 @@ import com.example.aplikasimonitoringdanevaluasi.databinding.FragmentDetailStude
 import com.example.aplikasimonitoringdanevaluasi.utils.showToast
 
 
-class DetailStudentAdminFragment : Fragment() {
+class DetailStudentAdminFragment : Fragment(), PopUpDeleteStudentFragment.UpdateData {
 
     private lateinit var binding: FragmentDetailStudentAdminBinding
     private val detailStudentAdminViewModel: DetailStudentAdminViewModel by viewModels()
     private val args: DetailStudentAdminFragmentArgs by navArgs()
     private var requestStudentId = ""
+    private lateinit var mOptionDialogFragmentDeleteStudent: PopUpDeleteStudentFragment
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -75,19 +76,38 @@ class DetailStudentAdminFragment : Fragment() {
             }
 
             btnDelete.setOnClickListener {
-                detailStudentAdminViewModel.deleteStudent(args.student.email).observe(viewLifecycleOwner) {
+                mOptionDialogFragmentDeleteStudent = PopUpDeleteStudentFragment(this@DetailStudentAdminFragment)
+                val mFragmentManager = childFragmentManager
+                mOptionDialogFragmentDeleteStudent.show(
+                    mFragmentManager,
+                    PopUpDeleteStudentFragment::class.java.simpleName
+                )
+
+                /*detailStudentAdminViewModel.deleteStudent(args.student.email).observe(viewLifecycleOwner) {
                     if (it == true) {
                         requireActivity().onBackPressed()
                         requireContext().showToast("Akun siswa berhasil dihapus")
                     } else {
                         requireContext().showToast("Akun siswa gagal dihapus")
                     }
-                }
-
-                detailStudentAdminViewModel.deleteRequestStudent(requestStudentId).observe(viewLifecycleOwner) {
-
-                }
+                }*/
             }
+        }
+    }
+    fun deleteAccount (){
+        detailStudentAdminViewModel.deleteStudent(args.student.email).observe(viewLifecycleOwner) {
+            if (it == true) {
+                requireActivity().onBackPressed()
+                requireContext().showToast("Akun siswa berhasil dihapus")
+            } else {
+                requireContext().showToast("Akun siswa gagal dihapus")
+            }
+        }
+    }
+
+    override fun setDataUpdate(status: Boolean) {
+        if (status) {
+            deleteAccount()
         }
     }
 }

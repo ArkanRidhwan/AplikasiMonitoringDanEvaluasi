@@ -14,7 +14,6 @@ import com.example.aplikasimonitoringdanevaluasi.R
 import com.example.aplikasimonitoringdanevaluasi.databinding.FragmentDetailRequestStudentBinding
 import com.example.aplikasimonitoringdanevaluasi.model.RequestStudent
 import com.example.aplikasimonitoringdanevaluasi.model.Student
-import com.example.aplikasimonitoringdanevaluasi.utils.loadCircleImageFromUrl
 import com.example.aplikasimonitoringdanevaluasi.utils.showToast
 
 class DetailRequestStudentFragment : Fragment() {
@@ -22,7 +21,6 @@ class DetailRequestStudentFragment : Fragment() {
     private lateinit var binding: FragmentDetailRequestStudentBinding
     private val args: DetailRequestStudentFragmentArgs by navArgs()
     private val detailRequestStudentViewModel: DetailRequestStudentViewModel by viewModels()
-    private var oldCompanyName = ""
     private var newCompanyName = ""
     private var studentName = ""
     private var email = ""

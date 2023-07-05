@@ -69,6 +69,8 @@ class ChatFragment : Fragment() {
                             requireContext().showToast("Pesan Gagal Terkirim")
                         }
                     }
+                } else {
+                    requireActivity().showToast("Pesan masih kosong")
                 }
             }
             loadChat()

@@ -35,23 +35,6 @@ class  DetailStudentAdminViewModel : ViewModel() {
         return status
     }
 
-    fun deleteRequestStudent(id: String): LiveData<Boolean> {
-        val status = MutableLiveData<Boolean>()
-        collRequestStudent.child(id).addListenerForSingleValueEvent(object : ValueEventListener {
-            override fun onDataChange(snapshot: DataSnapshot) {
-                for (i in snapshot.children) {
-                    i.ref.removeValue()
-                }
-                status.value = true
-            }
-
-            override fun onCancelled(error: DatabaseError) {
-                status.value = false
-            }
-        })
-        return status
-    }
-
     fun getRequestStudentById(id: String): LiveData<RequestStudent?> {
         val dataReport = MutableLiveData<RequestStudent?>()
         var report: RequestStudent? = null

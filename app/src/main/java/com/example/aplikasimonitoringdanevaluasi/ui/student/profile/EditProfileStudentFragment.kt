@@ -21,12 +21,12 @@ import com.bumptech.glide.request.RequestOptions
 import com.example.aplikasimonitoringdanevaluasi.R
 import com.example.aplikasimonitoringdanevaluasi.databinding.FragmentEditProfileStudentBinding
 import com.example.aplikasimonitoringdanevaluasi.model.Student
-import com.example.aplikasimonitoringdanevaluasi.ui.storage.StorageActivity
 import com.example.aplikasimonitoringdanevaluasi.utils.*
 import com.github.dhaval2404.imagepicker.ImagePicker
 import com.google.firebase.storage.ktx.component1
 import com.google.firebase.storage.ktx.component2
 import java.io.File
+
 
 class EditProfileStudentFragment : Fragment() {
 
@@ -34,7 +34,7 @@ class EditProfileStudentFragment : Fragment() {
     var urlDownload: String? = ""
 
     private lateinit var binding: FragmentEditProfileStudentBinding
-    private  var file: File? = null
+    private var file: File? = null
     private val editProfileStudentViewModel: EditProfileStudentViewModel by viewModels()
     private var timestamp = ""
     private var companyName = ""
@@ -76,7 +76,6 @@ class EditProfileStudentFragment : Fragment() {
                         .into(ivProfile)
                 }
             }
-
 
             val startForImageResult =
                 registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result: ActivityResult ->

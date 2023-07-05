@@ -23,6 +23,7 @@ class AddLogbookFragment : Fragment() {
     private var studentApprovalStatus = ""
     private var imageProfileStudentLogbook = ""
     private var dateText = ""
+    private var dateTextCheck = ""
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -42,6 +43,10 @@ class AddLogbookFragment : Fragment() {
                     studentApprovalStatus = it?.status.toString()
                     imageProfileStudentLogbook = it?.image.toString()
                 }
+
+            uploadLogbookViewModel.getLogbookData(logbookUserId).observe(viewLifecycleOwner){
+                dateTextCheck = it?.activityDate.toString()
+            }
 
             val c = Calendar.getInstance()
             val year = c.get(Calendar.YEAR)
@@ -70,9 +75,9 @@ class AddLogbookFragment : Fragment() {
                 val name = getInstance(requireContext()).getString(Constant.NAME)
                 val logbookId = UUID.randomUUID().toString()
 
-                if(activityDate.isEmpty()){
+                if (activityDate.isEmpty()) {
                     requireActivity().showToast("Silahkan pilih tanggal terlebih dahulu")
-                } else if(content.isEmpty()){
+                } else if (content.isEmpty()) {
                     etContentLogbook.error("Email tidak boleh kosong")
                     etContentLogbook.requestFocus()
                 } else {
@@ -88,7 +93,11 @@ class AddLogbookFragment : Fragment() {
                         status = "1",
                         image = imageProfileStudentLogbook
                     )
-                    if (studentApprovalStatus == "2") {
+                    if (studentApprovalStatus != "2") {
+                        requireContext().showToast("Silahkan ajukan lamaran ke perusahaan terlebih dahulu")
+                    } else if (dateText == dateTextCheck) {
+                        requireContext().showToast("Logbook hari ini sudah dibuat")
+                    } else {
                         uploadLogbookViewModel.saveLogbook(logbook)
                             .observe(viewLifecycleOwner) { data ->
                                 if (data == true) {
@@ -98,8 +107,6 @@ class AddLogbookFragment : Fragment() {
                                     requireContext().showToast("Menyimpan logbook gagal")
                                 }
                             }
-                    } else {
-                        requireContext().showToast("Silahkan ajukan lamaran ke perusahaan terlebih dahulu")
                     }
                 }
             }

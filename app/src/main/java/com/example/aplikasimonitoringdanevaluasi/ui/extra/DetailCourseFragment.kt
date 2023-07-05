@@ -11,9 +11,7 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.aplikasimonitoringdanevaluasi.databinding.FragmentDetailCourseBinding
-import com.example.aplikasimonitoringdanevaluasi.model.Course
-import com.example.aplikasimonitoringdanevaluasi.utils.gone
-import com.example.aplikasimonitoringdanevaluasi.utils.visible
+import com.example.aplikasimonitoringdanevaluasi.utils.showToast
 
 class DetailCourseFragment : Fragment() {
 
@@ -58,6 +56,8 @@ class DetailCourseFragment : Fragment() {
                                 it
                             )
                         findNavController().navigate(action)
+                    } else {
+                        requireActivity().showToast("Video pembelajaran belum dibuat")
                     }
                 }
 
@@ -92,6 +92,8 @@ class DetailCourseFragment : Fragment() {
                                 it
                             )
                         findNavController().navigate(action)
+                    } else {
+                        requireActivity().showToast("Modul pembelajaran belum dibuat")
                     }
                 }
                 /*detailCourseViewModel.getCourseById(args.course.id).observe(viewLifecycleOwner) {
@@ -125,6 +127,8 @@ class DetailCourseFragment : Fragment() {
                             val i = Intent(Intent.ACTION_VIEW)
                             i.data = Uri.parse(url)
                             startActivity(i)
+                        } else {
+                            requireActivity().showToast("Evaluasi pembelajaran belum dibuat")
                         }
                     }
 

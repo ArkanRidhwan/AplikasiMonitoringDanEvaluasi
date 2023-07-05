@@ -210,6 +210,7 @@ class UploadVideoFragment : Fragment() {
                             tvUploadVideoContent.visible()
                             etUploadVideoContent.visible()
                             etUploadVideoTittle.visible()
+                            requireContext().showToast("Gagal menyimpan video")
                         }
                         .addOnSuccessListener { task ->
                             progressBarUpload.gone()

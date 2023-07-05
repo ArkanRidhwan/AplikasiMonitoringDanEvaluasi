@@ -11,10 +11,7 @@ import androidx.navigation.fragment.navArgs
 import com.example.aplikasimonitoringdanevaluasi.R
 import com.example.aplikasimonitoringdanevaluasi.databinding.FragmentListLogbookBinding
 import com.example.aplikasimonitoringdanevaluasi.ui.student.home.HomeStudentFragmentDirections
-import com.example.aplikasimonitoringdanevaluasi.utils.Constant
-import com.example.aplikasimonitoringdanevaluasi.utils.getInstance
-import com.example.aplikasimonitoringdanevaluasi.utils.gone
-import com.example.aplikasimonitoringdanevaluasi.utils.visible
+import com.example.aplikasimonitoringdanevaluasi.utils.*
 
 
 class ListLogbookFragment : Fragment() {
@@ -75,16 +72,14 @@ class ListLogbookFragment : Fragment() {
             recyclerView.adapter = listLogbookAdapter
             progressBar.visible()
             recyclerView.gone()
-            if (studentId != null) {
-                listLogbookViewModel.getLogbook(studentId).observe(viewLifecycleOwner) {
-                    if (it?.isNotEmpty() == true) {
-                        listLogbookAdapter.setListData(it)
-                        progressBar.gone()
-                        recyclerView.visible()
-                    } else {
-                        tvLogbookNotCreated.visible()
-                        progressBar.gone()
-                    }
+            listLogbookViewModel.getLogbook(studentId).observe(viewLifecycleOwner) {
+                if (it?.isNotEmpty() == true) {
+                    listLogbookAdapter.setListData(it)
+                    progressBar.gone()
+                    recyclerView.visible()
+                } else {
+                    tvLogbookNotCreated.visible()
+                    progressBar.gone()
                 }
             }
         }

@@ -158,10 +158,8 @@
             android:layout_marginStart="32dp"
             android:layout_marginTop="24dp"
             android:layout_marginEnd="32dp"
-            android:layout_marginBottom="24dp"
             android:clickable="true"
             app:cardCornerRadius="30dp"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/cv_module">
@@ -197,20 +195,24 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/iv_evaluation"
                     app:layout_constraintTop_toTopOf="@+id/iv_evaluation" />
+
             </androidx.constraintlayout.widget.ConstraintLayout>
         </com.google.android.material.card.MaterialCardView>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btn_delete"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginBottom="32dp"
+            android:background="@drawable/bg_btn_delete"
+            android:text="Hapus materi bab ini"
+            android:textAllCaps="false"
+            android:textColor="#9E0404"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/cv_evaluationLink"
+            app:layout_constraintStart_toStartOf="@+id/cv_evaluationLink"
+            app:layout_constraintTop_toBottomOf="@+id/cv_evaluationLink" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <!--<androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btn_delete"
-        android:layout_width="0dp"
-        android:layout_height="40dp"
-        android:layout_marginTop="32dp"
-        android:background="@drawable/bg_btn_delete"
-        android:text="Hapus materi pembelajaran bab ini"
-        android:textAllCaps="false"
-        android:textColor="#9E0404"
-        app:layout_constraintEnd_toEndOf="@+id/cv_evaluationLink"
-        app:layout_constraintStart_toStartOf="@+id/cv_evaluationLink"
-        app:layout_constraintTop_toBottomOf="@+id/cv_evaluationLink" />-->
 </ScrollView>

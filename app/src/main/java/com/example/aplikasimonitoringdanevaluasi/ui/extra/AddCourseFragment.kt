@@ -9,14 +9,17 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.example.aplikasimonitoringdanevaluasi.databinding.FragmentAddCourseBinding
+import com.example.aplikasimonitoringdanevaluasi.ui.admin.course.PopUpDeleteCourseFragment
+import com.example.aplikasimonitoringdanevaluasi.ui.admin.home.PopUpDeleteStudentFragment
 import com.example.aplikasimonitoringdanevaluasi.utils.showToast
 
 
-class AddCourseFragment : Fragment() {
+class AddCourseFragment : Fragment(), PopUpDeleteCourseFragment.UpdateData {
 
     private lateinit var binding: FragmentAddCourseBinding
     private val addCourseViewModel: AddCourseViewModel by viewModels()
     private val args: AddCourseFragmentArgs by navArgs()
+    private lateinit var mOptionDialogFragmentDeleteCourse: PopUpDeleteCourseFragment
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -57,8 +60,15 @@ class AddCourseFragment : Fragment() {
                 findNavController().navigate(action)
             }
 
-            /*btnDelete.setOnClickListener {
-                addCourseViewModel.deleteVideo(args.course.id).observe(viewLifecycleOwner) {
+            btnDelete.setOnClickListener {
+                mOptionDialogFragmentDeleteCourse = PopUpDeleteCourseFragment(this@AddCourseFragment)
+                val mFragmentManager = childFragmentManager
+                mOptionDialogFragmentDeleteCourse.show(
+                    mFragmentManager,
+                    PopUpDeleteCourseFragment::class.java.simpleName
+                )
+
+                /*addCourseViewModel.deleteVideo(args.course.id).observe(viewLifecycleOwner) {
                     if (it == true) {
                         val action =
                             AddCourseFragmentDirections.actionAddCourseFragmentToListCourseAdminFragment()
@@ -67,8 +77,26 @@ class AddCourseFragment : Fragment() {
                     } else {
                         requireContext().showToast("Materi bab ini gagal dihapus")
                     }
-                }
-            }*/
+                }*/
+            }
+        }
+    }
+    fun deleteCourse (){
+        addCourseViewModel.deleteVideo(args.course.id).observe(viewLifecycleOwner) {
+            if (it == true) {
+                val action =
+                    AddCourseFragmentDirections.actionAddCourseFragmentToListCourseAdminFragment()
+                findNavController().navigate(action)
+                requireContext().showToast("Materi berhasil dihapus")
+            } else {
+                requireContext().showToast("Materi gagal dihapus")
+            }
+        }
+    }
+
+    override fun setDataUpdate(status: Boolean) {
+        if (status) {
+            deleteCourse()
         }
     }
 }

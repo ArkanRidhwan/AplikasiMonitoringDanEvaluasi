@@ -69,25 +69,28 @@
                 android:id="@+id/tv_studentNameTittle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
                 android:layout_marginTop="32dp"
-                android:layout_marginEnd="80dp"
                 android:fontFamily="@font/open_sans"
                 android:text="Nama"
                 android:textColor="@color/gray_hintText"
                 android:textSize="12sp"
                 android:textStyle="bold"
-                app:layout_constraintEnd_toStartOf="@+id/iv_profilePicture"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/iv_profilePicture" />
 
             <TextView
                 android:id="@+id/tv_studentName"
-                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_width="0dp"
+                android:layout_marginStart="24dp"
+                android:layout_marginEnd="24dp"
                 android:fontFamily="@font/open_sans"
                 android:text="Nama"
                 android:textColor="@color/black"
                 android:textSize="18sp"
-                app:layout_constraintStart_toStartOf="@+id/tv_studentNameTittle"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tv_studentNameTittle" />
 
             <TextView
@@ -105,13 +108,14 @@
 
             <TextView
                 android:id="@+id/tv_studentNameEmail"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/open_sans"
                 android:text="Email"
                 android:textColor="@color/black"
                 android:textSize="18sp"
-                app:layout_constraintStart_toStartOf="@+id/tv_studentNameEmailTittle"
+                app:layout_constraintEnd_toEndOf="@+id/tv_studentName"
+                app:layout_constraintStart_toStartOf="@+id/tv_studentName"
                 app:layout_constraintTop_toBottomOf="@+id/tv_studentNameEmailTittle" />
 
             <TextView
@@ -129,13 +133,14 @@
 
             <TextView
                 android:id="@+id/tv_studentPhoneNumber"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/open_sans"
                 android:text="No Telepon"
                 android:textColor="@color/black"
                 android:textSize="18sp"
-                app:layout_constraintStart_toStartOf="@+id/tv_studentPhoneNumberTittle"
+                app:layout_constraintEnd_toEndOf="@+id/tv_studentNameEmail"
+                app:layout_constraintStart_toStartOf="@+id/tv_studentNameEmail"
                 app:layout_constraintTop_toBottomOf="@+id/tv_studentPhoneNumberTittle" />
 
             <TextView
@@ -153,13 +158,14 @@
 
             <TextView
                 android:id="@+id/tv_studentClassName"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/open_sans"
                 android:text="Kelas"
                 android:textColor="@color/black"
                 android:textSize="18sp"
-                app:layout_constraintStart_toStartOf="@+id/tv_studentClassNameTittle"
+                app:layout_constraintEnd_toEndOf="@+id/tv_studentPhoneNumber"
+                app:layout_constraintStart_toStartOf="@+id/tv_studentPhoneNumber"
                 app:layout_constraintTop_toBottomOf="@+id/tv_studentClassNameTittle" />
 
             <TextView
@@ -177,13 +183,14 @@
 
             <TextView
                 android:id="@+id/tv_studentJob"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/open_sans"
                 android:text="Pekerjaan"
                 android:textColor="@color/black"
                 android:textSize="18sp"
-                app:layout_constraintStart_toStartOf="@+id/tv_studentJobTittle"
+                app:layout_constraintEnd_toEndOf="@+id/tv_studentCompanyName"
+                app:layout_constraintStart_toStartOf="@+id/tv_studentCompanyName"
                 app:layout_constraintTop_toBottomOf="@+id/tv_studentJobTittle" />
 
             <TextView
@@ -201,13 +208,14 @@
 
             <TextView
                 android:id="@+id/tv_studentSchoolMajor"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/open_sans"
                 android:text="Jurusan Sekolah"
                 android:textColor="@color/black"
                 android:textSize="18sp"
-                app:layout_constraintStart_toStartOf="@+id/tv_studentSchoolMajorTittle"
+                app:layout_constraintEnd_toEndOf="@+id/tv_studentJob"
+                app:layout_constraintStart_toStartOf="@+id/tv_studentJob"
                 app:layout_constraintTop_toBottomOf="@+id/tv_studentSchoolMajorTittle" />
 
             <TextView
@@ -225,13 +233,14 @@
 
             <TextView
                 android:id="@+id/tv_studentCompanyName"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/open_sans"
                 android:text="Nama Perusahaan Magang"
                 android:textColor="@color/black"
                 android:textSize="18sp"
-                app:layout_constraintStart_toStartOf="@+id/tv_studentCompanyNameTittle"
+                app:layout_constraintEnd_toEndOf="@+id/tv_studentClassName"
+                app:layout_constraintStart_toStartOf="@+id/tv_studentClassName"
                 app:layout_constraintTop_toBottomOf="@+id/tv_studentCompanyNameTittle" />
 
             <androidx.appcompat.widget.AppCompatButton

@@ -918,4 +918,14 @@
         android:name="com.example.aplikasimonitoringdanevaluasi.ui.main.logbook.ListLogbookStudentFragment"
         android:label="fragment_list_logbook_student"
         tools:layout="@layout/fragment_list_logbook_student" />
+    <dialog
+        android:id="@+id/popUpDeleteStudentFragment"
+        android:name="com.example.aplikasimonitoringdanevaluasi.ui.admin.home.PopUpDeleteStudentFragment"
+        android:label="fragment_pop_up_delete_student"
+        tools:layout="@layout/fragment_pop_up_delete_student" />
+    <dialog
+        android:id="@+id/popUpDeleteCourseFragment"
+        android:name="com.example.aplikasimonitoringdanevaluasi.ui.admin.course.PopUpDeleteCourseFragment"
+        android:label="fragment_pop_up_delete_course"
+        tools:layout="@layout/fragment_pop_up_delete_course" />
 </navigation>

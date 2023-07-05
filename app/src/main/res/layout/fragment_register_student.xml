@@ -162,7 +162,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="70dp"
-        android:layout_marginBottom="24dp"
+        android:layout_marginBottom="32dp"
         android:fontFamily="@font/proza_libre"
         android:text="Sudah punya akun?"
         android:textColor="@color/black"

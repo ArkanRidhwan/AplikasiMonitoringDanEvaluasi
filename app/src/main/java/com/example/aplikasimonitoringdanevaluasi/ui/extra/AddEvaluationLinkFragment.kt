@@ -45,10 +45,10 @@ class AddEvaluationLinkFragment : Fragment() {
                 )
                 addEvaluationLinkViewModel.saveEvaluation(evaluation).observe(viewLifecycleOwner) {
                     if (it == true) {
-                        requireContext().showToast("Berhasil mengunggah")
+                        requireContext().showToast("Berhasil mengunggah link evaluasi")
                         requireActivity().onBackPressed()
                     } else {
-                        requireContext().showToast("Gagal mengunggah")
+                        requireContext().showToast("Gagal mengunggah link evaluasi")
                     }
                 }
             }

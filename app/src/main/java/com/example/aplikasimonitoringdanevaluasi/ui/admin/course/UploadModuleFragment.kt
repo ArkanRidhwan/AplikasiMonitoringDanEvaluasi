@@ -108,12 +108,11 @@ class UploadModuleFragment : Fragment() {
                         .addOnFailureListener {
                             progressBar.gone()
                             tvProgress.gone()
-                            requireContext().showToast("Upload Document Failed!")
+                            requireContext().showToast("Menyimpan modul gagal")
                         }
                         .addOnSuccessListener { task ->
                             progressBar.gone()
                             tvProgress.gone()
-                            requireContext().showToast("Upload Document Success!")
 
                             task.storage.downloadUrl.addOnSuccessListener { url ->
                                 Log.d(TAG, "Document: $url")

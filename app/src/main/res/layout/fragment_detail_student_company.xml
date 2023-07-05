@@ -79,13 +79,16 @@
 
             <TextView
                 android:id="@+id/tv_studentName"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginEnd="24dp"
                 android:fontFamily="@font/open_sans"
                 android:text="Nama"
                 android:textColor="@color/black"
                 android:textSize="18sp"
-                app:layout_constraintStart_toStartOf="@+id/tv_studentNameTittle"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tv_studentNameTittle" />
 
             <TextView
@@ -103,13 +106,14 @@
 
             <TextView
                 android:id="@+id/tv_studentEmail"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/open_sans"
                 android:text="Email"
                 android:textColor="@color/black"
                 android:textSize="18sp"
-                app:layout_constraintStart_toStartOf="@+id/tv_studentNameEmailTittle"
+                app:layout_constraintEnd_toEndOf="@+id/tv_studentName"
+                app:layout_constraintStart_toStartOf="@+id/tv_studentName"
                 app:layout_constraintTop_toBottomOf="@+id/tv_studentNameEmailTittle" />
 
             <TextView
@@ -127,13 +131,14 @@
 
             <TextView
                 android:id="@+id/tv_studentPhoneNumber"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/open_sans"
                 android:text="No Telepon"
                 android:textColor="@color/black"
                 android:textSize="18sp"
-                app:layout_constraintStart_toStartOf="@+id/tv_studentPhoneNumberTittle"
+                app:layout_constraintEnd_toEndOf="@+id/tv_studentEmail"
+                app:layout_constraintStart_toStartOf="@+id/tv_studentEmail"
                 app:layout_constraintTop_toBottomOf="@+id/tv_studentPhoneNumberTittle" />
 
             <TextView
@@ -151,13 +156,14 @@
 
             <TextView
                 android:id="@+id/tv_studentJob"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/open_sans"
                 android:text="Pekerjaan"
                 android:textColor="@color/black"
                 android:textSize="18sp"
-                app:layout_constraintStart_toStartOf="@+id/tv_studentJobTittle"
+                app:layout_constraintEnd_toEndOf="@+id/tv_studentPhoneNumber"
+                app:layout_constraintStart_toStartOf="@+id/tv_studentPhoneNumber"
                 app:layout_constraintTop_toBottomOf="@+id/tv_studentJobTittle" />
 
             <TextView
@@ -175,13 +181,14 @@
 
             <TextView
                 android:id="@+id/tv_studentClassName"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/open_sans"
                 android:text="Kelas"
                 android:textColor="@color/black"
                 android:textSize="18sp"
-                app:layout_constraintStart_toStartOf="@+id/tv_studentClassNameTittle"
+                app:layout_constraintEnd_toEndOf="@+id/tv_studentJob"
+                app:layout_constraintStart_toStartOf="@+id/tv_studentJob"
                 app:layout_constraintTop_toBottomOf="@+id/tv_studentClassNameTittle" />
 
             <TextView
@@ -199,13 +206,14 @@
 
             <TextView
                 android:id="@+id/tv_studentMajorName"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/open_sans"
                 android:text="Jurusan Sekolah"
                 android:textColor="@color/black"
                 android:textSize="18sp"
-                app:layout_constraintStart_toStartOf="@+id/tv_studentMajorTittle"
+                app:layout_constraintEnd_toEndOf="@+id/tv_studentClassName"
+                app:layout_constraintStart_toStartOf="@+id/tv_studentClassName"
                 app:layout_constraintTop_toBottomOf="@+id/tv_studentMajorTittle" />
 
             <androidx.appcompat.widget.AppCompatButton
